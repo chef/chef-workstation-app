@@ -1,16 +1,15 @@
-HEADERS       = window.h \
+HEADERS       = \
     traywindow.h
+
 SOURCES       = main.cpp \
-                window.cpp \
     traywindow.cpp
 RESOURCES     = systray.qrc
 
-QT += widgets
+QT += widgets network
 requires(qtConfig(combobox))
 
 # install
 target.path = $$[QT_INSTALL_EXAMPLES]/widgets/desktop/systray
 INSTALLS += target
 
-FORMS += \
-    traywindow.ui
+FORMS += traywindow.ui

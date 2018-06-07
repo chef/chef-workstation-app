@@ -53,7 +53,7 @@
 #ifndef QT_NO_SYSTEMTRAYICON
 
 #include <QMessageBox>
-#include "window.h"
+#include "traywindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -67,9 +67,11 @@ int main(int argc, char *argv[])
                                           "on this system."));
         return 1;
     }
+    // We explicitly handle closing the application to ensure that the tray
+    // app remains running after any dialogs are closed.
     QApplication::setQuitOnLastWindowClosed(false);
 
-    Window window;
+    TrayWindow window;
 //    window.show();  Default to being hidden, just the tray icon
     return app.exec();
 }
