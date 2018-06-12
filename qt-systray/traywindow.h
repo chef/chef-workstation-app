@@ -37,11 +37,15 @@ private slots:
     void on_TrayWindow_rejected();
     void httpCurrentFinished();
     void httpStableFinished();
+    void onUpdateMenu();
+    void onLoginToAutomate();
 
   //  void setIcon(int index);
     void iconActivated(QSystemTrayIcon::ActivationReason _reason);
   //  void showMessage();
    // void messageClicked();
+
+    void on_label_7_linkActivated(const QString &link);
 
 private:
     Ui::TrayWindow *ui;
@@ -52,8 +56,11 @@ private:
     void createTrayIcon();
     void setupTimer();
     void showBubbleMessage(const QString & msg);
-    QAction *openAction;
+
     QAction *quitAction;
+    QAction *updateAction;
+    QAction *loginAction;
+    QAction *preferencesAction;
 
     int timer;
     QIcon cwsIcon;
