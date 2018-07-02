@@ -1,4 +1,4 @@
-# Chef Workstation Tray Application PoC - QT
+# Chef Workstation Tray Application PoC - Electron
 
 Electron is a JS based platform for building web apps across systems. They run "natively", meaning they can be ran across many operating systems and should function/look the same across all. It is the basis for native applications like Atom and Visual Studio Code.
 
