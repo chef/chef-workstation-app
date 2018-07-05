@@ -3,7 +3,7 @@
 
 
 ### Why Qt?
-Qt offers a robust cross-platform C++ framework, with bindings for many other languages. The
+Qt offers a robust cross-platform C++ framework, with bindings for many other languages.
 
 ### Setup and Build
 
