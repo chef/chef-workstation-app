@@ -9,7 +9,17 @@ Qt offers a robust cross-platform C++ framework, with bindings for many other la
 
 #### Windows
 * Install Visual Studio Community
+  * Install Chocolatey `[System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
+  * `choco install -y visualstudio2017community --package-parameters "--add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.Git --add Component.GitHub.VisualStudio"`
+  * (Optional if you'd like to try using Visual Studio as Qt IDE) Open Visual Studio 2017, go to Tools -> Extensions, click on Online, search for "qt" and install "Qt Visual Studio Tools"
 * Install Qt. Recommend including the Qt creator component, which as an IDE that knows about Qt.
+  * `wget https://download.qt.io/official_releases/online_installers/qt-unified-windows-x86-online.exe`
+  * Run the Qt online installer just downloaded.
+    * Select the following:
+      * Qt -> Qt 5.11.1 -> MSVC 2017 64-bit
+      * Qt -> Tools -> Qt Creator 4.7.0 CDB Debugger Support
+      * Qt -> Tools -> Qt Installer Framework 3.0
+  * NOTE: "Uninstall Qt" in the Start Menu runs the Qt Maintenance Tool where you can also add/remove other Qt components. It does not _automatically_ uninstall Qt.
 
 ```
 qmake systray.pro
