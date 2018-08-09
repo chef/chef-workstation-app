@@ -13,7 +13,8 @@ Qt offers a robust cross-platform C++ framework, with bindings for many other la
   * `choco install -y visualstudio2017community --package-parameters "--add Microsoft.VisualStudio.Workload.NativeDesktop --add Microsoft.VisualStudio.Component.Git --add Component.GitHub.VisualStudio"`
   * (Optional if you'd like to try using Visual Studio as Qt IDE) Open Visual Studio 2017, go to Tools -> Extensions, click on Online, search for "qt" and install "Qt Visual Studio Tools"
 * Install Qt. Recommend including the Qt creator component, which as an IDE that knows about Qt.
-  * `wget https://download.qt.io/official_releases/online_installers/qt-unified-windows-x86-online.exe`
+  * `wget https://download.qt.io/official_releases/online_installers/qt-unified-windows-x86-online.exe -OutFile qt-unified-windows-x86-online.exe`
+  * `C:\Users\vagrant\Downloads\qt-unified-windows-x86-online.exe --script C:\vagrant\qt-auto-install-win.js`
   * Run the Qt online installer just downloaded.
     * Select the following:
       * Qt -> Qt 5.11.1 -> MSVC 2017 64-bit
