@@ -6,8 +6,15 @@ Vagrant.configure("2") do |config|
 
     # Install xfce and virtualbox additions for GUI.
     # You must reboot this VM after provisioning to get windowed environment.
-    node.vm.provision "shell", inline: "sudo apt-get update"
-    node.vm.provision "shell", inline: "sudo apt-get install -y xfce4 virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11"
+    node.vm.provision "shell", inline: <<~DEV_SETUP
+      apt-get update
+      apt-get install -y \
+        xfce4 slim libgl1-mesa-dev \
+        virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+      sudo -i -u vagrant wget --no-verbose --continue https://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
+      chmod u+x qt-unified-linux-x64-online.run
+      sudo -i -u vagrant ./qt-unified-linux-x64-online.run --platform minimal --script /vagrant/qt-auto-install.js --verbose
+    DEV_SETUP
 
     node.vm.provider "virtualbox" do |v|
       v.gui = true
@@ -35,10 +42,11 @@ Vagrant.configure("2") do |config|
         --add Component.GitHub.VisualStudio
         --add Component.PowerShellTools.VS2017
       "
+      Start-Process -wait "C:\\ProgramData\\Package Cache\\{6195c203-b53c-4bb7-983a-6070a902e704}\\winsdksetup.exe" -ArgumentList '/features OptionId.WindowsDesktopDebuggers /q'
       $ProgressPreference = "silentlyContinue"
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
       wget http://download.qt.io/official_releases/online_installers/qt-unified-windows-x86-online.exe -OutFile C:\\Users\\vagrant\\Downloads\\qt-unified-windows-x86-online.exe
-      C:\\Users\\vagrant\\Downloads\\qt-unified-windows-x86-online.exe --script V:\\qt-auto-install-win.js --platform windows --verbose
+      C:\\Users\\vagrant\\Downloads\\qt-unified-windows-x86-online.exe --script V:\\qt-auto-install.js --platform windows --verbose
     DEV_SETUP
 
     # Admin user name and password

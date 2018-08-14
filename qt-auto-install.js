@@ -31,7 +31,13 @@ Controller.prototype.ComponentSelectionPageCallback = function() {
   widget.selectComponent("qt.tools.maintenance");
   widget.selectComponent("qt.tools.qtcreator");
   widget.selectComponent("qt.tools.qtcreatorcdbext");
-  widget.selectComponent("qt.qt5.5111.win64_msvc2017_64");
+  // Prebuilt Qt components for platforms & compilers
+  // It's OK that they're all here. Selecting things that don't appear in a
+  // particular platform's available components does not cause an error in
+  // the installer.
+  widget.selectComponent("qt.qt5.5111.clang64"); // macOS
+  widget.selectComponent("qt.qt5.5111.gcc_64"); // Linux
+  widget.selectComponent("qt.qt5.5111.win64_msvc2017_64"); // Windows
 
   gui.clickButton(buttons.NextButton);
 }
