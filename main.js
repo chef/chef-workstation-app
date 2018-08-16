@@ -1,70 +1,62 @@
-const {app, Tray, Menu, BrowserWindow, Notification} = require('electron');
+'use strict';
+
+const {app, BrowserWindow, Menu, Tray} = require('electron');
 const path = require('path');
+const aboutWindow = require('./src/about.js');
 
-// TODO use https://electronjs.org/docs/api/native-image which hopefully supports scaling
-const iconPath = path.join(__dirname, 'images/cws_small.png');
-let appIcon = null;
-let win = null;
-
-app.on('ready', function(){
-  appIcon = new Tray(iconPath);
-
-  // Notification - https://electronjs.org/docs/api/notification
-  // TODO listen to the action events
-  let notif = new Notification({
-    title: 'Chef Workstation',
-    subtitle: 'New update now available!',
-    silent: true,
-    icon: iconPath,
-    // Buttons won't work until our app is signed
-    // https://electronjs.org/docs/api/structures/notification-action#button-support-on-macos
-    actions: [
-      {
-        type: 'button',
-        text: 'Install'
-      },
-      {
-        type: 'button',
-        text: 'Later'
-      }
-    ]
+// Enable live code reload.
+try {
+  require('electron-reload')(__dirname, {
+    // Note that the path to electron may vary according to the main file
+    electron: require(`${__dirname}/node_modules/electron`)
   });
+} catch(err) {}
 
-  // TODO notification event 'click' should pop up a window pretends to download and update
-  downloadWindow = new notif.on('click', () => {
-    console.log('an event occurred!');
-  });
+let trayApp = null;
+let trayMenu = null;
 
-  preferencesWindow = new BrowserWindow({show: false});
-  preferencesWindow.loadURL(`file://${__dirname}/preferences.html`)
+// Background window is hidden and will be used to run service processes. It is
+// here now so it is the first/main window of the app meaning the about pop up
+// won't close the app when closed.
+let backgroundWindow = null;
 
-  var contextMenu = Menu.buildFromTemplate([
+function createMenu() {
+  let template = [
     {
-      label: 'Check for Updates...',
-      click (menuItem, browserWindow, event) {
-        notif.show()
-      }
-    },
-    {
-      type: 'separator'
-    },
-    {
-      // orderFrontStandardAboutPanel
-      // TODO requires packaging and Info.plist support
-      role: 'about'
-    },
-    {
-      label: 'Preferences',
-      accelerator: 'Cmd+,',
-      // TODO dummy preferences window
-      click: () => preferencesWindow.show()
+      label: 'About ' + require('./package.json').productName,
+      click: () => { aboutWindow.open() }
     },
     {
       label: 'Quit',
-      accelerator: 'Command+Q',
-      selector: 'terminate:',
+      click: () => { quitApp() }
     }
-  ]);
-  appIcon.setToolTip('This is my application.');
-  appIcon.setContextMenu(contextMenu);
-});
+  ];
+
+  // Add shortcut on mac
+  if (process.platform === "darwin") {
+    var quit = template[template.length - 1];
+    quit.accelerator = "Command+Q";
+  }
+
+  return Menu.buildFromTemplate(template);
+}
+
+function createTray() {
+  const trayIcon = path.join(__dirname, 'assets/images/icon.png');
+  trayApp = new Tray(trayIcon);
+  trayMenu = createMenu();
+  trayApp.setContextMenu(trayMenu);
+}
+
+function startApp() {
+  backgroundWindow = new BrowserWindow({ show: false });
+  createTray();
+}
+
+function quitApp() {
+  backgroundWindow = null;
+  app.quit();
+}
+
+app.dock.hide();
+app.on('ready', () => { startApp() });

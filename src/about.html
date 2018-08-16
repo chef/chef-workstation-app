@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- Can't seem to call javascript here. -->
+    <!-- <title>About <script>document.write(getAppName())</script></title> -->
+    <title>About Chef Workstation</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/about.css">
+    <script src="about.js"></script>
+    <script src="helpers.js"></script>
+  </head>
+  <body>
+    <div class='top-panel'>
+      <div class='appDetails'>
+        <div class='appName'><script>document.write(getAppName())</script></div>
+        <div class='appDetailRow'>
+          <div class='appDetailKey'>Version</div>
+          <div class='appDetailValue'><script>document.write(getAppVersion())</script></div>
+        </div>
+        <div class='appDetailRow'>
+          <div class='appDetailKey'>Release</div>
+          <div class='appDetailValue'><script>document.write(getReleaseChannel())</script></div>
+          <button disabled class='channelButton'>Switch to current release</button>
+        </div>
+        <div class='appDetailRow'>
+          Apache License Version 2.0
+        </div>
+      </div>
+      <div class='logo'>
+        Logo
+      </div>
+    </div>
+    <div class='middle-panel'>
+      <a class='link' href="google.com">Package details</a><br />
+      <a class='link' href="google.com">License agreement</a><br />
+      <a class='link' href="google.com">Release notes</a>
+    </div>
+    <div class='bottom-panel'>
+      © 2008-2018 Chef Software, Inc. All Rights Reserved.
+    </div>
+  </body>
+</html>
