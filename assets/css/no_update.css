@@ -1,0 +1,28 @@
+body {
+  padding: 15px 15px 0px 20px;
+  font-size: 14px;
+}
+
+.logo {
+  float: left;
+  content:url('../images/logo.png');
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+}
+
+.text {
+  line-height: 25px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.bottom-panel {
+  padding-top: 15px;
+}
+
+#closeBtn {
+  float: right;
+}

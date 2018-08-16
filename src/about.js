@@ -1,15 +1,15 @@
-const {BrowserWindow} = require('electron')
-const path = require('path')
+const { BrowserWindow } = require('electron');
+const path = require('path');
 
 const width = process.platform === 'darwin' ? 510 : 530;
 const height = process.platform === 'darwin' ? 325 : 330;
 
-let aboutWindow = null;
+let aboutDialog = null;
 
 function open() {
-  if (aboutWindow == null) {
+  if (aboutDialog == null) {
     const aboutPath = path.join('file://', __dirname, 'about.html');
-    aboutWindow = new BrowserWindow({
+    aboutDialog = new BrowserWindow({
       show: false,
       width: width,
       height: height,
@@ -17,16 +17,16 @@ function open() {
       minimizable: false,
       maximizable: false
     });
-    aboutWindow.loadURL(aboutPath);
-    aboutWindow.once('ready-to-show', () => {
-      aboutWindow.show()
+    aboutDialog.loadURL(aboutPath);
+    aboutDialog.once('ready-to-show', () => {
+      aboutDialog.show()
     });
-    aboutWindow.on('closed', () => {
-      aboutWindow = null;
+    aboutDialog.on('closed', () => {
+      aboutDialog = null;
     });
   } else {
     // Bring to front if open.
-    aboutWindow.focus();
+    aboutDialog.focus();
   }
 }
 

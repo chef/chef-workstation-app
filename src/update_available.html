@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/update_available.css">
+    <script src="helpers.js"></script>
+    <script src="update_available.js"></script>
+  </head>
+  <body>
+    <div class="top-panel">
+      <div class="logo"></div>
+      <div class="text">
+        <div class="title">
+          <script>document.write(getProductName())</script> update available!
+        </div>
+        <div>
+          <script>document.write(updateInfo.version)</script> is the latest <script>document.write(getReleaseChannel())</script> release, you have <script>document.write(getAppVersion())</script>.
+        </div>
+      </div>
+    </div>
+    <div class="bottom-panel">
+      <button id="closeBtn">Close</button>
+      <button id="downloadBtn">Download!</button>
+    </div>
+  </body>
+</html>
