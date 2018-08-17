@@ -1,5 +1,36 @@
 {
-  "name"    : "tray-demo",
-  "version" : "1.1.0",
-  "main"    : "main.js"
+  "name": "chef-workstation",
+  "productName": "Chef Workstation",
+  "version": "0.0.1",
+  "description": "Tray applicaiton for Chef Workstation.",
+  "repository": "https://github.com/chef/chef-workstation-tray",
+  "author": "Chef Software, Inc.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "build --mac",
+    "publish": "build --mac -p always"
+  },
+  "build": {
+    "appId": "sh.chef.chef-workstation",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": "dmg",
+      "icon": "assets/images/logo.png",
+      "extendInfo": {
+        "LSUIElement": 1
+      }
+    },
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "2.0.7",
+    "electron-builder": "20.28.1",
+    "electron-reload": "^1.2.5"
+  },
+  "dependencies": {}
 }

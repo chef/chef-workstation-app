@@ -1,0 +1,63 @@
+body {
+  padding: 15px 0px 0px 20px;
+  font-size: 14px;
+}
+
+.top-panel {
+  display: inline-block;
+}
+
+.appDetails {
+  float: left;
+}
+
+.appName {
+  font-size: 38px;
+  line-height: 40px;
+  margin-bottom: 10px;
+}
+
+.appDetailRow {
+  height: 25px;
+}
+
+.appDetailKey {
+  float: left;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.appDetailValue {
+  float: left;
+  margin-right: 10px;
+}
+
+.channelButton {
+  float: left;
+  width: 160px;
+}
+
+.infoButton {
+  float: left;
+}
+
+.logo {
+  float: left;
+  content:url('../images/logo.png');
+  height: 110px;
+  width: 110px;
+  margin-left: 60px;
+}
+
+.middle-panel {
+  margin: 10px 0px 20px;
+}
+
+.link {
+  line-height: 30px;
+  pointer-events: none;
+}
+
+.bottom-panel {
+  font-size: 10px;
+}
