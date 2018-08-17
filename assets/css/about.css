@@ -34,7 +34,8 @@ body {
 
 .channelButton {
   float: left;
-  width: 160px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .infoButton {

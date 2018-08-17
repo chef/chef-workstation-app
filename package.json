@@ -1,15 +1,15 @@
 {
   "name": "chef-workstation",
   "productName": "Chef Workstation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tray applicaiton for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": "Chef Software, Inc.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "build --mac",
-    "publish": "build --mac -p always"
+    "build": "build --mac --win",
+    "publish": "build --mac --win -p always"
   },
   "build": {
     "appId": "sh.chef.chef-workstation",
@@ -20,6 +20,10 @@
       "extendInfo": {
         "LSUIElement": 1
       }
+    },
+    "win": {
+      "target": "msi",
+      "icon": "assets/images/logo.ico"
     },
     "publish": [
       {

@@ -1,6 +1,9 @@
 const {BrowserWindow} = require('electron')
 const path = require('path')
 
+const width = process.platform === 'darwin' ? 510 : 530;
+const height = process.platform === 'darwin' ? 325 : 330;
+
 let aboutWindow = null;
 
 function open() {
@@ -8,8 +11,8 @@ function open() {
     const aboutPath = path.join('file://', __dirname, 'about.html');
     aboutWindow = new BrowserWindow({
       show: false,
-      width: 510,
-      height: 325,
+      width: width,
+      height: height,
       resizable: false,
       minimizable: false,
       maximizable: false

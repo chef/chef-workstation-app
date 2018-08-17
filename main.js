@@ -58,5 +58,4 @@ function quitApp() {
   app.quit();
 }
 
-app.dock.hide();
 app.on('ready', () => { startApp() });
