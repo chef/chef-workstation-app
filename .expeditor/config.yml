@@ -1,0 +1,39 @@
+# Documentation available at https://expeditor-docs.es.chef.io/
+
+# The name of the product keys for this product
+# TODO I don't think we need this until we start trying to do Omnibus builds
+# https://expeditor.chef.io/docs/reference/status-checks/#artifact-002
+# product_key:
+#   - chef-workstation-tray
+
+# Slack channel in Chef Software slack to send notifications about build failures, etc
+slack:
+  notify_channel: chef-ws-notify
+
+github:
+  # The file where the MAJOR.MINOR.PATCH version is kept. The version in this file
+  # is bumped automatically via the `built_in:bump_version` merge_action.
+  version_file: "VERSION"
+  version_tag_format: 'v{{version}}'
+  # The file where our CHANGELOG is kept. This file is updated automatically with
+  # details from the Pull Request via the `built_in:update_changelog` merge_action.
+  changelog_file: "CHANGELOG.md"
+  # Delete the PR branch after successfully merged into release branch.
+  delete_branch_on_merge: true
+
+# https://expeditor.chef.io/docs/getting-started/subscriptions/#merge-actions
+# The `merge_actions` key is a shortcut for the
+# `pull_request_merged:<GITHUB_REPO>:<RELEASE_BRANCH>:*` subscription.
+merge_actions:
+  - built_in:bump_version:
+      ignore_labels:
+        - "Version: Skip Bump"
+        - "Expeditor: Skip Version Bump"
+        - "Expeditor: Skip All"
+  - bash:.expeditor/update_version.sh:
+      only_if: built_in:bump_version
+  - built_in:update_changelog:
+      ignore_labels:
+        - "Meta: Exclude From Changelog"
+        - "Expeditor: Exclude From Changelog"
+        - "Expeditor: Skip All"
