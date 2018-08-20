@@ -1,13 +1,17 @@
-const package = require('../package.json')
+const package = require('../package.json');
 
-function getAppName() {
-  return package.productName
+function getProductName() {
+  return package.productName;
 }
 
 function getAppVersion() {
-  return package.version
+  return package.version;
 }
 
 function getReleaseChannel() {
-  return 'Stable'
+  return 'Stable';
 }
+
+module.exports.getProductName = getProductName;
+module.exports.getAppVersion = getAppVersion;
+module.exports.getReleaseChannel = getReleaseChannel;

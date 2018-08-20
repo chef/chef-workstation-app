@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/no_update.css">
+    <script src="helpers.js"></script>
+  </head>
+  <body>
+    <div class="top-panel">
+      <div class="logo"></div>
+      <div class="text">
+        <div class="title">
+          <script>document.write(getProductName())</script> is up-to-date!
+        </div>
+        <div>
+          <script>document.write(getAppVersion())</script> is the latest
+          <script>document.write(getReleaseChannel())</script> release available.
+        </div>
+      </div>
+    </div>
+    <div class="bottom-panel">
+      <button id="closeBtn">Close</button>
+    </div>
+    <script src="no_update.js"></script>
+  </body>
+</html>

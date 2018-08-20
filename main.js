@@ -1,8 +1,10 @@
 'use strict';
 
-const {app, BrowserWindow, Menu, Tray} = require('electron');
+const { app, BrowserWindow, Menu, Tray } = require('electron');
 const path = require('path');
-const aboutWindow = require('./src/about.js');
+const aboutDialog = require('./src/about.js');
+const updater = require('./src/updater.js');
+const helpers = require('./src/helpers.js');
 
 // Enable live code reload.
 try {
@@ -21,14 +23,21 @@ let trayMenu = null;
 let backgroundWindow = null;
 
 function createMenu() {
+  // The clicks here take a function so that additional parameters such as
+  // a pointer to the menu item can be passed.
   let template = [
     {
-      label: 'About ' + require('./package.json').productName,
-      click: () => { aboutWindow.open() }
+      label: 'Check for updates...',
+      click: updater.checkForUpdates
+    },
+    {type: 'separator'},
+    {
+      label: 'About ' + helpers.getProductName(),
+      click: aboutDialog.open
     },
     {
       label: 'Quit',
-      click: () => { quitApp() }
+      click: quitApp
     }
   ];
 
@@ -51,6 +60,9 @@ function createTray() {
 function startApp() {
   backgroundWindow = new BrowserWindow({ show: false });
   createTray();
+  // Get the menuItem so that the updater can toggle it's state. There's probably
+  // a way to encsulate this better.
+  updater.checkForUpdates(trayMenu.items[0]);
 }
 
 function quitApp() {
