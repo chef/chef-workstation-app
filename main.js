@@ -1,7 +1,7 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, Tray } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, Menu } = require('electron');
+const WSTray = require('./src/ws_tray.js');
 const aboutDialog = require('./src/about.js');
 const updater = require('./src/updater.js');
 const helpers = require('./src/helpers.js');
@@ -14,7 +14,7 @@ try {
   });
 } catch(err) {}
 
-let trayApp = null;
+let tray = null;
 let trayMenu = null;
 
 // Background window is hidden and will be used to run service processes. It is
@@ -51,10 +51,9 @@ function createMenu() {
 }
 
 function createTray() {
-  const trayIcon = path.join(__dirname, 'assets/images/icon.png');
-  trayApp = new Tray(trayIcon);
+  tray = WSTray.instance();
   trayMenu = createMenu();
-  trayApp.setContextMenu(trayMenu);
+  tray.setContextMenu(trayMenu);
 }
 
 function startApp() {

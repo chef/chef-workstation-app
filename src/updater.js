@@ -1,5 +1,6 @@
 const { dialog } = require('electron');
 const { autoUpdater } = require('electron-updater');
+const WSTray = require('./ws_tray');
 const noUpdateDialog = require('./no_update_dialog.js');
 const updateAvailableDialog = require('./update_available_dialog.js');
 
@@ -20,6 +21,7 @@ autoUpdater.on('error', (error) => {
 autoUpdater.on('update-available', (updateInfo) => {
   updateAvailableDialog.open(updateInfo);
   updateMenuItem.enabled = true;
+  WSTray.instance().displayNotification(true);
 })
 
 autoUpdater.on('update-not-available', () => {
@@ -28,6 +30,9 @@ autoUpdater.on('update-not-available', () => {
     noUpdateDialog.open();
   }
   updateMenuItem.enabled = true;
+  // Only display the notification. Changing the menu text is a lot of work
+  // and will be done in the next re-factor.
+  WSTray.instance().displayNotification(true);
 })
 
 autoUpdater.on('download-progress', (progressObj) => {

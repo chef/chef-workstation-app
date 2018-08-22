@@ -12,9 +12,9 @@ function open(updateInfo) {
       alwaysOnTop: true,
       width: 450,
       height: 145,
-      // resizable: false,
-      // minimizable: false,
-      // maximizable: false,
+      resizable: false,
+      minimizable: false,
+      maximizable: false,
       alwaysOnTop: true
     });
     updateAvailableDialog.loadURL(updateAvailablePath);
