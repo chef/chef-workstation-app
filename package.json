@@ -1,12 +1,11 @@
 {
   "name": "chef-workstation",
   "productName": "Chef Workstation",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Tray application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": "Chef Software, Inc.",
   "main": "main.js",
-
   "scripts": {
     "start": "electron .",
     "build": "build --linux --mac --win",
@@ -25,9 +24,11 @@
       "target": "msi",
       "icon": "assets/images/logo.ico"
     },
-    "publish": [ {
+    "publish": [
+      {
         "provider": "github"
-    } ],
+      }
+    ],
     "linux": {
       "target": "AppImage"
     },
