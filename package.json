@@ -6,10 +6,11 @@
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": "Chef Software, Inc.",
   "main": "main.js",
+
   "scripts": {
     "start": "electron .",
-    "build": "build --mac --win",
-    "release": "build --mac --win -p always"
+    "build": "build --linux --mac --win",
+    "release": "build --linux --mac --win -p always"
   },
   "build": {
     "appId": "sh.chef.chef-workstation",
@@ -24,11 +25,15 @@
       "target": "msi",
       "icon": "assets/images/logo.ico"
     },
-    "publish": [
-      {
+    "publish": [ {
         "provider": "github"
-      }
-    ]
+    } ],
+    "linux": {
+      "target": "AppImage"
+    },
+    "appImage": {
+      "systemIntegration": "doNotAsk"
+    }
   },
   "devDependencies": {
     "electron": "2.0.7",
