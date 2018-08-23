@@ -32,7 +32,7 @@ autoUpdater.on('update-not-available', () => {
   updateMenuItem.enabled = true;
   // Only display the notification. Changing the menu text is a lot of work
   // and will be done in the next re-factor.
-  WSTray.instance().displayNotification(true);
+  WSTray.instance().displayNotification(false);
 })
 
 autoUpdater.on('download-progress', (progressObj) => {
