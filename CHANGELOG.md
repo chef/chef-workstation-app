@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.11 -->
+<!-- latest_release 0.0.12 -->
+## [v0.0.12](https://github.com/chef/chef-workstation-tray/tree/v0.0.12) (2018-08-24)
+
+#### Merged Pull Requests
+- Fixes our heading structure to be accessible [#16](https://github.com/chef/chef-workstation-tray/pull/16) ([susanev](https://github.com/susanev))
+<!-- latest_release -->
+
 ## [v0.0.11](https://github.com/chef/chef-workstation-tray/tree/v0.0.11) (2018-08-24)
 
 #### Merged Pull Requests
 - Supply dmg.title to set the volume name [#19](https://github.com/chef/chef-workstation-tray/pull/19) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.0.10](https://github.com/chef/chef-workstation-tray/tree/v0.0.10) (2018-08-24)
 
