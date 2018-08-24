@@ -4,7 +4,11 @@
   "version": "0.0.9",
   "description": "Tray application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
-  "author": "Chef Software, Inc.",
+  "author": {
+    "name": "Chef Software, Inc.",
+    "email": "beta@chef.io",
+    "url": "https://chef.sh"
+  },
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -34,7 +38,7 @@
       }
     ],
     "linux": {
-      "target": "AppImage"
+      "target": ["deb", "rpm", "appImage"]
     },
     "appImage": {
       "systemIntegration": "doNotAsk"
