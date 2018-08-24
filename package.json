@@ -13,6 +13,7 @@
   },
   "build": {
     "appId": "sh.chef.chef-workstation",
+    "electronUpdaterCompatibility": ">= 2.16",
     "mac": {
       "category": "public.app-category.developer-tools",
       "icon": "assets/images/logo.png",
@@ -21,7 +22,7 @@
       }
     },
     "win": {
-      "target": "msi",
+      "target": ["msi", "nsis"],
       "icon": "assets/images/logo.ico"
     },
     "publish": [
