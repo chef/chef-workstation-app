@@ -46,6 +46,9 @@
     },
     "appImage": {
       "systemIntegration": "doNotAsk"
+    },
+    "dmg": {
+      "title": "chef-workstation"
     }
   },
   "devDependencies": {
