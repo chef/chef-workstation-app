@@ -1,7 +1,7 @@
 {
   "name": "chef-workstation",
   "productName": "Chef Workstation",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Tray application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": {
@@ -38,7 +38,11 @@
       }
     ],
     "linux": {
-      "target": ["deb", "rpm", "appImage"]
+      "target": [
+        "deb",
+        "rpm",
+        "appImage"
+      ]
     },
     "appImage": {
       "systemIntegration": "doNotAsk"

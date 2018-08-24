@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.9 -->
+<!-- latest_release 0.0.10 -->
+## [v0.0.10](https://github.com/chef/chef-workstation-tray/tree/v0.0.10) (2018-08-24)
+
+#### Merged Pull Requests
+- Include rpm and deb linux packages [#18](https://github.com/chef/chef-workstation-tray/pull/18) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.0.9](https://github.com/chef/chef-workstation-tray/tree/v0.0.9) (2018-08-24)
 
 #### Merged Pull Requests
 - Fix for windows update check and download. [#17](https://github.com/chef/chef-workstation-tray/pull/17) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.8](https://github.com/chef/chef-workstation-tray/tree/v0.0.8) (2018-08-23)
 
