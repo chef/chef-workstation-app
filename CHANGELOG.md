@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.8 -->
+<!-- latest_release 0.0.9 -->
+## [v0.0.9](https://github.com/chef/chef-workstation-tray/tree/v0.0.9) (2018-08-24)
+
+#### Merged Pull Requests
+- Fix for windows update check and download. [#17](https://github.com/chef/chef-workstation-tray/pull/17) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.8](https://github.com/chef/chef-workstation-tray/tree/v0.0.8) (2018-08-23)
 
 #### Merged Pull Requests
 - upgrade electron to 2.0.8 [#15](https://github.com/chef/chef-workstation-tray/pull/15) ([robbkidd](https://github.com/robbkidd))
-<!-- latest_release -->
 
 ## [v0.0.7](https://github.com/chef/chef-workstation-tray/tree/v0.0.7) (2018-08-23)
 

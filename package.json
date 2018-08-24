@@ -1,7 +1,7 @@
 {
   "name": "chef-workstation",
   "productName": "Chef Workstation",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Tray application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": "Chef Software, Inc.",
@@ -22,7 +22,10 @@
       }
     },
     "win": {
-      "target": ["msi", "nsis"],
+      "target": [
+        "msi",
+        "nsis"
+      ],
       "icon": "assets/images/logo.ico"
     },
     "publish": [
