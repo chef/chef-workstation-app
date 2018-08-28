@@ -1,6 +1,7 @@
 {
   "name": "chef-workstation-app",
   "productName": "Chef Workstation App",
+  "displayName": "Chef Workstation",
   "version": "0.0.12",
   "description": "Desktop application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
