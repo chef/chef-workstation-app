@@ -2,3 +2,5 @@ node_modules
 dist
 tags
 .DS_Store
+.vagrant/
+.vscode/
