@@ -13,13 +13,16 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "build --linux --mac --win",
-    "release": "build --linux --mac --win -p always"
+    "build-all": "build --win --mac --linux",
+    "build-mac": "build --mac",
+    "build-linux": "build --linux",
+    "build-windows": "build --win"
   },
   "build": {
     "appId": "sh.chef.chef-workstation",
     "electronUpdaterCompatibility": ">= 2.16",
     "mac": {
+      "target": ["7z" ],
       "category": "public.app-category.developer-tools",
       "icon": "assets/images/logo.png",
       "extendInfo": {
@@ -27,10 +30,7 @@
       }
     },
     "win": {
-      "target": [
-        "msi",
-        "nsis"
-      ],
+      "target": [ "7z" ],
       "icon": "assets/images/logo.ico"
     },
     "publish": [
@@ -39,11 +39,7 @@
       }
     ],
     "linux": {
-      "target": [
-        "deb",
-        "rpm",
-        "appImage"
-      ]
+      "target": [ "7z" ]
     },
     "appImage": {
       "systemIntegration": "doNotAsk"
