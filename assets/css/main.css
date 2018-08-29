@@ -25,6 +25,24 @@ section, p {
   clear: both;
 }
 
+button.secondary {
+  padding: 4px 6px;
+  font-size: 13px;
+  display: inline-block;
+  border-radius: 3px;
+  box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border: solid 0.5px rgba(0, 0, 0, 0.15);
+}
+
+button.secondary:disabled {
+  opacity: 0.7;
+  border-radius: 4px;
+  box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(to bottom, #fefefe, #f3f3f3);
+  border: solid 0.5px rgba(0, 0, 0, 0.1);
+}
+
 /* grid */
 div.col {
   float: left;
@@ -45,13 +63,6 @@ div.col-3 {
 .selectable {
   -webkit-user-select: auto;
   cursor: auto;
-}
-
-button {
-  height: 24px;
-  width: 170px;
-  margin: 4px 12px;
-  border-radius: 4px;
 }
 
 /* type */
