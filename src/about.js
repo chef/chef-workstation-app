@@ -2,7 +2,7 @@ const { BrowserWindow } = require('electron');
 const path = require('path');
 
 const width = process.platform === 'darwin' ? 510 : 530;
-const height = process.platform === 'darwin' ? 345 : 340;
+const height = process.platform === 'darwin' ? 325 : 330;
 
 let aboutDialog = null;
 
