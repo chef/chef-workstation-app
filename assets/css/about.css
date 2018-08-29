@@ -8,10 +8,6 @@ section {
   margin-bottom: 20px;
 }
 
-a {
-  color: #005ED4;
-}
-
 button.secondary {
   margin: 0 6px;
   position: relative;
@@ -27,12 +23,6 @@ button.info {
   border: none;
   border-radius: 50%;
   background: url("../images/icon-info.svg");
-}
-
-img.logo {
-  float: right;
-  height: 96px;
-  width: 96px;
 }
 
 div.strong-list p {
