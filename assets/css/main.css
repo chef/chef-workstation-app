@@ -1,5 +1,71 @@
-body {
+html {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  cursor: default;
   font: caption;
+}
+
+body {
   background-color: Window;
-  -webkit-user-select:none;
+  color: #393C3D;
+  font-size: 13px;
+}
+
+input, textarea, select, button, img {
+  -webkit-user-drag: none;
+}
+
+h1, h2, h3, h4, h5, h6, div, section, p {
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+section, p {
+  clear: both;
+}
+
+/* grid */
+div.col {
+  float: left;
+}
+
+div.col-9 {
+  width: 75%;
+}
+
+div.col-3 {
+  width: 25%;
+}
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+.selectable {
+  -webkit-user-select: auto;
+  cursor: auto;
+}
+
+button {
+  height: 24px;
+  width: 170px;
+  margin: 4px 12px;
+  border-radius: 4px;
+}
+
+/* type */
+.extra-large {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.large {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.small {
+  font-size: 10px;
+  font-weight: 400;
 }
