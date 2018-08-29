@@ -13,10 +13,10 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build-all": "build --win --mac --linux",
-    "build-mac": "build --mac",
-    "build-linux": "build --linux",
-    "build-windows": "build --win"
+    "build-all": "build --win --mac --linux --publish never",
+    "build-mac": "build --mac --publish never",
+    "build-linux": "build --linux --publish never",
+    "build-windows": "build --win --publish never"
   },
   "build": {
     "appId": "sh.chef.chef-workstation",
