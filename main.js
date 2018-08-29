@@ -32,7 +32,7 @@ function createMenu() {
     },
     {type: 'separator'},
     {
-      label: 'About ' + helpers.getProductName(),
+      label: 'About ' + helpers.getDisplayName(),
       click: aboutDialog.open
     },
     {
