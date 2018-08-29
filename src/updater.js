@@ -22,6 +22,7 @@ autoUpdater.on('update-available', (updateInfo) => {
   updateAvailableDialog.open(updateInfo);
   updateMenuItem.enabled = true;
   WSTray.instance().displayNotification(true);
+  WSTray.instance().setUpdateAvailable(true);
 })
 
 autoUpdater.on('update-not-available', () => {
@@ -33,6 +34,7 @@ autoUpdater.on('update-not-available', () => {
   // Only display the notification. Changing the menu text is a lot of work
   // and will be done in the next re-factor.
   WSTray.instance().displayNotification(false);
+  WSTray.instance().setUpdateAvailable(false);
 })
 
 autoUpdater.on('download-progress', (progressObj) => {

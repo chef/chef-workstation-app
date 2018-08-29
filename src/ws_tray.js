@@ -6,6 +6,8 @@ const { app, Tray } = require('electron');
 const path = require('path');
 const is = require('electron-is');
 const osxPrefs = require('electron-osx-appearance');
+const chefWorkstation = require('./chef_workstation.js')
+const util = require('util');
 
 // private
 // On mac ending the filename in 'Template' tells the os the image is only B+W,
@@ -27,9 +29,22 @@ var icon = is.osx() ? macIcon : winIcon;
 var tray = null;
 var isNotifying;
 
+// TODO should these be globals?
+var updateAvailable = false;
+var version = "[unknown]";
+
 function WSTray() {
     tray = new Tray(icon);
+    if (is.osx()) {
+      app.dock.hide()
+    }
     isNotifying = false;
+    // https://github.com/hovancik/stretchly/blob/master/app/main.js#L647
+    setToolTip();
+
+    // Now that the tray is initialized, kick off the call that will eventually update
+    // the version to display the correct version.
+    chefWorkstation.getVersion(setVersion);
 }
 
 function setNotifyIcon() {
@@ -58,9 +73,25 @@ function setContextMenu(contextMenu) {
     tray.setContextMenu(contextMenu);
 };
 
+function setUpdateAvailable(u) {
+    updateAvailable = u;
+    setToolTip();
+}
+
+function setVersion(v) {
+    version = v;
+    setToolTip();
+}
+
+function setToolTip() {
+    var toolTip = util.format("Chef Workstation %s\n", version);
+    tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
+};
+
 // Expose Public WSTray instance funcitons.
 WSTray.prototype.displayNotification = displayNotification;
 WSTray.prototype.setContextMenu = setContextMenu;
+WSTray.prototype.setUpdateAvailable = setUpdateAvailable;
 
 // WSTray Singleton
 var wsTray = null;
@@ -73,7 +104,7 @@ var self = module.exports = {
         }
         return wsTray;
     }
-} 
+}
 
 // Not sure about this pattern... Maybe this should live in main?
 // Subscribe to changes to dark mode setting so we can update the icon.
