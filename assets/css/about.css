@@ -12,22 +12,25 @@ a {
   color: #005ED4;
 }
 
-button {
-  float: left;
-  padding: 4px 6px;
-  font-size: 13px;
+button.secondary {
+  margin: 0 6px;
+  position: relative;
+  top: -3px;
 }
 
-.infoButton {
-  float: left;
+button.info {
+  margin: 6px 0;
+  position: relative;
+  top: -1px;
+  width: 21px;
+  height: 21px;
+  border: none;
+  border-radius: 50%;
+  background: url("../images/icon-info.svg");
 }
 
 img.logo {
-  display: block;
-  margin-left: auto;
-  margin-left: auto;  display: block;
-  margin-left: auto;
-  margin-left: auto;
+  float: right;
   height: 96px;
   width: 96px;
 }
