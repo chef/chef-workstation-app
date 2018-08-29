@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.13 -->
+<!-- latest_release 0.0.14 -->
+## [v0.0.14](https://github.com/chef/chef-workstation-tray/tree/v0.0.14) (2018-08-29)
+
+#### Merged Pull Requests
+- Ignores for vagrant and vscode dirs [#22](https://github.com/chef/chef-workstation-tray/pull/22) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.0.13](https://github.com/chef/chef-workstation-tray/tree/v0.0.13) (2018-08-29)
 
 #### Merged Pull Requests
 - Rename to Chef Workstation  App [#21](https://github.com/chef/chef-workstation-tray/pull/21) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.0.12](https://github.com/chef/chef-workstation-tray/tree/v0.0.12) (2018-08-24)
 
