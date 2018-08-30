@@ -39,7 +39,7 @@
       }
     ],
     "linux": {
-      "target": [ "7z" ]
+      "target": [ "tar.gz" ]
     },
     "appImage": {
       "systemIntegration": "doNotAsk"
