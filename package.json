@@ -16,7 +16,7 @@
     "build-all": "build --win --mac --linux --publish never",
     "build-mac": "build --mac --publish never",
     "build-linux": "build --linux --publish never",
-    "build-windows": "build --win --publish never"
+    "build-win": "build --win --publish never"
   },
   "build": {
     "appId": "sh.chef.chef-workstation",
