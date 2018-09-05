@@ -30,7 +30,7 @@
       }
     },
     "win": {
-      "target": [ "zip" ],
+      "target": [ "dir" ],
       "icon": "assets/images/logo.ico"
     },
     "publish": [
