@@ -33,7 +33,7 @@
     },
     "win": {
       "target": [
-        "zip"
+        "dir"
       ],
       "icon": "assets/images/logo.ico"
     },
