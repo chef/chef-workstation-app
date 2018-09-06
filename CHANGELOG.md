@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.14 -->
+<!-- latest_release 0.0.15 -->
+## [v0.0.15](https://github.com/chef/chef-workstation-tray/tree/v0.0.15) (2018-09-06)
+
+#### Merged Pull Requests
+- Se/about styled [#23](https://github.com/chef/chef-workstation-tray/pull/23) ([susanev](https://github.com/susanev))
+<!-- latest_release -->
+
 ## [v0.0.14](https://github.com/chef/chef-workstation-tray/tree/v0.0.14) (2018-08-29)
 
 #### Merged Pull Requests
 - Ignores for vagrant and vscode dirs [#22](https://github.com/chef/chef-workstation-tray/pull/22) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.0.13](https://github.com/chef/chef-workstation-tray/tree/v0.0.13) (2018-08-29)
 
