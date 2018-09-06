@@ -1,64 +1,50 @@
-body {
-  padding: 15px 0px 0px 20px;
-  font-size: 14px;
+main {
+  margin: 20px 22px;
 }
 
-.top-panel {
+section {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+button.secondary {
+  margin: 0 6px;
+  position: relative;
+  top: -3px;
+}
+
+button.info {
+  margin: 6px 0;
+  position: relative;
+  top: -1px;
+  width: 21px;
+  height: 21px;
+  border: none;
+  border-radius: 50%;
+  background: url("../images/icon-info.svg");
+}
+
+div.strong-list p {
+  margin-top: 9px;
+}
+
+div.strong-list p strong {
+  margin-right: 6px;
+}
+
+div.p-inline-button p {
+  float: left;
+}
+
+div.p-inline-button {
   display: inline-block;
 }
 
-.appDetails {
-  float: left;
+a p:parent {
+  margin-bottom: 30px;
 }
 
-.appName {
-  font-size: 38px;
-  line-height: 40px;
-  margin-bottom: 10px;
-}
-
-.appDetailRow {
-  height: 25px;
-}
-
-.appDetailKey {
-  float: left;
-  margin-right: 10px;
-  font-weight: bold;
-}
-
-.appDetailValue {
-  float: left;
-  margin-right: 10px;
-}
-
-.channelButton {
-  float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.infoButton {
-  float: left;
-}
-
-.logo {
-  float: left;
-  content:url('../images/logo.png');
-  height: 110px;
-  width: 110px;
-  margin-left: 60px;
-}
-
-.middle-panel {
-  margin: 10px 0px 20px;
-}
-
-.link {
-  line-height: 30px;
-  pointer-events: none;
-}
-
-.bottom-panel {
-  font-size: 10px;
+section.link-list p:not(:last-child) {
+  margin-bottom: 20px;
 }

@@ -11,33 +11,32 @@
     <script src="helpers.js"></script>
   </head>
   <body>
-    <div class='top-panel'>
-      <div class='appDetails'>
-        <div class='appName'><script>document.write(getDisplayName())</script></div>
-        <div class='appDetailRow'>
-          <div class='appDetailKey'>Version</div>
-          <div class='appDetailValue'><script>document.write(getAppVersion())</script></div>
+    <main>
+      <section>
+        <div class="col col-9">
+          <h1 class="extra-large"><script>document.write(getProductName())</script></h1>
+          <div class="strong-list">
+            <p><strong>Version</strong> <script>document.write(getAppVersion())</script></p>
+            <div class="p-inline-button">
+              <p><strong>Release</strong> <script>document.write(getReleaseChannel())</script></p>
+              <button disabled class="secondary">Switch to current release</button>
+              <button class="info"></button>
+            </div>
+          </div>
+          <p>Apache License Version 2.0</p>
         </div>
-        <div class='appDetailRow'>
-          <div class='appDetailKey'>Release</div>
-          <div class='appDetailValue'><script>document.write(getReleaseChannel())</script></div>
-          <button disabled class='channelButton'>Switch to current release</button>
+        <div class="col col-3">
+          <img class="logo" src="../assets/images/workstation-logo.svg" alt="" />
         </div>
-        <div class='appDetailRow'>
-          Apache License Version 2.0
-        </div>
-      </div>
-      <div class='logo'>
-        Logo
-      </div>
-    </div>
-    <div class='middle-panel'>
-      <a class='link' href="google.com">Package details</a><br />
-      <a class='link' href="google.com">License agreement</a><br />
-      <a class='link' href="google.com">Release notes</a>
-    </div>
-    <div class='bottom-panel'>
-      © 2008-2018 Chef Software, Inc. All Rights Reserved.
-    </div>
+      </section>
+      <section class="link-list">
+        <p><a href="#">Package details</a></p>
+        <p><a href="#">License agreement</a></p>
+        <p><a href="#">Release notes</a></p>
+      </section>
+      <section>
+        <p class="small">&#9400; 2008-2018 Chef Software, Inc. All Rights Reserved.</p>
+      </section>
+    </main>
   </body>
 </html>

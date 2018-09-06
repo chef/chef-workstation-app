@@ -1,5 +1,92 @@
-body {
+html {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  cursor: default;
   font: caption;
+}
+
+body {
   background-color: Window;
-  -webkit-user-select:none;
+  color: #393C3D;
+  font-size: 13px;
+}
+
+input, textarea, select, button, img {
+  -webkit-user-drag: none;
+}
+
+h1, h2, h3, h4, h5, h6, div, section, p {
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #005ED4;
+}
+
+section, p {
+  clear: both;
+}
+
+button.secondary {
+  padding: 4px 6px;
+  font-size: 13px;
+  display: inline-block;
+  border-radius: 3px;
+  box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border: solid 0.5px rgba(0, 0, 0, 0.15);
+}
+
+button.secondary:disabled {
+  opacity: 0.7;
+  border-radius: 4px;
+  box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(to bottom, #fefefe, #f3f3f3);
+  border: solid 0.5px rgba(0, 0, 0, 0.1);
+}
+
+img.logo {
+  float: right;
+  height: 96px;
+  width: 96px;
+}
+
+/* grid */
+div.col {
+  float: left;
+}
+
+div.col-9 {
+  width: 75%;
+}
+
+div.col-3 {
+  width: 25%;
+}
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+.selectable {
+  -webkit-user-select: auto;
+  cursor: auto;
+}
+
+/* type */
+.extra-large {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.large {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.small {
+  font-size: 10px;
+  font-weight: 400;
 }
