@@ -2,7 +2,7 @@
   "name": "chef-workstation-app",
   "productName": "Chef Workstation App",
   "displayName": "Chef Workstation",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Desktop application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": {
@@ -22,7 +22,9 @@
     "appId": "sh.chef.chef-workstation",
     "electronUpdaterCompatibility": ">= 2.16",
     "mac": {
-      "target": ["zip" ],
+      "target": [
+        "zip"
+      ],
       "category": "public.app-category.developer-tools",
       "icon": "assets/images/logo.png",
       "extendInfo": {
@@ -30,7 +32,9 @@
       }
     },
     "win": {
-      "target": [ "zip" ],
+      "target": [
+        "zip"
+      ],
       "icon": "assets/images/logo.ico"
     },
     "publish": [
@@ -39,7 +43,9 @@
       }
     ],
     "linux": {
-      "target": [ "dir" ]
+      "target": [
+        "dir"
+      ]
     },
     "appImage": {
       "systemIntegration": "doNotAsk"

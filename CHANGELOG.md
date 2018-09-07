@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.15 -->
+<!-- latest_release 0.0.16 -->
+## [v0.0.16](https://github.com/chef/chef-workstation-tray/tree/v0.0.16) (2018-09-07)
+
+#### Merged Pull Requests
+- Omnibus inclusion support: split build targets [#24](https://github.com/chef/chef-workstation-tray/pull/24) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.0.15](https://github.com/chef/chef-workstation-tray/tree/v0.0.15) (2018-09-06)
 
 #### Merged Pull Requests
 - Se/about styled [#23](https://github.com/chef/chef-workstation-tray/pull/23) ([susanev](https://github.com/susanev))
-<!-- latest_release -->
 
 ## [v0.0.14](https://github.com/chef/chef-workstation-tray/tree/v0.0.14) (2018-08-29)
 
