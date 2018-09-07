@@ -36,10 +36,10 @@ describe('Chef Workstation App', function () {
     .should.eventually.be.at.least(1)
   })
 
-  it('main window is stretchly ', function () {
+  it('main window is Chef Workstation App', function () {
     return this.app.client
     .waitUntilWindowLoaded()
     .windowByIndex(0).browserWindow
-    .getTitle().should.eventually.equal('stretchly')
+    .getTitle().should.eventually.equal('Chef Workstation App')
   })
 })
