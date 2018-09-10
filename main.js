@@ -6,6 +6,16 @@ const aboutDialog = require('./src/about.js');
 const updater = require('./src/updater.js');
 const helpers = require('./src/helpers.js');
 
+// appLock will be true if this is the first instance.
+let appLock = !app.makeSingleInstance(function (argv, cwd) {});
+
+// If we don't get the lock return.
+if (!appLock) {
+  console.log('Chef Workstation is already running.');
+  app.quit();
+  return;
+}
+
 // Enable live code reload.
 try {
   require('electron-reload')(__dirname, {
