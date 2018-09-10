@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.16 -->
+<!-- latest_release 0.0.17 -->
+## [v0.0.17](https://github.com/chef/chef-workstation-tray/tree/v0.0.17) (2018-09-10)
+
+#### Merged Pull Requests
+- Switch Windows build to use directory mode [#26](https://github.com/chef/chef-workstation-tray/pull/26) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.0.16](https://github.com/chef/chef-workstation-tray/tree/v0.0.16) (2018-09-07)
 
 #### Merged Pull Requests
 - Omnibus inclusion support: split build targets [#24](https://github.com/chef/chef-workstation-tray/pull/24) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.0.15](https://github.com/chef/chef-workstation-tray/tree/v0.0.15) (2018-09-06)
 
