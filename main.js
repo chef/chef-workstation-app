@@ -62,16 +62,21 @@ function createMenu() {
 
 function createTray() {
   tray = WSTray.instance();
+  // I think the Tray class should be doing all this stuff
   trayMenu = createMenu();
   tray.setContextMenu(trayMenu);
 }
 
 function startApp() {
+  const modalPath = `file://${__dirname}/process.html`
   backgroundWindow = new BrowserWindow({ show: false });
+  backgroundWindow.loadURL(modalPath)
   createTray();
   // Get the menuItem so that the updater can toggle it's state. There's probably
   // a way to encsulate this better.
-  updater.checkForUpdates(trayMenu.items[0]);
+  backgroundWindow.once('ready-to-show', () => {
+    updater.checkForUpdates(trayMenu.items[0]);
+  })
 }
 
 function quitApp() {
