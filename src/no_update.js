@@ -1,9 +1,6 @@
-const electron = require('electron');
-const path = require('path');
-const remote = electron.remote;
-const closeBtn = document.getElementById('closeBtn');
+const { remote }  = require('electron');
+const noUpdateWindow = remote.getCurrentWindow();
 
-closeBtn.addEventListener('click', function (event) {
-  var window = remote.getCurrentWindow();
-  window.close();
-})
+function closeDialog() {
+  noUpdateWindow.close();
+}
