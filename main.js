@@ -24,6 +24,10 @@ try {
   });
 } catch(err) {}
 
+// If we're in dev mode we want to show all BrowserWindows with the detached dev tools
+let is_debug = process.env.DEBUG != undefined
+require('electron-debug')({enabled: is_debug});
+
 let tray = null;
 let trayMenu = null;
 

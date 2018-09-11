@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "stable"
+cache:
+  directories:
+  - node_modules
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update && sudo apt-get install -q libxss-dev; fi

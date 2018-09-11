@@ -17,6 +17,7 @@
   },
   "scripts": {
     "start": "electron .",
+    "debug": "electron . --inspect-brk=9229",
     "build-all": "build --win --mac --linux --publish never",
     "build-mac": "build --mac --publish never",
     "build-linux": "build --linux --publish never",
@@ -26,6 +27,9 @@
   "build": {
     "appId": "sh.chef.chef-workstation",
     "electronUpdaterCompatibility": ">= 2.16",
+    "extraResources": [
+      "assets/html"
+    ],
     "mac": {
       "target": [
         "zip"
@@ -65,11 +69,14 @@
     "electron": "^2.0.8",
     "electron-builder": "20.28.1",
     "electron-reload": "^1.2.5",
+    "jsdom": "^12.0.0",
+    "marked": "^0.5.0",
     "mocha": "^5.2.0",
     "spectron": "^4.0.0",
     "xvfb-maybe": "^0.2.1"
   },
   "dependencies": {
+    "electron-debug": "^2.0.0",
     "electron-is": "^3.0.0",
     "electron-osx-appearance": "^0.1.1",
     "electron-updater": "3.1.1",
