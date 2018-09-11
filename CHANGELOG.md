@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.18 -->
+<!-- latest_release 0.0.19 -->
+## [v0.0.19](https://github.com/chef/chef-workstation-tray/tree/v0.0.19) (2018-09-11)
+
+#### Merged Pull Requests
+- [SHACK-345] Logic for managing the ToolTip [#25](https://github.com/chef/chef-workstation-tray/pull/25) ([tyler-ball](https://github.com/tyler-ball))
+<!-- latest_release -->
+
 ## [v0.0.18](https://github.com/chef/chef-workstation-tray/tree/v0.0.18) (2018-09-11)
 
 #### Merged Pull Requests
 - Only allow one instance of the app to run at a time. [#27](https://github.com/chef/chef-workstation-tray/pull/27) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.17](https://github.com/chef/chef-workstation-tray/tree/v0.0.17) (2018-09-10)
 
