@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.17 -->
+<!-- latest_release 0.0.18 -->
+## [v0.0.18](https://github.com/chef/chef-workstation-tray/tree/v0.0.18) (2018-09-11)
+
+#### Merged Pull Requests
+- Only allow one instance of the app to run at a time. [#27](https://github.com/chef/chef-workstation-tray/pull/27) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.17](https://github.com/chef/chef-workstation-tray/tree/v0.0.17) (2018-09-10)
 
 #### Merged Pull Requests
 - Switch Windows build to use directory mode [#26](https://github.com/chef/chef-workstation-tray/pull/26) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.0.16](https://github.com/chef/chef-workstation-tray/tree/v0.0.16) (2018-09-07)
 
