@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.19 -->
+<!-- latest_release 0.0.20 -->
+## [v0.0.20](https://github.com/chef/chef-workstation-app/tree/v0.0.20) (2018-09-12)
+
+#### Merged Pull Requests
+- Disable automatic update checks. [#29](https://github.com/chef/chef-workstation-app/pull/29) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.0.19](https://github.com/chef/chef-workstation-tray/tree/v0.0.19) (2018-09-11)
 
 #### Merged Pull Requests
 - [SHACK-345] Logic for managing the ToolTip [#25](https://github.com/chef/chef-workstation-tray/pull/25) ([tyler-ball](https://github.com/tyler-ball))
-<!-- latest_release -->
 
 ## [v0.0.18](https://github.com/chef/chef-workstation-tray/tree/v0.0.18) (2018-09-11)
 
