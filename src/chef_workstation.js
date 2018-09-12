@@ -19,8 +19,6 @@ function getVersion(callback) {
     .then(output => {
       var match_info = /Chef Workstation v([^\s]+)/g.exec(output);
       if (match_info == null) callback("unknown");
-      // TODO what if the query returns info from multiple installed versions?
-      // TODO what if the regex match starts failing? (we change the name, for example)
       callback(match_info[1]);
     })
     .catch(err => {
