@@ -36,11 +36,14 @@ function createMenu() {
   // The clicks here take a function so that additional parameters such as
   // a pointer to the menu item can be passed.
   let template = [
-    {
-      label: 'Check for updates...',
-      click: updater.checkForUpdates
-    },
-    {type: 'separator'},
+    // 2018-09-12 mp: Disabling check for updates until updater talks to omnitruck
+    // so that users don't get message around missing app-update.yml on App startup.
+    //
+    // {
+    //   label: 'Check for updates...',
+    //   click: updater.checkForUpdates
+    // },
+    // {type: 'separator'},
     {
       label: 'About ' + helpers.getDisplayName(),
       click: aboutDialog.open
@@ -72,11 +75,15 @@ function startApp() {
   backgroundWindow = new BrowserWindow({ show: false });
   backgroundWindow.loadURL(modalPath)
   createTray();
+
+  // 2018-09-12 mp: Disabling check for updates until updater talks to omnitruck
+  // so that users don't get message around missing app-update.yml on App startup.
+  //
   // Get the menuItem so that the updater can toggle it's state. There's probably
-  // a way to encsulate this better.
-  backgroundWindow.once('ready-to-show', () => {
-    updater.checkForUpdates(trayMenu.items[0]);
-  })
+  // a way to encapsulate this better.
+  // backgroundWindow.once('ready-to-show', () => {
+  //   updater.checkForUpdates(trayMenu.items[0]);
+  // })
 }
 
 function quitApp() {
