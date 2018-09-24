@@ -14,7 +14,7 @@
     <main>
       <section>
         <div class="col col-9">
-          <h1 class="extra-large"><script>document.write(getProductName())</script></h1>
+          <h1 class="extra-large"><script>document.write(getDisplayName())</script></h1>
           <div class="strong-list">
             <p><strong>Version</strong> <script>document.write(getAppVersion())</script></p>
             <div class="p-inline-button">
@@ -30,9 +30,9 @@
         </div>
       </section>
       <section class="link-list">
-        <p><a href="#">Package details</a></p>
-        <p><a href="#">License agreement</a></p>
-        <p><a href="#">Release notes</a></p>
+        <p><a href="javascript:openPackageDetails();">Package details</a></p>
+        <p><a href="javascript:openLicense();">License Agreement</a></p>
+        <p><a href="javascript:openReleaseNotes();">Release notes</a></p>
       </section>
       <section>
         <p class="small">&#9400; 2008-2018 Chef Software, Inc. All Rights Reserved.</p>
