@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.21 -->
+<!-- latest_release 0.0.22 -->
+## [v0.0.22](https://github.com/chef/chef-workstation-app/tree/v0.0.22) (2018-09-24)
+
+#### Merged Pull Requests
+- [SHACK-347] About Page Links [#30](https://github.com/chef/chef-workstation-app/pull/30) ([tyler-ball](https://github.com/tyler-ball))
+<!-- latest_release -->
+
 ## [v0.0.21](https://github.com/chef/chef-workstation-app/tree/v0.0.21) (2018-09-12)
 
 #### Merged Pull Requests
 - Clean up javascript on dialogs [#28](https://github.com/chef/chef-workstation-app/pull/28) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.20](https://github.com/chef/chef-workstation-app/tree/v0.0.20) (2018-09-12)
 
