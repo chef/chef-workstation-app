@@ -6,7 +6,6 @@ const aboutDialog = require('./src/about.js');
 const helpers = require('./src/helpers.js');
 const { mixlibInstallUpdater } = require('./src/mixlib_install_updater.js');
 const workstation = require('./src/chef_workstation.js');
-const updateAvailableDialog = require('./src/update_available_dialog.js');
 const util = require('util'); // debug inspection
 
 // appLock will be true if this is the first instance.
@@ -101,6 +100,7 @@ mixlibInstallUpdater.on('update-not-available', () => {
   console.log("got update-not-available");
   // If they picked the menu option, show a notification dialog.
   if (requestFromMenu) {
+    const noUpdateDialog = require('./src/no_update_dialog.js');
     noUpdateDialog.open();
   }
   WSTray.instance().displayNotification(false);
@@ -116,6 +116,7 @@ mixlibInstallUpdater.on('update-available', (updateInfo) => {
     // If they picked the menu option, show a notification dialog.
     // don't set the tray notification state, because they're viewing that
     // notification now.
+    const updateAvailableDialog = require('./src/update_available_dialog.js');
     updateAvailableDialog.open(updateInfo);
   } else {
     WSTray.instance().displayNotification(true);
