@@ -33,8 +33,7 @@ require('electron-debug')({enabled: is_debug});
 
 let tray = null;
 let trayMenu = null;
-let updateMenuItem = null;
-let fromMenu = false;
+let requestFromMenu = false;
 
 // Background window is hidden and will be used to run service processes. It is
 // here now so it is the first/main window of the app meaning the about pop up
@@ -46,8 +45,9 @@ function createMenu() {
   // a pointer to the menu item can be passed.
   let template = [
     {
-       label: 'Check for updates...',
-        click: () => { fromMenu = true;  app.emit('do-update-check') }
+      id: 'updateCheck',
+      label: 'Check for updates...',
+      click: () => { requestFromMenu = true;  app.emit('do-update-check') }
     },
     {type: 'separator'},
     {
@@ -81,8 +81,9 @@ function startApp() {
   backgroundWindow = new BrowserWindow({ show: false });
   backgroundWindow.loadURL(modalPath)
   createTray();
-  updateMenuItem = trayMenu.items[0]
+
   app.emit('do-update-check');
+  console.log("update check emission complete!")
 }
 
 function quitApp() {
@@ -92,14 +93,14 @@ function quitApp() {
 
 mixlibInstallUpdater.on('start-update-check', () => {
   console.log("got start-update-check") ;
-  // TODO - this isn't doing what it says it is, item remains enabled (linux)
-  updateMenuItem.enabled = false;
+  // disable the menu to prevent concurrent checks
+  trayMenu.getMenuItemById('updateCheck').enabled  = false;
 });
 
 mixlibInstallUpdater.on('update-not-available', () => {
   console.log("got update-not-available");
   // If they picked the menu option, show a notification dialog.
-  if (fromMenu) {
+  if (requestFromMenu) {
     noUpdateDialog.open();
   }
   WSTray.instance().displayNotification(false);
@@ -111,7 +112,7 @@ mixlibInstallUpdater.on('update-available', (updateInfo) => {
   // and will be done in the next re-factor.
   //  TODO - why ? This ... *looked* like we could just update the label...
   WSTray.instance().setUpdateAvailable(true);
-  if (fromMenu)  {
+  if (requestFromMenu)  {
     // If they picked the menu option, show a notification dialog.
     // don't set the tray notification state, because they're viewing that
     // notification now.
@@ -123,7 +124,7 @@ mixlibInstallUpdater.on('update-available', (updateInfo) => {
 
 mixlibInstallUpdater.on('update-check-error', (error) => {
   console.log("got update-check-error");
-  if (fromMenu) {
+  if (requestFromMenu) {
     // /TODO probably don't show the error except to say try again later, UNLESS
     // we can identify a user-correctable problem (proxy,. etc)
     dialog.showErrorBox('Error: ', error == null ? "unknown" : (error.stack || error).toString());
@@ -133,8 +134,8 @@ mixlibInstallUpdater.on('update-check-error', (error) => {
 // reset state of update-related activities when update check is complete
 mixlibInstallUpdater.on('end-update-check', () => {
   console.log("got end-update-check");
-  fromMenu = false;
-  updateMenuItem.enabled = true;
+  requestFromMenu = false;
+  trayMenu.getMenuItemById('updateCheck').enabled  = true;
 });
 
 
