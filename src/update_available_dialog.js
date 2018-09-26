@@ -3,7 +3,7 @@ const path = require('path');
 
 let updateAvailableDialog = null;
 
-function open(updateInfo) {
+function open(updateInfo, workstationVersion) {
   if (updateAvailableDialog == null) {
     const updateAvailablePath = path.join('file://', __dirname, 'update_available.html');
     updateAvailableDialog = new BrowserWindow({
@@ -24,7 +24,9 @@ function open(updateInfo) {
     updateAvailableDialog.on('closed', () => {
       updateAvailableDialog = null;
     });
+    workstationInfo = require('./chef_workstation.js');
     updateAvailableDialog.updateInfo = updateInfo;
+    updateAvailableDialog.workstationVersion = workstationVersion;
   }
 }
 
