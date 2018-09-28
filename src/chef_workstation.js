@@ -7,7 +7,7 @@
 const UNINSTALL_REG_KEY = '\'HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\'';
 const UNINSTALL_PROD_NAME = '\'Chef Workstation\'';
 const CHEF_WORKSTATION_REG_KEY = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
-const CHEF_WORKSTATION_REG_BIN_PATH = "BinPath";
+const CHEF_WORKSTATION_REG_BIN_PATH = "BinDir";
 const is = require('electron-is');
 const { execFileSync } = require('child_process');
 let _version = null;
@@ -23,10 +23,23 @@ function getPathToBinary(binBaseName) {
   if (is.windows()) {
     // This registry key is set in the Chef Workstation installer.
     var path = execFileSync('reg', ['query', CHEF_WORKSTATION_REG_KEY, '/v', CHEF_WORKSTATION_REG_BIN_PATH]);
-    return path.toString().trim() + "\\" + binBaseName + ".exe";
+
+    var result = null;
+    // Output example:
+    // HKEY_LOCAL_MACHINE\SOFTWARE\Chef\Chef Workstation
+    //     BinDir    REG_SZ    C:\opscode\chef-workstation\bin\
+    var match_info = /.*REG_SZ(.*)/g.exec(path.toString());
+    if (match_info == null) {
+      console.log("Could not find Chef Workstation's BinDir registry key.");
+      result = "unknown"
+    } else {
+      result = match_info[1].trim() + binBaseName + ".bat";
+    }
   } else {
-    return "/opt/chef-workstation/bin/" + binBaseName;
+    result = "/opt/chef-workstation/bin/" + binBaseName;
   }
+  console.log("Found: " + result);
+  return result
 }
 
 function getVersion(callback) {
@@ -43,7 +56,7 @@ function getVersion(callback) {
     ps.invoke()
       .then(output => {
         var match_info = /Chef Workstation v([^\s]+)/g.exec(output);
-        if (match_info == nulll) {
+        if (match_info == null) {
           console.log("Could not find Chef Workstation's uninstall key to determine version");
           callback("unknown");
         }
@@ -61,7 +74,7 @@ function getVersion(callback) {
       console.log("ERROR getting version: " + e);
       callback("unknown");
     }
-  };
+  }
 };
 
 function getPlatformInfo() {
@@ -90,7 +103,8 @@ function queryOhai(attributes) {
   // Note that this will only work for simple keys that can be mapped to
   // top-level values.  We don't have need for nested keys right now,
   // and will need to revisit this if /when we do.
-  ohai.toString().split("\n").forEach((item) => {
+  var splitChar = is.windows() ? "\r\n" : "\n";
+  ohai.toString().split(splitChar).forEach((item) => {
     if (item != '[' && item != ']' && item != '') {
       fixed.push(item.replace(/["']/g, '').trim());
     }
