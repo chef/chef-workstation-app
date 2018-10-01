@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.22 -->
+<!-- latest_release 0.0.23 -->
+## [v0.0.23](https://github.com/chef/chef-workstation-app/tree/v0.0.23) (2018-10-01)
+
+#### Merged Pull Requests
+- added a design section with link to zeplin [#31](https://github.com/chef/chef-workstation-app/pull/31) ([susanev](https://github.com/susanev))
+<!-- latest_release -->
+
 ## [v0.0.22](https://github.com/chef/chef-workstation-app/tree/v0.0.22) (2018-09-24)
 
 #### Merged Pull Requests
 - [SHACK-347] About Page Links [#30](https://github.com/chef/chef-workstation-app/pull/30) ([tyler-ball](https://github.com/tyler-ball))
-<!-- latest_release -->
 
 ## [v0.0.21](https://github.com/chef/chef-workstation-app/tree/v0.0.21) (2018-09-12)
 
