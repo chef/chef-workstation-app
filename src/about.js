@@ -31,7 +31,10 @@ function open() {
   }
 }
 
-
+// We open all these links in the users default browser (or what they have setup by default to open HTML).
+// We purposefully decided to open it in the system browser instead of a build in Electron window because
+// we eventually want most of these to be links to documentation on the Chef website. The license should
+// always display from local source but we also want these 3 links to all behave similarly.
 function openLicense() {
   licensePath = path.join('file://', helpers.getResourcesPath(), 'assets/html/license.html');
   shell.openExternal(licensePath)
