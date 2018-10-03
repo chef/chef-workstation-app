@@ -4,78 +4,51 @@
  * (of which this app is a component)
  */
 
-const UNINSTALL_REG_KEY = '\'HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\'';
-const UNINSTALL_PROD_NAME = '\'Chef Workstation\'';
-const CHEF_WORKSTATION_REG_KEY = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
-const CHEF_WORKSTATION_REG_BIN_PATH = "BinDir";
+const CWS_REG_NODE = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
+const CWS_REG_KEY_BIN_DIR = "BinDir";
+const CWS_REG_KEY_INSTALL_DIR = "InstallDir";
 const is = require('electron-is');
 const { execFileSync } = require('child_process');
-let _version = null;
 
-function getVersionDirect() {
-  // TODO this is probably timing sensitive, perhaps it should wrap
-  // getVersion in a Promise and await?
-  getVersion((v) => { _version = v } );
-  return _version
+const registryCache = {};
+
+function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
+  var cacheKey = baseKey+key+type;
+  var value = registryCache[cacheKey];
+  if (value == undefined) {
+    var value = execFileSync('reg', ['query', baseKey, '/v', key]);
+    // Assumes a single value/single line for this key.
+    var re = new RegExp(type + "\\s*(.+)", "g");
+    var matchInfo = re.exec(value.toString());
+    if (matchInfo == null) {
+      throw("Missing registry key " + baseKey + "\\" + key);
+    }
+    value = matchInfo[1].trim();
+    registryCache[cacheKey] = value;
+  };
+  return value;
 }
 
-function getPathToBinary(binBaseName) {
+function getVersion() {
+  let manifestPath = null;
   if (is.windows()) {
-    // This registry key is set in the Chef Workstation installer.
-    var path = execFileSync('reg', ['query', CHEF_WORKSTATION_REG_KEY, '/v', CHEF_WORKSTATION_REG_BIN_PATH]);
+    manifestPath = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_INSTALL_DIR) + "version-manifest.json";
+  } else {
+    manifestPath = "/opt/chef-workstation/version-manifest.json"
+  }
+  const manifest = require(manifestPath);
+  return manifest.build_version
+}
 
-    var result = null;
-    // Output example:
-    // HKEY_LOCAL_MACHINE\SOFTWARE\Chef\Chef Workstation
-    //     BinDir    REG_SZ    C:\opscode\chef-workstation\bin\
-    var match_info = /.*REG_SZ(.*)/g.exec(path.toString());
-    if (match_info == null) {
-      console.log("Could not find Chef Workstation's BinDir registry key.");
-      result = "unknown"
-    } else {
-      result = match_info[1].trim() + binBaseName + ".bat";
-    }
+function getPathToChefBinary(binBaseName) {
+  let result = null;
+  if (is.windows()) {
+    result = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
   } else {
     result = "/opt/chef-workstation/bin/" + binBaseName;
   }
-  console.log("Found: " + result);
   return result
 }
-
-function getVersion(callback) {
-  if (is.windows()) {
-    const shell = require('node-powershell');
-
-    let ps = new shell({
-      executionPolicy: 'Bypass',
-      noProfile: true
-    });
-
-    // TODO consolidate registry lookups - could probably use execFileSync here too.
-    ps.addCommand('reg query ' + UNINSTALL_REG_KEY + ' /f ' + UNINSTALL_PROD_NAME + ' /s');
-    ps.invoke()
-      .then(output => {
-        var match_info = /Chef Workstation v([^\s]+)/g.exec(output);
-        if (match_info == null) {
-          console.log("Could not find Chef Workstation's uninstall key to determine version");
-          callback("unknown");
-        }
-        callback(match_info[1]);
-      })
-      .catch(err => {
-        console.log("ERROR getting version: " + err);
-        callback("unknown");
-      });
-  } else {
-    try {
-      const manifest = require('/opt/chef-workstation/version-manifest.json');
-      callback(manifest.build_version);
-    } catch (e) {
-      console.log("ERROR getting version: " + e);
-      callback("unknown");
-    }
-  }
-};
 
 function getPlatformInfo() {
   const ohai_args = [ 'os', 'platform', 'platform_family', 'platform_version', 'kernel/machine' ];
@@ -87,7 +60,7 @@ function queryOhai(attributes) {
   let fixed = []
   var path;
 
-  var path = getPathToBinary("ohai");
+  var path = getPathToChefBinary("ohai");
   var ohai = execFileSync(path, attributes);
 
   // convert output from:
@@ -118,5 +91,4 @@ function queryOhai(attributes) {
 
 
 module.exports.getVersion = getVersion;
-module.exports.getVersionDirect = getVersionDirect;
 module.exports.getPlatformInfo = getPlatformInfo;

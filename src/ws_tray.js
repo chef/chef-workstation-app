@@ -39,12 +39,8 @@ function WSTray() {
       app.dock.hide()
     }
     isNotifying = false;
-    // https://github.com/hovancik/stretchly/blob/master/app/main.js#L647
     setToolTip();
-
-    // Now that the tray is initialized, kick off the call that will eventually update
-    // the version to display the correct version.
-    chefWorkstation.getVersion(setVersion);
+    setVersion(chefWorkstation.getVersion());
 }
 
 function setNotifyIcon() {
