@@ -8,6 +8,7 @@ const CWS_REG_NODE = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
 const CWS_REG_KEY_BIN_DIR = "BinDir";
 const CWS_REG_KEY_INSTALL_DIR = "InstallDir";
 const is = require('electron-is');
+const isDev = require('electron-is-dev');
 const { execFileSync } = require('child_process');
 
 const registryCache = {};
@@ -31,23 +32,27 @@ function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
 
 function getVersion() {
   let manifestPath = null;
-  if (is.windows()) {
+  if (isDev) {
+    return "development";
+  } else if (is.windows()) {
     manifestPath = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_INSTALL_DIR) + "version-manifest.json";
   } else {
-    manifestPath = "/opt/chef-workstation/version-manifest.json"
+    manifestPath = "/opt/chef-workstation/version-manifest.json";
   }
   const manifest = require(manifestPath);
-  return manifest.build_version
+  return manifest.build_version;
 }
 
 function getPathToChefBinary(binBaseName) {
   let result = null;
-  if (is.windows()) {
+  if (isDev) {
+    return result;
+  } else if (is.windows()) {
     result = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
   } else {
     result = "/opt/chef-workstation/bin/" + binBaseName;
   }
-  return result
+  return result;
 }
 
 function getPlatformInfo() {
@@ -61,6 +66,9 @@ function queryOhai(attributes) {
   var path;
 
   var path = getPathToChefBinary("ohai");
+  if (path == null) {
+    return null;
+  }
   var ohai = execFileSync(path, attributes);
 
   // convert output from:
