@@ -64,13 +64,13 @@
     }
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "electron": "^2.0.8",
+    "electron": "^2.0.11",
     "electron-builder": "20.28.1",
     "electron-reload": "^1.2.5",
-    "jsdom": "^12.0.0",
-    "marked": "^0.5.0",
+    "jsdom": "^12.1.0",
+    "marked": "^0.5.1",
     "mocha": "^5.2.0",
     "spectron": "^4.0.0",
     "xvfb-maybe": "^0.2.1"
@@ -79,7 +79,7 @@
     "electron-debug": "^2.0.0",
     "electron-is": "^3.0.0",
     "electron-osx-appearance": "^0.1.1",
-    "electron-updater": "3.1.1",
+    "request": "^2.0.0",
     "node-powershell": "^3.3.1"
   }
 }

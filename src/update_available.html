@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="../assets/css/update_available.css">
     <script src="helpers.js"></script>
     <script src="update_available.js"></script>
+    <script>
+      // TODO - why can we access updateInfo without any problems,
+      //        but in order to get 'workstationVersion' we need to go through
+      //        currentWindow?
+      var electron = require('electron');
+      var currentWindow = electron.remote.getCurrentWindow();
+    </script>
   </head>
   <body>
     <div class="top-panel">
@@ -15,12 +22,18 @@
           <script>document.write(getDisplayName())</script> update available!
         </div>
         <div>
-          <script>document.write(updateInfo.version)</script> is the latest <script>document.write(getReleaseChannel())</script> release, you have <script>document.write(getAppVersion())</script>.
+          <script>
+            document.write(updateInfo.version)
+          </script>
+          is the latest
+          <script>document.write(getReleaseChannel())</script>
+          release, you have
+          <script>document.write(currentWindow.workstationVersion)</script>.
         </div>
       </div>
     </div>
     <div class="bottom-panel">
-      <button onclick="closeDialog()">Close</button>
+      <button onclick="closeDialog()">Not Now</button>
       <button onclick="downloadUpdate()">Download!</button>
     </div>
   </body>
