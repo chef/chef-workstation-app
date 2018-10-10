@@ -5,7 +5,7 @@ will be where we implement any UI based features of Chef Workstation.
 
 ## Development
 
-### Dev Prerequisites
+### Development Prerequisites
 * [NodeJS](https://nodejs.org/)
 
 #### On a Mac
