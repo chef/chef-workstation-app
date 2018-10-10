@@ -13,6 +13,11 @@ function checkForUpdates(currentVersion) {
   if (_platformInfo == null) {
     const workstation = require('./chef_workstation.js');
     _platformInfo = workstation.getPlatformInfo();
+    if (_platformInfo == null) {
+      this.emit('update-not-available');
+      this.emit('end-update-check');
+      return;
+    }
   }
 
 
@@ -36,9 +41,9 @@ function checkForUpdates(currentVersion) {
     }
 
     if (currentVersion != body.version) {
-      this.emit('update-available', body)
+      this.emit('update-available', body);
     } else {
-      this.emit('update-not-available')
+      this.emit('update-not-available');
     }
     this.emit('end-update-check');
   });

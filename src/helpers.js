@@ -1,6 +1,5 @@
 const package = require('../package.json');
 var isDev = require('electron-is-dev');
-// var path = require('path');
 
 function getProductName() {
   return package.productName;

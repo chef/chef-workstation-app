@@ -16,7 +16,12 @@
         <div class="col col-9">
           <h1 class="extra-large"><script>document.write(getDisplayName())</script></h1>
           <div class="strong-list">
-            <p><strong>Version</strong> <script>document.write(getAppVersion())</script></p>
+            <p><strong>Version</strong>
+              <script>
+                const workstation = require('./chef_workstation.js');
+                document.write(workstation.getVersion());
+              </script>
+            </p>
             <div class="p-inline-button">
               <p><strong>Release</strong> <script>document.write(getReleaseChannel())</script></p>
               <button disabled class="secondary">Switch to current release</button>
