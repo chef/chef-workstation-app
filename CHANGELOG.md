@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.24 -->
+<!-- latest_release 0.0.25 -->
+## [v0.0.25](https://github.com/chef/chef-workstation-app/tree/v0.0.25) (2018-10-10)
+
+#### Merged Pull Requests
+- [SHACK-354] Use registry keys on windows for install path [#35](https://github.com/chef/chef-workstation-app/pull/35) ([tyler-ball](https://github.com/tyler-ball))
+<!-- latest_release -->
+
 ## [v0.0.24](https://github.com/chef/chef-workstation-app/tree/v0.0.24) (2018-10-08)
 
 #### Merged Pull Requests
 - [SHACK-354] Use chef update API  to check for chef-workstation product updates. [#32](https://github.com/chef/chef-workstation-app/pull/32) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.0.23](https://github.com/chef/chef-workstation-app/tree/v0.0.23) (2018-10-01)
 
