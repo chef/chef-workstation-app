@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.29 -->
+<!-- latest_release 0.0.30 -->
+## [v0.0.30](https://github.com/chef/chef-workstation-app/tree/v0.0.30) (2018-10-10)
+
+#### Merged Pull Requests
+- Allow minor version bumps with GH label [#40](https://github.com/chef/chef-workstation-app/pull/40) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.29](https://github.com/chef/chef-workstation-app/tree/v0.0.29) (2018-10-10)
 
 #### Merged Pull Requests
 - Remove trigger file [#39](https://github.com/chef/chef-workstation-app/pull/39) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.28](https://github.com/chef/chef-workstation-app/tree/v0.0.28) (2018-10-10)
 
