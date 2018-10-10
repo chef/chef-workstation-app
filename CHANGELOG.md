@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.26 -->
+<!-- latest_release 0.0.27 -->
+## [v0.0.27](https://github.com/chef/chef-workstation-app/tree/v0.0.27) (2018-10-10)
+
+#### Merged Pull Requests
+- Add trigger file to test subscriptions. [#37](https://github.com/chef/chef-workstation-app/pull/37) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.26](https://github.com/chef/chef-workstation-app/tree/v0.0.26) (2018-10-10)
 
 #### Merged Pull Requests
 - Simple readme update to trigger pr and merge [#36](https://github.com/chef/chef-workstation-app/pull/36) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.25](https://github.com/chef/chef-workstation-app/tree/v0.0.25) (2018-10-10)
 
