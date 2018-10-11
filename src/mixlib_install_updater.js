@@ -1,4 +1,5 @@
 const events = require('events');
+const isVersionGreaterThan = require('semver').gt;
 const request = require('request');
 const util = require('util'); // formatting
 const OMNITRUCK_URL = "https://omnitruck.chef.io/%s/chef-workstation/metadata/?p=%s&pv=%s&v=%s&m=%s&prerelease=false&nightlies=false";
@@ -13,13 +14,13 @@ function checkForUpdates(currentVersion) {
   if (_platformInfo == null) {
     const workstation = require('./chef_workstation.js');
     _platformInfo = workstation.getPlatformInfo();
+    
     if (_platformInfo == null) {
       this.emit('update-not-available');
       this.emit('end-update-check');
       return;
     }
   }
-
 
   let url = util.format(OMNITRUCK_URL, "stable", _platformInfo.platform, _platformInfo.platform_version
     , "latest", _platformInfo.kernel_machine);
@@ -40,7 +41,7 @@ function checkForUpdates(currentVersion) {
       return;
     }
 
-    if (currentVersion != body.version) {
+    if (isVersionGreaterThan(body.version, currentVersion)) {
       this.emit('update-available', body);
     } else {
       this.emit('update-not-available');
