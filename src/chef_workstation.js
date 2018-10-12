@@ -126,8 +126,18 @@ function areUpdatesEnabled() {
   }
 }
 
+function getUpdateIntervalMinutes() {
+  let userConfig = getUserConfig();
+  if (userConfig.updates == undefined || userConfig.updates.interval_minutes == undefined) {
+    return 60*8; // Every 8 hours.
+  } else {
+    return userConfig.updates.interval_minutes;
+  }
+}
+
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
 
 // Config functions
 module.exports.areUpdatesEnabled = areUpdatesEnabled;
+module.exports.getUpdateIntervalMinutes = getUpdateIntervalMinutes;

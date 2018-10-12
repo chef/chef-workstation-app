@@ -90,7 +90,7 @@ function startApp() {
   // Do first check and setup update checks.
   if (workstation.areUpdatesEnabled()) {
     triggerUpdateCheck();
-    let minutes = 60*8; // Every 8 hours.
+    let minutes = workstation.getUpdateIntervalMinutes();
     updateCheckInterval = setInterval(triggerUpdateCheck, minutes*60*1000);
   }
 }
