@@ -4,6 +4,11 @@
  * (of which this app is a component)
  */
 
+const os = require('os')
+const path = require('path');
+const fs = require('fs');
+const TOML = require('@iarna/toml')
+
 const CWS_REG_NODE = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
 const CWS_REG_KEY_BIN_DIR = "BinDir";
 const CWS_REG_KEY_INSTALL_DIR = "InstallDir";
@@ -12,6 +17,9 @@ const isDev = require('electron-is-dev');
 const { execFileSync } = require('child_process');
 
 const registryCache = {};
+
+const userConfigFile = path.join(os.homedir(), '/.chef-workstation/config.toml');
+let userConfigCache = null;
 
 function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
   var cacheKey = baseKey+key+type;
@@ -97,6 +105,29 @@ function queryOhai(attributes) {
   return result;
 };
 
+// Config functions
+function getUserConfig() {
+  if (userConfigCache == null) {
+    try {
+      userConfigCache = TOML.parse(fs.readFileSync(userConfigFile));
+    } catch(error) {
+      userConfigCache = {};
+    }
+  }
+  return userConfigCache;
+}
+
+function areUpdatesEnabled() {
+  let userConfig = getUserConfig();
+  if (userConfig.updates == undefined || userConfig.updates.enable == undefined) {
+    return true
+  } else {
+    return userConfig.updates.enable;
+  }
+}
 
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
+
+// Config functions
+module.exports.areUpdatesEnabled = areUpdatesEnabled;

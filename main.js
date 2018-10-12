@@ -48,6 +48,7 @@ function createMenu() {
     {
       id: 'updateCheck',
       label: pendingVersionUpdate ? ('Download Workstation v' + pendingVersionUpdate)  : 'Check for updates...',
+      enabled: workstation.areUpdatesEnabled,
       click: () => { triggerUpdateCheck(true) }
     },
     {type: 'separator'},
@@ -87,9 +88,11 @@ function startApp() {
   backgroundWindow.loadURL(modalPath)
   createTray();
   // Do first check and setup update checks.
-  triggerUpdateCheck();
-  let minutes = 60*8; // Every 8 hours.
-  updateCheckInterval = setInterval(triggerUpdateCheck, minutes*60*1000);
+  if (workstation.areUpdatesEnabled()) {
+    triggerUpdateCheck();
+    let minutes = 60*8; // Every 8 hours.
+    updateCheckInterval = setInterval(triggerUpdateCheck, minutes*60*1000);
+  }
 }
 
 function quitApp() {
