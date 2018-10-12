@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../assets/css/no_update.css">
     <script src="helpers.js"></script>
     <script src="no_update.js"></script>
+    <script>const workstation = require('./chef_workstation.js');</script>
   </head>
   <body>
     <div class="top-panel">
@@ -15,7 +16,7 @@
           <script>document.write(getDisplayName())</script> is up-to-date!
         </div>
         <div>
-          <script>document.write(getAppVersion())</script> is the latest
+          <script>document.write(workstation.getVersion())</script> is the latest
           <script>document.write(getReleaseChannel())</script> release available.
         </div>
       </div>

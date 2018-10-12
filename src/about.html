@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/css/about.css">
     <script src="about.js"></script>
     <script src="helpers.js"></script>
+    <script>const workstation = require('./chef_workstation.js');</script>
   </head>
   <body>
     <main>
@@ -18,7 +19,6 @@
           <div class="strong-list">
             <p><strong>Version</strong>
               <script>
-                const workstation = require('./chef_workstation.js');
                 document.write(workstation.getVersion());
               </script>
             </p>
