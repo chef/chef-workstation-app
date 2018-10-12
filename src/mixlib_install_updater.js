@@ -2,6 +2,7 @@ const events = require('events');
 const isVersionGreaterThan = require('semver').gt;
 const request = require('request');
 const util = require('util'); // formatting
+const workstation = require('./chef_workstation.js');
 const OMNITRUCK_URL = "https://omnitruck.chef.io/%s/chef-workstation/metadata/?p=%s&pv=%s&v=%s&m=%s&prerelease=false&nightlies=false";
 let _platformInfo = null;
 
@@ -11,8 +12,8 @@ function MixlibInstallUpdater() {
 
 function checkForUpdates(currentVersion) {
   this.emit('start-update-check');
+  let _channel = workstation.getUpdateChannel();
   if (_platformInfo == null) {
-    const workstation = require('./chef_workstation.js');
     _platformInfo = workstation.getPlatformInfo();
     
     if (_platformInfo == null) {
@@ -22,7 +23,7 @@ function checkForUpdates(currentVersion) {
     }
   }
 
-  let url = util.format(OMNITRUCK_URL, "stable", _platformInfo.platform, _platformInfo.platform_version
+  let url = util.format(OMNITRUCK_URL, _channel, _platformInfo.platform, _platformInfo.platform_version
     , "latest", _platformInfo.kernel_machine);
   request(url, { json: true }, (err, res, body) => {
     if (err)  {
