@@ -11,8 +11,16 @@ function MixlibInstallUpdater() {
 
 function checkForUpdates(currentVersion) {
   this.emit('start-update-check');
+  const workstation = require('./chef_workstation.js');
+  _channel = workstation.getUpdatesChannel();
+  _enabled = workstation.isUpdatesEnabled();
+  if (_enabled == false) {
+    this.emit('update-not-available');
+    this.emit('end-update-check');
+    return;
+  }
+
   if (_platformInfo == null) {
-    const workstation = require('./chef_workstation.js');
     _platformInfo = workstation.getPlatformInfo();
     
     if (_platformInfo == null) {
@@ -22,7 +30,7 @@ function checkForUpdates(currentVersion) {
     }
   }
 
-  let url = util.format(OMNITRUCK_URL, "stable", _platformInfo.platform, _platformInfo.platform_version
+  let url = util.format(OMNITRUCK_URL, _channel, _platformInfo.platform, _platformInfo.platform_version
     , "latest", _platformInfo.kernel_machine);
   request(url, { json: true }, (err, res, body) => {
     if (err)  {

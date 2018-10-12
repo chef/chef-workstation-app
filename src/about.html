@@ -18,13 +18,12 @@
           <div class="strong-list">
             <p><strong>Version</strong>
               <script>
-                const workstation = require('./chef_workstation.js');
-                document.write(workstation.getVersion());
+                document.write(getWorkstationVersion());
               </script>
             </p>
             <div class="p-inline-button">
-              <p><strong>Release</strong> <script>document.write(getReleaseChannel())</script></p>
-              <button disabled class="secondary">Switch to current release</button>
+              <p id='update-channel'><strong>Release</strong> <script>document.write(getUpdatesChannel())</script></p>
+              <button id='update-channel-btn' class="secondary" onclick="toggleUpdatesChannel()" disabled>Switch to <script>document.write(getUpdatesChannel())</script> release</button>
               <button class="info"></button>
             </div>
           </div>
@@ -43,5 +42,8 @@
         <p class="small">&#9400; 2008-2018 Chef Software, Inc. All Rights Reserved.</p>
       </section>
     </main>
+    <script>
+      document.getElementById("update-channel-btn").disabled=isUpdatesDisabled();
+    </script>
   </body>
 </html>
