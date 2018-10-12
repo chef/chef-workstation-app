@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.32 -->
+<!-- latest_release 0.0.33 -->
+## [v0.0.33](https://github.com/chef/chef-workstation-app/tree/v0.0.33) (2018-10-12)
+
+#### Merged Pull Requests
+- [SHACK-377] Allow user to disable update checks [#45](https://github.com/chef/chef-workstation-app/pull/45) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.32](https://github.com/chef/chef-workstation-app/tree/v0.0.32) (2018-10-12)
 
 #### Merged Pull Requests
 - [Shack-377] Update interval and cleanup [#44](https://github.com/chef/chef-workstation-app/pull/44) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.31](https://github.com/chef/chef-workstation-app/tree/v0.0.31) (2018-10-11)
 
