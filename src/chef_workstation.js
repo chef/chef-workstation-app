@@ -135,9 +135,19 @@ function getUpdateIntervalMinutes() {
   }
 }
 
+function getUpdateChannel() {
+  let userConfig = getUserConfig();
+  if (userConfig.updates == undefined || userConfig.updates.channel == undefined) {
+    return 'stable';
+  } else {
+    return userConfig.updates.channel;
+  }
+}
+
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
 
 // Config functions
 module.exports.areUpdatesEnabled = areUpdatesEnabled;
 module.exports.getUpdateIntervalMinutes = getUpdateIntervalMinutes;
+module.exports.getUpdateChannel = getUpdateChannel;
