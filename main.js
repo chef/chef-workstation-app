@@ -46,7 +46,7 @@ function createMenu() {
     {
       id: 'updateCheck',
       label: pendingVersionUpdate ? ('Download Workstation v' + pendingVersionUpdate)  : 'Check for updates...',
-      click: () => { requestFromMenu = true;  app.emit('do-update-check') }
+      click: () => { app.emit('do-update-check', true) }
     },
     {type: 'separator'},
     {
@@ -81,7 +81,11 @@ function startApp() {
   backgroundWindow.loadURL(modalPath)
   createTray();
   // Defer intiial update check until app is fully rendered
-  app.emit('do-update-check');
+  if (workstation.isUpdatesEnabled()) {
+    app.emit('do-update-check');
+  } else {
+    trayMenu.getMenuItemById('updateCheck').enabled  = false;
+  }
 }
 
 function quitApp() {
@@ -133,7 +137,8 @@ mixlibInstallUpdater.on('end-update-check', () => {
 });
 
 
-app.on('do-update-check', () => {
+app.on('do-update-check', (fromUser=false) => {
+  requestFromMenu = fromUser;
   mixlibInstallUpdater.checkForUpdates(workstation.getVersion());
 });
 

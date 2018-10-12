@@ -76,6 +76,7 @@
     "xvfb-maybe": "^0.2.1"
   },
   "dependencies": {
+    "@iarna/toml": "^2.2.0",
     "electron-debug": "^2.0.0",
     "electron-is": "^3.0.0",
     "electron-osx-appearance": "^0.1.1",

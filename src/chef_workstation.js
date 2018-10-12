@@ -10,6 +10,10 @@ const CWS_REG_KEY_INSTALL_DIR = "InstallDir";
 const is = require('electron-is');
 const isDev = require('electron-is-dev');
 const { execFileSync } = require('child_process');
+const os = require('os')
+const path = require('path');
+const fs = require('fs');
+const TOML = require('@iarna/toml')
 
 const registryCache = {};
 
@@ -97,6 +101,54 @@ function queryOhai(attributes) {
   return result;
 };
 
+function readConfigFile() {
+  let configFile = path.join(os.homedir() + '/.chef-workstation/config.toml');
+  try {
+    return TOML.parse(fs.readFileSync(configFile));
+  } catch(error) {
+    return {};
+  }
+}
+
+function getUpdatesChannel() {
+  let configToml = readConfigFile();
+  if (configToml.updates == undefined || configToml.updates.channel == undefined) {
+    return 'stable'
+  } else {
+    return configToml.updates.channel;
+  }
+}
+
+function isUpdatesEnabled() {
+  let configToml = readConfigFile();
+  if (configToml.updates == undefined || configToml.updates.enable == undefined) {
+    return true
+  } else {
+    return configToml.updates.enable;
+  }
+}
+
+function toggleUpdatesChannel() {
+  let configFile = path.join(os.homedir() + '/.chef-workstation/config.toml');
+  let currentChannel = getUpdatesChannel();
+  let configToml = readConfigFile();
+  if (currentChannel == 'stable') {
+    if (configToml.updates == undefined) {
+      configToml.updates = { 'channel': 'current'}
+    }
+    configToml.updates.channel = 'current';
+  } else {
+    if (configToml.updates != undefined) {
+      configToml.updates.channel = 'stable';
+    }
+  }
+  fs.writeFileSync(configFile, TOML.stringify(configToml));
+}
 
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
+
+// config functions
+module.exports.getUpdatesChannel = getUpdatesChannel;
+module.exports.toggleUpdatesChannel = toggleUpdatesChannel;
+module.exports.isUpdatesEnabled = isUpdatesEnabled;

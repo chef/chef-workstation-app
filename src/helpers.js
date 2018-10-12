@@ -9,14 +9,6 @@ function getDisplayName() {
   return package.displayName;
 }
 
-function getAppVersion() {
-  return package.version;
-}
-
-function getReleaseChannel() {
-  return 'Stable';
-}
-
 function getResourcesPath() {
   if (isDev) {
     return path.join(__dirname, '../');
@@ -27,6 +19,4 @@ function getResourcesPath() {
 
 module.exports.getProductName = getProductName;
 module.exports.getDisplayName = getDisplayName;
-module.exports.getAppVersion = getAppVersion;
-module.exports.getReleaseChannel = getReleaseChannel;
 module.exports.getResourcesPath = getResourcesPath;

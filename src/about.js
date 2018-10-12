@@ -1,5 +1,6 @@
 const { shell, BrowserWindow } = require('electron');
 const path = require('path');
+const workstation = require('./chef_workstation.js');
 const helpers = require('./helpers.js');
 
 const width = process.platform === 'darwin' ? 510 : 530;
@@ -48,6 +49,27 @@ function openReleaseNotes() {
 function openPackageDetails() {
   detailsPath = path.join('file://', helpers.getResourcesPath(), 'assets/html/package_details.html');
   shell.openExternal(detailsPath)
+}
+
+function getWorkstationVersion() {
+  return workstation.getVersion();
+}
+
+function getUpdatesChannel() {
+  return workstation.getUpdatesChannel();
+}
+
+function toggleUpdatesChannel() {
+  const { app } = require('electron').remote;
+  let currentChannel = workstation.getUpdatesChannel();
+  workstation.toggleUpdatesChannel();
+  document.getElementById('update-channel-btn').textContent = 'Switch to ' + currentChannel + ' channel';
+  document.getElementById('update-channel').innerHTML = '<strong>Release</strong>' + getUpdatesChannel();
+  app.emit('do-update-check', true);
+}
+
+function isUpdatesDisabled() {
+  return !workstation.isUpdatesEnabled();
 }
 
 module.exports.open = open;
