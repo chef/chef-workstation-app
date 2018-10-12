@@ -71,6 +71,7 @@ function setContextMenu(contextMenu) {
 
 function setUpdateAvailable(u) {
     updateAvailable = u;
+    displayNotification(updateAvailable);
     setToolTip();
 }
 
