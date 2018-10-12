@@ -7,7 +7,7 @@
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": {
     "name": "Chef Software, Inc.",
-    "email": "beta@chef.io",
+    "email": "workstation@chef.io",
     "url": "https://chef.sh"
   },
   "license": "Apache-2.0",
