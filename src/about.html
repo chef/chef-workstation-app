@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="../assets/css/about.css">
     <script src="about.js"></script>
     <script src="helpers.js"></script>
-    <script>const workstation = require('./chef_workstation.js');</script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) { 
+        updateDialog();
+      });
+    </script>
   </head>
   <body>
     <main>
@@ -23,8 +27,9 @@
               </script>
             </p>
             <div class="p-inline-button">
+              <!-- workstation is available via the about.js script -->
               <p id='update-channel'><strong>Release</strong> <script>document.write(workstation.getUpdateChannel())</script></p>
-              <button disabled class="secondary">Switch to current release</button>
+              <button id='update-channel-btn' class="secondary" onclick="toggleUpdatesChannel()" disabled>Switch to <script>document.write(getSwitchToChannel())</script> release</button>
               <button class="info"></button>
             </div>
           </div>

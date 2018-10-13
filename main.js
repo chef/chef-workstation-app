@@ -2,7 +2,7 @@
 
 const { app, BrowserWindow, Menu, dialog } = require('electron');
 const WSTray = require('./src/ws_tray.js');
-const aboutDialog = require('./src/about.js');
+const aboutDialog = require('./src/about_dialog.js');
 const helpers = require('./src/helpers.js');
 const { mixlibInstallUpdater } = require('./src/mixlib_install_updater.js');
 const workstation = require('./src/chef_workstation.js');
@@ -40,6 +40,7 @@ let backgroundWindow = null;
 let pendingVersionUpdate = null;
 
 let updateCheckInterval = null;
+let updateCheckTimeInterval = null;
 
 function createMenu() {
   // The clicks here take a function so that additional parameters such as
@@ -78,6 +79,17 @@ function createTray() {
   tray.setContextMenu(trayMenu);
 }
 
+function setupUpdateInterval() {
+  updateCheckTimeInterval = workstation.getUpdateIntervalMinutes();
+  updateCheckInterval = setInterval(triggerUpdateCheck, updateCheckTimeInterval*60*1000);
+}
+
+function clearUpdateInterval() {
+  clearInterval(updateCheckInterval);
+  updateCheckInterval = null;
+  updateCheckTimeInterval = null;
+}
+
 function triggerUpdateCheck(requestFromUser=false) {
   app.emit('do-update-check', requestFromUser);
 }
@@ -90,13 +102,12 @@ function startApp() {
   // Do first check and setup update checks.
   if (workstation.areUpdatesEnabled()) {
     triggerUpdateCheck();
-    let minutes = workstation.getUpdateIntervalMinutes();
-    updateCheckInterval = setInterval(triggerUpdateCheck, minutes*60*1000);
+    setupUpdateInterval();
   }
 }
 
 function quitApp() {
-  clearInterval(updateCheckInterval);
+  clearUpdateInterval();
   backgroundWindow = null;
   app.quit();
 }
