@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.33 -->
+<!-- latest_release 0.0.34 -->
+## [v0.0.34](https://github.com/chef/chef-workstation-app/tree/v0.0.34) (2018-10-13)
+
+#### Merged Pull Requests
+- BUGFIX: Need @iarna/toml [#52](https://github.com/chef/chef-workstation-app/pull/52) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.33](https://github.com/chef/chef-workstation-app/tree/v0.0.33) (2018-10-12)
 
 #### Merged Pull Requests
 - [SHACK-377] Allow user to disable update checks [#45](https://github.com/chef/chef-workstation-app/pull/45) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.32](https://github.com/chef/chef-workstation-app/tree/v0.0.32) (2018-10-12)
 
