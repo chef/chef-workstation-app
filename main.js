@@ -104,9 +104,11 @@ function startApp() {
     triggerUpdateCheck();
     setupUpdateInterval();
   }
+  workstation.startWatchingConfig();
 }
 
 function quitApp() {
+  workstation.stopWatchingConfig();
   clearUpdateInterval();
   backgroundWindow = null;
   app.quit();
@@ -156,6 +158,18 @@ mixlibInstallUpdater.on('end-update-check', () => {
 app.on('do-update-check', (_requestFromUser) => {
   requestFromUser = _requestFromUser;
   mixlibInstallUpdater.checkForUpdates(workstation.getVersion());
+});
+
+app.on('user-config-update', () => {
+  if (workstation.areUpdatesEnabled()) {
+    if (updateCheckTimeInterval != workstation.getUpdateIntervalMinutes()) {
+      clearUpdateInterval();
+      triggerUpdateCheck();
+      setupUpdateInterval();
+    }
+  } else if (updateCheckInterval != null) {
+    clearUpdateInterval();
+  }
 });
 
 app.on('ready', () => {

@@ -204,6 +204,30 @@ function setUpdateChannel(channel) {
   saveAppConfig();
 }
 
+function handleUserConfigFileEvent() {
+  try {
+    userConfigCache = TOML.parse(fs.readFileSync(userConfigFile));
+    app.emit('user-config-update');
+  } catch(error) {
+    // Fail silently if the file doesn't exist or is otherwise unreadable.
+  }
+}
+
+function startWatchingConfig() {
+  if (userConfigFileWatcher == null) {
+    try {
+      userConfigFileWatcher = fs.watchFile(userConfigFile, handleUserConfigFileEvent);
+    } catch(error) {
+      // Fail silently if the file doesn't exist or is otherwise unreadable.
+    }
+  }
+}
+
+function stopWatchingConfig() {
+  fs.unwatchFile(userConfigFile);
+  userConfigFileWatcher = null;
+}
+
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
 
@@ -213,3 +237,5 @@ module.exports.canUpdateChannel = canUpdateChannel;
 module.exports.getUpdateIntervalMinutes = getUpdateIntervalMinutes;
 module.exports.getUpdateChannel = getUpdateChannel;
 module.exports.setUpdateChannel = setUpdateChannel;
+module.exports.startWatchingConfig = startWatchingConfig;
+module.exports.stopWatchingConfig = stopWatchingConfig;
