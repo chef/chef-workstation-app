@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.38 -->
+<!-- latest_release unreleased -->
+## Unreleased
+
+#### Merged Pull Requests
+- Bump minor version for GA (0.1.0) [#41](https://github.com/chef/chef-workstation-app/pull/41) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.38](https://github.com/chef/chef-workstation-app/tree/v0.0.38) (2018-10-16)
 
 #### Merged Pull Requests
 - Updating maintainer email to remove beta since Workstation is going GA [#47](https://github.com/chef/chef-workstation-app/pull/47) ([tyler-ball](https://github.com/tyler-ball))
-<!-- latest_release -->
 
 ## [v0.0.37](https://github.com/chef/chef-workstation-app/tree/v0.0.37) (2018-10-16)
 
