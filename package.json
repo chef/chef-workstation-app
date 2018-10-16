@@ -2,12 +2,12 @@
   "name": "chef-workstation-app",
   "productName": "Chef Workstation App",
   "displayName": "Chef Workstation",
-  "version": "0.0.30",
+  "version": "0.0.38",
   "description": "Desktop application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": {
     "name": "Chef Software, Inc.",
-    "email": "beta@chef.io",
+    "email": "workstation@chef.io",
     "url": "https://chef.sh"
   },
   "license": "Apache-2.0",
@@ -76,6 +76,7 @@
     "xvfb-maybe": "^0.2.1"
   },
   "dependencies": {
+    "@iarna/toml": "^2.2.0",
     "electron-debug": "^2.0.0",
     "electron-is": "^3.0.0",
     "electron-osx-appearance": "^0.1.1",

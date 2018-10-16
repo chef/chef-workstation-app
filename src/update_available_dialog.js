@@ -17,7 +17,6 @@ function open(updateInfo, workstationVersion) {
       maximizable: false,
       alwaysOnTop: true
     });
-    updateAvailableDialog.openDevTools({mode:'undocked'});
     updateAvailableDialog.loadURL(updateAvailablePath);
     updateAvailableDialog.once('ready-to-show', () => {
       updateAvailableDialog.show();

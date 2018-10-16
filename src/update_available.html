@@ -6,10 +6,8 @@
     <link rel="stylesheet" href="../assets/css/update_available.css">
     <script src="helpers.js"></script>
     <script src="update_available.js"></script>
+    <script>const workstation = require('electron').remote.require('./src/chef_workstation.js');</script>
     <script>
-      // TODO - why can we access updateInfo without any problems,
-      //        but in order to get 'workstationVersion' we need to go through
-      //        currentWindow?
       var electron = require('electron');
       var currentWindow = electron.remote.getCurrentWindow();
       <title>Software Update</title>
@@ -31,7 +29,6 @@
           <script>document.write(currentWindow.workstationVersion)</script>
            <!-- updateInfo.version =  --> 
           <script>document.write(updateInfo.version)</script>
-          
         </div>
       </div>
     </div>

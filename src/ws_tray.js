@@ -6,7 +6,7 @@ const { app, Tray } = require('electron');
 const path = require('path');
 const is = require('electron-is');
 const osxPrefs = require('electron-osx-appearance');
-const chefWorkstation = require('./chef_workstation.js')
+const workstation = require('./chef_workstation.js')
 const util = require('util');
 
 // private
@@ -40,7 +40,7 @@ function WSTray() {
     }
     isNotifying = false;
     setToolTip();
-    setVersion(chefWorkstation.getVersion());
+    setVersion(workstation.getVersion());
 }
 
 function setNotifyIcon() {
@@ -71,6 +71,7 @@ function setContextMenu(contextMenu) {
 
 function setUpdateAvailable(u) {
     updateAvailable = u;
+    displayNotification(updateAvailable);
     setToolTip();
 }
 

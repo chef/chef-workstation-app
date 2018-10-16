@@ -48,3 +48,7 @@ a p:parent {
 section.link-list p:not(:last-child) {
   margin-bottom: 20px;
 }
+
+#update-channel {
+  text-transform: capitalize;
+}
