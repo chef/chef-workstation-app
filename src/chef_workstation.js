@@ -4,6 +4,7 @@
  * (of which this app is a component)
  */
 
+const { app } = require('electron');
 const os = require('os')
 const path = require('path');
 const fs = require('fs');
@@ -18,8 +19,14 @@ const { execFileSync } = require('child_process');
 
 const registryCache = {};
 
-const userConfigFile = path.join(os.homedir(), '/.chef-workstation/config.toml');
+const ws_dir = path.join(os.homedir(), '/.chef_workstation');
+const userConfigFile = path.join(ws_dir, '/config.toml');
+const appConfigFile = path.join(ws_dir, '/.app-managed-config.toml');
 let userConfigCache = null;
+let appConfigCache = null;
+let loadedAppConfig = null;
+
+let userConfigFileWatcher = null;
 
 function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
   var cacheKey = baseKey+key+type;
@@ -117,6 +124,32 @@ function getUserConfig() {
   return userConfigCache;
 }
 
+function getAppConfig() {
+  if (loadedAppConfig == null && appConfigCache == null) {
+    try {
+      loadedAppConfig = TOML.parse(fs.readFileSync(appConfigFile));
+      appConfigCache = loadedAppConfig;
+    } catch(error) {
+      appConfigCache = {};
+    }
+  }
+  return appConfigCache;
+}
+
+function saveAppConfig() {
+  if ((loadedAppConfig != null && appConfigCache != null) || (loadedAppConfig == null && appConfigCache != {})) {
+    try {
+      if (!fs.existsSync(ws_dir)) {
+        fs.mkdirSync(ws_dir);
+      }
+      fs.writeFileSync(appConfigFile, TOML.stringify(appConfigCache));
+    } catch(error) {
+      // Something went wrong can't persist values so when user restarts they'll be back to defaults.
+    }
+    loadedAppConfig = appConfigCache;
+  }
+}
+
 function areUpdatesEnabled() {
   let userConfig = getUserConfig();
   if (userConfig.updates == undefined || userConfig.updates.enable == undefined) {
@@ -138,10 +171,37 @@ function getUpdateIntervalMinutes() {
 function getUpdateChannel() {
   let userConfig = getUserConfig();
   if (userConfig.updates == undefined || userConfig.updates.channel == undefined) {
-    return 'stable';
+    let appConfig = getAppConfig();
+    if (appConfig.updates == undefined || appConfig.updates.channel == undefined) {
+      return 'stable';
+    } else {
+      return appConfig.updates.channel;
+    }
   } else {
     return userConfig.updates.channel;
   }
+}
+
+function canUpdateChannel() {
+  let userConfig = getUserConfig();
+  if (userConfig.updates == undefined || userConfig.updates.channel == undefined) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function setUpdateChannel(channel) {
+  let appConfig = getAppConfig();
+  if (appConfig == null) {
+    appConfig = {};
+  }
+  if (appConfig.updates == undefined) {
+    appConfig.updates = { 'channel': channel };
+  } else {
+    appConfig.updates.channel = channel;
+  }
+  saveAppConfig();
 }
 
 module.exports.getVersion = getVersion;
@@ -149,5 +209,7 @@ module.exports.getPlatformInfo = getPlatformInfo;
 
 // Config functions
 module.exports.areUpdatesEnabled = areUpdatesEnabled;
+module.exports.canUpdateChannel = canUpdateChannel;
 module.exports.getUpdateIntervalMinutes = getUpdateIntervalMinutes;
 module.exports.getUpdateChannel = getUpdateChannel;
+module.exports.setUpdateChannel = setUpdateChannel;
