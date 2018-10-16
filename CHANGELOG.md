@@ -1,9 +1,14 @@
-<!-- latest_release 0.0.36 -->
+<!-- latest_release 0.0.37 -->
+## [v0.0.37](https://github.com/chef/chef-workstation-app/tree/v0.0.37) (2018-10-16)
+
+#### Merged Pull Requests
+-  [SHACK-377] Set update channel button [#49](https://github.com/chef/chef-workstation-app/pull/49) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.0.36](https://github.com/chef/chef-workstation-app/tree/v0.0.36) (2018-10-16)
 
 #### Merged Pull Requests
 - [SHACK-377] Configurable update channel [#48](https://github.com/chef/chef-workstation-app/pull/48) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.0.35](https://github.com/chef/chef-workstation-app/tree/v0.0.35) (2018-10-15)
 
