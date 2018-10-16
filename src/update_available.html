@@ -12,29 +12,32 @@
       //        currentWindow?
       var electron = require('electron');
       var currentWindow = electron.remote.getCurrentWindow();
+      <title>Software Update</title>
     </script>
   </head>
-  <body>
-    <div class="top-panel">
-      <div class="logo"></div>
-      <div class="text">
-        <div class="title">
-          <script>document.write(getDisplayName())</script> update available!
+  <body id="alert-modal">
+    <div id="top-panel">
+      <div id="logo-alert"></div>
+      <div id="text-block">
+        <div class="title large">
+          Update available!
         </div>
-        <div>
-          <script>
-            document.write(updateInfo.version)
-          </script>
-          is the latest
+        <div class="message">
+          <!-- getDisplayName() = Chef Workstation -->
+          <script>document.write(getDisplayName())</script> 
+          <!-- getReleaseChannel = new release -->
           <script>document.write(getReleaseChannel())</script>
-          release, you have
-          <script>document.write(currentWindow.workstationVersion)</script>.
+          is now available. You currently have
+          <script>document.write(currentWindow.workstationVersion)</script>
+           <!-- updateInfo.version =  --> 
+          <script>document.write(updateInfo.version)</script>
+          
         </div>
       </div>
     </div>
-    <div class="bottom-panel">
-      <button onclick="closeDialog()">Not Now</button>
-      <button onclick="downloadUpdate()">Download!</button>
+    <div id="bottom-panel">
+      <button class="secondary" onclick="closeDialog()">Cancel</button>
+      <button class="primary" onclick="downloadUpdate()">Update</button>
     </div>
   </body>
 </html>

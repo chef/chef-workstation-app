@@ -10,12 +10,13 @@ function open() {
       title: '',
       show: false,
       alwaysOnTop: true,
-      width: 420,
-      height: 145,
+      width: 396,
+      height: 136,
       resizable: false,
       minimizable: false,
       maximizable: false
     });
+
     noUpdateDialog.loadURL(noUpdatePath);
     noUpdateDialog.once('ready-to-show', () => {
       noUpdateDialog.show();

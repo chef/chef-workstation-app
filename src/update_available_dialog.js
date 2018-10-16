@@ -10,13 +10,14 @@ function open(updateInfo, workstationVersion) {
       title: '',
       show: false,
       alwaysOnTop: true,
-      width: 450,
+      width: 433,
       height: 145,
       resizable: false,
       minimizable: false,
       maximizable: false,
       alwaysOnTop: true
     });
+    updateAvailableDialog.openDevTools({mode:'undocked'});
     updateAvailableDialog.loadURL(updateAvailablePath);
     updateAvailableDialog.once('ready-to-show', () => {
       updateAvailableDialog.show();
