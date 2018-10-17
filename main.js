@@ -32,6 +32,7 @@ require('electron-debug')({enabled: is_debug});
 let tray = null;
 let trayMenu = null;
 let requestFromUser = false;
+let displayUpdateNotAvailableDialog = true;
 
 // Background window is hidden and will be used to run service processes. It is
 // here now so it is the first/main window of the app meaning the about pop up
@@ -90,8 +91,8 @@ function clearUpdateInterval() {
   updateCheckTimeInterval = null;
 }
 
-function triggerUpdateCheck(requestFromUser=false) {
-  app.emit('do-update-check', requestFromUser);
+function triggerUpdateCheck(requestFromUser=false, displayUpdateNotAvailableDialog=true) {
+  app.emit('do-update-check', requestFromUser, displayUpdateNotAvailableDialog);
 }
 
 function startApp() {
@@ -120,7 +121,7 @@ mixlibInstallUpdater.on('start-update-check', () => {
 
 mixlibInstallUpdater.on('update-not-available', () => {
   // If they picked the menu option, show a notification dialog.
-  if (requestFromUser) {
+  if (requestFromUser && displayUpdateNotAvailableDialog) {
     const noUpdateDialog = require('./src/no_update_dialog.js');
     noUpdateDialog.open();
   }
@@ -151,12 +152,14 @@ mixlibInstallUpdater.on('error', (error) => {
 // reset state of update-related activities when update check is complete
 mixlibInstallUpdater.on('end-update-check', () => {
   requestFromUser = false;
+  displayUpdateNotAvailableDialog = true;
   trayMenu.getMenuItemById('updateCheck').enabled  = true;
   tray.setContextMenu(trayMenu);
 });
 
-app.on('do-update-check', (_requestFromUser) => {
+app.on('do-update-check', (_requestFromUser=false, _displayUpdateNotAvailableDialog=true) => {
   requestFromUser = _requestFromUser;
+  displayUpdateNotAvailableDialog = _displayUpdateNotAvailableDialog;
   mixlibInstallUpdater.checkForUpdates(workstation.getVersion());
 });
 
