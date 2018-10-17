@@ -115,6 +115,7 @@ function quitApp() {
 mixlibInstallUpdater.on('start-update-check', () => {
   // disable the menu to prevent concurrent checks
   trayMenu.getMenuItemById('updateCheck').enabled  = false;
+  tray.setContextMenu(trayMenu);
 });
 
 mixlibInstallUpdater.on('update-not-available', () => {
@@ -151,6 +152,7 @@ mixlibInstallUpdater.on('error', (error) => {
 mixlibInstallUpdater.on('end-update-check', () => {
   requestFromUser = false;
   trayMenu.getMenuItemById('updateCheck').enabled  = true;
+  tray.setContextMenu(trayMenu);
 });
 
 app.on('do-update-check', (_requestFromUser) => {
