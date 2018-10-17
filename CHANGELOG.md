@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.2 -->
+<!-- latest_release 0.1.3 -->
+## [v0.1.3](https://github.com/chef/chef-workstation-app/tree/v0.1.3) (2018-10-17)
+
+#### Merged Pull Requests
+- Cleanup when update dialogs show [#51](https://github.com/chef/chef-workstation-app/pull/51) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.1.2](https://github.com/chef/chef-workstation-app/tree/v0.1.2) (2018-10-17)
 
 #### Merged Pull Requests
 - Fix tray menu on linux [#55](https://github.com/chef/chef-workstation-app/pull/55) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.1.1](https://github.com/chef/chef-workstation-app/tree/v0.1.1) (2018-10-17)
 
