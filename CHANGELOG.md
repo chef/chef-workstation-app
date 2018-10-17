@@ -1,7 +1,8 @@
-<!-- latest_release unreleased -->
-## Unreleased
+<!-- latest_release 0.1.1 -->
+## [v0.1.1](https://github.com/chef/chef-workstation-app/tree/v0.1.1) (2018-10-17)
 
 #### Merged Pull Requests
+- BUG: WS dir is ~/.chef-workstation not ~/.chef_workstation [#54](https://github.com/chef/chef-workstation-app/pull/54) ([jonsmorrow](https://github.com/jonsmorrow))
 - Bump minor version for GA (0.1.0) [#41](https://github.com/chef/chef-workstation-app/pull/41) ([jonsmorrow](https://github.com/jonsmorrow))
 <!-- latest_release -->
 
