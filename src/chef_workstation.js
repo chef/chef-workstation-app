@@ -19,7 +19,7 @@ const { execFileSync } = require('child_process');
 
 const registryCache = {};
 
-const ws_dir = path.join(os.homedir(), '/.chef_workstation');
+const ws_dir = path.join(os.homedir(), '/.chef-workstation');
 const userConfigFile = path.join(ws_dir, '/config.toml');
 const appConfigFile = path.join(ws_dir, '/.app-managed-config.toml');
 let userConfigCache = null;
