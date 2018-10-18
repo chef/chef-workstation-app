@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.3 -->
+<!-- latest_release 0.1.4 -->
+## [v0.1.4](https://github.com/chef/chef-workstation-app/tree/v0.1.4) (2018-10-18)
+
+#### Merged Pull Requests
+- [SHACK-321] Check for updates / Download menu item [#57](https://github.com/chef/chef-workstation-app/pull/57) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.1.3](https://github.com/chef/chef-workstation-app/tree/v0.1.3) (2018-10-17)
 
 #### Merged Pull Requests
 - Cleanup when update dialogs show [#51](https://github.com/chef/chef-workstation-app/pull/51) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.1.2](https://github.com/chef/chef-workstation-app/tree/v0.1.2) (2018-10-17)
 
