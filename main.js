@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, BrowserWindow, Menu, dialog } = require('electron');
+const { app, BrowserWindow, dialog, Menu, shell } = require('electron');
 const WSTray = require('./src/ws_tray.js');
 const aboutDialog = require('./src/about_dialog.js');
 const helpers = require('./src/helpers.js');
@@ -38,7 +38,7 @@ let displayUpdateNotAvailableDialog = true;
 // here now so it is the first/main window of the app meaning the about pop up
 // won't close the app when closed.
 let backgroundWindow = null;
-let pendingVersionUpdate = null;
+let pendingUpdate = null;
 
 let updateCheckInterval = null;
 let updateCheckTimeInterval = null;
@@ -49,9 +49,9 @@ function createMenu() {
   let template = [
     {
       id: 'updateCheck',
-      label: pendingVersionUpdate ? ('Download Workstation v' + pendingVersionUpdate)  : 'Check for updates...',
-      enabled: workstation.areUpdatesEnabled,
-      click: () => { triggerUpdateCheck(true) }
+      label: pendingUpdate ? 'Download Update' : 'Check For Updates...',
+      enabled: workstation.areUpdatesEnabled(),
+      click: () => { pendingUpdate ? downloadUpdate() : triggerUpdateCheck(true) }
     },
     {type: 'separator'},
     {
@@ -95,6 +95,10 @@ function triggerUpdateCheck(requestFromUser=false, displayUpdateNotAvailableDial
   app.emit('do-update-check', requestFromUser, displayUpdateNotAvailableDialog);
 }
 
+function downloadUpdate() {
+  app.emit('do-download');
+}
+
 function startApp() {
   const modalPath = `file://${__dirname}/process.html`
   backgroundWindow = new BrowserWindow({ show: false });
@@ -120,24 +124,26 @@ mixlibInstallUpdater.on('start-update-check', () => {
 });
 
 mixlibInstallUpdater.on('update-not-available', () => {
+  WSTray.instance().setUpdateAvailable(false);
   // If they picked the menu option, show a notification dialog.
   if (requestFromUser && displayUpdateNotAvailableDialog) {
     const noUpdateDialog = require('./src/no_update_dialog.js');
     noUpdateDialog.open();
   }
-  WSTray.instance().setUpdateAvailable(false);
 });
 
 mixlibInstallUpdater.on('update-available', (updateInfo) => {
-  // Only display the notification. Changing the menu text is a lot of work
-  // and will be done in the next re-factor.
+  pendingUpdate = updateInfo;
   WSTray.instance().setUpdateAvailable(true);
+  trayMenu = createMenu();
+  tray.setContextMenu(trayMenu);
+
   if (requestFromUser)  {
     // If they picked the menu option, show a notification dialog.
     // don't set the tray notification state, because they're viewing that
     // notification now.
     const updateAvailableDialog = require('./src/update_available_dialog.js');
-    updateAvailableDialog.open(updateInfo, workstation.getVersion());
+    updateAvailableDialog.open();
   }
 });
 
@@ -153,6 +159,7 @@ mixlibInstallUpdater.on('error', (error) => {
 mixlibInstallUpdater.on('end-update-check', () => {
   requestFromUser = false;
   displayUpdateNotAvailableDialog = true;
+  trayMenu = createMenu();
   trayMenu.getMenuItemById('updateCheck').enabled  = true;
   tray.setContextMenu(trayMenu);
 });
@@ -161,6 +168,11 @@ app.on('do-update-check', (_requestFromUser=false, _displayUpdateNotAvailableDia
   requestFromUser = _requestFromUser;
   displayUpdateNotAvailableDialog = _displayUpdateNotAvailableDialog;
   mixlibInstallUpdater.checkForUpdates(workstation.getVersion());
+});
+
+app.on('do-download', () => {
+  let result = shell.openExternal(pendingUpdate.url);
+  console.log("Attempted to open URL: " + pendingUpdate.url + ". Result: " + result);
 });
 
 app.on('ready', () => {
