@@ -31,7 +31,7 @@ section, p {
 
 button.primary {
   height: 20px;
-  width: 72px;
+  min-width: 72px;
   font-size: 13px;
   color: white;
   border: none;
@@ -44,7 +44,7 @@ button.primary {
 button.secondary {
   margin-right: 8px;
   height: 20px;
-  width: 67px;
+  min-width: 67px;
   font-size: 13px;
   display: inline-block;
   border-radius: 3px;
