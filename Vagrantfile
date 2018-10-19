@@ -20,6 +20,28 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  config.vm.define "centos" do |node|
+    node.vm.box = "bento/centos-7"
+
+    # Install xfce and virtualbox additions for GUI.
+    node.vm.provision "shell", inline: <<~DEV_SETUP
+      curl --silent --location https://rpm.nodesource.com/setup_10.x | bash -
+      yum -y install nodejs
+      yum install epel-release -y
+      yum groupinstall "Server with GUI" -y
+      systemctl set-default graphical.target
+      yum install perl gcc dkms kernel-devel kernel-headers make bzip2 -y
+      # https://linuxconfig.org/how-to-install-virtualbox-guest-additions-on-centos-7-linux
+      systemctl isolate graphical.target
+    DEV_SETUP
+
+    node.vm.provider "virtualbox" do |v|
+      v.gui = true
+      v.memory = 512
+      v.cpus = 1
+    end
+  end
+
   config.vm.define "windows" do |node|
     node.vm.box = "chef/windows-server-2016-standard"
     node.vm.communicator = "winrm"
