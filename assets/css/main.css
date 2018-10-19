@@ -107,7 +107,7 @@ div.col-3 {
 }
 
 #logo-alert {
-  content: url('../images/chef-ws-icon-black.png');
+  background: url('../images/chef-ws-icon-black.svg');
   height: 64px;
   width: 64px;
   display: inline-block;
