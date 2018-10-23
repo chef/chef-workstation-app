@@ -159,5 +159,33 @@ app.on('do-update-check', (_requestFromUser) => {
 });
 
 app.on('ready', () => {
+  var http = require('http');
+  var qs = require('querystring');
+  http.createServer(function(request, response) {
+    if (request.method === "POST") {
+      console.log(request.url)
+      if (request.url === "/inbound") {
+        var requestBody = '';
+        request.on('data', function(data) {
+          requestBody += data;
+        });
+        request.on('end', function() {
+          var message = JSON.parse(requestBody);
+          dialog.showErrorBox('Error ' + message.id, 
+                               message.formatted);
+                              
+        });
+      } else {
+        response.writeHead(404, 'Resource Not Found', {'Content-Type': 'text/html'});
+        response.end('<!doctype html><html><head><title>404</title></head><body>404: Resource Not Found</body></html>');
+      }
+    } else {
+      response.writeHead(405, 'Method Not Supported', {'Content-Type': 'text/html'});
+      return response.end('<!doctype html><html><head><title>405</title></head><body>405: Method Not Supported</body></html>');
+    }
+    response.end( );
+  
+  }).listen(7000);
+  
   startApp()
 });
