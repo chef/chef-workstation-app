@@ -6,13 +6,18 @@ will be where we implement any UI based features of Chef Workstation.
 ## Development
 
 ### Development Prerequisites
-* [NodeJS](https://nodejs.org/)
+* [NodeJS LTS](https://nodejs.org/)
 
 #### On a Mac
-`brew install nodejs`
+
+##### [Homebrew](https://brew.sh)
+`brew install node@10`
+
+##### [ASDF](https://github.com/asdf-vm/asdf)
+`asdf install`
 
 #### On Windows
-[Download NodeJS](https://nodejs.org/en/download/)
+[Download NodeJS LTS](https://nodejs.org/en/download/)
 
 ### Running the Dev Environment
 `npm install`
