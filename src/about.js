@@ -1,4 +1,5 @@
 const { shell } = require('electron');
+const BrowserWindow = require('electron').remote.BrowserWindow
 const path = require('path');
 const helpers = require('./helpers.js');
 // This is some magic to get the same module as the one loaded in the main process
@@ -20,8 +21,11 @@ function openReleaseNotes() {
 }
 
 function openPackageDetails() {
-  detailsPath = path.join('file://', helpers.getResourcesPath(), 'assets/html/package_details.html');
-  shell.openExternal(detailsPath)
+  releaseNotes = new BrowserWindow({show: false});
+  releaseNotes.loadURL(path.join('file://', __dirname, "./package_details.html"));
+  releaseNotes.once('ready-to-show', () => {
+    releaseNotes.show()
+  });
 }
 
 function getSwitchToChannel() {

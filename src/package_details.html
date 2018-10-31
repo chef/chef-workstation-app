@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>About Chef Workstation</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/about.css">
+  </head>
+  <body>
+    <h1 id="chef-workstation-package-details">Chef Workstation Package Details</h1>
+    <ul>
+    <script>
+      document.write("Querying...")
+
+      const workstation = require('electron').remote.require('./src/chef_workstation.js');
+      workstation.queryChefVersion(function(msg) {
+        msg = msg.trim()
+        msg.split('\n').forEach(function(line) {
+          line = line.trim()
+          document.write(`<li>${line}</li>`)
+        });
+      });
+    </script>
+    </ul>
+  </body>
+</html>

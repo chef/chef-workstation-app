@@ -15,8 +15,8 @@ function checkForUpdates(currentVersion) {
   let _channel = workstation.getUpdateChannel();
   if (_platformInfo == null) {
     _platformInfo = workstation.getPlatformInfo();
-    
-    if (_platformInfo == null) {
+
+    if (_platformInfo == null || currentVersion == "development") {
       this.emit('update-not-available');
       this.emit('end-update-check');
       return;
