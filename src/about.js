@@ -1,6 +1,8 @@
 const { shell } = require('electron');
+const BrowserWindow = require('electron').remote.BrowserWindow
 const path = require('path');
 const helpers = require('./helpers.js');
+const https = require('https');
 // This is some magic to get the same module as the one loaded in the main process
 // so that our caches are the same.
 const workstation = require('electron').remote.require('./src/chef_workstation.js');
@@ -14,9 +16,26 @@ function openLicense() {
   shell.openExternal(licensePath)
 }
 
+// If we do not have external internet connectivity to the hosted release notes point people
+// at the ones included into the package.
 function openReleaseNotes() {
-  notesPath = path.join('file://', helpers.getResourcesPath(), 'assets/html/release_notes.html');
-  shell.openExternal(notesPath)
+  let cwVersion = workstation.getVersion();
+  let notesPath = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
+  if (cwVersion == "development") {
+    shell.openExternal(notesPath);
+  } else {
+    // This displays raw markdown now but we will update it to display rendered markdown
+    // once we have a location for that
+    https.get(notesPath, function(res) {
+      shell.openExternal(notesPath);
+    }).on('error', function(e){
+      releaseNotes = new BrowserWindow({show: false});
+      releaseNotes.loadURL(path.join('file://', __dirname, "./release_notes.html"));
+      releaseNotes.once('ready-to-show', () => {
+        releaseNotes.show()
+      });
+    });
+  }
 }
 
 function openPackageDetails() {

@@ -45,14 +45,19 @@ function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
   return value;
 }
 
+function getInstallDir() {
+  if (is.windows()) {
+    return syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_INSTALL_DIR);
+  }
+  return "/opt/chef-workstation";
+}
+
 function getVersion() {
   let manifestPath = null;
   if (isDev) {
     return "development";
-  } else if (is.windows()) {
-    manifestPath = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_INSTALL_DIR) + "version-manifest.json";
   } else {
-    manifestPath = "/opt/chef-workstation/version-manifest.json";
+    manifestPath = File.join(getInstallDir(), "version-manifest.json");
   }
   const manifest = require(manifestPath);
   return manifest.build_version;
@@ -204,6 +209,7 @@ function setUpdateChannel(channel) {
   saveAppConfig();
 }
 
+module.exports.getInstallDir = getInstallDir;
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
 
