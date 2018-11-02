@@ -1,10 +1,10 @@
-const app = require('electron').remote.app;
+const { ipcRenderer } = require('electron');
 
 function closeDialog() {
   window.close();
 }
 
 function downloadUpdate() {
-  app.emit('do-download');
-  updateAvailableWindow.close();
+  ipcRenderer.send('do-download');
+  closeDialog();
 }

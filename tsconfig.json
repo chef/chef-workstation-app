@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "module": "commonjs",
+
+    "allowJs": true,
+    // "checkJs": true,
+    // "declaration": true,
+    "sourceMap": true,
+    "outDir": "build",
+
+    /* Style */
+    // "strict": true,
+    // "noImplicitAny": true,
+    // "strictNullChecks": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "exclude": [
+    "test/**/*",
+    "build/**/*",
+    "dist/**/*"
+  ]
+}
