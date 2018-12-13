@@ -11,6 +11,7 @@ export default class Main {
   // here now so it is the first/main window of the app meaning the about pop up
   // won't close the app when closed.
   private backgroundWindow: BrowserWindow;
+  private serviceWindow: BrowserWindow;
   private displayUpdateNotAvailableDialog: boolean;
   private pendingUpdate;
   private requestFromUser: boolean;
@@ -74,6 +75,12 @@ export default class Main {
     console.log("Attempted to open URL: " + this.pendingUpdate.url + ". Result: " + result);
   }
 
+  private startService() { 
+    const modalPath = `file://${__dirname}/service.html`
+    this.serviceWindow= new BrowserWindow({ show: false });
+    console.log("Opening service window" );
+    this.serviceWindow.loadURL(modalPath)
+  }
   private startApp() {
     const modalPath = `file://${__dirname}/process.html`
     this.backgroundWindow = new BrowserWindow({ show: false });
@@ -88,17 +95,18 @@ export default class Main {
 
   private quitApp() {
     this.clearUpdateInterval();
+    this.serviceWindow = null;
     this.backgroundWindow = null;
     app.quit();
   }
 
   run() {
-    if(app.makeSingleInstance(function (_argv, _cwd) {})) {
+    if (app.makeSingleInstance(function (_argv, _cwd) {})) {
       console.log('Chef Workstation is already running.');
       app.quit();
       return;
     }
-    app.on('ready', () => { this.startApp() });
+    app.on('ready', () => { this.startApp(); this.startService() });
 
     ipcMain.on('do-update-check', () => { this.triggerUpdateCheck });
     ipcMain.on('do-download', () => { this.downloadUpdate });
