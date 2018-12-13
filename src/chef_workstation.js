@@ -21,6 +21,7 @@ const registryCache = {};
 
 const ws_dir = path.join(os.homedir(), '/.chef-workstation');
 const userConfigFile = path.join(ws_dir, '/config.toml');
+const apiTokenFile = path.join(ws_dir, '/telemetry/token');
 const appConfigFile = path.join(ws_dir, '/.app-managed-config.toml');
 let userConfigCache = null;
 let appConfigCache = null;
@@ -87,18 +88,10 @@ function queryOhai(attributes) {
   var ohai = execFileSync(path, attributes);
 
   // convert output from:
-  // "["
-  // "  'result1'"
-  // ]"
-  // ["
-  //   'result2'"
-  // ]"
+  // "[" \n "  'result1'" \n ]"\n ["\n 'result2'" \n "]"
   // to
   // ['result1', 'result2']
   //
-  // Note that this will only work for simple keys that can be mapped to
-  // top-level values.  We don't have need for nested keys right now,
-  // and will need to revisit this if /when we do.
   var splitChar = is.windows() ? "\r\n" : "\n";
   ohai.toString().split(splitChar).forEach((item) => {
     if (item != '[' && item != ']' && item != '') {
@@ -106,6 +99,9 @@ function queryOhai(attributes) {
     }
   })
 
+  // if a key is a path, eg kernel/machine, use underscores
+  // in the key: "kernel_machine"
+  //
   attributes.forEach((key, index) => {
     result[key.replace("/", "_")] = fixed[index]
   });
@@ -144,10 +140,47 @@ function saveAppConfig() {
       }
       fs.writeFileSync(appConfigFile, TOML.stringify(appConfigCache));
     } catch(error) {
-      // Something went wrong can't persist values so when user restarts they'll be back to defaults.
+      console.log("Failed to save app configuration:", error);
     }
     loadedAppConfig = appConfigCache;
   }
+}
+
+// load and return the teleemtry token from its location in ~/.chef-workstation/telemetry/token
+function readTelemetryToken() {
+  var token = "";
+  try {
+    token = fs.readFileSync(apiTokenFile);
+  } catch(error) {
+    console.log("Error loading token file, so API requests are not permitted. Error follows.", error) ;
+  }
+  return token.toString().trim();
+}
+
+function telemetryMode() {
+  let userConfig = getUserConfig();
+  if (userConfig.telemetry == undefined || userConfig.telemetry.dev == false)
+    return "prod"
+  return "dev"
+}
+
+
+function isTelemetryEnabled() {
+  // true only if config is set and env flag is not set.
+  let userConfig = getUserConfig();
+  if (userConfig.telemetry == undefined || userConfig.telemetry.enable == false)
+    return false;
+  if (typeof process.env.CHEF_TELEMETRY_OPT_OUT  !== "undefined")
+    return false;
+  return true;
+}
+
+function getAPIListeningPort() {
+  let userConfig = getUserConfig();
+  if (userConfig.app == undefined || userConfig.app.service_port == undefined)
+    return 21000;
+  return userConfig.app.service_port;
+
 }
 
 function areUpdatesEnabled() {
@@ -197,7 +230,7 @@ function setUpdateChannel(channel) {
     appConfig = {};
   }
   if (appConfig.updates == undefined) {
-    appConfig.updates = { 'channel': channel };
+    appConfig.updates = { channel: channel };
   } else {
     appConfig.updates.channel = channel;
   }
@@ -213,3 +246,7 @@ module.exports.canUpdateChannel = canUpdateChannel;
 module.exports.getUpdateIntervalMinutes = getUpdateIntervalMinutes;
 module.exports.getUpdateChannel = getUpdateChannel;
 module.exports.setUpdateChannel = setUpdateChannel;
+module.exports.readTelemetryToken = readTelemetryToken;
+module.exports.isTelemetryEnabled = isTelemetryEnabled;
+module.exports.telemetryMode = telemetryMode;
+module.exports.getAPIListeningPort = getAPIListeningPort;
