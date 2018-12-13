@@ -2,11 +2,9 @@ const { remote }  = require('electron');
 const workstation = remote.require('./chef_workstation.js');
 const http = require('http');
 const url_parser = require('url')
-console.log("Begin - create server")
 // TODO - we'll want to switch to https  before we go final;
-//        we can make that a new card since it will also affect
-//        installation (we'd want to generate cert (or use existing if we make one
-//        for chefdk).
+//        we can make that a new card since we'll need to make sure it's
+//        part of the dk trusted cert chain
 //        var options = {
 //          key: fs.readFileSync('key.pem')
 //          cert: fs.readFileSync('cert.pem')
@@ -21,20 +19,27 @@ function processRequest(request, response) {
   //        as 'lightweight' -- but both add 40+ dependencies.
   //        Let's evaluate inclusion as we expand this,  but for now
   //        we have one endpoint to route, so we're just using 'native'.
-  var parsed_url = url_parser.parse(request.url, true)
-  var path = parsed_url.pathname
+  var parsed_url = url_parser.parse(request.url, true);
+  var path = parsed_url.pathname;
+
+  // Validate token before handling any request - less information given away
+  // if we don't tell about supported methods, valid urls, etc without authorized access.
+  if (!validateToken(parsed_url.query.token)) {
+    endRequest(response, 403, "Invalid token");
+  }
+
   if (request.method === "POST") {
-    console.log(request.url)
     if (parsed_url.pathname === "/telemetry" || parsed_url.pathname == "/telemetry/") {
       var requestBody = '';
-      // Reminder: these are run async when the events arrive. The overall
-      // processRequest function runs through to completion before the events arrive.
+      // these functions are invoked async when the events arrive. The overall
+      // processRequest function runs through to completion before the events arrive -
+      // that's led to endRequest in the 'end' handler instead of at the end of the function.
       request.on('data', function (data) {
         requestBody += data;
       });
       request.on('end', function () {
-        result = processPayload(parsed_url.query.token, requestBody);
-        endRequest(response, result.code, result.message)
+        result = processPayload(requestBody);
+        endRequest(response, result.code, result.message);
       });
     } else {
       endRequest(response, 404, 'resource not found');
@@ -47,20 +52,24 @@ function processRequest(request, response) {
 function endRequest(response, code, message) {
   result = { code: code, message: message }
   response.writeHead(result.code, result.message);
-  if (result['code'] < 400) {
+  if (result.code < 400) {
     response.end('{"result" : ' + result.message + '}', "application/json");
   } else {
     response.end('{"error" : ' + result.message + '}', "application/json");
   }
 }
 
-function processPayload(token, rawJSON) {
+function validateToken(token) {
   var expectedToken = workstation.readTelemetryToken()
   if (token == undefined || token !== expectedToken ) {
-    console.log("Token mismatch, rejecting request.");
-    console.log("Wanted: " + expectedToken+ " Got: " + token);
-    return { code: 403, message: "Invalid token" };
+    // console.log("Token mismatch, rejecting request.");
+    // console.log("Wanted: " + expectedToken+ " Got: " + token);
+    return false;
   }
+  return true;
+}
+
+function processPayload(rawJSON) {
 
   // if (!validateRequest(token, rawJSON)) {
   // }
