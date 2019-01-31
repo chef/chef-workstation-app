@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.6 -->
+<!-- latest_release 0.1.7 -->
+## [v0.1.7](https://github.com/chef/chef-workstation-app/tree/v0.1.7) (2019-01-31)
+
+#### Merged Pull Requests
+- Bump Electron to 2.0.16 [#69](https://github.com/chef/chef-workstation-app/pull/69) ([jonsmorrow](https://github.com/jonsmorrow))
+<!-- latest_release -->
+
 ## [v0.1.6](https://github.com/chef/chef-workstation-app/tree/v0.1.6) (2018-11-02)
 
 #### Merged Pull Requests
 - Enable typescript and move some files around [#64](https://github.com/chef/chef-workstation-app/pull/64) ([jonsmorrow](https://github.com/jonsmorrow))
-<!-- latest_release -->
 
 ## [v0.1.5](https://github.com/chef/chef-workstation-app/tree/v0.1.5) (2018-10-29)
 
