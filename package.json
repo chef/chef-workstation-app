@@ -32,6 +32,7 @@
     "electron": "^2.0.16",
     "electron-builder": "20.28.1",
     "electron-reload": "^1.2.5",
+    "electron-chromedriver": "tyler-ball/chromedriver#workstation_0_4",
     "jsdom": "^12.1.0",
     "marked": "^0.5.1",
     "mocha": "^5.2.0",
