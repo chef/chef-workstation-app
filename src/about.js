@@ -16,15 +16,18 @@ function openLicense() {
 }
 
 function openReleaseNotes() {
-  notesPath = path.join('file://', __dirname, '../assets/html/release_notes.html');
-  shell.openExternal(notesPath)
+  releaseNotes = new BrowserWindow({show: false});
+  releaseNotes.loadURL(path.join('file://', __dirname, '../assets/html/release_notes.html'));
+  releaseNotes.once('ready-to-show', () => {
+    releaseNotes.show()
+  });
 }
 
 function openPackageDetails() {
-  releaseNotes = new BrowserWindow({show: false});
-  releaseNotes.loadURL(path.join('file://', __dirname, '../assets/html/package_details.html'));
-  releaseNotes.once('ready-to-show', () => {
-    releaseNotes.show()
+  packageDetails = new BrowserWindow({show: false});
+  packageDetails.loadURL(path.join('file://', __dirname, '../assets/html/package_details.html'));
+  packageDetails.once('ready-to-show', () => {
+    packageDetails.show()
   });
 }
 

@@ -5,3 +5,4 @@ tags
 .DS_Store
 .vagrant/
 .vscode/
+*.swp
