@@ -57,7 +57,7 @@ function getVersion() {
   if (isDev) {
     return "development";
   } else {
-    manifestPath = File.join(getInstallDir(), "version-manifest.json");
+    manifestPath = path.join(getInstallDir(), "version-manifest.json");
   }
   const manifest = require(manifestPath);
   return manifest.build_version;
