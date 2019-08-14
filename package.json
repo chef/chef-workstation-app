@@ -2,7 +2,7 @@
   "name": "chef-workstation-app",
   "productName": "Chef Workstation App",
   "displayName": "Chef Workstation",
-  "version": "0.1.4",
+  "version": "0.1.8",
   "description": "Desktop application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-tray",
   "author": {
@@ -11,68 +11,33 @@
     "url": "https://chef.sh"
   },
   "license": "Apache-2.0",
-  "main": "main.js",
   "engines": {
     "node": "~10.0"
   },
   "scripts": {
-    "start": "electron .",
-    "debug": "electron . --inspect-brk=9229",
-    "build-all": "build --win --mac --linux --publish never",
-    "build-mac": "build --mac --publish never",
-    "build-linux": "build --linux --publish never",
-    "build-win": "build --win --publish never",
+    "clean": "rimraf build dist",
+    "compile": "tsc && copyfiles -u 1 \"src/*.html\" build",
+    "start": "npm run compile && electron ./build/App.js",
+    "debug": "npm run compile && electron ./build/App.js --inspect-brk=9229",
+    "build-all": "npm run compile && build --win --mac --linux --publish never",
+    "build-mac": "npm run compile && build --mac --publish never",
+    "build-linux": "npm run compile && build --linux --publish never",
+    "build-win": "npm run compile && build --win --publish never",
     "test": "xvfb-maybe mocha test --full-stack"
-  },
-  "build": {
-    "appId": "sh.chef.chef-workstation",
-    "electronUpdaterCompatibility": ">= 2.16",
-    "extraResources": [
-      "assets/html"
-    ],
-    "mac": {
-      "target": [
-        "zip"
-      ],
-      "category": "public.app-category.developer-tools",
-      "icon": "assets/images/logo.png",
-      "extendInfo": {
-        "LSUIElement": 1
-      }
-    },
-    "win": {
-      "target": [
-        "dir"
-      ],
-      "icon": "assets/images/logo.ico"
-    },
-    "publish": [
-      {
-        "provider": "github"
-      }
-    ],
-    "linux": {
-      "target": [
-        "dir"
-      ]
-    },
-    "appImage": {
-      "systemIntegration": "doNotAsk"
-    },
-    "dmg": {
-      "title": "chef-workstation"
-    }
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "electron": "^2.0.11",
+    "copyfiles": "^2.1.0",
+    "electron": "^2.0.16",
     "electron-builder": "20.28.1",
     "electron-reload": "^1.2.5",
     "jsdom": "^12.1.0",
     "marked": "^0.5.1",
     "mocha": "^5.2.0",
+    "rimraf": "^2.6.2",
     "spectron": "^4.0.0",
+    "typescript": "^3.1.3",
     "xvfb-maybe": "^0.2.1"
   },
   "dependencies": {

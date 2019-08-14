@@ -42,5 +42,5 @@ merge_actions:
         - "Expeditor: Skip All"
   # The markdown generator depends on the updated CHANGELOG.md so
   # should run after it
-  - bash:.expeditor/generate_markdown.sh:
-      only_if: built_in:update_changelog
+  # - bash:.expeditor/generate_markdown.sh:
+  #     only_if: built_in:update_changelog
