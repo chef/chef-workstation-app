@@ -1,25 +1,32 @@
 appId: "sh.chef.chef-workstation"
+
 extraMetadata:
   main: "./src/App.js"
+
 files:
-  -
-    from: .
-    # package.json is added to filter for main file set in any case, but some inclusive pattern must be in the filter, otherwise electron-builder will add */**
+  - from: .
+    # package.json is added to filter for main file set in any case,
+    # but some inclusive pattern must be in the filter, otherwise
+    # electron-builder will add */**
     filter: ["package.json"]
-  -
-    from: "build"
+  - from: "build"
     to: "src"
-  -
-    from: "assets"
+  - from: "assets"
     to: "assets"
+
+extraResources:
+  - "assets/"
+
 mac:
   target: ["zip"]
   category: "public.app-category.developer-tools"
   icon: "assets/images/logo.png"
   extendInfo:
     LSUIElement: 1
+
 win:
   target: ["dir"]
   icon: "assets/images/logo.ico"
+
 linux:
   target: ["dir"]
