@@ -12,7 +12,7 @@ const workstation = require('electron').remote.require('./chef_workstation.js');
 // we eventually want most of these to be links to documentation on the Chef website. The license should
 // always display from local source but we also want these 3 links to all behave similarly.
 function openLicense() {
-  licensePath = path.join('file://', __dirname, '../assets/html/license.html');
+  licensePath = path.join('file://', helpers.getAssetsDir(), 'html/license.html');
   shell.openExternal(licensePath)
 }
 
@@ -30,7 +30,7 @@ function openReleaseNotes() {
       shell.openExternal(notesPath);
     }).on('error', function(e){
       releaseNotes = new BrowserWindow({show: false});
-      releaseNotes.loadURL(path.join('file://', __dirname, "./release_notes.html"));
+      releaseNotes.loadURL(path.join('file://', helpers.getAssetsDir(), 'html/release_notes.html'));
       releaseNotes.once('ready-to-show', () => {
         releaseNotes.show()
       });
@@ -39,7 +39,7 @@ function openReleaseNotes() {
 }
 
 function openPackageDetails() {
-  detailsPath = path.join('file://', __dirname, '../assets/html/package_details.html');
+  detailsPath = path.join('file://', helpers.getAssetsDir(), 'html/package_details.html');
   shell.openExternal(detailsPath)
 }
 
