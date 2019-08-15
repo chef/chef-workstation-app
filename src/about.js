@@ -8,24 +8,23 @@ const https = require('https');
 const workstation = require('electron').remote.require('./chef_workstation.js');
 
 // We open all these links in the users default browser (or what they have setup by default to open HTML).
-// We purposefully decided to open it in the system browser instead of a build in Electron window because
-// we eventually want most of these to be links to documentation on the Chef website. The license should
-// always display from local source but we also want these 3 links to all behave similarly.
+// We purposefully decided to open it in the system browser since we eventually want most of these to be
+// links to documentation on the Chef website. The license should always display from local source.
+// When users do not have internet access, we will open a local file in an Electron window.
 function openLicense() {
   licensePath = path.join('file://', helpers.getAssetsDir(), 'html/license.html');
   shell.openExternal(licensePath)
 }
 
-// If we do not have external internet connectivity to the hosted release notes point people
-// at the ones included into the package.
 function openReleaseNotes() {
   let cwVersion = workstation.getVersion();
-  let remoteReleaseNotes = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
   if (cwVersion == "development") {
-    shell.openExternal(remoteReleaseNotes);
+    devReleaseNotes = path.join('file://', helpers.getAssetsDir(), 'html/development_release_notes.html');
+    shell.openExternal(devReleaseNotes);
   } else {
     // This displays raw markdown now but we will update it to display rendered markdown
     // once we have a location for that
+    remoteReleaseNotes = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
     https.get(remoteReleaseNotes, function(res) {
       shell.openExternal(remoteReleaseNotes);
     }).on('error', function(e){
