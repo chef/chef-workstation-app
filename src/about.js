@@ -20,19 +20,19 @@ function openLicense() {
 // at the ones included into the package.
 function openReleaseNotes() {
   let cwVersion = workstation.getVersion();
-  let notesPath = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
+  let remoteReleaseNotes = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
   if (cwVersion == "development") {
-    shell.openExternal(notesPath);
+    shell.openExternal(remoteReleaseNotes);
   } else {
     // This displays raw markdown now but we will update it to display rendered markdown
     // once we have a location for that
-    https.get(notesPath, function(res) {
-      shell.openExternal(notesPath);
+    https.get(remoteReleaseNotes, function(res) {
+      shell.openExternal(remoteReleaseNotes);
     }).on('error', function(e){
-      releaseNotes = new BrowserWindow({show: false});
-      releaseNotes.loadURL(path.join('file://', helpers.getAssetsDir(), 'html/release_notes.html'));
-      releaseNotes.once('ready-to-show', () => {
-        releaseNotes.show()
+      localReleaseNotes = new BrowserWindow({show: false});
+      localReleaseNotes.loadURL(path.join('file://', helpers.getAssetsDir(), 'html/release_notes.html'));
+      localReleaseNotes.once('ready-to-show', () => {
+        localReleaseNotes.show()
       });
     });
   }
