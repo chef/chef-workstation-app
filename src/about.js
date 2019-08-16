@@ -41,6 +41,9 @@ function openPackageDetails() {
   packageDetails = new BrowserWindow({
     width: 530,
     height: 330,
+    resizable: false,
+    minimizable: false,
+    maximizable: false,
     show: false
   });
   packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
