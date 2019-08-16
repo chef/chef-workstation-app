@@ -6,14 +6,34 @@
     <script src="chef_workstation.js"></script>
   </head>
   <body>
-    <h1 id="chef-workstation-package-details">Chef Workstation Package Details</h1>
-    <ul id="list">
-      <li>Chef Workstation version: <script>document.write(getInstalledGemVersion('chef-cli'))</script></li>
-      <li>Chef Infra Client version: <script>document.write(getInstalledGemVersion('chef'))</script></li>
-      <li>Chef InSpec version: <script>document.write(getInstalledGemVersion('inspec'))</script></li>
-      <li>Test Kitchen version: <script>document.write(getInstalledGemVersion('test-kitchen'))</script></li>
-      <li>Foodcritic version: <script>document.write(getInstalledGemVersion('foodcritic'))</script></li>
-      <li>Cookstyle version: <script>document.write(getInstalledGemVersion('cookstyle'))</script></li>
-    </ul>
+    <div class="container">
+      <h1 class="package-detail-title">Chef Workstation Package Details</h1>
+      <div class="grid">
+        <div>
+          <h2>Chef Workstation</h2>
+          version <script>document.write(getInstalledGemVersion('chef-cli'))</script>
+        </div>
+        <div>
+          <h2>Chef Infra Client</h2>
+          version <script>document.write(getInstalledGemVersion('chef'))</script>
+        </div>
+        <div>
+          <h2>Chef InSpec</h2>
+          version <script>document.write(getInstalledGemVersion('inspec'))</script>
+        </div>
+        <div>
+          <h2>Test Kitchen</h2>
+          version <script>document.write(getInstalledGemVersion('test-kitchen'))</script>
+        </div>
+        <div>
+          <h2>Foodcritic</h2>
+          version <script>document.write(getInstalledGemVersion('foodcritic'))</script>
+        </div>
+        <div>
+          <h2>Cookstyle</h2>
+          version <script>document.write(getInstalledGemVersion('cookstyle'))</script>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
