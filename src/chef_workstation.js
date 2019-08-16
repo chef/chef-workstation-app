@@ -63,6 +63,27 @@ function getVersion() {
   return manifest.build_version;
 }
 
+/**
+ * Return the gem version installed by Chef Workstation. If Chef Workstation
+ * cannot be found then return a dummy development version.
+ *
+ * @param {string} Gem name [example: chef-cli]
+ * @return {(string|null)} The installed gem version
+ */
+function getInstalledGemVersion(gemName) {
+  let gemManifestPath = path.join(getInstallDir(), "gem-version-manifest.json");
+  try {
+    const gemManifest = require(gemManifestPath);
+    return gemManifest[gemName]
+  } catch(error) {
+    if (error.code == "MODULE_NOT_FOUND") {
+      return "0.0.0-dev"
+    } else {
+      throw error;
+    }
+  }
+}
+
 function getPathToChefBinary(binBaseName) {
   let result = null;
   if (isDev) {
@@ -212,6 +233,7 @@ function setUpdateChannel(channel) {
 module.exports.getInstallDir = getInstallDir;
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
+module.exports.getInstalledGemVersion = getInstalledGemVersion;
 
 // Config functions
 module.exports.areUpdatesEnabled = areUpdatesEnabled;

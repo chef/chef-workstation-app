@@ -38,8 +38,15 @@ function openReleaseNotes() {
 }
 
 function openPackageDetails() {
-  detailsPath = path.join('file://', helpers.getAssetsDir(), 'html/package_details.html');
-  shell.openExternal(detailsPath)
+  packageDetails = new BrowserWindow({
+    width: 530,
+    height: 330,
+    show: false
+  });
+  packageDetails.loadURL(path.join('file://', helpers.getAssetsDir(), 'html/package_details.html'));
+  packageDetails.once('ready-to-show', () => {
+    packageDetails.show()
+  });
 }
 
 function getSwitchToChannel() {
