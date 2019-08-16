@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.8 -->
+<!-- latest_release 0.1.9 -->
+## [v0.1.9](https://github.com/chef/chef-workstation-app/tree/v0.1.9) (2019-08-16)
+
+#### Merged Pull Requests
+- Display release notes from web if able [#65](https://github.com/chef/chef-workstation-app/pull/65) ([tyler-ball](https://github.com/tyler-ball))
+<!-- latest_release -->
+
 ## [v0.1.8](https://github.com/chef/chef-workstation-app/tree/v0.1.8) (2019-07-12)
 
 #### Merged Pull Requests
 - Bump lodash from 4.17.11 to 4.17.14 [#73](https://github.com/chef/chef-workstation-app/pull/73) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.1.7](https://github.com/chef/chef-workstation-app/tree/v0.1.7) (2019-01-31)
 
