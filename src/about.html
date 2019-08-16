@@ -7,11 +7,12 @@
     <title>About Chef Workstation</title>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/about.css">
-    <script src="about.js"></script>
-    <script src="helpers.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function(event) { 
-        updateDialog();
+      const about = require('./about.js')
+      const helpers = require('./helpers.js')
+      const workstation = require('electron').remote.require('./chef_workstation.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        about.updateDialog();
       });
     </script>
   </head>
@@ -19,7 +20,7 @@
     <main>
       <section>
         <div class="col col-9">
-          <h1 class="extra-large"><script>document.write(getDisplayName())</script></h1>
+          <h1 class="extra-large"><script>document.write(helpers.getDisplayName())</script></h1>
           <div class="strong-list">
             <p><strong>Version</strong>
               <script>
@@ -29,7 +30,7 @@
             <div class="p-inline-button">
               <!-- workstation is available via the about.js script -->
               <p id='update-channel'><strong>Release</strong> <script>document.write(workstation.getUpdateChannel())</script></p>
-              <button id='update-channel-btn' class="secondary" onclick="toggleUpdatesChannel()" disabled>Switch to <script>document.write(getSwitchToChannel())</script> release</button>
+              <button id='update-channel-btn' class="secondary" onclick="about.toggleUpdatesChannel()" disabled>Switch to <script>document.write(about.getSwitchToChannel())</script> release</button>
               <button class="info"></button>
             </div>
           </div>
@@ -40,9 +41,9 @@
         </div>
       </section>
       <section class="link-list">
-        <p><a href="javascript:openPackageDetails();">Package details</a></p>
-        <p><a href="javascript:openLicense();">License Agreement</a></p>
-        <p><a href="javascript:openReleaseNotes();">Release notes</a></p>
+        <p><a href="javascript:about.openPackageDetails();">Package details</a></p>
+        <p><a href="javascript:about.openLicense();">License Agreement</a></p>
+        <p><a href="javascript:about.openReleaseNotes();">Release notes</a></p>
       </section>
       <section>
         <p class="small">&#9400; 2008-2018 Chef Software, Inc. All Rights Reserved.</p>

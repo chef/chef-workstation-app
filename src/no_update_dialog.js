@@ -14,7 +14,10 @@ function open() {
       height: 145,
       resizable: false,
       minimizable: false,
-      maximizable: false
+      maximizable: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
     });
     noUpdateDialog.loadURL(noUpdatePath);
     noUpdateDialog.once('ready-to-show', () => {

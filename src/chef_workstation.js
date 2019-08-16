@@ -55,7 +55,7 @@ function getInstallDir() {
 function getVersion() {
   let manifestPath = null;
   if (isDev) {
-    return "development";
+    return "0.0.0-dev";
   } else {
     manifestPath = path.join(getInstallDir(), "version-manifest.json");
   }
@@ -64,18 +64,18 @@ function getVersion() {
 }
 
 function getPathToChefBinary(binBaseName) {
-  let result = null;
-  if (isDev) {
-    return result;
-  } else if (is.windows()) {
-    result = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
-  } else {
-    result = "/opt/chef-workstation/bin/" + binBaseName;
+  if (is.windows()) {
+    return syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
   }
-  return result;
+  return "/opt/chef-workstation/bin/" + binBaseName;
 }
 
 function getPlatformInfo() {
+  // To actually check for an update while developing, turn off development mode
+  if (isDev) {
+    return null;
+  }
+
   const ohai_args = [ 'os', 'platform', 'platform_family', 'platform_version', 'kernel/machine' ];
   return queryOhai(ohai_args);
 };
