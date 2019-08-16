@@ -6,7 +6,7 @@ const isDev = require('electron-is-dev');
 const https = require('https');
 // This is some magic to get the same module as the one loaded in the main process
 // so that our caches are the same.
-const workstation = require('electron').remote.require('./chef_workstation.js');
+const workstation = require('./chef_workstation.js');
 
 // We open all these links in the users default browser (or what they have setup by default to open HTML).
 // We purposefully decided to open it in the system browser since we eventually want most of these to be
