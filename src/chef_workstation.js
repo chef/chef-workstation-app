@@ -14,7 +14,6 @@ const CWS_REG_NODE = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
 const CWS_REG_KEY_BIN_DIR = "BinDir";
 const CWS_REG_KEY_INSTALL_DIR = "InstallDir";
 const is = require('electron-is');
-const isDev = require('electron-is-dev');
 const { execFileSync } = require('child_process');
 
 const registryCache = {};
@@ -45,6 +44,7 @@ function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
   return value;
 }
 
+// Return the directory Chef Workstation is installed to
 function getInstallDir() {
   if (is.windows()) {
     return syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_INSTALL_DIR);
@@ -52,34 +52,62 @@ function getInstallDir() {
   return "/opt/chef-workstation";
 }
 
+/**
+ * Return the installed version of Chef Workstation. If Chef Workstation
+ * cannot be found the return a dummy development version.
+ *
+ * @return {(string|null)} The installed version
+ */
 function getVersion() {
-  let manifestPath = null;
-  if (isDev) {
-    return "development";
-  } else {
-    manifestPath = path.join(getInstallDir(), "version-manifest.json");
+  let manifestPath = path.join(getInstallDir(), "version-manifest.json");
+  try {
+    const manifest = require(manifestPath);
+    return manifest.build_version;
+  } catch(error) {
+    if (error.code == "MODULE_NOT_FOUND") {
+      return "0.0.0-dev";
+    } else {
+      throw error;
+    }
   }
-  const manifest = require(manifestPath);
-  return manifest.build_version;
 }
 
+/**
+ * Return the path to a Chef Workstation binary if it can be found. If
+ * it cannot be found return null.
+ *
+ * @return {(string|null)} The path to the binary
+ */
 function getPathToChefBinary(binBaseName) {
-  let result = null;
-  if (isDev) {
-    return result;
-  } else if (is.windows()) {
-    result = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
+  let path = null;
+  if (is.windows()) {
+    path = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
   } else {
-    result = "/opt/chef-workstation/bin/" + binBaseName;
+    path = "/opt/chef-workstation/bin/" + binBaseName;
   }
-  return result;
+  if (fs.existsSync(path)) {
+    return path;
+  }
+  return null;
 }
 
+/**
+ * Return platform information
+ *
+ * @return {Object} Object containing platform information
+ */
 function getPlatformInfo() {
   const ohai_args = [ 'os', 'platform', 'platform_family', 'platform_version', 'kernel/machine' ];
   return queryOhai(ohai_args);
 };
 
+/**
+ * Return system information queried with Ohai. Returns null if it cannot
+ * find the ohai binary to query.
+ *
+ * @param {string[]} List of attributes to query
+ * @return {(Object|null)} Object containing keys specified in attributes
+ */
 function queryOhai(attributes) {
   let result = {}
   let fixed = []

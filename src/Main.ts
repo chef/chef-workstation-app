@@ -70,13 +70,22 @@ export default class Main {
   }
 
   private downloadUpdate() {
-    let result = shell.openExternal(this.pendingUpdate.url);
+    let result = shell.openExternalSync(this.pendingUpdate.url);
     console.log("Attempted to open URL: " + this.pendingUpdate.url + ". Result: " + result);
   }
 
   private startApp() {
     const modalPath = `file://${__dirname}/process.html`
-    this.backgroundWindow = new BrowserWindow({ show: false });
+    this.backgroundWindow = new BrowserWindow({
+      show: false,
+      webPreferences: {
+        // https://electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content
+        // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
+        // only distributing an app that is already running on someone's system we can get away with it but
+        // we should switch to the 'preload' pattern documented in that tutorial.
+        nodeIntegration: true
+      }
+    });
     this.backgroundWindow.loadURL(modalPath)
     this.createTray();
     // Do first check and setup update checks.
@@ -93,15 +102,15 @@ export default class Main {
   }
 
   run() {
-    if(app.makeSingleInstance(function (_argv, _cwd) {})) {
+    if(!app.requestSingleInstanceLock()) {
       console.log('Chef Workstation is already running.');
       app.quit();
       return;
     }
     app.on('ready', () => { this.startApp() });
 
-    ipcMain.on('do-update-check', () => { this.triggerUpdateCheck });
-    ipcMain.on('do-download', () => { this.downloadUpdate });
+    ipcMain.on('do-update-check', () => { this.triggerUpdateCheck() });
+    ipcMain.on('do-download', () => { this.downloadUpdate() });
 
     mixlibInstallUpdater.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks
@@ -129,7 +138,7 @@ export default class Main {
         // don't set the tray notification state, because they're viewing that
         // notification now.
         const updateAvailableDialog = require('./update_available_dialog.js');
-        updateAvailableDialog.open();
+        updateAvailableDialog.open(updateInfo);
       }
     });
 
