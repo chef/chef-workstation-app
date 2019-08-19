@@ -26,6 +26,8 @@ function open() {
     noUpdateDialog.on('closed', () => {
       noUpdateDialog = null;
     });
+  } else {
+    noUpdateDialog.show();
   }
 }
 

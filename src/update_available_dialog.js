@@ -32,6 +32,8 @@ function open(updateInfo) {
     updateAvailableDialog.on('closed', () => {
       updateAvailableDialog = null;
     });
+  } else {
+    updateAvailableDialog.show();
   }
 }
 

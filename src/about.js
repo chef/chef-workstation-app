@@ -38,25 +38,31 @@ function openReleaseNotes() {
   }
 }
 
+let packageDetails = null;
+
 function openPackageDetails() {
-  let packageDetails = new BrowserWindow({
-    width: 530,
-    height: 330,
-    resizable: false,
-    minimizable: false,
-    maximizable: false,
-    show: false,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
-  packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
-  packageDetails.once('ready-to-show', () => {
-    packageDetails.show()
-  });
-  packageDetails.on('closed', () => {
-    packageDetails = null;
-  });
+  if (packageDetails == null) {
+    packageDetails = new BrowserWindow({
+      width: 530,
+      height: 330,
+      resizable: false,
+      minimizable: false,
+      maximizable: false,
+      show: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
+    });
+    packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
+    packageDetails.once('ready-to-show', () => {
+      packageDetails.show()
+    });
+    packageDetails.on('closed', () => {
+      packageDetails = null;
+    });
+  } else {
+    packageDetails.show();
+  }
 }
 
 function getSwitchToChannel() {
