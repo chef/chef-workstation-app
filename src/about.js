@@ -45,7 +45,10 @@ function openPackageDetails() {
     resizable: false,
     minimizable: false,
     maximizable: false,
-    show: false
+    show: false,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
   packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
   packageDetails.once('ready-to-show', () => {
