@@ -15,7 +15,10 @@ function open() {
       height: height,
       resizable: false,
       minimizable: false,
-      maximizable: false
+      maximizable: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
     });
     aboutDialog.loadURL(aboutPath);
     aboutDialog.once('ready-to-show', () => {

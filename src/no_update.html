@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/no_update.css">
-    <script src="helpers.js"></script>
-    <script src="no_update.js"></script>
-    <script>const workstation = require('electron').remote.require('./chef_workstation.js');</script>
+    <script>
+      const helpers = require('./helpers.js')
+      const workstation = require('./chef_workstation.js');
+    </script>
   </head>
   <body>
     <div class="top-panel">
       <div class="logo"></div>
       <div class="text">
         <div class="title">
-          <script>document.write(getDisplayName())</script> is up-to-date!
+          <script>document.write(helpers.getDisplayName())</script> is up-to-date!
         </div>
         <div>
           <script>document.write(workstation.getVersion())</script> is the latest
@@ -22,7 +23,7 @@
       </div>
     </div>
     <div class="bottom-panel">
-      <button onclick="closeDialog()">Close</button>
+      <button onclick="window.close()">Close</button>
     </div>
   </body>
 </html>
