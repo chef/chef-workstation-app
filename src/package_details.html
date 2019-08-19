@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Package Details</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <script>
+      const workstation = require('./chef_workstation.js');
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="package-detail-title">Chef Workstation Package Details</h1>
+      <div class="grid">
+        <div>
+          <h2>Chef Workstation</h2>
+          version <script>document.write(workstation.getInstalledGemVersion('chef-cli'))</script>
+        </div>
+        <div>
+          <h2>Chef Infra Client</h2>
+          version <script>document.write(workstation.getInstalledGemVersion('chef'))</script>
+        </div>
+        <div>
+          <h2>Chef InSpec</h2>
+          version <script>document.write(workstation.getInstalledGemVersion('inspec'))</script>
+        </div>
+        <div>
+          <h2>Test Kitchen</h2>
+          version <script>document.write(workstation.getInstalledGemVersion('test-kitchen'))</script>
+        </div>
+        <div>
+          <h2>Foodcritic</h2>
+          version <script>document.write(workstation.getInstalledGemVersion('foodcritic'))</script>
+        </div>
+        <div>
+          <h2>Cookstyle</h2>
+          version <script>document.write(workstation.getInstalledGemVersion('cookstyle'))</script>
+        </div>
+      </div>
+      <div class="bottom-panel">
+        <button onclick="window.close()">Close</button>
+      </div>
+    </div>
+  </body>
+</html>

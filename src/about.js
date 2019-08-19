@@ -13,13 +13,13 @@ const workstation = require('./chef_workstation.js');
 // links to documentation on the Chef website. The license should always display from local source.
 // When users do not have internet access, we will open a local file in an Electron window.
 function openLicense() {
-  licensePath = path.join('file://', helpers.getAssetsDir(), 'html/license.html');
+  licensePath = path.join('file://', helpers.ExternalAssetsDir(), 'html/license.html');
   shell.openExternalSync(licensePath)
 }
 
 function openReleaseNotes() {
   if (isDev) {
-    devReleaseNotes = path.join('file://', helpers.getAssetsDir(), 'html/development_release_notes.html');
+    devReleaseNotes = path.join('file://', helpers.ExternalAssetsDir(), 'html/development_release_notes.html');
     shell.openExternalSync(devReleaseNotes);
   } else {
     // This displays raw markdown now but we will update it to display rendered markdown
@@ -30,7 +30,7 @@ function openReleaseNotes() {
       shell.openExternalSync(remoteReleaseNotes);
     }).on('error', function(e){
       localReleaseNotes = new BrowserWindow({show: false});
-      localReleaseNotes.loadURL(path.join('file://', helpers.getAssetsDir(), 'html/release_notes.html'));
+      localReleaseNotes.loadURL(path.join('file://', helpers.ExternalAssetsDir(), 'html/release_notes.html'));
       localReleaseNotes.once('ready-to-show', () => {
         localReleaseNotes.show()
       });
@@ -38,9 +38,31 @@ function openReleaseNotes() {
   }
 }
 
+let packageDetails = null;
+
 function openPackageDetails() {
-  detailsPath = path.join('file://', helpers.getAssetsDir(), 'html/package_details.html');
-  shell.openExternalSync(detailsPath)
+  if (packageDetails == null) {
+    packageDetails = new BrowserWindow({
+      width: 530,
+      height: 330,
+      resizable: false,
+      minimizable: false,
+      maximizable: false,
+      show: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
+    });
+    packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
+    packageDetails.once('ready-to-show', () => {
+      packageDetails.show()
+    });
+    packageDetails.on('closed', () => {
+      packageDetails = null;
+    });
+  } else {
+    packageDetails.show();
+  }
 }
 
 function getSwitchToChannel() {

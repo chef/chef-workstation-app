@@ -90,3 +90,21 @@ div.col-3 {
   font-size: 10px;
   font-weight: 400;
 }
+
+h1.package-detail-title {
+  color: #f18b21;
+}
+
+div.container {
+  padding-top: 15px;
+  padding-left: 30px;
+}
+
+div.grid {
+  padding-top: 40px;
+  padding-bottom: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  grid-auto-rows: 45px;
+}

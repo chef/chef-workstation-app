@@ -29,7 +29,7 @@ function open() {
     });
   } else {
     // Bring to front if open.
-    aboutDialog.focus();
+    aboutDialog.show();
   }
 }
 
