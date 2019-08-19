@@ -54,6 +54,9 @@ function openPackageDetails() {
   packageDetails.once('ready-to-show', () => {
     packageDetails.show()
   });
+  packageDetails.on('closed', () => {
+    packageDetails = null;
+  });
 }
 
 function getSwitchToChannel() {
