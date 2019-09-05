@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.11 -->
+<!-- latest_release 0.1.12 -->
+## [v0.1.12](https://github.com/chef/chef-workstation-app/tree/v0.1.12) (2019-09-05)
+
+#### Merged Pull Requests
+- Update package details to match chef -v [#77](https://github.com/chef/chef-workstation-app/pull/77) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.11](https://github.com/chef/chef-workstation-app/tree/v0.1.11) (2019-08-19)
 
 #### Merged Pull Requests
 - [Link Package Details] Opens Electron Window [#75](https://github.com/chef/chef-workstation-app/pull/75) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.10](https://github.com/chef/chef-workstation-app/tree/v0.1.10) (2019-08-16)
 
