@@ -21,9 +21,6 @@ const registryCache = {};
 const ws_dir = path.join(os.homedir(), '/.chef-workstation');
 const userConfigFile = path.join(ws_dir, '/config.toml');
 const appConfigFile = path.join(ws_dir, '/.app-managed-config.toml');
-let userConfigCache = null;
-let appConfigCache = null;
-let loadedAppConfig = null;
 
 let userConfigFileWatcher = null;
 
@@ -168,39 +165,35 @@ function queryOhai(attributes) {
 
 // Config functions
 function getUserConfig() {
-  if (userConfigCache == null) {
-    try {
-      userConfigCache = TOML.parse(fs.readFileSync(userConfigFile));
-    } catch(error) {
-      userConfigCache = {};
-    }
+  try {
+    // @afiune Check for the file before reading it
+    return TOML.parse(fs.readFileSync(userConfigFile));
+  } catch(error) {
+    // TODO @afiune Error handling in Electron: Open an error window?
+    return {};
   }
-  return userConfigCache;
 }
 
 function getAppConfig() {
-  if (loadedAppConfig == null && appConfigCache == null) {
-    try {
-      loadedAppConfig = TOML.parse(fs.readFileSync(appConfigFile));
-      appConfigCache = loadedAppConfig;
-    } catch(error) {
-      appConfigCache = {};
-    }
+  try {
+    let appConfig = TOML.parse(fs.readFileSync(appConfigFile));
+    return appConfig
+  } catch(error) {
+    return {};
   }
-  return appConfigCache;
 }
 
-function saveAppConfig() {
-  if ((loadedAppConfig != null && appConfigCache != null) || (loadedAppConfig == null && appConfigCache != {})) {
-    try {
-      if (!fs.existsSync(ws_dir)) {
-        fs.mkdirSync(ws_dir);
-      }
-      fs.writeFileSync(appConfigFile, TOML.stringify(appConfigCache));
-    } catch(error) {
-      // Something went wrong can't persist values so when user restarts they'll be back to defaults.
+function saveAppConfig(appConfig) {
+  try {
+    if (!fs.existsSync(ws_dir)) {
+      fs.mkdirSync(ws_dir);
     }
-    loadedAppConfig = appConfigCache;
+    fs.writeFileSync(appConfigFile, TOML.stringify(appConfig));
+  } catch(error) {
+    // Something went wrong can't persist values so when user restarts
+    // they'll be back to defaults.
+    // TODO @afiune Error handling in Electron: Open an error window?
+    console.log(error);
   }
 }
 
@@ -247,15 +240,12 @@ function canUpdateChannel() {
 
 function setUpdateChannel(channel) {
   let appConfig = getAppConfig();
-  if (appConfig == null) {
-    appConfig = {};
-  }
   if (appConfig.updates == undefined) {
     appConfig.updates = { 'channel': channel };
   } else {
     appConfig.updates.channel = channel;
   }
-  saveAppConfig();
+  saveAppConfig(appConfig);
 }
 
 module.exports.getInstallDir = getInstallDir;
