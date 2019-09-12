@@ -1,9 +1,9 @@
 import * as EventEmitter from 'events';
 
-const isVersionGreaterThan = require('semver').gt;
-const request = require('request');
-const util = require('util'); // formatting
-const workstation = require('./chef_workstation.js');
+import semver = require('semver');
+import request = require('request');
+import util = require('util'); // formatting
+import workstation = require('./chef_workstation.js');
 
 export class MixlibInstallUpdater {
   public emitter: EventEmitter;
@@ -20,7 +20,6 @@ export class MixlibInstallUpdater {
   public checkForUpdates(currentVersion) {
     this.emitter.emit('start-update-check');
     let _channel = workstation.getUpdateChannel();
-    console.log(workstation.getUpdateChannel());
 
     if (this.platformInfo == null) {
       // To actually check for an update while developing, turn off development mode
@@ -35,14 +34,14 @@ export class MixlibInstallUpdater {
       this.platformInfo.platform_version,
       "latest",
       this.platformInfo.kernel_machine);
-    console.log(url);
+
     request(url, { json: true }, (err, res, body) => {
       if (err)  {
         this.emitter.emit('error', err) ;
         this.emitter.emit('end-update-check');
         return;
       }
-      console.log(body);
+
       // because you can get bad response codes without seeing 'err' populated:
       if (res.statusCode != 200) {
         if (res.statusCode == 404) {
@@ -54,7 +53,7 @@ export class MixlibInstallUpdater {
         return;
       }
 
-      if (isVersionGreaterThan(body.version, currentVersion)) {
+      if (semver.gt(body.version, currentVersion)) {
         this.emitter.emit('update-available', body);
       } else {
         this.emitter.emit('update-not-available');
