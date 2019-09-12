@@ -6,7 +6,7 @@ import helpers = require('./helpers.js');
 import WSTray = require('./ws_tray.js');
 import workstation = require('./chef_workstation.js');
 
-export default class Main {
+export class Main {
   // Background window is hidden and will be used to run service processes. It is
   // here now so it is the first/main window of the app meaning the about pop up
   // won't close the app when closed.
