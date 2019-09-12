@@ -5,7 +5,7 @@ import request = require('request');
 import util = require('util'); // formatting
 import workstation = require('./chef_workstation.js');
 
-export class MixlibInstallUpdater {
+export class OmnitruckUpdateChecker {
   private emitter: EventEmitter;
 
   private platformInfo = null;

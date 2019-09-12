@@ -1,5 +1,5 @@
 import { app, BrowserWindow, dialog, ipcMain, Menu, shell, MenuItemConstructorOptions } from 'electron';
-import { MixlibInstallUpdater } from './mixlib-install-updater';
+import { OmnitruckUpdateChecker } from './omnitruck-update-checker';
 
 import aboutDialog = require('./about_dialog.js');
 import helpers = require('./helpers.js');
@@ -17,7 +17,7 @@ export class Main {
   private tray;
   private trayMenu: Menu;
   private updateCheckInterval;
-  private mixlibInstallUpdater = new MixlibInstallUpdater();
+  private omnitruckUpdateChecker = new OmnitruckUpdateChecker();
 
   private createMenu() {
     let template: MenuItemConstructorOptions[] = [
@@ -67,7 +67,7 @@ export class Main {
   private triggerUpdateCheck(requestFromUser=false, displayUpdateNotAvailableDialog=true) {
     this.requestFromUser = requestFromUser;
     this.displayUpdateNotAvailableDialog = displayUpdateNotAvailableDialog;
-    this.mixlibInstallUpdater.checkForUpdates(workstation.getVersion());
+    this.omnitruckUpdateChecker.checkForUpdates(workstation.getVersion());
   }
 
   private downloadUpdate() {
@@ -113,13 +113,13 @@ export class Main {
     ipcMain.on('do-update-check', () => { this.triggerUpdateCheck() });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
 
-    this.mixlibInstallUpdater.on('start-update-check', () => {
+    this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks
       this.trayMenu.getMenuItemById('updateCheck').enabled  = false;
       this.tray.setContextMenu(this.trayMenu);
     });
 
-    this.mixlibInstallUpdater.on('update-not-available', () => {
+    this.omnitruckUpdateChecker.on('update-not-available', () => {
       this.pendingUpdate = null;
       this.tray.setUpdateAvailable(false);
       // If they picked the menu option, show a notification dialog.
@@ -129,7 +129,7 @@ export class Main {
       }
     });
 
-    this.mixlibInstallUpdater.on('update-available', (updateInfo) => {
+    this.omnitruckUpdateChecker.on('update-available', (updateInfo) => {
       this.pendingUpdate = updateInfo;
       this.tray.setUpdateAvailable(true);
       this.trayMenu = this.createMenu();
@@ -144,7 +144,7 @@ export class Main {
       }
     });
 
-    this.mixlibInstallUpdater.on('error', (error) => {
+    this.omnitruckUpdateChecker.on('error', (error) => {
       if (this.requestFromUser) {
         // TODO probably don't show the error except to say try again later, UNLESS
         // we can identify a user-correctable problem (proxy,. etc)
@@ -153,7 +153,7 @@ export class Main {
     });
 
     // reset state of update-related activities when update check is complete
-    this.mixlibInstallUpdater.on('end-update-check', () => {
+    this.omnitruckUpdateChecker.on('end-update-check', () => {
       this.requestFromUser = false;
       this.displayUpdateNotAvailableDialog = true;
       this.trayMenu = this.createMenu();
