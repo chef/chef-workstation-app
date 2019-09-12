@@ -30,6 +30,7 @@ function openReleaseNotes() {
       shell.openExternalSync(remoteReleaseNotes);
     }).on('error', function(e){
       localReleaseNotes = new BrowserWindow({show: false});
+      localReleaseNotes.removeMenu();
       localReleaseNotes.loadURL(path.join('file://', helpers.ExternalAssetsDir(), 'html/release_notes.html'));
       localReleaseNotes.once('ready-to-show', () => {
         localReleaseNotes.show()
@@ -53,6 +54,7 @@ function openPackageDetails() {
         nodeIntegration: true
       }
     });
+    packageDetails.removeMenu();
     packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
     packageDetails.once('ready-to-show', () => {
       packageDetails.show()
