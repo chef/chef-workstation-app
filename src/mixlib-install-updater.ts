@@ -6,7 +6,7 @@ import util = require('util'); // formatting
 import workstation = require('./chef_workstation.js');
 
 export class MixlibInstallUpdater {
-  public emitter: EventEmitter;
+  private emitter: EventEmitter;
 
   private platformInfo = null;
 
@@ -15,6 +15,10 @@ export class MixlibInstallUpdater {
   constructor() {
     this.emitter = new EventEmitter();
     this.platformInfo = workstation.getPlatformInfo();
+  }
+
+  public on(eventName: string, listener: (...args: any[]) => void): EventEmitter {
+   return this.emitter.on(eventName, listener);
   }
 
   public checkForUpdates(currentVersion) {

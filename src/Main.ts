@@ -113,13 +113,13 @@ export class Main {
     ipcMain.on('do-update-check', () => { this.triggerUpdateCheck() });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
 
-    this.mixlibInstallUpdater.emitter.on('start-update-check', () => {
+    this.mixlibInstallUpdater.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks
       this.trayMenu.getMenuItemById('updateCheck').enabled  = false;
       this.tray.setContextMenu(this.trayMenu);
     });
 
-    this.mixlibInstallUpdater.emitter.on('update-not-available', () => {
+    this.mixlibInstallUpdater.on('update-not-available', () => {
       this.pendingUpdate = null;
       this.tray.setUpdateAvailable(false);
       // If they picked the menu option, show a notification dialog.
@@ -129,7 +129,7 @@ export class Main {
       }
     });
 
-    this.mixlibInstallUpdater.emitter.on('update-available', (updateInfo) => {
+    this.mixlibInstallUpdater.on('update-available', (updateInfo) => {
       this.pendingUpdate = updateInfo;
       this.tray.setUpdateAvailable(true);
       this.trayMenu = this.createMenu();
@@ -144,7 +144,7 @@ export class Main {
       }
     });
 
-    this.mixlibInstallUpdater.emitter.on('error', (error) => {
+    this.mixlibInstallUpdater.on('error', (error) => {
       if (this.requestFromUser) {
         // TODO probably don't show the error except to say try again later, UNLESS
         // we can identify a user-correctable problem (proxy,. etc)
@@ -153,7 +153,7 @@ export class Main {
     });
 
     // reset state of update-related activities when update check is complete
-    this.mixlibInstallUpdater.emitter.on('end-update-check', () => {
+    this.mixlibInstallUpdater.on('end-update-check', () => {
       this.requestFromUser = false;
       this.displayUpdateNotAvailableDialog = true;
       this.trayMenu = this.createMenu();
