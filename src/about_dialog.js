@@ -20,6 +20,7 @@ function open() {
         nodeIntegration: true
       }
     });
+    aboutDialog.removeMenu();
     aboutDialog.loadURL(aboutPath);
     aboutDialog.once('ready-to-show', () => {
       aboutDialog.show()

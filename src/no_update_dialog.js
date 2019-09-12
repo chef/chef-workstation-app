@@ -19,6 +19,7 @@ function open() {
         nodeIntegration: true
       }
     });
+    noUpdateDialog.removeMenu();
     noUpdateDialog.loadURL(noUpdatePath);
     noUpdateDialog.once('ready-to-show', () => {
       noUpdateDialog.show();

@@ -25,6 +25,7 @@ function open(updateInfo) {
         additionalArguments: [updateInfo.version]
       }
     });
+    updateAvailableDialog.removeMenu();
     updateAvailableDialog.loadURL(updateAvailablePath);
     updateAvailableDialog.once('ready-to-show', () => {
       updateAvailableDialog.show();

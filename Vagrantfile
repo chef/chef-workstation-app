@@ -43,13 +43,13 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "windows" do |node|
-    node.vm.box = "chef/windows-server-2016-standard"
+    node.vm.box = "tas50/windows_2016"
     node.vm.communicator = "winrm"
 
     node.vm.provision "shell", inline: <<~DEV_SETUP
       New-PSDrive -Name "V" -PSProvider FileSystem -Root "\\\\vboxsrv\\vagrant" -Persist
       [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultCredentials; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-      choco install --yes --no-progress nodejs
+      choco install --yes --no-progress nodejs vscode
     DEV_SETUP
 
     # Admin user name and password
