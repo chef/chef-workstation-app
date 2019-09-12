@@ -33,7 +33,6 @@ function open(updateInfo) {
       updateAvailableDialog = null;
     });
   } else {
-    // TODO @afiune we need to updated the Window, not just show it as is
     updateAvailableDialog.show();
   }
 }

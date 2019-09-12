@@ -22,8 +22,6 @@ const ws_dir = path.join(os.homedir(), '/.chef-workstation');
 const userConfigFile = path.join(ws_dir, '/config.toml');
 const appConfigFile = path.join(ws_dir, '/.app-managed-config.toml');
 
-let userConfigFileWatcher = null;
-
 function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
   var cacheKey = baseKey+key+type;
   var value = registryCache[cacheKey];
