@@ -176,8 +176,7 @@ function getUserConfig() {
 
 function getAppConfig() {
   try {
-    let appConfig = TOML.parse(fs.readFileSync(appConfigFile));
-    return appConfig
+    return TOML.parse(fs.readFileSync(appConfigFile));
   } catch(error) {
     return {};
   }
