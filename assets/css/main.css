@@ -47,6 +47,15 @@ button.secondary:disabled {
   border: solid 0.5px rgba(0, 0, 0, 0.1);
 }
 
+#logo-alert {
+  background: url('../images/chef-ws-icon-black.svg');
+  height: 64px;
+  width: 64px;
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 img.logo {
   float: right;
   height: 96px;
