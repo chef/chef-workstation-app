@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Software Update</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/update_available.css">
     <script>
-      const helpers = require('./helpers.js');
+      const helpers = require('./helpers.js')
       const update_available = require('./update_available.js');
       const workstation = require('./chef_workstation.js');
       const appConfig = require("./app-config.js");
@@ -13,27 +13,27 @@
     </script>
   </head>
   <body>
-    <div class="top-panel">
-      <div class="logo"></div>
-      <div class="text">
-        <div class="title">
-          <script>document.write(helpers.getDisplayName())</script> update available!
+    <div id="top-panel">
+      <div id="logo-alert"></div>
+      <div id="text-block">
+        <div class="title large">
+          Update available!
         </div>
-        <div>
+        <div class="message">
           <script>
-            // version is passed via the BrowserWindow additionalArguments
-            document.write(process.argv.pop())
+            // version is passed via the BrowserWindow additionalArguments -->
+            document.write(helpers.getDisplayName() + ' ' + process.argv.pop())
           </script>
-          is the latest
-          <script>document.write(appConfig.default.getUpdateChannel())</script>
-          release, you have
-          <script>document.write(workstation.getVersion())</script>.
+	  is now available.
+	  <br>You currently have
+          <script>document.write(workstation.getVersion() + ' ' + appConfig.default.getUpdateChannel())</script>
+	  release.
         </div>
       </div>
     </div>
-    <div class="bottom-panel">
-      <button onclick="window.close()">Not Now</button>
-      <button onclick="update_available.downloadUpdate(); window.close()">Download!</button>
+    <div id="bottom-panel">
+      <button class="secondary" onclick="window.close()">Not Now</button>
+      <button class="primary" onclick="update_available.downloadUpdate(); window.close()">Download!</button>
     </div>
   </body>
 </html>
