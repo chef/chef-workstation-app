@@ -78,7 +78,9 @@ function getSwitchToChannel() {
 function toggleUpdatesChannel() {
   appConfig.default.setUpdateChannel(getSwitchToChannel());
   updateDialog();
-  ipcRenderer.send('do-update-check', true, false);
+  // TODO @afiune Enforce the type TriggerUpdateSettings here when we move to typescript
+  // why? because javascript can't do the enforcement
+  ipcRenderer.send('do-update-check', { UserRequest: true, DisplayUpdateNotAvailableDialog: false});
 }
 
 function updateDialog() {

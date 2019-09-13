@@ -7,6 +7,16 @@ import helpers = require('./helpers.js');
 import WSTray = require('./ws_tray.js');
 import workstation = require('./chef_workstation.js');
 
+// TriggerUpdateSettings is an interface that will enforce the settings
+// we pass to the TriggerUpdateCheck function. Since the app is event
+// driven, we need to pass parameters as objects.
+//
+// TODO @afiune Potentially move it to a single types file
+export interface TriggerUpdateSettings {
+  UserRequest: boolean;
+  DisplayUpdateNotAvailableDialog: boolean;
+}
+
 export class Main {
   // Background window is hidden and will be used to run service processes. It is
   // here now so it is the first/main window of the app meaning the about pop up
@@ -31,7 +41,10 @@ export class Main {
         id: 'updateCheck',
         label: this.pendingUpdate ? 'Download Update' : 'Check For Updates...',
         enabled: this.appConfig.areUpdatesEnabled(),
-        click: () => { this.pendingUpdate ? this.downloadUpdate() : this.triggerUpdateCheck(true) }
+        click: () => { this.pendingUpdate ? this.downloadUpdate() : this.triggerUpdateCheck({
+          UserRequest: true,
+          DisplayUpdateNotAvailableDialog: true
+        })}
       },
       {type: 'separator'},
       {
@@ -70,9 +83,12 @@ export class Main {
     this.updateCheckInterval = null;
   }
 
-  private triggerUpdateCheck(requestFromUser=false, displayUpdateNotAvailableDialog=true) {
-    this.requestFromUser = requestFromUser;
-    this.displayUpdateNotAvailableDialog = displayUpdateNotAvailableDialog;
+  private triggerUpdateCheck(settings: TriggerUpdateSettings = {
+    UserRequest: true,
+    DisplayUpdateNotAvailableDialog: false
+  }) {
+    this.requestFromUser = settings.UserRequest;
+    this.displayUpdateNotAvailableDialog = settings.DisplayUpdateNotAvailableDialog;
     this.omnitruckUpdateChecker.checkForUpdates(workstation.getVersion(), this.appConfig.getUpdateChannel());
   }
 
@@ -116,7 +132,7 @@ export class Main {
     }
     app.on('ready', () => { this.startApp() });
 
-    ipcMain.on('do-update-check', () => { this.triggerUpdateCheck() });
+    ipcMain.on('do-update-check', (_event, arg) => { this.triggerUpdateCheck(arg) });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
 
     this.omnitruckUpdateChecker.on('start-update-check', () => {
