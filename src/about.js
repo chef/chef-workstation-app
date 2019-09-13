@@ -4,9 +4,8 @@ const path = require('path');
 const helpers = require('./helpers.js');
 const isDev = require('electron-is-dev');
 const https = require('https');
-// This is some magic to get the same module as the one loaded in the main process
-// so that our caches are the same.
 const workstation = require('./chef_workstation.js');
+const appConfig = require("./app-config.js");
 
 // We open all these links in the users default browser (or what they have setup by default to open HTML).
 // We purposefully decided to open it in the system browser since we eventually want most of these to be
@@ -68,7 +67,7 @@ function openPackageDetails() {
 }
 
 function getSwitchToChannel() {
-   let channel = workstation.getUpdateChannel();
+   let channel = appConfig.default.getUpdateChannel();
    if (channel == 'stable') {
      return 'current';
    } else {
@@ -77,15 +76,15 @@ function getSwitchToChannel() {
 }
 
 function toggleUpdatesChannel() {
-  workstation.setUpdateChannel(getSwitchToChannel());
+  appConfig.default.setUpdateChannel(getSwitchToChannel());
   updateDialog();
   ipcRenderer.send('do-update-check', true, false);
 }
 
 function updateDialog() {
-  document.getElementById('update-channel-btn').disabled = !(workstation.areUpdatesEnabled() && workstation.canUpdateChannel());
+  document.getElementById('update-channel-btn').disabled = !(appConfig.default.areUpdatesEnabled() && appConfig.default.canUpdateChannel());
   document.getElementById('update-channel-btn').textContent = 'Switch to ' + getSwitchToChannel() + ' channel';
-  document.getElementById('update-channel').innerHTML = '<strong>Release</strong> ' + workstation.getUpdateChannel();
+  document.getElementById('update-channel').innerHTML = '<strong>Release</strong> ' + appConfig.default.getUpdateChannel();
 }
 
 module.exports.getSwitchToChannel = getSwitchToChannel;

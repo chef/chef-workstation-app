@@ -11,6 +11,7 @@
       const about = require('./about.js');
       const helpers = require('./helpers.js');
       const workstation = require('./chef_workstation.js');
+      const appConfig = require("./app-config.js");
       document.addEventListener("DOMContentLoaded", function(event) {
         about.updateDialog();
       });
@@ -29,7 +30,7 @@
             </p>
             <div class="p-inline-button">
               <!-- workstation is available via the about.js script -->
-              <p id='update-channel'><strong>Release</strong> <script>document.write(workstation.getUpdateChannel())</script></p>
+              <p id='update-channel'><strong>Release</strong> <script>document.write(appConfig.default.getUpdateChannel())</script></p>
               <button id='update-channel-btn' class="secondary" onclick="about.toggleUpdatesChannel()" disabled>Switch to <script>document.write(about.getSwitchToChannel())</script> release</button>
               <button class="info"></button>
             </div>

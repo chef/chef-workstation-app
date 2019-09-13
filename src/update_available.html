@@ -8,6 +8,7 @@
       const helpers = require('./helpers.js');
       const update_available = require('./update_available.js');
       const workstation = require('./chef_workstation.js');
+      const appConfig = require("./app-config.js");
       var electron = require('electron');
     </script>
   </head>
@@ -24,7 +25,7 @@
             document.write(process.argv.pop())
           </script>
           is the latest
-          <script>document.write(workstation.getUpdateChannel())</script>
+          <script>document.write(appConfig.default.getUpdateChannel())</script>
           release, you have
           <script>document.write(workstation.getVersion())</script>.
         </div>
