@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.15 -->
+<!-- latest_release 0.1.16 -->
+## [v0.1.16](https://github.com/chef/chef-workstation-app/tree/v0.1.16) (2019-09-13)
+
+#### Merged Pull Requests
+- Match Designs for all Dialog Windows [#81](https://github.com/chef/chef-workstation-app/pull/81) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.15](https://github.com/chef/chef-workstation-app/tree/v0.1.15) (2019-09-13)
 
 #### Merged Pull Requests
 - Typescript EventEmitter and Remove global variables [#79](https://github.com/chef/chef-workstation-app/pull/79) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.14](https://github.com/chef/chef-workstation-app/tree/v0.1.14) (2019-09-12)
 
