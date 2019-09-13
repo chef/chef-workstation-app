@@ -29,14 +29,28 @@ section, p {
   clear: both;
 }
 
+button.primary {
+  height: 20px;
+  min-width: 72px;
+  font-size: 13px;
+  border: none;
+  font-weight: 300;
+  border-radius: 3.5px;
+  background-color: #ffffff;
+  box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
 button.secondary {
-  padding: 4px 6px;
+  margin-right: 8px;
+  height: 20px;
+  min-width: 67px;
   font-size: 13px;
   display: inline-block;
   border-radius: 3px;
   box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
   border: solid 0.5px rgba(0, 0, 0, 0.15);
+  padding-top: 1px;
 }
 
 button.secondary:disabled {
@@ -54,6 +68,47 @@ button.secondary:disabled {
   display: inline-block;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+/* Alert Modal */
+/* top panel and items items placed inside */
+#top-panel {
+  padding-top: 15px;
+  display: inline-flex;
+}
+
+#text-block {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.message {
+  max-width: 295px;
+}
+
+.title {
+  font-size: 13px;
+  line-height: 17px;
+  margin-top: 5px;
+  margin-bottom: 9px;
+}
+
+/* bottom panel and contents placed inside */
+#bottom-panel {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.action-btn {
+  height: 20px;
+  width: 67px;
+  font-size: 13px;
+  color: white;
+  border: none;
+  font-weight: 300;
+  border-radius: 3.5px;
+  margin-right: 10px;
 }
 
 img.logo {
