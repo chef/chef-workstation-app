@@ -7,6 +7,7 @@
     <script>
       const helpers = require('./helpers.js')
       const workstation = require('./chef_workstation.js');
+      const appConfig = require("./app-config.js");
     </script>
   </head>
   <body>
@@ -18,7 +19,7 @@
         </div>
         <div>
           <script>document.write(workstation.getVersion())</script> is the latest
-          <script>document.write(workstation.getUpdateChannel())</script> release available.
+          <script>document.write(appConfig.default.getUpdateChannel())</script> release available.
         </div>
       </div>
     </div>

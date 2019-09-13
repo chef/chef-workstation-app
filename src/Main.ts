@@ -1,5 +1,6 @@
 import { app, BrowserWindow, dialog, ipcMain, Menu, shell, MenuItemConstructorOptions } from 'electron';
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker';
+import AppConfigSingleton from './app-config';
 
 import aboutDialog = require('./about_dialog.js');
 import helpers = require('./helpers.js');
@@ -17,14 +18,19 @@ export class Main {
   private tray;
   private trayMenu: Menu;
   private updateCheckInterval;
-  private omnitruckUpdateChecker = new OmnitruckUpdateChecker();
+  private appConfig = AppConfigSingleton;
+  private omnitruckUpdateChecker: OmnitruckUpdateChecker;
+
+  constructor() {
+    this.omnitruckUpdateChecker = new OmnitruckUpdateChecker();
+  }
 
   private createMenu() {
     let template: MenuItemConstructorOptions[] = [
       {
         id: 'updateCheck',
         label: this.pendingUpdate ? 'Download Update' : 'Check For Updates...',
-        enabled: workstation.areUpdatesEnabled(),
+        enabled: this.appConfig.areUpdatesEnabled(),
         click: () => { this.pendingUpdate ? this.downloadUpdate() : this.triggerUpdateCheck(true) }
       },
       {type: 'separator'},
@@ -55,7 +61,7 @@ export class Main {
   }
 
   private setupUpdateInterval() {
-    let updateCheckIntervalMinutes = workstation.getUpdateIntervalMinutes();
+    let updateCheckIntervalMinutes = this.appConfig.getUpdateIntervalMinutes();
     this.updateCheckInterval = setInterval(this.triggerUpdateCheck, updateCheckIntervalMinutes*60*1000);
   }
 
@@ -67,7 +73,7 @@ export class Main {
   private triggerUpdateCheck(requestFromUser=false, displayUpdateNotAvailableDialog=true) {
     this.requestFromUser = requestFromUser;
     this.displayUpdateNotAvailableDialog = displayUpdateNotAvailableDialog;
-    this.omnitruckUpdateChecker.checkForUpdates(workstation.getVersion());
+    this.omnitruckUpdateChecker.checkForUpdates(workstation.getVersion(), this.appConfig.getUpdateChannel());
   }
 
   private downloadUpdate() {
@@ -90,7 +96,7 @@ export class Main {
     this.backgroundWindow.loadURL(modalPath)
     this.createTray();
     // Do first check and setup update checks.
-    if (workstation.areUpdatesEnabled()) {
+    if (this.appConfig.areUpdatesEnabled()) {
       this.triggerUpdateCheck();
       this.setupUpdateInterval();
     }

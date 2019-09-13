@@ -21,9 +21,8 @@ export class OmnitruckUpdateChecker {
    return this.emitter.on(eventName, listener);
   }
 
-  public checkForUpdates(currentVersion) {
+  public checkForUpdates(currentVersion: string, updateChannel: string) {
     this.emitter.emit('start-update-check');
-    let _channel = workstation.getUpdateChannel();
 
     if (this.platformInfo == null) {
       // To actually check for an update while developing, turn off development mode
@@ -33,7 +32,7 @@ export class OmnitruckUpdateChecker {
     }
 
     let url = util.format(this.OMNITRUCK_URL,
-      _channel,
+      updateChannel,
       this.platformInfo.platform,
       this.platformInfo.platform_version,
       "latest",

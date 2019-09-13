@@ -5,10 +5,8 @@
  */
 
 const { app } = require('electron');
-const os = require('os')
 const path = require('path');
 const fs = require('fs');
-const TOML = require('@iarna/toml')
 
 const CWS_REG_NODE = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
 const CWS_REG_KEY_BIN_DIR = "BinDir";
@@ -17,10 +15,6 @@ const is = require('electron-is');
 const { execFileSync } = require('child_process');
 
 const registryCache = {};
-
-const ws_dir = path.join(os.homedir(), '/.chef-workstation');
-const userConfigFile = path.join(ws_dir, '/config.toml');
-const appConfigFile = path.join(ws_dir, '/.app-managed-config.toml');
 
 function syncGetRegistryValue(baseKey, key, type = "REG_SZ") {
   var cacheKey = baseKey+key+type;
@@ -161,98 +155,7 @@ function queryOhai(attributes) {
   return result;
 };
 
-// Config functions
-function getUserConfig() {
-  try {
-    // @afiune Check for the file before reading it
-    return TOML.parse(fs.readFileSync(userConfigFile));
-  } catch(error) {
-    // TODO @afiune Error handling in Electron: Open an error window?
-    return {};
-  }
-}
-
-function getAppConfig() {
-  try {
-    return TOML.parse(fs.readFileSync(appConfigFile));
-  } catch(error) {
-    return {};
-  }
-}
-
-function saveAppConfig(appConfig) {
-  try {
-    if (!fs.existsSync(ws_dir)) {
-      fs.mkdirSync(ws_dir);
-    }
-    fs.writeFileSync(appConfigFile, TOML.stringify(appConfig));
-  } catch(error) {
-    // Something went wrong can't persist values so when user restarts
-    // they'll be back to defaults.
-    // TODO @afiune Error handling in Electron: Open an error window?
-    console.log(error);
-  }
-}
-
-function areUpdatesEnabled() {
-  let userConfig = getUserConfig();
-  if (userConfig.updates == undefined || userConfig.updates.enable == undefined) {
-    return true
-  } else {
-    return userConfig.updates.enable;
-  }
-}
-
-function getUpdateIntervalMinutes() {
-  let userConfig = getUserConfig();
-  if (userConfig.updates == undefined || userConfig.updates.interval_minutes == undefined) {
-    return 60*8; // Every 8 hours.
-  } else {
-    return userConfig.updates.interval_minutes;
-  }
-}
-
-function getUpdateChannel() {
-  let userConfig = getUserConfig();
-  if (userConfig.updates == undefined || userConfig.updates.channel == undefined) {
-    let appConfig = getAppConfig();
-    if (appConfig.updates == undefined || appConfig.updates.channel == undefined) {
-      return 'stable';
-    } else {
-      return appConfig.updates.channel;
-    }
-  } else {
-    return userConfig.updates.channel;
-  }
-}
-
-function canUpdateChannel() {
-  let userConfig = getUserConfig();
-  if (userConfig.updates == undefined || userConfig.updates.channel == undefined) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function setUpdateChannel(channel) {
-  let appConfig = getAppConfig();
-  if (appConfig.updates == undefined) {
-    appConfig.updates = { 'channel': channel };
-  } else {
-    appConfig.updates.channel = channel;
-  }
-  saveAppConfig(appConfig);
-}
-
 module.exports.getInstallDir = getInstallDir;
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
 module.exports.getInstalledGemVersion = getInstalledGemVersion;
-
-// Config functions
-module.exports.areUpdatesEnabled = areUpdatesEnabled;
-module.exports.canUpdateChannel = canUpdateChannel;
-module.exports.getUpdateIntervalMinutes = getUpdateIntervalMinutes;
-module.exports.getUpdateChannel = getUpdateChannel;
-module.exports.setUpdateChannel = setUpdateChannel;
