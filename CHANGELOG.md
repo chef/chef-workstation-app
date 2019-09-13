@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.14 -->
+<!-- latest_release 0.1.15 -->
+## [v0.1.15](https://github.com/chef/chef-workstation-app/tree/v0.1.15) (2019-09-13)
+
+#### Merged Pull Requests
+- Typescript EventEmitter and Remove global variables [#79](https://github.com/chef/chef-workstation-app/pull/79) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.14](https://github.com/chef/chef-workstation-app/tree/v0.1.14) (2019-09-12)
 
 #### Merged Pull Requests
 - Remove the menu (file, edit, etc.) from Windows windows [#80](https://github.com/chef/chef-workstation-app/pull/80) ([tyler-ball](https://github.com/tyler-ball))
-<!-- latest_release -->
 
 ## [v0.1.13](https://github.com/chef/chef-workstation-app/tree/v0.1.13) (2019-09-06)
 
