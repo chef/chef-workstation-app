@@ -62,7 +62,10 @@ export class Main {
 
   private setupUpdateInterval() {
     let updateCheckIntervalMinutes = this.appConfig.getUpdateIntervalMinutes();
-    this.updateCheckInterval = setInterval(this.triggerUpdateCheck, updateCheckIntervalMinutes*60*1000);
+    this.updateCheckInterval = setInterval(
+      this.triggerUpdateCheck.bind(this),
+      updateCheckIntervalMinutes*60*1000
+    );
   }
 
   private clearUpdateInterval() {
