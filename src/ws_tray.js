@@ -6,7 +6,7 @@ const { app, Tray } = require('electron');
 const path = require('path');
 const is = require('electron-is');
 const osxPrefs = require('electron-osx-appearance');
-const workstation = require('./chef_workstation.js')
+const workstation = require('./helpers/chef_workstation.js')
 const util = require('util');
 
 // private

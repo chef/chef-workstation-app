@@ -1,11 +1,12 @@
 const { ipcRenderer, shell } = require('electron');
 const BrowserWindow = require('electron').remote.BrowserWindow
 const path = require('path');
-const helpers = require('./helpers.js');
 const isDev = require('electron-is-dev');
 const https = require('https');
-const workstation = require('./chef_workstation.js');
-const appConfig = require("./app-config.js");
+
+const workstation = require('../helpers/chef_workstation.js');
+const helpers = require('../helpers/helpers.js');
+const appConfig = require("../app-config/app-config.js");
 
 // We open all these links in the users default browser (or what they have setup by default to open HTML).
 // We purposefully decided to open it in the system browser since we eventually want most of these to be
@@ -54,7 +55,7 @@ function openPackageDetails() {
       }
     });
     packageDetails.removeMenu();
-    packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'package_details.html'));
+    packageDetails.loadURL(path.join('file://', helpers.SrcDir(), 'about-dialog', 'package_details.html'));
     packageDetails.once('ready-to-show', () => {
       packageDetails.show()
     });

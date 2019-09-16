@@ -1,6 +1,6 @@
 const path = require('path');
 const isDev = require('electron-is-dev');
-const package_json = require('../package.json');
+const package_json = require('../../package.json');
 
 function getProductName() {
   return package_json.productName;
@@ -20,7 +20,7 @@ function getReleaseChannel() {
  * @return {string} root directory path
  */
 function RootDir() {
-  return path.resolve(path.join(__dirname, ".."))
+	return path.resolve(path.join(__dirname, "../.."))
 }
 
 /**
@@ -41,9 +41,9 @@ function SrcDir(dir) {
  */
 function ExternalResourcesDir(dir) {
   if (isDev) {
-    return path.resolve(path.join(__dirname, ".."))
-  } else {
     return path.resolve(path.join(__dirname, "../.."))
+  } else {
+    return path.resolve(path.join(__dirname, "../../.."))
   }
 }
 

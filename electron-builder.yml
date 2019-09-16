@@ -1,7 +1,7 @@
 appId: "sh.chef.chef-workstation"
 
 extraMetadata:
-  main: "./src/App.js"
+  main: "./src/app.js"
 
 files:
   - from: .
