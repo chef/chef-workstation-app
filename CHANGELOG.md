@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.18 -->
+<!-- latest_release 0.1.19 -->
+## [v0.1.19](https://github.com/chef/chef-workstation-app/tree/v0.1.19) (2019-09-16)
+
+#### Merged Pull Requests
+- File organization, getting us closer to angular [#85](https://github.com/chef/chef-workstation-app/pull/85) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.18](https://github.com/chef/chef-workstation-app/tree/v0.1.18) (2019-09-16)
 
 #### Merged Pull Requests
 - [bug-fix] Enforce settings on trigger update func [#82](https://github.com/chef/chef-workstation-app/pull/82) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.17](https://github.com/chef/chef-workstation-app/tree/v0.1.17) (2019-09-16)
 
