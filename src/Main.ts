@@ -1,11 +1,11 @@
 import { app, BrowserWindow, dialog, ipcMain, Menu, shell, MenuItemConstructorOptions } from 'electron';
-import { OmnitruckUpdateChecker } from './omnitruck-update-checker';
-import AppConfigSingleton from './app-config';
+import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
+import AppConfigSingleton from './app-config/app-config';
 
-import aboutDialog = require('./about_dialog.js');
-import helpers = require('./helpers.js');
+import aboutDialog = require('./about-dialog/about_dialog.js');
+import workstation = require('./helpers/chef_workstation.js');
+import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
-import workstation = require('./chef_workstation.js');
 
 // TriggerUpdateSettings is an interface that will enforce the settings
 // we pass to the TriggerUpdateCheck function. Since the app is event
@@ -86,7 +86,7 @@ export class Main {
     this.updateCheckInterval = null;
   }
 
-  private triggerUpdateCheck(settings: TriggerUpdateSettings = {
+  public triggerUpdateCheck(settings: TriggerUpdateSettings = {
     UserRequest: true,
     DisplayUpdateNotAvailableDialog: false
   }) {
@@ -149,7 +149,7 @@ export class Main {
       this.tray.setUpdateAvailable(false);
       // If they picked the menu option, show a notification dialog.
       if (this.requestFromUser && this.displayUpdateNotAvailableDialog) {
-        const noUpdateDialog = require('./no_update_dialog.js');
+        const noUpdateDialog = require('./no-update/no_update_dialog.js');
         noUpdateDialog.open();
       }
     });
@@ -164,7 +164,7 @@ export class Main {
         // If they picked the menu option, show a notification dialog.
         // don't set the tray notification state, because they're viewing that
         // notification now.
-        const updateAvailableDialog = require('./update_available_dialog.js');
+        const updateAvailableDialog = require('./update-available/update_available_dialog.js');
         updateAvailableDialog.open(updateInfo);
       }
     });

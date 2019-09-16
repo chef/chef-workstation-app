@@ -3,12 +3,12 @@
   <head>
     <title>Software Update</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
     <script>
-      const helpers = require('./helpers.js')
       const update_available = require('./update_available.js');
-      const workstation = require('./chef_workstation.js');
-      const appConfig = require("./app-config.js");
+      const workstation = require('../helpers/chef_workstation.js');
+      const helpers = require('../helpers/helpers.js')
+      const appConfig = require("../app-config/app-config.js");
       var electron = require('electron');
     </script>
   </head>

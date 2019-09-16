@@ -5,13 +5,13 @@
     <!-- Can't seem to call javascript here. -->
     <!-- <title>About <script>document.write(getProductName())</script></title> -->
     <title>About Chef Workstation</title>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/about.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/about.css">
     <script>
       const about = require('./about.js');
-      const helpers = require('./helpers.js');
-      const workstation = require('./chef_workstation.js');
-      const appConfig = require("./app-config.js");
+      const helpers = require('../helpers/helpers.js');
+      const workstation = require('../helpers/chef_workstation.js');
+      const appConfig = require("../app-config/app-config.js");
       document.addEventListener("DOMContentLoaded", function(event) {
         about.updateDialog();
       });
@@ -38,7 +38,7 @@
           <p>Apache License Version 2.0</p>
         </div>
         <div class="col col-3">
-          <img class="logo" src="../assets/images/workstation-logo.svg" alt="" />
+          <img class="logo" src="../../assets/images/workstation-logo.svg" alt="" />
         </div>
       </section>
       <section class="link-list">

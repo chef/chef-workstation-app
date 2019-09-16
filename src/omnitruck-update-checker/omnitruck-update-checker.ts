@@ -3,7 +3,7 @@ import * as EventEmitter from 'events';
 import semver = require('semver');
 import request = require('request');
 import util = require('util'); // formatting
-import workstation = require('./chef_workstation.js');
+import workstation = require('../helpers/chef_workstation.js');
 
 export class OmnitruckUpdateChecker {
   private emitter: EventEmitter;
