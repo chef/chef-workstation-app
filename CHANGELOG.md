@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.16 -->
+<!-- latest_release 0.1.17 -->
+## [v0.1.17](https://github.com/chef/chef-workstation-app/tree/v0.1.17) (2019-09-16)
+
+#### Merged Pull Requests
+- Fix bug in Update Interval [#84](https://github.com/chef/chef-workstation-app/pull/84) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.16](https://github.com/chef/chef-workstation-app/tree/v0.1.16) (2019-09-13)
 
 #### Merged Pull Requests
 - Match Designs for all Dialog Windows [#81](https://github.com/chef/chef-workstation-app/pull/81) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.15](https://github.com/chef/chef-workstation-app/tree/v0.1.15) (2019-09-13)
 
