@@ -18,7 +18,7 @@ extraResources:
   - "assets/"
 
 mac:
-  target: ["zip"]
+  target: ["tar.xz"]
   category: "public.app-category.developer-tools"
   icon: "assets/images/logo.png"
   extendInfo:
