@@ -28,13 +28,15 @@
                 document.write(workstation.getVersion());
               </script>
             </p>
+            <p><strong>License</strong>
+              Apache License Version 2.0
+            </p>
             <div class="p-inline-button">
               <!-- workstation is available via the about.js script -->
               <p id='update-channel'><strong>Release</strong> <script>document.write(appConfig.default.getUpdateChannel())</script></p>
               <button id='update-channel-btn' class="secondary" onclick="about.toggleUpdatesChannel()" disabled>Switch to <script>document.write(about.getSwitchToChannel())</script> release</button>
             </div>
           </div>
-          <p>Apache License Version 2.0</p>
         </div>
         <div class="col col-3">
           <img class="logo" src="../../assets/images/workstation-logo.svg" alt="" />
