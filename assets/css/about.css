@@ -14,17 +14,6 @@ button.secondary {
   top: -3px;
 }
 
-button.info {
-  margin: 6px 0;
-  position: relative;
-  top: -1px;
-  width: 21px;
-  height: 21px;
-  border: none;
-  border-radius: 50%;
-  background: url("../images/icon-info.svg");
-}
-
 div.strong-list p {
   margin-top: 9px;
 }
