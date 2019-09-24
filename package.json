@@ -36,7 +36,7 @@
     "jsdom": "^15.1.1",
     "marked": "^0.7.0",
     "mocha": "^6.2.0",
-    "rimraf": "^2.7.1",
+    "rimraf": "^3.0.0",
     "spectron": "^7.0.0",
     "typescript": "^3.5.3",
     "xvfb-maybe": "^0.2.1"
