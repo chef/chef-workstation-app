@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.23 -->
+<!-- latest_release 0.1.24 -->
+## [v0.1.24](https://github.com/chef/chef-workstation-app/tree/v0.1.24) (2019-09-24)
+
+#### Merged Pull Requests
+- Bump spectron from 7.0.0 to 8.0.0 [#89](https://github.com/chef/chef-workstation-app/pull/89) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.23](https://github.com/chef/chef-workstation-app/tree/v0.1.23) (2019-09-24)
 
 #### Merged Pull Requests
 - Bump typescript from 3.5.3 to 3.6.3 [#90](https://github.com/chef/chef-workstation-app/pull/90) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.22](https://github.com/chef/chef-workstation-app/tree/v0.1.22) (2019-09-24)
 

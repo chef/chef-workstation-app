@@ -2,7 +2,7 @@
   "name": "chef-workstation-app",
   "productName": "Chef Workstation App",
   "displayName": "Chef Workstation",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "Desktop application for Chef Workstation.",
   "repository": "https://github.com/chef/chef-workstation-app",
   "author": {
