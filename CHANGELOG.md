@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.20 -->
+<!-- latest_release 0.1.21 -->
+## [v0.1.21](https://github.com/chef/chef-workstation-app/tree/v0.1.21) (2019-09-24)
+
+#### Merged Pull Requests
+- Bump electron from 6.0.7 to 6.0.10 [#91](https://github.com/chef/chef-workstation-app/pull/91) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.20](https://github.com/chef/chef-workstation-app/tree/v0.1.20) (2019-09-16)
 
 #### Merged Pull Requests
 - Deactivate ignorecase rename app.ts main.ts files [#86](https://github.com/chef/chef-workstation-app/pull/86) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.19](https://github.com/chef/chef-workstation-app/tree/v0.1.19) (2019-09-16)
 
