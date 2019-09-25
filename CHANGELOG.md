@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.25 -->
+<!-- latest_release 0.1.26 -->
+## [v0.1.26](https://github.com/chef/chef-workstation-app/tree/v0.1.26) (2019-09-25)
+
+#### Merged Pull Requests
+- Revert &quot;Switch mac compression from zip to .tar.gz&quot; [#94](https://github.com/chef/chef-workstation-app/pull/94) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.25](https://github.com/chef/chef-workstation-app/tree/v0.1.25) (2019-09-25)
 
 #### Merged Pull Requests
 - Switch mac compression from zip to .tar.gz [#93](https://github.com/chef/chef-workstation-app/pull/93) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.24](https://github.com/chef/chef-workstation-app/tree/v0.1.24) (2019-09-24)
 
