@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.26 -->
+<!-- latest_release 0.1.27 -->
+## [v0.1.27](https://github.com/chef/chef-workstation-app/tree/v0.1.27) (2019-09-30)
+
+#### Merged Pull Requests
+- Bump mocha from 6.2.0 to 6.2.1 [#95](https://github.com/chef/chef-workstation-app/pull/95) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.26](https://github.com/chef/chef-workstation-app/tree/v0.1.26) (2019-09-25)
 
 #### Merged Pull Requests
 - Revert &quot;Switch mac compression from zip to .tar.gz&quot; [#94](https://github.com/chef/chef-workstation-app/pull/94) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.25](https://github.com/chef/chef-workstation-app/tree/v0.1.25) (2019-09-25)
 
