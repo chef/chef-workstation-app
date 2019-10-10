@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.28 -->
+<!-- latest_release 0.1.29 -->
+## [v0.1.29](https://github.com/chef/chef-workstation-app/tree/v0.1.29) (2019-10-10)
+
+#### Merged Pull Requests
+- Bump typescript from 3.6.3 to 3.6.4 [#98](https://github.com/chef/chef-workstation-app/pull/98) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.28](https://github.com/chef/chef-workstation-app/tree/v0.1.28) (2019-10-10)
 
 #### Merged Pull Requests
 - Bump electron from 6.0.10 to 6.0.12 [#97](https://github.com/chef/chef-workstation-app/pull/97) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.27](https://github.com/chef/chef-workstation-app/tree/v0.1.27) (2019-09-30)
 
