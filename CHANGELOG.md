@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.29 -->
+<!-- latest_release 0.1.30 -->
+## [v0.1.30](https://github.com/chef/chef-workstation-app/tree/v0.1.30) (2019-10-22)
+
+#### Merged Pull Requests
+- Remove the non-functional ? icon from the about dialog [#92](https://github.com/chef/chef-workstation-app/pull/92) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.29](https://github.com/chef/chef-workstation-app/tree/v0.1.29) (2019-10-10)
 
 #### Merged Pull Requests
 - Bump typescript from 3.6.3 to 3.6.4 [#98](https://github.com/chef/chef-workstation-app/pull/98) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.28](https://github.com/chef/chef-workstation-app/tree/v0.1.28) (2019-10-10)
 
