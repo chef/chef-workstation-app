@@ -11,18 +11,7 @@ section {
 button.secondary {
   margin: 0 6px;
   position: relative;
-  top: -3px;
-}
-
-button.info {
-  margin: 6px 0;
-  position: relative;
-  top: -1px;
-  width: 21px;
-  height: 21px;
-  border: none;
-  border-radius: 50%;
-  background: url("../images/icon-info.svg");
+  top: 5px;
 }
 
 div.strong-list p {
