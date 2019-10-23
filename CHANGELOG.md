@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.30 -->
+<!-- latest_release 0.1.31 -->
+## [v0.1.31](https://github.com/chef/chef-workstation-app/tree/v0.1.31) (2019-10-23)
+
+#### Merged Pull Requests
+- Bump mocha from 6.2.1 to 6.2.2 [#100](https://github.com/chef/chef-workstation-app/pull/100) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.30](https://github.com/chef/chef-workstation-app/tree/v0.1.30) (2019-10-22)
 
 #### Merged Pull Requests
 - Remove the non-functional ? icon from the about dialog [#92](https://github.com/chef/chef-workstation-app/pull/92) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.29](https://github.com/chef/chef-workstation-app/tree/v0.1.29) (2019-10-10)
 
