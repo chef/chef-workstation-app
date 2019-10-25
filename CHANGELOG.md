@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.31 -->
+<!-- latest_release 0.1.32 -->
+## [v0.1.32](https://github.com/chef/chef-workstation-app/tree/v0.1.32) (2019-10-25)
+
+#### Merged Pull Requests
+- Bump electron from 6.0.12 to 7.0.0 for darkmode support [#101](https://github.com/chef/chef-workstation-app/pull/101) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.31](https://github.com/chef/chef-workstation-app/tree/v0.1.31) (2019-10-23)
 
 #### Merged Pull Requests
 - Bump mocha from 6.2.1 to 6.2.2 [#100](https://github.com/chef/chef-workstation-app/pull/100) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.30](https://github.com/chef/chef-workstation-app/tree/v0.1.30) (2019-10-22)
 
