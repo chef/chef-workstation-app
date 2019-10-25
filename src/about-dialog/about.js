@@ -12,22 +12,22 @@ const appConfig = require("../app-config/app-config.js");
 // We purposefully decided to open it in the system browser since we eventually want most of these to be
 // links to documentation on the Chef website. The license should always display from local source.
 // When users do not have internet access, we will open a local file in an Electron window.
-function openLicense() {
+async function openLicense() {
   licensePath = path.join('file://', helpers.ExternalAssetsDir(), 'html/license.html');
-  shell.openExternalSync(licensePath)
+  await shell.openExternal(licensePath)
 }
 
-function openReleaseNotes() {
+async function openReleaseNotes() {
   if (isDev) {
     devReleaseNotes = path.join('file://', helpers.ExternalAssetsDir(), 'html/development_release_notes.html');
-    shell.openExternalSync(devReleaseNotes);
+    shell.openExternal(devReleaseNotes);
   } else {
     // This displays raw markdown now but we will update it to display rendered markdown
     // once we have a location for that
     let cwVersion = workstation.getVersion();
     remoteReleaseNotes = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
     https.get(remoteReleaseNotes, function(res) {
-      shell.openExternalSync(remoteReleaseNotes);
+      shell.openExternal(remoteReleaseNotes);
     }).on('error', function(e){
       localReleaseNotes = new BrowserWindow({show: false});
       localReleaseNotes.removeMenu();

@@ -96,7 +96,7 @@ export class Main {
   }
 
   private downloadUpdate() {
-    let result = shell.openExternalSync(this.pendingUpdate.url);
+    let result = shell.openExternal(this.pendingUpdate.url);
     console.log("Attempted to open URL: " + this.pendingUpdate.url + ". Result: " + result);
   }
 
