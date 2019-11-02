@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.33 -->
+<!-- latest_release 0.1.34 -->
+## [v0.1.34](https://github.com/chef/chef-workstation-app/tree/v0.1.34) (2019-11-02)
+
+#### Merged Pull Requests
+- Update electron to 7.0.1 and roll back electron-builder [#108](https://github.com/chef/chef-workstation-app/pull/108) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.33](https://github.com/chef/chef-workstation-app/tree/v0.1.33) (2019-10-30)
 
 #### Merged Pull Requests
 - Bump electron-builder from 21.2.0 to 22.1.0 [#107](https://github.com/chef/chef-workstation-app/pull/107) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.32](https://github.com/chef/chef-workstation-app/tree/v0.1.32) (2019-10-25)
 
