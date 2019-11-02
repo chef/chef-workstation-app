@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.34 -->
+<!-- latest_release 0.1.35 -->
+## [v0.1.35](https://github.com/chef/chef-workstation-app/tree/v0.1.35) (2019-11-02)
+
+#### Merged Pull Requests
+- Fix the scrollbar showing up in the about window [#109](https://github.com/chef/chef-workstation-app/pull/109) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.34](https://github.com/chef/chef-workstation-app/tree/v0.1.34) (2019-11-02)
 
 #### Merged Pull Requests
 - Update electron to 7.0.1 and roll back electron-builder [#108](https://github.com/chef/chef-workstation-app/pull/108) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.33](https://github.com/chef/chef-workstation-app/tree/v0.1.33) (2019-10-30)
 
