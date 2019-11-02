@@ -1,11 +1,15 @@
 main {
-  margin: 20px 22px;
+  margin: 20px 22px 10px;
 }
 
 section {
   display: inline-block;
   width: 100%;
   margin-bottom: 20px;
+}
+
+section.footer {
+  margin-bottom: 0px;
 }
 
 button.secondary {
