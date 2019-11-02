@@ -84,6 +84,13 @@ function setToolTip() {
     tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
 };
 
+function subscribeThemeChangeMacOS() {
+  tray.subscribeNotification(
+    'AppleInterfaceThemeChangedNotification',
+    displayNotification(isNotifying)
+  );
+};
+
 // Expose Public WSTray instance funcitons.
 WSTray.prototype.displayNotification = displayNotification;
 WSTray.prototype.setContextMenu = setContextMenu;
@@ -109,8 +116,5 @@ app.on('ready', () => {
 
   // Not sure about this pattern... Maybe this should live in main?
   // Subscribe to changes to dark mode setting so we can update the icon.
-  self.subscribeNotification(
-    'AppleInterfaceThemeChangedNotification',
-    displayNotification(isNotifying)
-  )
+  subscribeThemeChangeMacOS;
 });
