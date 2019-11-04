@@ -5,7 +5,6 @@
 const { app, Tray } = require('electron');
 const path = require('path');
 const is = require('electron-is');
-const osxPrefs = require('electron-osx-appearance');
 const workstation = require('./helpers/chef_workstation.js')
 const util = require('util');
 
@@ -23,7 +22,7 @@ const winIcon = path.join(__dirname, '../assets/images/iconLightTemplate@3x.png'
 const winIconNotify = path.join(__dirname, '../assets/images/iconLightNotify@3x.png');
 
 // Default icon
-var icon = is.osx() ? macIcon : winIcon;
+var icon = is.macOS() ? macIcon : winIcon;
 
 // Electron Tray
 var tray = null;
@@ -35,7 +34,7 @@ var version = "[unknown]";
 
 function WSTray() {
     tray = new Tray(icon);
-    if (is.osx()) {
+    if (is.macOS()) {
       app.dock.hide()
     }
     isNotifying = false;
@@ -44,8 +43,8 @@ function WSTray() {
 }
 
 function setNotifyIcon() {
-    if (is.osx()) {
-        if (osxPrefs.isDarkMode()) {
+    if (is.macOS()) {
+        if (tray.remote.systemPreferences.isDarkMode()) {
             tray.setImage(macIconLightNotify);
         } else {
             tray.setImage(macIconDarkNotify);
@@ -85,6 +84,13 @@ function setToolTip() {
     tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
 };
 
+function subscribeThemeChangeMacOS() {
+  tray.subscribeNotification(
+    'AppleInterfaceThemeChangedNotification',
+    displayNotification(isNotifying)
+  );
+};
+
 // Expose Public WSTray instance funcitons.
 WSTray.prototype.displayNotification = displayNotification;
 WSTray.prototype.setContextMenu = setContextMenu;
@@ -103,14 +109,12 @@ var self = module.exports = {
     }
 }
 
-// Not sure about this pattern... Maybe this should live in main?
-// Subscribe to changes to dark mode setting so we can update the icon.
-if (is.osx()) {
-    osxPrefs.onDarkModeChanged(() => {
-        displayNotification(isNotifying);
-    });
-}
-
 // Not sure about this pattern but it makes sure we have an instance
 // as soon as the app starts.
-app.on('ready', () => { self.instance(); });
+app.on('ready', () => {
+  self.instance();
+
+  // Not sure about this pattern... Maybe this should live in main?
+  // Subscribe to changes to dark mode setting so we can update the icon.
+  subscribeThemeChangeMacOS;
+});

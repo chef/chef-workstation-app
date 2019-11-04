@@ -45,7 +45,6 @@
     "@iarna/toml": "^2.2.3",
     "electron-debug": "^3.0.1",
     "electron-is": "^3.0.0",
-    "electron-osx-appearance": "^0.1.1",
     "request": "^2.0.0"
   }
 }
