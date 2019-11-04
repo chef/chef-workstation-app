@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.36 -->
+<!-- latest_release 0.1.37 -->
+## [v0.1.37](https://github.com/chef/chef-workstation-app/tree/v0.1.37) (2019-11-04)
+
+#### Merged Pull Requests
+- Detect dark mode using Electron 7 natively [#113](https://github.com/chef/chef-workstation-app/pull/113) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.36](https://github.com/chef/chef-workstation-app/tree/v0.1.36) (2019-11-04)
 
 #### Merged Pull Requests
 - Bump jsdom from 15.2.0 to 15.2.1 [#116](https://github.com/chef/chef-workstation-app/pull/116) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.35](https://github.com/chef/chef-workstation-app/tree/v0.1.35) (2019-11-02)
 
