@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.37 -->
+<!-- latest_release 0.1.38 -->
+## [v0.1.38](https://github.com/chef/chef-workstation-app/tree/v0.1.38) (2019-11-06)
+
+#### Merged Pull Requests
+- Bump typescript from 3.6.4 to 3.7.2 [#120](https://github.com/chef/chef-workstation-app/pull/120) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.37](https://github.com/chef/chef-workstation-app/tree/v0.1.37) (2019-11-04)
 
 #### Merged Pull Requests
 - Detect dark mode using Electron 7 natively [#113](https://github.com/chef/chef-workstation-app/pull/113) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.36](https://github.com/chef/chef-workstation-app/tree/v0.1.36) (2019-11-04)
 
