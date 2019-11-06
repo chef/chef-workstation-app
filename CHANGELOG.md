@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.40 -->
+<!-- latest_release 0.1.41 -->
+## [v0.1.41](https://github.com/chef/chef-workstation-app/tree/v0.1.41) (2019-11-06)
+
+#### Merged Pull Requests
+- Revert &quot;Bump typescript from 3.6.4 to 3.7.2&quot; [#121](https://github.com/chef/chef-workstation-app/pull/121) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.40](https://github.com/chef/chef-workstation-app/tree/v0.1.40) (2019-11-06)
 
 #### Merged Pull Requests
 - Improve channel wording in the no update dialog box [#115](https://github.com/chef/chef-workstation-app/pull/115) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.39](https://github.com/chef/chef-workstation-app/tree/v0.1.39) (2019-11-06)
 
