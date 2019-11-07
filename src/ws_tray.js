@@ -2,7 +2,7 @@
 /*
 * WSTray module handles toggling the state/image of our tray icon.
 */
-const { app, Tray } = require('electron');
+const { app, Tray, systemPreferences } = require('electron');
 const path = require('path');
 const is = require('electron-is');
 const workstation = require('./helpers/chef_workstation.js')
@@ -44,7 +44,7 @@ function WSTray() {
 
 function setNotifyIcon() {
     if (is.macOS()) {
-        if (tray.remote.systemPreferences.isDarkMode()) {
+        if (systemPreferences.isDarkMode()) {
             tray.setImage(macIconLightNotify);
         } else {
             tray.setImage(macIconDarkNotify);
