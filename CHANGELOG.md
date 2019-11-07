@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.41 -->
+<!-- latest_release 0.1.42 -->
+## [v0.1.42](https://github.com/chef/chef-workstation-app/tree/v0.1.42) (2019-11-07)
+
+#### Merged Pull Requests
+- Use electron systemPreference properly [#123](https://github.com/chef/chef-workstation-app/pull/123) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.41](https://github.com/chef/chef-workstation-app/tree/v0.1.41) (2019-11-06)
 
 #### Merged Pull Requests
 - Revert &quot;Bump typescript from 3.6.4 to 3.7.2&quot; [#121](https://github.com/chef/chef-workstation-app/pull/121) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.40](https://github.com/chef/chef-workstation-app/tree/v0.1.40) (2019-11-06)
 
