@@ -2,6 +2,7 @@ import { app, BrowserWindow, dialog, ipcMain, Menu, shell, MenuItemConstructorOp
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
 import AppConfigSingleton from './app-config/app-config';
 
+import preferencesDialog = require('./preferences/preferences_dialog.js');
 import aboutDialog = require('./about-dialog/about_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
@@ -45,6 +46,11 @@ export class Main {
           UserRequest: true,
           DisplayUpdateNotAvailableDialog: true
         })}
+      },
+      {type: 'separator'},
+      {
+        label: 'Preferences...',
+        click: () => { preferencesDialog.open() }
       },
       {type: 'separator'},
       {

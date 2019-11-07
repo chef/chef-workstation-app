@@ -9,6 +9,7 @@ interface Config {
     enable?: boolean;
     interval_minutes?: number;
   };
+  features?: Map<string, boolean>;
 };
 
 class AppConfig {
@@ -56,6 +57,22 @@ class AppConfig {
       return true
     }
     return userConfig.updates.enable;
+  }
+
+  public getAllFeatureFlags(): Map<string, boolean> {
+    let userConfig = this.getUserConfig();
+    if (userConfig.features == undefined) {
+      return new Map();
+    }
+    return userConfig.features;
+  }
+
+  public getFeatureFlag(key: string): boolean {
+    let userConfig = this.getUserConfig();
+    if (userConfig.features == undefined || userConfig.features[key] == undefined) {
+      return false;
+    }
+    return userConfig.features[key];
   }
 
   public getUpdateIntervalMinutes() {

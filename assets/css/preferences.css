@@ -1,0 +1,73 @@
+body {
+  background-color: Window;
+  color: #393C3D;
+  font: caption;
+  font-size: 13px;
+  margin: 0px;
+}
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+.Titlebar-Background {
+  width: 500px;
+  height: 78px;
+  box-shadow: inset 0 -1px 0 0 rgba(183, 180, 183, 0.3), inset 0 -0.5px 0 0 #b7b4b7, inset 0 0.5px 0.5px 0 rgba(255, 255, 255, 0.5);
+  background-image: linear-gradient(to bottom, #edeced 1%, #d2d1d2 97%);
+  text-align: -webkit-center;
+}
+
+.Window-Title {
+  width: 436px;
+  height: 15px;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.08px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.tabs-bar {
+  margin-top: 6px;
+}
+
+.tab {
+  width: 80px;
+  height: 56px;
+  display: inline-block;
+  float: left;
+}
+
+.selected {
+  height: 56px;
+  border-radius: 4px;
+  background-color: #c5c4c4;
+}
+
+.tab-sub-title {
+  width: 41px;
+  height: 13px;
+  font-size: 11px;
+  color: #393c3d;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  background: url('../images/workstation-logo.svg');
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.content {
+  width: 460px;
+  padding: 20px;
+}
+
+.option {
+  margin-bottom: 14px;
+}

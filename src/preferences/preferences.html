@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Preferences</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const preferences = require('./preferences.js');
+    </script>
+  </head>
+  <body>
+    <div class="Titlebar-Background draggable">
+      <div class="Window-Title">Feature Flags</div>
+      <div class="tabs-bar">
+        <div class="tab selected">
+          <div class="icon"></div>
+          <div class="tab-sub-title">Features</div>
+        </div>
+        <div class="tab">
+          <div class="icon"></div>
+          <div class="tab-sub-title">Other</div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="option">
+        <input type="checkbox" id="all" onclick="preferences.checkboxClick('all');" /> All features at once <br />
+      </div>
+      <div class="option">
+        <input type="checkbox" id="analyze" onclick="preferences.checkboxClick('analyze');" /> Chef analyze feature <br />
+      </div>
+      <div class="option">
+        <input type="checkbox" id="featflags" onclick="preferences.checkboxClick('featflags');" > Feature flags feature <br />
+      </div>
+    </div>
+    <script>
+      preferences.loadFeatureFlags();
+    </script>
+  </body>
+</html>
