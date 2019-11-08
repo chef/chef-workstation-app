@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="../../assets/css/main.css">
     <link rel="stylesheet" href="../../assets/css/featflag.css">
     <script>
-      const helpers = require('../helpers/helpers.js')
-      const workstation = require('../helpers/chef_workstation.js');
       const featflag = require('./featflag.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        featflag.updateDialog();
+      });
     </script>
   </head>
   <body>
@@ -24,19 +25,11 @@
       </div>
     </div>
     <div class="features-container">
-      <input type="checkbox" id="all" name="all" value="all" /> All features <br />
-      <input type="checkbox" id="analyze" name="analyze" value="analyze"> Chef analyze feature <br />
-      <input type="checkbox" id="xyz" name="xyz" value="xyz"> XYZ feature <br />
-      <input type="checkbox" /> An interesting features <br />
-      <input type="checkbox" /> Some other features <br />
-      <input type="checkbox" /> Why not have a bunch of other features <br />
-      <input type="checkbox" /> lalala features <br />
-      <input type="checkbox" /> lalala features <br />
+      <input type="checkbox" id="analyze" onclick="featflag.toggleFeatureFlag(this);" /><label> Chef Analyze Command</label><br />
+      <input type="checkbox" id="preferences_dialog" onclick="featflag.toggleFeatureFlag(this);" /><label> Preferences Dialog</label><br />
     </div>
     <div id="bottom-panel">
-      <button class="secondary" onclick="window.close()">Close</button>
-      <button id='save-featflag-btn' class="primary" onclick="featflag.toggleSave()">Save</button>
+      <button class="primary" onclick="window.close()">Close</button>
     </div>
   </body>
 </html>
-

@@ -13,9 +13,28 @@ interface Config {
 };
 
 class AppConfig {
+  private defaultIntervalMinutes = 60*8; // Every 8 hours.
   private workstationDir = path.join(os.homedir(), '.chef-workstation');
   private userConfigFile = path.join(this.workstationDir, 'config.toml');
   private appConfigFile = path.join(this.workstationDir, '.app-managed-config.toml');
+
+  // returns a all the feature flags from the user config
+  private getAllUserFeatures(): Map<string, boolean> {
+    let userConfig = this.getUserConfig();
+    if (userConfig.features == undefined) {
+      return new Map();
+    }
+    return userConfig.features;
+  }
+
+  // returns a all the feature flags from the application config
+  private getAllAppFeatures(): Map<string, boolean> {
+    let appConfig = this.getAppConfig();
+    if (appConfig.features == undefined) {
+      return new Map();
+    }
+    return appConfig.features;
+  }
 
   constructor() {}
 
@@ -59,26 +78,34 @@ class AppConfig {
     return userConfig.updates.enable;
   }
 
+  // returns the list of all the feature flags, the function first looks for all
+  // the features configured at the application config then, it uses the user
+  // config to overwrite them
   public getAllFeatureFlags(): Map<string, boolean> {
-    let userConfig = this.getUserConfig();
-    if (userConfig.features == undefined) {
-      return new Map();
+    // get all features from the application config
+    var allFeatures = this.getAllAppFeatures();
+
+    // get all features from the users config and overwrite the app config
+    for (const [key, value] of Object.entries(this.getAllUserFeatures())) {
+      allFeatures[key] = value;
     }
-    return userConfig.features;
+
+    return allFeatures;
   }
 
+  // returns a single feature flag
   public getFeatureFlag(key: string): boolean {
-    let userConfig = this.getUserConfig();
-    if (userConfig.features == undefined || userConfig.features[key] == undefined) {
-      return false;
+    let features = this.getAllFeatureFlags();
+    if (features == undefined || features[key] == undefined) {
+      return false
     }
-    return userConfig.features[key];
+    return features[key];
   }
 
   public getUpdateIntervalMinutes() {
     let userConfig = this.getUserConfig();
     if (userConfig.updates == undefined || userConfig.updates.interval_minutes == undefined) {
-      return 60*8; // Every 8 hours.
+      return this.defaultIntervalMinutes; // Every 8 hours.
     }
     return userConfig.updates.interval_minutes;
   }
@@ -105,6 +132,36 @@ class AppConfig {
     }
 
     return false;
+  }
+
+  // detect wheater or not the Tray should update a feature flag, that is, if the user
+  // has already configured a feature inside the config.toml, the Tray shouldn't being
+  // able to modify it
+  public canUpdateFeature(feat: string): boolean {
+    let userConfig = this.getUserConfig();
+
+    if (userConfig.features == undefined || userConfig.features[feat] == undefined) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // saves the state of a single feature flag inside the application config
+  public setFeatureFlag(feat: string, value: boolean) {
+    let appConfig = this.getAppConfig();
+
+    if (appConfig.features == undefined) {
+      appConfig.features = new Map<string, boolean>();
+    }
+
+    if (value) {
+      appConfig.features[feat] = true;
+    } else {
+      appConfig.features[feat] = null;
+    }
+
+    this.saveAppConfig(appConfig);
   }
 
   public setUpdateChannel(channel) {

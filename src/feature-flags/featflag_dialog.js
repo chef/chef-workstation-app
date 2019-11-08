@@ -1,4 +1,4 @@
-const { BrowserWindow } = require('electron');
+const { BrowserWindow } = require('electron').remote;
 const path = require('path');
 
 let featflagDialog = null;
@@ -7,7 +7,6 @@ function open() {
   if (featflagDialog == null) {
     const featflagPath = path.join('file://', __dirname, 'featflag.html');
     featflagDialog = new BrowserWindow({
-      title: '',
       show: false,
       alwaysOnTop: true,
       width: 470,
@@ -33,4 +32,3 @@ function open() {
 }
 
 module.exports.open = open;
-
