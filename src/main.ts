@@ -64,10 +64,18 @@ export class Main {
       }
     ];
 
-    // Add shortcut on mac
+    // Add shortcuts on mac
     if (process.platform === "darwin") {
-      var quit = template[template.length - 1];
-      quit['accelerator'] = "Command+Q";
+      for (var item of template) {
+        switch(item.label) {
+          case 'Quit':
+            item['accelerator'] = 'Command+Q';
+            break;
+          case 'Preferences...':
+            item['accelerator'] = 'Command+,';
+            break;
+        }
+      }
     }
 
     return Menu.buildFromTemplate(template);
