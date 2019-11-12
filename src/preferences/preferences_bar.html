@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Preferences</title>
+    <title>Advanced</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
     <script>
-      const featflag_dialog = require('../feature-flags/featflag_dialog.js');
+      const preferences = require('./preferences.js');
     </script>
   </head>
   <body>
     <div class="titlebar-background draggable">
-      <div class="window-title">Preferences</div>
+      <div class="window-title" id="window-title">Preferences</div>
       <div class="tabs-bar">
-        <div class="tab">
+        <div class="tab" id="general" onclick="preferences.switchTab('general')">
           <div class="icon general"></div>
           <div class="tab-sub-title">General</div>
         </div>
-        <div class="tab">
+        <div class="tab" id="notifications" onclick="preferences.switchTab('notifications')">
           <div class="icon notification"></div>
           <div class="tab-sub-title">Notifications</div>
         </div>
         <div class="tab"></div>
         <div class="tab"></div>
         <div class="tab"></div>
-        <div class="tab selected">
+        <div class="tab selected" id="advanced" onclick="preferences.switchTab('advanced')">
           <div class="icon advanced"></div>
           <div class="tab-sub-title">Advanced</div>
-        </div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="section">
-        <button onclick="featflag_dialog.open()">Feature Flags</button>
-        <div class="section-content">
-          Message that explains the user that they can turn features flags on and off...
         </div>
       </div>
     </div>

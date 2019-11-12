@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const featflag_dialog = require('../feature-flags/featflag_dialog.js');
+      const preferences = require('./preferences.js');
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="section">
+        <button onclick="featflag_dialog.open()">Feature Flags</button>
+        <div class="section-content">
+          Message that explains the user that they can turn features flags on and off...
+        </div>
+      </div>
+      <div class="section">
+        <button onclick="preferences.uninstall()">Uninstall</button>
+        <div class="section-content">
+          We are sad so see you go. This will completely uninstall Chef Workstation.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

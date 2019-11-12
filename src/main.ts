@@ -1,8 +1,16 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu, shell, MenuItemConstructorOptions } from 'electron';
+import {
+  MenuItemConstructorOptions,
+  BrowserWindow,
+  Menu,
+  app,
+  dialog,
+  ipcMain,
+  shell
+} from 'electron';
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
+import { PreferencesDialog } from './preferences/preferences_dialog';
 import AppConfigSingleton from './app-config/app-config';
 
-import preferencesDialog = require('./preferences/preferences_dialog.js');
 import aboutDialog = require('./about-dialog/about_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
@@ -23,6 +31,7 @@ export class Main {
   // here now so it is the first/main window of the app meaning the about pop up
   // won't close the app when closed.
   private backgroundWindow: BrowserWindow;
+  private preferencesDialog: PreferencesDialog;
   private displayUpdateNotAvailableDialog: boolean;
   private pendingUpdate;
   private requestFromUser: boolean;
@@ -51,7 +60,7 @@ export class Main {
       {
         label: 'Preferences...',
         visible: this.appConfig.getFeatureFlag("preferences_dialog"),
-        click: () => { preferencesDialog.open() }
+        click: () => { this.openPreferencesDialog() }
       },
       {type: 'separator'},
       {
@@ -135,6 +144,14 @@ export class Main {
       this.setupUpdateInterval();
     }
   }
+  private openPreferencesDialog() {
+    this.preferencesDialog = new PreferencesDialog();
+    this.preferencesDialog.show();
+  }
+
+  private switchPreferencesTab(tab: string) {
+    this.preferencesDialog.switchTab(tab);
+  }
 
   private quitApp() {
     this.clearUpdateInterval();
@@ -152,6 +169,7 @@ export class Main {
 
     ipcMain.on('do-update-check', (_event, arg) => { this.triggerUpdateCheck(arg) });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
+    ipcMain.on('switch-preferences-tab', (_event, arg) => { this.switchPreferencesTab(arg) });
 
     this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks
