@@ -4,14 +4,18 @@
     <title>Notifications</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const preferences = require('./preferences.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        preferences.updateContentDialog();
+      });
+    </script>
   </head>
   <body>
     <div class="content">
+      <div class="section">Notify me about…</div>
       <div class="section">
-        <input type="checkbox" id="foo" onclick="toggleFeatureFlag(this);" /><label> A notification</label><br />
-      </div>
-      <div class="section">
-        <input type="checkbox" id="bar" onclick="toggleFeatureFlag(this);" /><label> A notification</label><br />
+        <input type="checkbox" id="notfication_updates" onclick="preferences.toggleSetting(this);" /><label> Software updates</label><br />
       </div>
     </div>
   </body>

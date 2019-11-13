@@ -144,6 +144,7 @@ export class Main {
       this.setupUpdateInterval();
     }
   }
+
   private openPreferencesDialog() {
     this.preferencesDialog = new PreferencesDialog();
     this.preferencesDialog.show();

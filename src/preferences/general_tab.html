@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Advanced</title>
+    <title>General</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const preferences = require('./preferences.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        preferences.updateContentDialog();
+      });
+    </script>
   </head>
   <body>
     <div class="content">
       <div class="section">
-        <input type="checkbox" id="foo" onclick="toggleFeatureFlag(this);" /><label> A general setting</label><br />
+        <input type="checkbox" id="startup" onclick="preferences.toggleSetting(this);" /><label> Start Workstation App on system startup </label><br />
       </div>
       <div class="section">
-        <input type="checkbox" id="bar" onclick="toggleFeatureFlag(this);" /><label> Another one...</label><br />
+        <input type="checkbox" id="chef_updates" onclick="preferences.toggleSetting(this);" /><label> Automatically check for updates</label><br />
+      </div>
+      <div class="section">
+        <input type="checkbox" id="telemetry" onclick="preferences.toggleSetting(this);" /><label> Share my usage data with Chef</label><br />
+        <div class="section-content">- Commands (without arguments)</div>
+        <div class="section-content">- Connection method (WinRM or SSH)</div>
+        <div class="section-content">- Host/client operating system and version</div>
+        <div class="section-content"><a href="#">View more usage data details</a></div>
       </div>
     </div>
   </body>
