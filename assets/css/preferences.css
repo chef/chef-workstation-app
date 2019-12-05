@@ -44,9 +44,15 @@ button {
 }
 
 .section-content {
-  padding-right: 20px;
-  padding-left: 20px;
+  font-size: 12px;
   padding-top: 14px;
+}
+
+.section-flag-content {
+  font-size: 11px;
+  padding-top: 14px;
+  padding-left: 22px;
+  font-style: italic;
 }
 
 .titlebar-background {

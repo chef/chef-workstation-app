@@ -5,22 +5,32 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
     <script>
-      const featflag_dialog = require('../feature-flags/featflag_dialog.js');
+      const featflag = require('./featflag.js');
       const preferences = require('./preferences.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        featflag.updateDialog();
+      });
     </script>
   </head>
   <body>
     <div class="content">
       <div class="section">
-        <button onclick="featflag_dialog.open()">Feature Flags</button>
+      <div class="section-title"><b>Feature Flags</b></div>
         <div class="section-content">
-          Enable and disable experimental features for Chef Workstation.
+          Chef Workstation flagged features are experimental and may contain bugs.
+          Proceed with caution when turning these features on.
         </div>
       </div>
       <div class="section">
-        <button onclick="preferences.uninstall()">Uninstall</button>
-        <div class="section-content">
-          We are sorry so see you go. This completely uninstalls Chef Workstation.
+        <input type="checkbox" id="analyze" onclick="featflag.toggleFeatureFlag(this);" /><label> chef analyze command</label><br />
+        <div class="section-flag-content">
+          Analyze your Chef Infra Server artifacts to understand the effort to upgrade your infrastructure by generating reports, automatically fixing violations and/or deprecations, and generating Effortless packages.
+        </div>
+      </div>
+      <div class="section">
+        <input type="checkbox" id="foo" onclick="featflag.toggleFeatureFlag(this);" /><label> foo ding</label><br />
+        <div class="section-flag-content">
+          A new cool foo ding!
         </div>
       </div>
     </div>
