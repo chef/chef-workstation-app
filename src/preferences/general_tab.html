@@ -14,17 +14,16 @@
   <body>
     <div class="content">
       <div class="section">
-        <input type="checkbox" id="startup" onclick="preferences.toggleSetting(this);" /><label> Start Workstation App on system startup </label><br />
+        <input type="checkbox" id="startup" onclick="preferences.toggleSetting(this);" /><label> Start Workstation App on system startup</label>
       </div>
       <div class="section">
-        <input type="checkbox" id="chef_updates" onclick="preferences.toggleSetting(this);" /><label> Automatically check for updates</label><br />
-      </div>
-      <div class="section">
-        <input type="checkbox" id="telemetry" onclick="preferences.toggleSetting(this);" /><label> Share my usage data with Chef</label><br />
-        <div class="section-content">- Commands (without arguments)</div>
-        <div class="section-content">- Connection method (WinRM or SSH)</div>
-        <div class="section-content">- Host/client operating system and version</div>
-        <div class="section-content"><a href="#">View more usage data details</a></div>
+        <input type="checkbox" id="telemetry" onclick="preferences.toggleSetting(this);" />
+        <label>Share my usage data with Chef
+          - Commands (without arguments)
+          - Connection method (WinRM or SSH)
+          - Host/client operating system and version
+          <!--<a href="#">View more usage data details</a>-->
+        </label>
       </div>
     </div>
   </body>

@@ -6,9 +6,13 @@ body {
   margin: 0px;
 }
 
+input[type="checkbox"] + label {
+  white-space: pre-wrap;
+  line-height: 1.7em;
+}
+
 input[type="checkbox"]:disabled + label {
   color: #858585;
-  background-color: #f2f2f2;
 }
 
 button {
@@ -46,6 +50,7 @@ button {
 .section-content {
   font-size: 12px;
   padding-top: 14px;
+  padding-left: 22px;
 }
 
 .section-flag-content {

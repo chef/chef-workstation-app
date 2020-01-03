@@ -59,7 +59,7 @@ export class Main {
       {type: 'separator'},
       {
         label: 'Preferences...',
-        visible: this.appConfig.getFeatureFlag("preferences_dialog"),
+        visible: this.appConfig.getFeatureFlag('preferences_dialog'),
         click: () => { this.openPreferencesDialog() }
       },
       {type: 'separator'},
@@ -74,7 +74,7 @@ export class Main {
     ];
 
     // Add shortcuts on mac
-    if (process.platform === "darwin") {
+    if (process.platform === 'darwin') {
       for (var item of template) {
         switch(item.label) {
           case 'Quit':

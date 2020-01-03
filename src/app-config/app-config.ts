@@ -36,8 +36,7 @@ class AppConfig {
     return appConfig.features;
   }
 
-  constructor() {}
-
+  // returns the user config, which is what the config.toml file says
   public getUserConfig(): Config {
     try {
       // @afiune Check for the file before reading it
@@ -48,6 +47,8 @@ class AppConfig {
     }
   }
 
+  // returns the application config, which is what the .app-managed-config.toml file says.
+  // this is the config that the app controls and it gets merged witht he user config
   public getAppConfig(): Config {
     try {
       return TOML.parse(fs.readFileSync(this.appConfigFile, "utf8")) as Config;
@@ -56,6 +57,7 @@ class AppConfig {
     }
   }
 
+  // saves the application config to disk
   public saveAppConfig(appConfig) {
     try {
       if (!fs.existsSync(this.workstationDir)) {
@@ -102,14 +104,16 @@ class AppConfig {
     return features[key];
   }
 
+  // returns the interval to check for updates in minutes (default: 480)
   public getUpdateIntervalMinutes() {
     let userConfig = this.getUserConfig();
     if (userConfig.updates == undefined || userConfig.updates.interval_minutes == undefined) {
-      return this.defaultIntervalMinutes; // Every 8 hours.
+      return this.defaultIntervalMinutes; // every 8 hours
     }
     return userConfig.updates.interval_minutes;
   }
 
+  // returns the channel to look for updates (default: stable)
   public getUpdateChannel() {
     let userConfig = this.getUserConfig();
 
@@ -124,6 +128,13 @@ class AppConfig {
     return userConfig.updates.channel;
   }
 
+  // verify if the Tray app can update the channel (default: true)
+  //
+  // config example:
+  // ```
+  // [updates]
+  // channel = 'current'
+  // ```
   public canUpdateChannel() {
     let userConfig = this.getUserConfig();
 
