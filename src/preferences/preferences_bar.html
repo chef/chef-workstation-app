@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Advanced</title>
+    <title>Preferences</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
     <script>
@@ -10,9 +10,9 @@
   </head>
   <body>
     <div class="titlebar-background draggable">
-      <div class="window-title" id="window-title">Preferences</div>
+      <div class="window-title" id="window-title">General</div>
       <div class="tabs-bar">
-        <div class="tab" id="general" onclick="preferences.switchTab('general')">
+        <div class="tab selected" id="general" onclick="preferences.switchTab('general')">
           <div class="icon general"></div>
           <div class="tab-sub-title">General</div>
         </div>
@@ -20,7 +20,7 @@
           <div class="icon notification"></div>
           <div class="tab-sub-title">Notifications</div>
         </div>
-        <div class="tab selected" id="advanced" onclick="preferences.switchTab('advanced')">
+        <div class="tab" id="advanced" onclick="preferences.switchTab('advanced')">
           <div class="icon advanced"></div>
           <div class="tab-sub-title">Advanced</div>
         </div>

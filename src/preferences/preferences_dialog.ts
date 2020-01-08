@@ -44,9 +44,9 @@ export class PreferencesDialog {
     });
     this.preferencesDialog.loadURL(this.menubarHTML);
 
-    // by default the advanced tab is selected
-    this.contentView.webContents.loadURL(this.advancedHTML);
-    this.selectedTab = "advanced";
+    // by default the general tab is selected
+    this.contentView.webContents.loadURL(this.generalHTML);
+    this.selectedTab = "general";
   }
 
   public show() {
