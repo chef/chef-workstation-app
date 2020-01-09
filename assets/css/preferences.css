@@ -21,6 +21,18 @@ button {
   font-size: 13px;
 }
 
+button.info {
+  position: relative;
+  width: 19px;
+  height: 19px;
+  outline: 0;
+  border: none;
+  border-radius: 50%;
+  background: url("../images/icon-info.svg");
+  background-size: 19px;
+  background-repeat: no-repeat;
+}
+
 .draggable {
   -webkit-app-region: drag;
 }
@@ -31,6 +43,42 @@ button {
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 25px;
+}
+
+.popover {
+  width: 227px;
+  height: 115px;
+  border-radius: 5px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  border: solid 0.5px rgba(0, 0, 0, 0.15);
+  background-color: rgba(239, 239, 239, 0.75);
+  opacity: 0;
+  position: absolute;
+  top: 94px;
+  left: 234px;
+  font-size: 10.5px;
+  padding: 13px;
+}
+
+.popover.arrow-top{
+  margin-top: 9px;
+}
+
+.popover.arrow-top:after {
+  content: " ";
+  position: absolute;
+  display: block;
+  background: inherit;
+  border-width: 1px 1px 0 0;
+  border-color: #ccc;
+  border-style: solid;
+  width: 15px;
+  height: 15px;
+  top: -9px;
+  right: 122px;
+  transform: rotate(-45deg);
 }
 
 .section {

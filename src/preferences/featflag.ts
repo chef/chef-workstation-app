@@ -1,5 +1,14 @@
 import AppConfig from '../app-config/app-config';
 
+function showLegalDisclosure() {
+  var legalButton = (<HTMLInputElement>document.getElementById('legal_disclosure'));
+  if (legalButton.style.opacity == '1') {
+    legalButton.style.opacity = '0';
+  } else {
+    legalButton.style.opacity = '1';
+  }
+}
+
 function toggleFeatureFlag(checkbox: HTMLInputElement) {
   AppConfig.setFeatureFlag(checkbox.id, checkbox.checked);
   updateDialog();
@@ -26,3 +35,4 @@ function updateDialog() {
 
 module.exports.updateDialog = updateDialog;
 module.exports.toggleFeatureFlag = toggleFeatureFlag;
+module.exports.showLegalDisclosure = showLegalDisclosure;
