@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
     <script>
-      const preferences = require('./preferences.js');
-      document.addEventListener("DOMContentLoaded", function(event) {
-        preferences.updateContentDialog();
+      const notifications = require('./notifications.js');
+      document.addEventListener('DOMContentLoaded', function(event) {
+        notifications.updateDialog();
       });
     </script>
   </head>
   <body>
     <div class="content">
-      <div class="section">Notify me about…</div>
       <div class="section">
-        <input type="checkbox" id="notfication_updates" onclick="preferences.toggleSetting(this);" /><label> Software updates</label><br />
+        <input type="checkbox" id="software_updates" onclick="notifications.toggleSetting(this);" /><label> Automatically check for software updates</label>
       </div>
     </div>
   </body>
