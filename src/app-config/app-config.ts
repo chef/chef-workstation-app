@@ -3,7 +3,12 @@ import os = require('os');
 import fs = require('fs');
 import TOML = require('@iarna/toml');
 
+// Abstraction of the Chef Workstation config.toml file
 interface Config {
+  telemetry?: {
+    enable?: boolean;
+    dev?: boolean;
+  };
   updates?: {
     channel?: string;
     enable?: boolean;
@@ -17,6 +22,8 @@ class AppConfig {
   private workstationDir = path.join(os.homedir(), '.chef-workstation');
   private userConfigFile = path.join(this.workstationDir, 'config.toml');
   private appConfigFile = path.join(this.workstationDir, '.app-managed-config.toml');
+
+  constructor() {}
 
   // returns a all the feature flags from the user config
   private getAllUserFeatures(): Map<string, boolean> {
@@ -158,6 +165,40 @@ class AppConfig {
     return false;
   }
 
+  // checks if telemetry is configured inside the config.toml, if so, they
+  // Tray App can't update it
+  //
+  // config example:
+  // ```
+  // [telemetry]
+  // enable=true
+  // ```
+  public canUpdateTelemetry() {
+    let userConfig = this.getUserConfig();
+
+    if (userConfig.telemetry == undefined || userConfig.telemetry.enable == undefined) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // checks if telemetry is enabled or disabled, default: desabled
+  public isTelemetryEnabled() {
+    let userConfig = this.getUserConfig();
+
+    if (userConfig.telemetry == undefined || userConfig.telemetry.enable == undefined) {
+      let appConfig = this.getAppConfig();
+      if (appConfig.telemetry == undefined || appConfig.telemetry.enable == undefined) {
+        return true;
+      }
+      return appConfig.telemetry.enable;
+    }
+
+    return userConfig.telemetry.enable;
+  }
+
+
   // saves the state of a single feature flag inside the application config
   public setFeatureFlag(feat: string, value: boolean) {
     let appConfig = this.getAppConfig();
@@ -175,7 +216,34 @@ class AppConfig {
     this.saveAppConfig(appConfig);
   }
 
-  public setUpdateChannel(channel) {
+  // enables or disables telemetry
+  public setTelemetryEnable(state: boolean) {
+    let appConfig = this.getAppConfig();
+
+    if (appConfig.telemetry == undefined) {
+      appConfig.telemetry = { 'enable': state };
+    } else {
+      appConfig.telemetry.enable = state;
+    }
+
+    this.saveAppConfig(appConfig);
+  }
+
+  // enables or disables automatic updates
+  public setUpdatesEnable(state: boolean) {
+    let appConfig = this.getAppConfig();
+
+    if (appConfig.updates == undefined) {
+      appConfig.updates = { 'enable': state };
+    } else {
+      appConfig.updates.enable = state;
+    }
+
+    this.saveAppConfig(appConfig);
+  }
+
+  // configures the channel to look for updates
+  public setUpdateChannel(channel: string) {
     let appConfig = this.getAppConfig();
 
     if (appConfig.updates == undefined) {
