@@ -85,6 +85,14 @@ export class Main {
             break;
         }
       }
+    } else {
+      // Remove the preferences dialog for any othe OS that is not macOS
+      // @afiune we have to build the preferences for Windows & Linux systems
+      //
+      // GH: https://github.com/chef/chef-workstation-app/issues/156
+      for (var i = template.length-1; i--; ){
+        if ( template[i].label === 'Preferences...') template.splice(i, 1);
+      }
     }
 
     return Menu.buildFromTemplate(template);
