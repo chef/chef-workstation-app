@@ -35,7 +35,7 @@
     "electron-reload": "^1.5.0",
     "jsdom": "^16.0.1",
     "marked": "^0.8.0",
-    "mocha": "^7.0.0",
+    "mocha": "^7.0.1",
     "rimraf": "^3.0.1",
     "spectron": "^9.0.0",
     "typescript": "^3.7.5",
