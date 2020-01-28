@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.60 -->
+<!-- latest_release 0.1.61 -->
+## [v0.1.61](https://github.com/chef/chef-workstation-app/tree/v0.1.61) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump jsdom from 16.0.0 to 16.0.1 [#145](https://github.com/chef/chef-workstation-app/pull/145) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.60](https://github.com/chef/chef-workstation-app/tree/v0.1.60) (2020-01-28)
 
 #### Merged Pull Requests
 - Bump typescript from 3.7.4 to 3.7.5 [#144](https://github.com/chef/chef-workstation-app/pull/144) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.59](https://github.com/chef/chef-workstation-app/tree/v0.1.59) (2020-01-28)
 
