@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.57 -->
+<!-- latest_release 0.1.58 -->
+## [v0.1.58](https://github.com/chef/chef-workstation-app/tree/v0.1.58) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump rimraf from 3.0.0 to 3.0.1 [#150](https://github.com/chef/chef-workstation-app/pull/150) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.57](https://github.com/chef/chef-workstation-app/tree/v0.1.57) (2020-01-23)
 
 #### Merged Pull Requests
 - Bump electron from 7.1.9 to 7.1.10 [#147](https://github.com/chef/chef-workstation-app/pull/147) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.56](https://github.com/chef/chef-workstation-app/tree/v0.1.56) (2020-01-14)
 
