@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.58 -->
+<!-- latest_release 0.1.59 -->
+## [v0.1.59](https://github.com/chef/chef-workstation-app/tree/v0.1.59) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump copyfiles from 2.1.1 to 2.2.0 [#146](https://github.com/chef/chef-workstation-app/pull/146) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.58](https://github.com/chef/chef-workstation-app/tree/v0.1.58) (2020-01-28)
 
 #### Merged Pull Requests
 - Bump rimraf from 3.0.0 to 3.0.1 [#150](https://github.com/chef/chef-workstation-app/pull/150) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.57](https://github.com/chef/chef-workstation-app/tree/v0.1.57) (2020-01-23)
 
