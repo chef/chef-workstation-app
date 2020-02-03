@@ -31,6 +31,7 @@ Usage: ${PROGNAME} <subcommand>
 Controls the ${PRODUCTNAME} launcher behavior for MacOS systems.
 
 Subcommands:
+    show      Show launchd information about the ${PRODUCTNAME} service.
     load      Bootstraps the ${PRODUCTNAME} service.
     remove    Removes the ${PRODUCTNAME} service.
 DOC
@@ -75,6 +76,15 @@ launchctl_remove()
   fi
 }
 
+launchctl_show()
+{
+  if launchctl list "$SERVICENAME" >/dev/null 2>&1; then
+    launchctl list "$SERVICENAME"
+  else
+    error_exit "$PRODUCTNAME is not yet loaded.\\nTry using the subcommand 'load'."
+  fi
+}
+
 if ! is_darwin; then
   error_exit "Launcher is only available for MacOS systems"
 fi
@@ -82,6 +92,9 @@ fi
 case "${1:-}" in
   "-h"|"--help")
     usage
+    ;;
+  "show")
+    launchctl_show
     ;;
   "load")
     launchctl_load
