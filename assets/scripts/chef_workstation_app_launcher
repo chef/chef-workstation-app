@@ -37,6 +37,35 @@ Subcommands:
 DOC
 }
 
+main()
+{
+  if ! is_darwin; then
+    error_exit "Launcher is only available for MacOS systems"
+  fi
+
+  if [ $# -eq 0 ]; then
+    usage
+    exit 1
+  fi
+
+  case "$1" in
+    "-h"|"--help")
+      usage
+      ;;
+    "show")
+      launchctl_show
+      ;;
+    "load")
+      launchctl_load
+      ;;
+    "remove")
+      launchctl_remove
+      ;;
+    *)
+      error_exit "invalid option '$1'.\\nTry '--help' for more information."
+  esac
+}
+
 error_exit()
 {
   echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
@@ -85,23 +114,4 @@ launchctl_show()
   fi
 }
 
-if ! is_darwin; then
-  error_exit "Launcher is only available for MacOS systems"
-fi
-
-case "${1:-}" in
-  "-h"|"--help")
-    usage
-    ;;
-  "show")
-    launchctl_show
-    ;;
-  "load")
-    launchctl_load
-    ;;
-  "remove")
-    launchctl_remove
-    ;;
-  *)
-    error_exit "invalid option '$1'.\\nTry '--help' for more information."
-esac
+main "$@"
