@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.63 -->
+<!-- latest_release 0.1.64 -->
+## [v0.1.64](https://github.com/chef/chef-workstation-app/tree/v0.1.64) (2020-02-04)
+
+#### Merged Pull Requests
+- Update how we check for dark mode [#143](https://github.com/chef/chef-workstation-app/pull/143) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.63](https://github.com/chef/chef-workstation-app/tree/v0.1.63) (2020-02-04)
 
 #### Merged Pull Requests
 - Bump electron from 7.1.10 to 7.1.11 [#151](https://github.com/chef/chef-workstation-app/pull/151) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.62](https://github.com/chef/chef-workstation-app/tree/v0.1.62) (2020-01-28)
 
