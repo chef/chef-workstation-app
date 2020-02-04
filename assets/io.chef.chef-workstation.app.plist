@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>chef.workstation.app</string>
+	<string>io.chef.chef-workstation.app</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/Applications/Chef Workstation App.app/Contents/MacOS/Chef Workstation App</string>

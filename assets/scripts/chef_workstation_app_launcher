@@ -21,7 +21,7 @@ set -eou pipefail
 
 PROGNAME=$(basename "$0")
 PRODUCTNAME="Chef Workstation App"
-SERVICENAME="chef.workstation.app"
+SERVICENAME="io.chef.chef-workstation.app"
 PLISTFILE="${SERVICENAME}.plist"
 
 usage() {
