@@ -12,22 +12,34 @@ will be where we implement any UI based features of Chef Workstation.
 ## Development
 
 ### Development Prerequisites
+
 * [NodeJS LTS](https://nodejs.org/)
 
-#### On a Mac
+#### On macOS
 
 ##### [Homebrew](https://brew.sh)
-`brew install node@10`
+
+```shell
+brew install node@10
+```
 
 ##### [ASDF](https://github.com/asdf-vm/asdf)
-`asdf install`
+
+```shell
+asdf install
+```
 
 #### On Windows
+
 [Download NodeJS LTS](https://nodejs.org/en/download/)
 
 ### Running the Dev Environment
-`npm install`
-`npm start`
+
+```shell
+npm install
+npm start
+```
 
 ## Design
+
 Designs and assets can be found in our [Zeplin project](https://zpl.io/Vqwx37m).
