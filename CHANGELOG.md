@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.64 -->
+<!-- latest_release 0.1.65 -->
+## [v0.1.65](https://github.com/chef/chef-workstation-app/tree/v0.1.65) (2020-02-05)
+
+#### Merged Pull Requests
+- mac:(launchd) mange the WS App as a service [#153](https://github.com/chef/chef-workstation-app/pull/153) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.64](https://github.com/chef/chef-workstation-app/tree/v0.1.64) (2020-02-04)
 
 #### Merged Pull Requests
 - Update how we check for dark mode [#143](https://github.com/chef/chef-workstation-app/pull/143) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.63](https://github.com/chef/chef-workstation-app/tree/v0.1.63) (2020-02-04)
 
