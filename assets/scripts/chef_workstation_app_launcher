@@ -28,7 +28,7 @@ usage() {
   cat <<DOC
 Usage: ${PROGNAME} <subcommand>
 
-Controls the ${PRODUCTNAME} launcher behavior for MacOS systems.
+Controls the ${PRODUCTNAME} launcher behavior for macOS systems.
 
 Subcommands:
     show      Show launchd information about the ${PRODUCTNAME} service.
@@ -40,7 +40,7 @@ DOC
 main()
 {
   if ! is_darwin; then
-    error_exit "Launcher is only available for MacOS systems"
+    error_exit "Launcher is only available for macOS systems"
   fi
 
   if [ $# -eq 0 ]; then
