@@ -31,9 +31,22 @@ Usage: ${PROGNAME} <subcommand>
 Controls the ${PRODUCTNAME} launcher behavior for macOS systems.
 
 Subcommands:
-    show      Show launchd information about the ${PRODUCTNAME} service.
-    load      Bootstraps the ${PRODUCTNAME} service.
-    remove    Removes the ${PRODUCTNAME} service.
+    show             Show launchd information about the ${PRODUCTNAME} service.
+    load             Bootstraps the ${PRODUCTNAME} service.
+    remove           Removes the ${PRODUCTNAME} service.
+    startup <state>  Enable or disable the ${PRODUCTNAME} to start at boot. (default: enable)
+DOC
+}
+
+usage_startup() {
+  cat <<DOC
+Usage: ${PROGNAME} startup <enable|disable>
+
+Enable or disable the ${PRODUCTNAME} to start at boot. (default: enable)
+
+Arguments:
+    enable   Enable the ${PRODUCTNAME} to start at boot.
+    disable  Disable the ${PRODUCTNAME} to start at boot.
 DOC
 }
 
@@ -61,6 +74,9 @@ main()
     "remove")
       launchctl_remove
       ;;
+    "startup")
+      startup "${2:-enable}"
+      ;;
     *)
       error_exit "invalid option '$1'.\\nTry '--help' for more information."
   esac
@@ -77,6 +93,24 @@ is_darwin()
   uname -v | grep "^Darwin" >/dev/null 2>&1
 }
 
+startup()
+{
+  case "$1" in
+    "-h"|"--help")
+      usage_startup
+      ;;
+    "disable")
+      rm -f "$HOME/Library/LaunchAgents/${PLISTFILE}"
+      ;;
+    "enable")
+      cp "/Applications/Chef Workstation App.app/Contents/Resources/assets/${PLISTFILE}" "$HOME/Library/LaunchAgents"
+      ;;
+    *)
+      error_exit "invalid startup state '$1'.\\nValid states are 'enable' or 'disable'.\\nTry '--help' for more information."
+  esac
+
+}
+
 launchctl_load()
 {
   if [ ! -d "/Applications/Chef Workstation App.app/Contents" ]; then
@@ -88,7 +122,7 @@ launchctl_load()
   # we let launchd to process the removal of the service
   sleep 1
 
-  cp "/Applications/Chef Workstation App.app/Contents/Resources/assets/${PLISTFILE}" "$HOME/Library/LaunchAgents"
+  startup "enable"
   ( cd "$HOME/Library/LaunchAgents" || error_exit "unable to enter LaunchAgents directory"
     launchctl load ${PLISTFILE}
   )
