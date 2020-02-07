@@ -79,11 +79,18 @@ class AppConfig {
     }
   }
 
+  // returns weather the automatic updates are enabled or not (default: true)
   public areUpdatesEnabled() {
     let userConfig = this.getUserConfig();
+
     if (userConfig.updates == undefined || userConfig.updates.enable == undefined) {
-      return true
+      let appConfig = this.getAppConfig();
+      if (appConfig.updates == undefined || appConfig.updates.enable == undefined) {
+        return true;
+      }
+      return appConfig.updates.enable;
     }
+
     return userConfig.updates.enable;
   }
 
@@ -146,6 +153,23 @@ class AppConfig {
     let userConfig = this.getUserConfig();
 
     if (userConfig.updates == undefined || userConfig.updates.channel == undefined) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // verify if the Tray app can control the automatic updates settings (default: true)
+  //
+  // config example:
+  // ```
+  // [updates]
+  // enable = false
+  // ```
+  public canControlUpdates() {
+    let userConfig = this.getUserConfig();
+
+    if (userConfig.updates == undefined || userConfig.updates.enable == undefined) {
       return true;
     }
 

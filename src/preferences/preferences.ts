@@ -1,5 +1,6 @@
 import { ipcRenderer } from 'electron';
 import AppConfig from '../app-config/app-config';
+import Workstation = require('../helpers/chef_workstation.js');
 
 function switchTab(tab: string) {
   ipcRenderer.send('switch-preferences-tab', tab);
@@ -30,12 +31,23 @@ function toggleSetting(checkbox: HTMLInputElement) {
       AppConfig.setTelemetryEnable(checkbox.checked);
       break;
     }
+    case 'startup': {
+      if (checkbox.checked) {
+        Workstation.enableAppAtStartup();
+      } else {
+        Workstation.disableAppAtStartup();
+      }
+      break;
+    }
   }
 
   updateContentDialog();
 }
 
 function updateContentDialog() {
+  var startupCheckbox = (<HTMLInputElement>document.getElementById('startup'));
+  startupCheckbox.checked = Workstation.isAppRunningAtStartup();
+
   var telemetryCheckbox = (<HTMLInputElement>document.getElementById('telemetry'));
   telemetryCheckbox.disabled = !AppConfig.canUpdateTelemetry();
   telemetryCheckbox.checked = AppConfig.isTelemetryEnabled();
