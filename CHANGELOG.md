@@ -1,9 +1,114 @@
-<!-- latest_release 0.1.44 -->
+<!-- latest_release 0.1.65 -->
+## [v0.1.65](https://github.com/chef/chef-workstation-app/tree/v0.1.65) (2020-02-05)
+
+#### Merged Pull Requests
+- mac:(launchd) mange the WS App as a service [#153](https://github.com/chef/chef-workstation-app/pull/153) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
+## [v0.1.64](https://github.com/chef/chef-workstation-app/tree/v0.1.64) (2020-02-04)
+
+#### Merged Pull Requests
+- Update how we check for dark mode [#143](https://github.com/chef/chef-workstation-app/pull/143) ([tas50](https://github.com/tas50))
+
+## [v0.1.63](https://github.com/chef/chef-workstation-app/tree/v0.1.63) (2020-02-04)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.10 to 7.1.11 [#151](https://github.com/chef/chef-workstation-app/pull/151) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.62](https://github.com/chef/chef-workstation-app/tree/v0.1.62) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump mocha from 7.0.0 to 7.0.1 [#148](https://github.com/chef/chef-workstation-app/pull/148) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.61](https://github.com/chef/chef-workstation-app/tree/v0.1.61) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump jsdom from 16.0.0 to 16.0.1 [#145](https://github.com/chef/chef-workstation-app/pull/145) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.60](https://github.com/chef/chef-workstation-app/tree/v0.1.60) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump typescript from 3.7.4 to 3.7.5 [#144](https://github.com/chef/chef-workstation-app/pull/144) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.59](https://github.com/chef/chef-workstation-app/tree/v0.1.59) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump copyfiles from 2.1.1 to 2.2.0 [#146](https://github.com/chef/chef-workstation-app/pull/146) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.58](https://github.com/chef/chef-workstation-app/tree/v0.1.58) (2020-01-28)
+
+#### Merged Pull Requests
+- Bump rimraf from 3.0.0 to 3.0.1 [#150](https://github.com/chef/chef-workstation-app/pull/150) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.57](https://github.com/chef/chef-workstation-app/tree/v0.1.57) (2020-01-23)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.9 to 7.1.10 [#147](https://github.com/chef/chef-workstation-app/pull/147) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.56](https://github.com/chef/chef-workstation-app/tree/v0.1.56) (2020-01-14)
+
+#### Merged Pull Requests
+- Bump jsdom from 15.2.1 to 16.0.0 [#141](https://github.com/chef/chef-workstation-app/pull/141) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.55](https://github.com/chef/chef-workstation-app/tree/v0.1.55) (2020-01-14)
+
+#### Merged Pull Requests
+- Bump mocha from 6.2.2 to 7.0.0 [#138](https://github.com/chef/chef-workstation-app/pull/138) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.54](https://github.com/chef/chef-workstation-app/tree/v0.1.54) (2020-01-14)
+
+#### Merged Pull Requests
+- Bump typescript from 3.7.3 to 3.7.4 [#137](https://github.com/chef/chef-workstation-app/pull/137) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.53](https://github.com/chef/chef-workstation-app/tree/v0.1.53) (2020-01-14)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.7 to 7.1.9 [#140](https://github.com/chef/chef-workstation-app/pull/140) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.52](https://github.com/chef/chef-workstation-app/tree/v0.1.52) (2019-12-20)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.6 to 7.1.7 [#136](https://github.com/chef/chef-workstation-app/pull/136) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.51](https://github.com/chef/chef-workstation-app/tree/v0.1.51) (2019-12-19)
+
+#### Merged Pull Requests
+- Bump marked from 0.7.0 to 0.8.0 [#133](https://github.com/chef/chef-workstation-app/pull/133) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.50](https://github.com/chef/chef-workstation-app/tree/v0.1.50) (2019-12-19)
+
+#### Merged Pull Requests
+- Bump typescript from 3.7.2 to 3.7.3 [#131](https://github.com/chef/chef-workstation-app/pull/131) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.49](https://github.com/chef/chef-workstation-app/tree/v0.1.49) (2019-12-19)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.4 to 7.1.6 [#135](https://github.com/chef/chef-workstation-app/pull/135) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.48](https://github.com/chef/chef-workstation-app/tree/v0.1.48) (2019-12-10)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.3 to 7.1.4 [#132](https://github.com/chef/chef-workstation-app/pull/132) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.47](https://github.com/chef/chef-workstation-app/tree/v0.1.47) (2019-12-03)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.2 to 7.1.3 [#130](https://github.com/chef/chef-workstation-app/pull/130) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.46](https://github.com/chef/chef-workstation-app/tree/v0.1.46) (2019-11-21)
+
+#### Merged Pull Requests
+- Bump electron from 7.1.1 to 7.1.2 [#128](https://github.com/chef/chef-workstation-app/pull/128) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+
+## [v0.1.45](https://github.com/chef/chef-workstation-app/tree/v0.1.45) (2019-11-14)
+
+#### Merged Pull Requests
+- Only ship english lang files since that&#39;s all we have [#127](https://github.com/chef/chef-workstation-app/pull/127) ([tas50](https://github.com/tas50))
+
 ## [v0.1.44](https://github.com/chef/chef-workstation-app/tree/v0.1.44) (2019-11-13)
 
 #### Merged Pull Requests
 - Bump electron from 7.1.0 to 7.1.1 [#126](https://github.com/chef/chef-workstation-app/pull/126) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.43](https://github.com/chef/chef-workstation-app/tree/v0.1.43) (2019-11-07)
 
