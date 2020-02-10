@@ -39,21 +39,35 @@ function toggleSetting(checkbox: HTMLInputElement) {
       }
       break;
     }
+    case 'software_updates': {
+      AppConfig.setUpdatesEnable(checkbox.checked);
+      // if a user turns off software updates, then we won't do a UserRequest
+      // so that we don't display an update after they said they don't want any
+      ipcRenderer.send('do-update-check', {
+        UserRequest: checkbox.checked,
+        DisplayUpdateNotAvailableDialog: false
+      });
+      break;
+    }
   }
 
-  updateContentDialog();
+  updateDialog();
 }
 
-function updateContentDialog() {
+function updateDialog() {
   var startupCheckbox = (<HTMLInputElement>document.getElementById('startup'));
   startupCheckbox.checked = Workstation.isAppRunningAtStartup();
+
+  var updatesCheckbox = (<HTMLInputElement>document.getElementById('software_updates'));
+  updatesCheckbox.disabled = !AppConfig.canControlUpdates();
+  updatesCheckbox.checked = AppConfig.areUpdatesEnabled();
 
   var telemetryCheckbox = (<HTMLInputElement>document.getElementById('telemetry'));
   telemetryCheckbox.disabled = !AppConfig.canUpdateTelemetry();
   telemetryCheckbox.checked = AppConfig.isTelemetryEnabled();
 }
 
-module.exports.updateContentDialog = updateContentDialog;
+module.exports.updateDialog = updateDialog;
 module.exports.toggleSetting = toggleSetting;
 module.exports.switchTab = switchTab;
 module.exports.uninstall = uninstall;
