@@ -59,7 +59,6 @@ export class Main {
       {type: 'separator'},
       {
         label: 'Preferences...',
-        visible: this.appConfig.getFeatureFlag('preferences_dialog'),
         click: () => { this.openPreferencesDialog() }
       },
       {type: 'separator'},
