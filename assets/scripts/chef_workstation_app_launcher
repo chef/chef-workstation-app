@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-set -eou pipefail
+set -eo pipefail
 
 PROGNAME=$(basename "$0")
 PRODUCTNAME="Chef Workstation App"
