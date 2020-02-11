@@ -79,7 +79,7 @@ class AppConfig {
     }
   }
 
-  // returns weather the automatic updates are enabled or not (default: true)
+  // returns whether the automatic updates are enabled or not (default: true)
   public areUpdatesEnabled() {
     let userConfig = this.getUserConfig();
 
