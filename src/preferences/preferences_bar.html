@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Preferences</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const preferences = require('./preferences.js');
+    </script>
+  </head>
+  <body>
+    <div class="titlebar-background draggable">
+      <div class="window-title" id="window-title">General</div>
+      <div class="tabs-bar">
+        <div class="tab selected" id="general" onclick="preferences.switchTab('general')">
+          <div class="icon general"></div>
+          <div class="tab-sub-title">General</div>
+        </div>
+        <!-- @afiune Left here as an example to add more tabs like the notifications tab -->
+        <!--<div class="tab" id="notifications" onclick="preferences.switchTab('notifications')">-->
+          <!--<div class="icon notification"></div>-->
+          <!--<div class="tab-sub-title">Notifications</div>-->
+        <!--</div>-->
+        <div class="tab" id="advanced" onclick="preferences.switchTab('advanced')">
+          <div class="icon advanced"></div>
+          <div class="tab-sub-title">Advanced</div>
+        </div>
+        <div class="tab"></div>
+        <div class="tab"></div>
+        <div class="tab"></div>
+      </div>
+    </div>
+  </body>
+</html>

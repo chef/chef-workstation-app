@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const featflag = require('./featflag.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        featflag.updateDialog();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="section">
+      <div class="section-title"><b>Feature Flags</b></div>
+        <div class="section-content">
+          Chef Workstation flagged features are experimental and may contain bugs.
+          Proceed with caution when turning these features on.
+          <button class="info" onclick="featflag.showLegalDisclosure()" ></button>
+        </div>
+        <div class="popover arrow-top" id="legal_disclosure">
+          The warranties and indemnities in your license agreement do not apply to experimental features. Experimental features are provided "as is" with no warranties of any kind, express or implied.  Chef disclaims any and all liability related in any way to the experimental features or any related documentation.
+        </div>
+      </div>
+      <div class="section">
+        <input type="checkbox" id="analyze" onclick="featflag.toggleFeatureFlag(this);" /><label> chef analyze command</label><br />
+        <div class="section-flag-content">
+          Analyze your Chef Infra Server artifacts to understand the effort to upgrade your infrastructure by generating reports, automatically fixing violations and/or deprecations, and generating Effortless packages.
+        </div>
+      </div>
+      <!-- @afiune Left here as an example to add more feature flags -->
+      <!--<div class="section">-->
+        <!--<input type="checkbox" id="foo" onclick="featflag.toggleFeatureFlag(this);" /><label> foo ding</label><br />-->
+        <!--<div class="section-flag-content">-->
+          <!--A new cool foo ding!-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+  </body>
+</html>

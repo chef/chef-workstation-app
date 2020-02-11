@@ -1,5 +1,14 @@
-import { app, BrowserWindow, dialog, ipcMain, Menu, shell, MenuItemConstructorOptions } from 'electron';
+import {
+  MenuItemConstructorOptions,
+  BrowserWindow,
+  Menu,
+  app,
+  dialog,
+  ipcMain,
+  shell
+} from 'electron';
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
+import { PreferencesDialog } from './preferences/preferences_dialog';
 import AppConfigSingleton from './app-config/app-config';
 
 import aboutDialog = require('./about-dialog/about_dialog.js');
@@ -22,6 +31,7 @@ export class Main {
   // here now so it is the first/main window of the app meaning the about pop up
   // won't close the app when closed.
   private backgroundWindow: BrowserWindow;
+  private preferencesDialog: PreferencesDialog;
   private displayUpdateNotAvailableDialog: boolean;
   private pendingUpdate;
   private requestFromUser: boolean;
@@ -48,6 +58,11 @@ export class Main {
       },
       {type: 'separator'},
       {
+        label: 'Preferences...',
+        click: () => { this.openPreferencesDialog() }
+      },
+      {type: 'separator'},
+      {
         label: 'About ' + helpers.getDisplayName(),
         click: () => { aboutDialog.open() }
       },
@@ -57,10 +72,26 @@ export class Main {
       }
     ];
 
-    // Add shortcut on mac
-    if (process.platform === "darwin") {
-      var quit = template[template.length - 1];
-      quit['accelerator'] = "Command+Q";
+    // Add shortcuts on mac
+    if (process.platform === 'darwin') {
+      for (var item of template) {
+        switch(item.label) {
+          case 'Quit':
+            item['accelerator'] = 'Command+Q';
+            break;
+          case 'Preferences...':
+            item['accelerator'] = 'Command+,';
+            break;
+        }
+      }
+    } else {
+      // Remove the preferences dialog for any othe OS that is not macOS
+      // @afiune we have to build the preferences for Windows & Linux systems
+      //
+      // GH: https://github.com/chef/chef-workstation-app/issues/156
+      for (var i = template.length-1; i--; ){
+        if ( template[i].label === 'Preferences...') template.splice(i, 1);
+      }
     }
 
     return Menu.buildFromTemplate(template);
@@ -121,6 +152,15 @@ export class Main {
     }
   }
 
+  private openPreferencesDialog() {
+    this.preferencesDialog = new PreferencesDialog();
+    this.preferencesDialog.show();
+  }
+
+  private switchPreferencesTab(tab: string) {
+    this.preferencesDialog.switchTab(tab);
+  }
+
   private quitApp() {
     this.clearUpdateInterval();
     this.backgroundWindow = null;
@@ -137,6 +177,7 @@ export class Main {
 
     ipcMain.on('do-update-check', (_event, arg) => { this.triggerUpdateCheck(arg) });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
+    ipcMain.on('switch-preferences-tab', (_event, arg) => { this.switchPreferencesTab(arg) });
 
     this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks

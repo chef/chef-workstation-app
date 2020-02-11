@@ -8,6 +8,8 @@ const { app } = require('electron');
 const path = require('path');
 const fs = require('fs');
 
+const MACOS_PLIST = 'io.chef.chef-workstation.app.plist';
+const MACOS_LAUNCHER = 'chef_workstation_app_launcher';
 const CWS_REG_NODE = 'HKLM\\SOFTWARE\\Chef\\Chef Workstation';
 const CWS_REG_KEY_BIN_DIR = "BinDir";
 const CWS_REG_KEY_INSTALL_DIR = "InstallDir";
@@ -101,6 +103,66 @@ function getPathToChefBinary(binBaseName) {
   return null;
 }
 
+// Verify if the Tray App is configured to run at startup
+function isAppRunningAtStartup() {
+  if (is.windows()) {
+    console.log('isAppRunningAtStartup(): not implemented');
+    return null;
+  } else {
+    var plist = getUserHome() + '/Library/LaunchAgents/' + MACOS_PLIST;
+    return fs.existsSync(plist);
+  }
+};
+
+// Returns the user's home directory
+function getUserHome() {
+  return process.env[is.windows() ? 'USERPROFILE' : 'HOME'];
+};
+
+// Disables the Tray App to run at startup
+function disableAppAtStartup() {
+  if (!isAppRunningAtStartup()) {
+    return;
+  }
+
+  var path = getPathToChefBinary(MACOS_LAUNCHER);
+  if (path == null) {
+    // TODO @afiune Error handling in Electron: Open an error window?
+    console.log('Unable to find the ' + MACOS_LAUNCHER);
+    return;
+  }
+
+  try {
+    execFileSync(path, ['startup', 'disable']);
+  } catch(error) {
+    // TODO @afiune Error handling in Electron: Open an error window?
+    console.log('Unable to remove the Chef Workstation App at startup');
+    console.log(error);
+  }
+}
+
+// Enables the Tray App to run at startup
+function enableAppAtStartup() {
+  if (isAppRunningAtStartup()) {
+    return;
+  }
+
+  var path = getPathToChefBinary(MACOS_LAUNCHER);
+  if (path == null) {
+    // TODO @afiune Error handling in Electron: Open an error window?
+    console.log('Unable to find the ' + MACOS_LAUNCHER);
+    return;
+  }
+
+  try {
+    execFileSync(path, ['startup', 'enable']);
+  } catch(error) {
+    // TODO @afiune Error handling in Electron: Open an error window?
+    console.log('Unable to configure the Chef Workstation App at startup');
+    console.log(error);
+  }
+};
+
 /**
  * Return platform information
  *
@@ -158,4 +220,7 @@ function queryOhai(attributes) {
 module.exports.getInstallDir = getInstallDir;
 module.exports.getVersion = getVersion;
 module.exports.getPlatformInfo = getPlatformInfo;
+module.exports.enableAppAtStartup = enableAppAtStartup;
+module.exports.disableAppAtStartup = disableAppAtStartup;
+module.exports.isAppRunningAtStartup = isAppRunningAtStartup;
 module.exports.getInstalledGemVersion = getInstalledGemVersion;

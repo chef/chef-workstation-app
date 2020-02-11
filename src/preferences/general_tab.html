@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>General</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../assets/css/preferences.css">
+    <script>
+      const preferences = require('./preferences.js');
+      document.addEventListener("DOMContentLoaded", function(event) {
+        preferences.updateDialog();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div class="section">
+        <input type="checkbox" id="startup" onclick="preferences.toggleSetting(this);" /><label> Start Workstation App on system startup</label>
+      </div>
+      <div class="section">
+        <input type="checkbox" id="software_updates" onclick="preferences.toggleSetting(this);" /><label> Automatically check for software updates</label>
+      </div>
+      <!-- @afiune To be implemented with https://github.com/chef/chef-workstation-app/issues/158 -->
+      <!--<div class="section">-->
+        <!--<input type="checkbox" id="telemetry" onclick="preferences.toggleSetting(this);" />-->
+        <!--<label>Share my usage data with Chef-->
+          <!--- Commands (without arguments)-->
+          <!--- Connection method (WinRM or SSH)-->
+          <!--- Host/client operating system and version-->
+          <!--<a href="#">View more usage data details</a>-->
+        <!--</label>-->
+      <!--</div>-->
+    </div>
+  </body>
+</html>
