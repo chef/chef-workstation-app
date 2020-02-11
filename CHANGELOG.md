@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.65 -->
+<!-- latest_release 0.1.66 -->
+## [v0.1.66](https://github.com/chef/chef-workstation-app/tree/v0.1.66) (2020-02-11)
+
+#### Merged Pull Requests
+- [Proposal] Preferences Dialog + Controlling Feature Flags [#125](https://github.com/chef/chef-workstation-app/pull/125) ([afiune](https://github.com/afiune))
+<!-- latest_release -->
+
 ## [v0.1.65](https://github.com/chef/chef-workstation-app/tree/v0.1.65) (2020-02-05)
 
 #### Merged Pull Requests
 - mac:(launchd) mange the WS App as a service [#153](https://github.com/chef/chef-workstation-app/pull/153) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.64](https://github.com/chef/chef-workstation-app/tree/v0.1.64) (2020-02-04)
 
