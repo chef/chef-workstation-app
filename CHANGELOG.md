@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.67 -->
+<!-- latest_release 0.1.68 -->
+## [v0.1.68](https://github.com/chef/chef-workstation-app/tree/v0.1.68) (2020-02-12)
+
+#### Merged Pull Requests
+- Bump rimraf from 3.0.1 to 3.0.2 [#157](https://github.com/chef/chef-workstation-app/pull/157) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.67](https://github.com/chef/chef-workstation-app/tree/v0.1.67) (2020-02-11)
 
 #### Merged Pull Requests
 - launcher:(script) remove nounset option [#160](https://github.com/chef/chef-workstation-app/pull/160) ([afiune](https://github.com/afiune))
-<!-- latest_release -->
 
 ## [v0.1.66](https://github.com/chef/chef-workstation-app/tree/v0.1.66) (2020-02-11)
 
