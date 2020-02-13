@@ -50,7 +50,6 @@ export class Main {
       {
         id: 'updateCheck',
         label: this.pendingUpdate ? 'Download Update' : 'Check For Updates...',
-        enabled: this.appConfig.areUpdatesEnabled(),
         click: () => { this.pendingUpdate ? this.downloadUpdate() : this.triggerUpdateCheck({
           UserRequest: true,
           DisplayUpdateNotAvailableDialog: true
@@ -178,6 +177,8 @@ export class Main {
     ipcMain.on('do-update-check', (_event, arg) => { this.triggerUpdateCheck(arg) });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
     ipcMain.on('switch-preferences-tab', (_event, arg) => { this.switchPreferencesTab(arg) });
+    ipcMain.on('setup-update-interval', () => { this.setupUpdateInterval() });
+    ipcMain.on('clear-update-interval', () => { this.clearUpdateInterval() });
 
     this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks

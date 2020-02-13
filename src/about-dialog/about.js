@@ -85,7 +85,7 @@ function toggleUpdatesChannel() {
 }
 
 function updateDialog() {
-  document.getElementById('update-channel-btn').disabled = !(appConfig.default.areUpdatesEnabled() && appConfig.default.canUpdateChannel());
+  document.getElementById('update-channel-btn').disabled = !appConfig.default.canUpdateChannel();
   document.getElementById('update-channel-btn').textContent = 'Switch to ' + getSwitchToChannel() + ' channel';
   document.getElementById('update-channel').innerHTML = '<strong>Release</strong> ' + appConfig.default.getUpdateChannel();
 }
