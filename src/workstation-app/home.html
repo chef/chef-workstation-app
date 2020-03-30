@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef Workstation</title>
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/about.css">
+  <script>
+    const about = require('./home.js');
+    const helpers = require('../helpers/helpers.js');
+    const workstation = require('../helpers/chef_workstation.js');
+    const appConfig = require("../app-config/app-config.js");
+    document.addEventListener("DOMContentLoaded", function(event) {
+      about.updateDialog();
+    });
+  </script>
+</head>
+<body>
+  <h1>Welcome to Chef Workstation</h1>
+</body>
+</html>

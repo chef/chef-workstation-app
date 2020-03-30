@@ -15,6 +15,7 @@ import aboutDialog = require('./about-dialog/about_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
+import wksAppHome = require('./workstation-app/home')
 
 // TriggerUpdateSettings is an interface that will enforce the settings
 // we pass to the TriggerUpdateCheck function. Since the app is event
@@ -60,6 +61,10 @@ export class Main {
         label: 'Preferences...',
         click: () => { this.openPreferencesDialog() }
       },
+      {
+        label: 'Chef Workstation App',
+        click: () => { wksAppHome.open() }
+      },
       {type: 'separator'},
       {
         label: 'About ' + helpers.getDisplayName(),
@@ -90,6 +95,18 @@ export class Main {
       // GH: https://github.com/chef/chef-workstation-app/issues/156
       for (var i = template.length-1; i--; ){
         if ( template[i].label === 'Preferences...') template.splice(i, 1);
+      }
+    }
+
+    if (this.appConfig.getFeatureFlag("workstation-app")) {
+      console.log("The workstation app feature is enabled")
+    } else {
+      // Remove the preferences dialog for any othe OS that is not macOS
+      // @afiune we have to build the preferences for Windows & Linux systems
+      //
+      // GH: https://github.com/chef/chef-workstation-app/issues/156
+      for (var i = template.length-1; i--; ){
+        if ( template[i].label === 'Chef Workstation App') template.splice(i, 1);
       }
     }
 
