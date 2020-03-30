@@ -33,7 +33,7 @@
     "electron": "^8.1.1",
     "electron-builder": "21.2.0",
     "electron-reload": "^1.5.0",
-    "jsdom": "^16.2.0",
+    "jsdom": "^16.2.2",
     "marked": "^0.8.0",
     "mocha": "^7.1.0",
     "rimraf": "^3.0.2",
