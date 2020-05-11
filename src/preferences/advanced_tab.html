@@ -30,6 +30,12 @@
           Analyze your Chef Infra Server artifacts to understand the effort to upgrade your infrastructure by generating reports, automatically fixing violations and/or deprecations, and generating Effortless packages.
         </div>
       </div>
+      <div class="section">
+        <input type="checkbox" id="foodcritic" onclick="featflag.toggleFeatureFlag(this);" /><label> enable foodcritic</label><br />
+        <div class="section-flag-content">
+          Foodcritic has been deprecated and replaced by Cookstyle. Enable this feature to enable foodcritic usage in Chef Workstation while migrating off it.
+        </div>
+      </div>
       <!-- @afiune Left here as an example to add more feature flags -->
       <!--<div class="section">-->
         <!--<input type="checkbox" id="foo" onclick="featflag.toggleFeatureFlag(this);" /><label> foo ding</label><br />-->
