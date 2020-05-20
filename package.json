@@ -37,7 +37,7 @@
     "marked": "^0.8.2",
     "mocha": "^7.1.2",
     "rimraf": "^3.0.2",
-    "spectron": "^10.0.1",
+    "spectron": "^11.0.0",
     "typescript": "^3.8.3",
     "xvfb-maybe": "^0.2.1"
   },
