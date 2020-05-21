@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.78 -->
+<!-- latest_release 0.1.79 -->
+## [v0.1.79](https://github.com/chef/chef-workstation-app/tree/v0.1.79) (2020-05-21)
+
+#### Merged Pull Requests
+- Remove feature flag for Chef Analyze [#196](https://github.com/chef/chef-workstation-app/pull/196) ([clintoncwolfe](https://github.com/clintoncwolfe))
+<!-- latest_release -->
+
 ## [v0.1.78](https://github.com/chef/chef-workstation-app/tree/v0.1.78) (2020-05-01)
 
 #### Merged Pull Requests
 - Dep update in preparation for release [#191](https://github.com/chef/chef-workstation-app/pull/191) ([tyler-ball](https://github.com/tyler-ball))
-<!-- latest_release -->
 
 ## [v0.1.77](https://github.com/chef/chef-workstation-app/tree/v0.1.77) (2020-03-10)
 
