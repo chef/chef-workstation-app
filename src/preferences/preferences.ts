@@ -41,14 +41,6 @@ function toggleSetting(checkbox: HTMLInputElement) {
     }
     case 'software_updates': {
       AppConfig.setUpdatesEnable(checkbox.checked);
-
-      // when software updates are turned off, we shouldn't request a user update check
-      // this will prevent us from displaying an update after it was just disabled
-      ipcRenderer.send('do-update-check', {
-        UserRequest: checkbox.checked,
-        DisplayUpdateNotAvailableDialog: false
-      });
-
       // setup or clear the update interval
       if (checkbox.checked) {
         ipcRenderer.send('setup-update-interval');
