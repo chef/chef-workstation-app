@@ -117,7 +117,7 @@ export class Main {
   }
 
   public triggerUpdateCheck(settings: TriggerUpdateSettings = {
-    UserRequest: false,
+    UserRequest: true,
     DisplayUpdateNotAvailableDialog: false
   }) {
     this.requestFromUser = settings.UserRequest;
@@ -215,9 +215,7 @@ export class Main {
       if (this.requestFromUser) {
         // TODO probably don't show the error except to say try again later, UNLESS
         // we can identify a user-correctable problem (proxy,. etc)
-        dialog.showErrorBox('Update Check Failed', error == null ? "Update service unavailable or unreachable" : error.toString());
-      } else {
-       console.log("Failed to check for updates:  " + (error == null ? "no error given" :  error.toString()))
+        dialog.showErrorBox('Error', error == null ? "unknown" : error.toString());
       }
     });
 
