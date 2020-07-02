@@ -38,7 +38,7 @@
     "mocha": "^7.1.2",
     "rimraf": "^3.0.2",
     "spectron": "^10.0.1",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.6",
     "xvfb-maybe": "^0.2.1"
   },
   "dependencies": {
