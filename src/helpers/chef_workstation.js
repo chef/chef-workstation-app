@@ -64,23 +64,34 @@ function getVersion() {
 }
 
 /**
- * Return the gem version installed by Chef Workstation. If Chef Workstation
- * cannot be found then return a dummy development version.
+ * Return the component version installed with Chef Workstation. The component
+ * must be present in either the gem version manifest, or under `build` in the
+ * version-manifest.json
  *
- * @param {string} Gem name [example: chef-cli]
- * @return {(string|null)} The installed gem version
+ * @param {string} component name [example: chef-cli]
+ * @return {(string|null)} The installed component version or "0.0.0-dev" if the version could
+ * not be resolved for any reason
  */
-function getInstalledGemVersion(gemName) {
+function getInstalledComponentVersion(componentName) {
   let gemManifestPath = path.join(getInstallDir(), "gem-version-manifest.json");
+  let manifestPath = path.join(getInstallDir(), "version-manifest.json");
   try {
     const gemManifest = require(gemManifestPath);
-    return gemManifest[gemName]
-  } catch(error) {
-    if (error.code == "MODULE_NOT_FOUND") {
-      return "0.0.0-dev"
-    } else {
-      throw error;
+    const versionManifest = require(manifestPath);
+    if (gemManifest[componentName] != undefined) {
+      return gemManifest[componentName]
     }
+    if (versionManifest["software"][componentName] == undefined) {
+      return "0.0.0-dev"
+    }
+    return versionManifest["software"][componentName]["locked_version"]
+
+  } catch(error) {
+    console.log(error)
+    // Regardless of the actual error, the user won't be expected to fix it
+    // or even necessarily have the ability to do so, so ensure that we don't
+    // emit an exception that nobody can do anything wiht.
+      return "0.0.0-dev"
   }
 }
 
@@ -223,4 +234,4 @@ module.exports.getPlatformInfo = getPlatformInfo;
 module.exports.enableAppAtStartup = enableAppAtStartup;
 module.exports.disableAppAtStartup = disableAppAtStartup;
 module.exports.isAppRunningAtStartup = isAppRunningAtStartup;
-module.exports.getInstalledGemVersion = getInstalledGemVersion;
+module.exports.getInstalledComponentVersion = getInstalledComponentVersion;
