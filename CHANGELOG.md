@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.79 -->
+<!-- latest_release 0.1.80 -->
+## [v0.1.80](https://github.com/chef/chef-workstation-app/tree/v0.1.80) (2020-07-29)
+
+#### Merged Pull Requests
+-  (Reinstate)  Add Chef Habitat to product version output [#219](https://github.com/chef/chef-workstation-app/pull/219) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.1.79](https://github.com/chef/chef-workstation-app/tree/v0.1.79) (2020-05-21)
 
 #### Merged Pull Requests
 - Remove feature flag for Chef Analyze [#196](https://github.com/chef/chef-workstation-app/pull/196) ([clintoncwolfe](https://github.com/clintoncwolfe))
-<!-- latest_release -->
 
 ## [v0.1.78](https://github.com/chef/chef-workstation-app/tree/v0.1.78) (2020-05-01)
 
