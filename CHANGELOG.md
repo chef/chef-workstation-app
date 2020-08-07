@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.80 -->
+<!-- latest_release 0.1.81 -->
+## [v0.1.81](https://github.com/chef/chef-workstation-app/tree/v0.1.81) (2020-08-07)
+
+#### Merged Pull Requests
+- Do not display errors on bg update checks [#208](https://github.com/chef/chef-workstation-app/pull/208) ([marcparadise](https://github.com/marcparadise))
+<!-- latest_release -->
+
 ## [v0.1.80](https://github.com/chef/chef-workstation-app/tree/v0.1.80) (2020-07-29)
 
 #### Merged Pull Requests
 -  (Reinstate)  Add Chef Habitat to product version output [#219](https://github.com/chef/chef-workstation-app/pull/219) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.1.79](https://github.com/chef/chef-workstation-app/tree/v0.1.79) (2020-05-21)
 
