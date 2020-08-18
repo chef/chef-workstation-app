@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.81 -->
+<!-- latest_release 0.1.82 -->
+## [v0.1.82](https://github.com/chef/chef-workstation-app/tree/v0.1.82) (2020-08-18)
+
+#### Merged Pull Requests
+- Bumping deps [#228](https://github.com/chef/chef-workstation-app/pull/228) ([tyler-ball](https://github.com/tyler-ball))
+<!-- latest_release -->
+
 ## [v0.1.81](https://github.com/chef/chef-workstation-app/tree/v0.1.81) (2020-08-07)
 
 #### Merged Pull Requests
 - Do not display errors on bg update checks [#208](https://github.com/chef/chef-workstation-app/pull/208) ([marcparadise](https://github.com/marcparadise))
-<!-- latest_release -->
 
 ## [v0.1.80](https://github.com/chef/chef-workstation-app/tree/v0.1.80) (2020-07-29)
 
