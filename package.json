@@ -34,7 +34,7 @@
     "electron-builder": "21.2.0",
     "electron-reload": "^1.5.0",
     "jsdom": "^16.4.0",
-    "marked": "^0.8.2",
+    "marked": "^1.1.1",
     "mocha": "^7.2.0",
     "rimraf": "^3.0.2",
     "spectron": "^10.0.1",
