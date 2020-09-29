@@ -114,6 +114,10 @@ div.col-9 {
   width: 75%;
 }
 
+div.col-6 {
+  width: 50%;
+}
+
 div.col-3 {
   width: 25%;
 }

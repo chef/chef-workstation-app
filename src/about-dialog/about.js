@@ -39,6 +39,10 @@ async function openReleaseNotes() {
   }
 }
 
+async function openPatents() {
+  shell.openExternal('https://www.chef.io/patents');
+}
+
 let packageDetails = null;
 
 function openPackageDetails() {
@@ -94,5 +98,6 @@ module.exports.getSwitchToChannel = getSwitchToChannel;
 module.exports.updateDialog = updateDialog;
 module.exports.openLicense = openLicense;
 module.exports.openReleaseNotes = openReleaseNotes;
+module.exports.openPatents = openPatents;
 module.exports.openPackageDetails = openPackageDetails;
 module.exports.toggleUpdatesChannel = toggleUpdatesChannel;
