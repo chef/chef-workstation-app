@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.82 -->
+<!-- latest_release 0.1.83 -->
+## [v0.1.83](https://github.com/chef/chef-workstation-app/tree/v0.1.83) (2020-09-29)
+
+#### Merged Pull Requests
+- Adding patent link to about page [#242](https://github.com/chef/chef-workstation-app/pull/242) ([tyler-ball](https://github.com/tyler-ball))
+<!-- latest_release -->
+
 ## [v0.1.82](https://github.com/chef/chef-workstation-app/tree/v0.1.82) (2020-08-18)
 
 #### Merged Pull Requests
 - Bumping deps [#228](https://github.com/chef/chef-workstation-app/pull/228) ([tyler-ball](https://github.com/tyler-ball))
-<!-- latest_release -->
 
 ## [v0.1.81](https://github.com/chef/chef-workstation-app/tree/v0.1.81) (2020-08-07)
 
