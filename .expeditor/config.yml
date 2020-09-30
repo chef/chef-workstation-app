@@ -44,3 +44,11 @@ merge_actions:
   # should run after it
   # - bash:.expeditor/generate_markdown.sh:
   #     only_if: built_in:update_changelog
+  - trigger_pipeline:build:
+      only_if: built_in:bump_version
+      ignore_labels:
+        - "Expeditor: Skip All"
+
+pipelines:
+  - build:
+      description: Builds the Chef Workstation Tray App for release
