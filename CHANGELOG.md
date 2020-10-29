@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.86 -->
+<!-- latest_release 0.1.87 -->
+## [v0.1.87](https://github.com/chef/chef-workstation-app/tree/v0.1.87) (2020-10-29)
+
+#### Merged Pull Requests
+- build(deps-dev): bump marked from 1.2.0 to 1.2.2 [#248](https://github.com/chef/chef-workstation-app/pull/248) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.86](https://github.com/chef/chef-workstation-app/tree/v0.1.86) (2020-10-29)
 
 #### Merged Pull Requests
 - build(deps-dev): bump copyfiles from 2.3.0 to 2.4.0 [#245](https://github.com/chef/chef-workstation-app/pull/245) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.85](https://github.com/chef/chef-workstation-app/tree/v0.1.85) (2020-10-29)
 
