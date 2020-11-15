@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.90 -->
+<!-- latest_release 0.1.91 -->
+## [v0.1.91](https://github.com/chef/chef-workstation-app/tree/v0.1.91) (2020-11-15)
+
+#### Merged Pull Requests
+- Update to Electron 9.3.4 [#254](https://github.com/chef/chef-workstation-app/pull/254) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.90](https://github.com/chef/chef-workstation-app/tree/v0.1.90) (2020-11-15)
 
 #### Merged Pull Requests
 - Update Electron to 8.5.3 [#253](https://github.com/chef/chef-workstation-app/pull/253) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.89](https://github.com/chef/chef-workstation-app/tree/v0.1.89) (2020-11-15)
 
