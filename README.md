@@ -6,8 +6,7 @@
 * **Issues [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md):** 14 days
 * **Pull Request [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md):** 14 days
 
-This the the tray application for Chef Workstation. It's written in Electron and
-will be where we implement any UI based features of Chef Workstation.
+This the the tray application for Chef Workstation. It's written in Electron and is where we implement the UI based features of Chef Workstation.
 
 ## Development
 
