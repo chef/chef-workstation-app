@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.93 -->
+<!-- latest_release 0.1.94 -->
+## [v0.1.94](https://github.com/chef/chef-workstation-app/tree/v0.1.94) (2020-11-17)
+
+#### Merged Pull Requests
+- Update electron-builder again to resolve signing the mac builds [#258](https://github.com/chef/chef-workstation-app/pull/258) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.93](https://github.com/chef/chef-workstation-app/tree/v0.1.93) (2020-11-17)
 
 #### Merged Pull Requests
 - Update electron-builder to 22.3.5 [#255](https://github.com/chef/chef-workstation-app/pull/255) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.92](https://github.com/chef/chef-workstation-app/tree/v0.1.92) (2020-11-17)
 
