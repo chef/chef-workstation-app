@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.94 -->
+<!-- latest_release 0.1.95 -->
+## [v0.1.95](https://github.com/chef/chef-workstation-app/tree/v0.1.95) (2020-11-30)
+
+#### Merged Pull Requests
+- build(deps-dev): bump copyfiles from 2.4.0 to 2.4.1 [#264](https://github.com/chef/chef-workstation-app/pull/264) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.94](https://github.com/chef/chef-workstation-app/tree/v0.1.94) (2020-11-17)
 
 #### Merged Pull Requests
 - Update electron-builder again to resolve signing the mac builds [#258](https://github.com/chef/chef-workstation-app/pull/258) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.93](https://github.com/chef/chef-workstation-app/tree/v0.1.93) (2020-11-17)
 
