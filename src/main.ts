@@ -62,6 +62,15 @@ export class Main {
       },
       {type: 'separator'},
       {
+        label: 'Documentation',
+        click: () => { this.openDocs() }
+      },
+      {
+        label: 'Learn Chef',
+        click: () => { this.openLearn() }
+      },
+      {type: 'separator'},
+      {
         label: 'About ' + helpers.getDisplayName(),
         click: () => { aboutDialog.open() }
       },
@@ -128,6 +137,16 @@ export class Main {
   private downloadUpdate() {
     let result = shell.openExternal(this.pendingUpdate.url);
     console.log("Attempted to open URL: " + this.pendingUpdate.url + ". Result: " + result);
+  }
+
+  private openDocs() {
+    let result = shell.openExternal('https://docs.chef.io/');
+    console.log("Attempted to open URL: https://docs.chef.io/. Result: " + result);
+  }
+
+  private openLearn() {
+    let result = shell.openExternal('https://learn.chef.io/');
+    console.log("Attempted to open URL: https://learn.chef.io/. Result: " + result);
   }
 
   private startApp() {
