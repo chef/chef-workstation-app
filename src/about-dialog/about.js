@@ -18,25 +18,18 @@ async function openLicense() {
 }
 
 async function openReleaseNotes() {
-  if (isDev) {
-    devReleaseNotes = path.join('file://', helpers.ExternalAssetsDir(), 'html/development_release_notes.html');
-    shell.openExternal(devReleaseNotes);
-  } else {
-    // This displays raw markdown now but we will update it to display rendered markdown
-    // once we have a location for that
-    let cwVersion = workstation.getVersion();
-    remoteReleaseNotes = `https://packages.chef.io/release-notes/stable/chef-workstation/${cwVersion}.md`
-    https.get(remoteReleaseNotes, function(res) {
-      shell.openExternal(remoteReleaseNotes);
-    }).on('error', function(e){
-      localReleaseNotes = new BrowserWindow({show: false});
-      localReleaseNotes.removeMenu();
-      localReleaseNotes.loadURL(path.join('file://', helpers.ExternalAssetsDir(), 'html/release_notes.html'));
-      localReleaseNotes.once('ready-to-show', () => {
-        localReleaseNotes.show()
-      });
+  let cwVersion = workstation.getVersion();
+  remoteReleaseNotes = `https://docs.chef.io/release_notes_workstation/?v=${cwVersion}`
+  https.get(remoteReleaseNotes, function(res) {
+    shell.openExternal(remoteReleaseNotes);
+  }).on('error', function(e){
+    localReleaseNotes = new BrowserWindow({show: false});
+    localReleaseNotes.removeMenu();
+    localReleaseNotes.loadURL(path.join('file://', helpers.ExternalAssetsDir(), 'html/release_notes.html'));
+    localReleaseNotes.once('ready-to-show', () => {
+      localReleaseNotes.show()
     });
-  }
+  });
 }
 
 async function openPatents() {
