@@ -18,8 +18,6 @@ async function openLicense() {
 }
 
 async function openReleaseNotes() {
-  // This displays raw markdown now but we will update it to display rendered markdown
-  // once we have a location for that
   let cwVersion = workstation.getVersion();
   remoteReleaseNotes = `https://docs.chef.io/release_notes_workstation/?v=${cwVersion}`
   https.get(remoteReleaseNotes, function(res) {
