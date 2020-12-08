@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.100 -->
+<!-- latest_release 0.1.101 -->
+## [v0.1.101](https://github.com/chef/chef-workstation-app/tree/v0.1.101) (2020-12-08)
+
+#### Merged Pull Requests
+- Remove unused electron-reload dep [#270](https://github.com/chef/chef-workstation-app/pull/270) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.100](https://github.com/chef/chef-workstation-app/tree/v0.1.100) (2020-12-08)
 
 #### Merged Pull Requests
 - Link to the release notes on the docs page [#266](https://github.com/chef/chef-workstation-app/pull/266) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.99](https://github.com/chef/chef-workstation-app/tree/v0.1.99) (2020-12-08)
 
