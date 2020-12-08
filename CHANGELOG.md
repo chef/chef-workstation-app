@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.99 -->
+<!-- latest_release 0.1.100 -->
+## [v0.1.100](https://github.com/chef/chef-workstation-app/tree/v0.1.100) (2020-12-08)
+
+#### Merged Pull Requests
+- Link to the release notes on the docs page [#266](https://github.com/chef/chef-workstation-app/pull/266) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.99](https://github.com/chef/chef-workstation-app/tree/v0.1.99) (2020-12-08)
 
 #### Merged Pull Requests
 - Update the copyright year [#271](https://github.com/chef/chef-workstation-app/pull/271) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.98](https://github.com/chef/chef-workstation-app/tree/v0.1.98) (2020-12-08)
 
