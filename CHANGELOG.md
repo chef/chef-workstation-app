@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.102 -->
+<!-- latest_release 0.1.103 -->
+## [v0.1.103](https://github.com/chef/chef-workstation-app/tree/v0.1.103) (2020-12-11)
+
+#### Merged Pull Requests
+- build(deps): [security] bump ini from 1.3.5 to 1.3.7 [#272](https://github.com/chef/chef-workstation-app/pull/272) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.102](https://github.com/chef/chef-workstation-app/tree/v0.1.102) (2020-12-08)
 
 #### Merged Pull Requests
 - Add links to the documentation + learn chef in the app [#267](https://github.com/chef/chef-workstation-app/pull/267) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.101](https://github.com/chef/chef-workstation-app/tree/v0.1.101) (2020-12-08)
 
