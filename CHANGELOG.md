@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.105 -->
+<!-- latest_release 0.1.106 -->
+## [v0.1.106](https://github.com/chef/chef-workstation-app/tree/v0.1.106) (2020-12-14)
+
+#### Merged Pull Requests
+- Update Electron to 9.4.0 [#279](https://github.com/chef/chef-workstation-app/pull/279) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.105](https://github.com/chef/chef-workstation-app/tree/v0.1.105) (2020-12-14)
 
 #### Merged Pull Requests
 - Move electron-debug to be a dev dependencies [#276](https://github.com/chef/chef-workstation-app/pull/276) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.104](https://github.com/chef/chef-workstation-app/tree/v0.1.104) (2020-12-14)
 
