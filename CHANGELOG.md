@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.104 -->
+<!-- latest_release 0.1.105 -->
+## [v0.1.105](https://github.com/chef/chef-workstation-app/tree/v0.1.105) (2020-12-14)
+
+#### Merged Pull Requests
+- Move electron-debug to be a dev dependencies [#276](https://github.com/chef/chef-workstation-app/pull/276) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.104](https://github.com/chef/chef-workstation-app/tree/v0.1.104) (2020-12-14)
 
 #### Merged Pull Requests
 - Make requests to omnitruck with an actual useragent [#274](https://github.com/chef/chef-workstation-app/pull/274) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.103](https://github.com/chef/chef-workstation-app/tree/v0.1.103) (2020-12-11)
 
