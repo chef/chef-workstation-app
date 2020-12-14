@@ -168,6 +168,21 @@ export class Main {
       this.triggerUpdateCheck();
       this.setupUpdateInterval();
     }
+
+    // Make sure we have a ~/.chef directory
+    this.createChefDir();
+  }
+
+  // make the ~/.chef directory if it doesn't exit
+  private createChefDir() {
+    let os = require('os'),
+    fs = require('fs');
+    var dir = os.homedir() + '/.chef';
+
+    if (!fs.existsSync(dir)) {
+        console.log("Creating the .chef dir at " + dir)
+        fs.mkdirSync(dir, 0o700);
+    }
   }
 
   private openPreferencesDialog() {
