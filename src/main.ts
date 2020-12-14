@@ -173,15 +173,27 @@ export class Main {
     this.createChefDir();
   }
 
-  // make the ~/.chef directory if it doesn't exit
+  // make the ~/.chef directory if it doesn't exit and add a sample credentials file
   private createChefDir() {
     let os = require('os'),
-    fs = require('fs');
-    var dir = os.homedir() + '/.chef';
+    fs = require('fs'),
+    path = require('path');
+    let chefDir = os.homedir() + path.sep + '.chef';
 
-    if (!fs.existsSync(dir)) {
-        console.log("Creating the .chef dir at " + dir)
-        fs.mkdirSync(dir, 0o700);
+    if (!fs.existsSync(chefDir)) {
+        console.log("Creating the .chef dir at " + chefDir)
+        fs.mkdirSync(chefDir, 0o700);
+
+        let credentialsFile = chefDir + path.sep + "credentials";
+        let credentialContent = "# This is the Chef Infra credentials file used by the knife CLI and other tools\n" +
+                                "# This file supports defining multiple credentials profiles, to allow you to switch between users, orgs, and Chef Infra Servers.\n\n" +
+                                "# Example credential file configuration:\n" +
+                                "# [default]\n" +
+                                "# client_name = 'MY_USERNAME'\n" +
+                                "# client_key = '" + chefDir + path.sep + "MY_USERNAME.pem'\n" +
+                                "# chef_server_url = 'https://api.chef.io/organizations/MY_ORG'\n\n"
+        console.log("Creating the credentials file at " + credentialsFile);
+        fs.writeFileSync(credentialsFile, credentialContent);
     }
   }
 
