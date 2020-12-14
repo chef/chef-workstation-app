@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.103 -->
+<!-- latest_release 0.1.104 -->
+## [v0.1.104](https://github.com/chef/chef-workstation-app/tree/v0.1.104) (2020-12-14)
+
+#### Merged Pull Requests
+- Make requests to omnitruck with an actual useragent [#274](https://github.com/chef/chef-workstation-app/pull/274) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.103](https://github.com/chef/chef-workstation-app/tree/v0.1.103) (2020-12-11)
 
 #### Merged Pull Requests
 - build(deps): [security] bump ini from 1.3.5 to 1.3.7 [#272](https://github.com/chef/chef-workstation-app/pull/272) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.102](https://github.com/chef/chef-workstation-app/tree/v0.1.102) (2020-12-08)
 
