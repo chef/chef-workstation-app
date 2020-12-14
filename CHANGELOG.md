@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.106 -->
+<!-- latest_release 0.1.107 -->
+## [v0.1.107](https://github.com/chef/chef-workstation-app/tree/v0.1.107) (2020-12-14)
+
+#### Merged Pull Requests
+- build(deps-dev): bump typescript from 4.1.2 to 4.1.3 [#278](https://github.com/chef/chef-workstation-app/pull/278) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.106](https://github.com/chef/chef-workstation-app/tree/v0.1.106) (2020-12-14)
 
 #### Merged Pull Requests
 - Update Electron to 9.4.0 [#279](https://github.com/chef/chef-workstation-app/pull/279) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.105](https://github.com/chef/chef-workstation-app/tree/v0.1.105) (2020-12-14)
 
