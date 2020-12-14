@@ -173,7 +173,7 @@ export class Main {
     this.createChefDir();
   }
 
-  // make the ~/.chef directory if it doesn't exit and add a sample credentials file
+  // make the ~/.chef directory if it doesn't exist and add a sample credentials file
   private createChefDir() {
     let os = require('os'),
     fs = require('fs'),
