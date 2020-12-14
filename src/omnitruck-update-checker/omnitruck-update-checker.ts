@@ -38,7 +38,15 @@ export class OmnitruckUpdateChecker {
       "latest",
       this.platformInfo.kernel_machine);
 
-    request(url, { json: true }, (err, res, body) => {
+    let options = {
+      url: url,
+      headers: {
+        'User-Agent': 'chef-workstation-app / ' + currentVersion
+      },
+      json: true
+    };
+
+    request(options, (err, res, body) => {
       if (err)  {
         this.emitter.emit('error', err) ;
         this.emitter.emit('end-update-check');
