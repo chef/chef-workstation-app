@@ -30,7 +30,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "copyfiles": "^2.4.1",
-    "electron": "^9.4.0",
+    "electron": "^11.2.0",
     "electron-builder": "22.9.1",
     "jsdom": "^16.4.0",
     "mocha": "^8.2.1",
