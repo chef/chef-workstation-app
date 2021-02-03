@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.109 -->
+<!-- latest_release 0.1.110 -->
+## [v0.1.110](https://github.com/chef/chef-workstation-app/tree/v0.1.110) (2021-02-03)
+
+#### Merged Pull Requests
+- Update Electron to 9.4.2 [#286](https://github.com/chef/chef-workstation-app/pull/286) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.109](https://github.com/chef/chef-workstation-app/tree/v0.1.109) (2020-12-14)
 
 #### Merged Pull Requests
 - On launch create the ~/.chef dir and credentials file if missing [#275](https://github.com/chef/chef-workstation-app/pull/275) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.108](https://github.com/chef/chef-workstation-app/tree/v0.1.108) (2020-12-14)
 
