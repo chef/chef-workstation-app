@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.110 -->
+<!-- latest_release 0.1.111 -->
+## [v0.1.111](https://github.com/chef/chef-workstation-app/tree/v0.1.111) (2021-02-12)
+
+#### Merged Pull Requests
+- build(deps-dev): bump mocha from 8.2.1 to 8.3.0 [#292](https://github.com/chef/chef-workstation-app/pull/292) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.110](https://github.com/chef/chef-workstation-app/tree/v0.1.110) (2021-02-03)
 
 #### Merged Pull Requests
 - Update Electron to 9.4.2 [#286](https://github.com/chef/chef-workstation-app/pull/286) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.109](https://github.com/chef/chef-workstation-app/tree/v0.1.109) (2020-12-14)
 
