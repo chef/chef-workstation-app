@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.112 -->
+<!-- latest_release 0.1.113 -->
+## [v0.1.113](https://github.com/chef/chef-workstation-app/tree/v0.1.113) (2021-02-14)
+
+#### Merged Pull Requests
+- build(deps-dev): bump chai from 4.2.0 to 4.3.0 [#287](https://github.com/chef/chef-workstation-app/pull/287) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.112](https://github.com/chef/chef-workstation-app/tree/v0.1.112) (2021-02-12)
 
 #### Merged Pull Requests
 - build(deps-dev): bump typescript from 4.1.3 to 4.1.5 [#291](https://github.com/chef/chef-workstation-app/pull/291) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.111](https://github.com/chef/chef-workstation-app/tree/v0.1.111) (2021-02-12)
 
