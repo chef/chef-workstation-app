@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.114 -->
+<!-- latest_release 0.1.115 -->
+## [v0.1.115](https://github.com/chef/chef-workstation-app/tree/v0.1.115) (2021-02-15)
+
+#### Merged Pull Requests
+- Update the about dialog copyright to 2021 [#305](https://github.com/chef/chef-workstation-app/pull/305) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.114](https://github.com/chef/chef-workstation-app/tree/v0.1.114) (2021-02-15)
 
 #### Merged Pull Requests
 - Update Electron to 9.4.3 [#304](https://github.com/chef/chef-workstation-app/pull/304) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.113](https://github.com/chef/chef-workstation-app/tree/v0.1.113) (2021-02-14)
 
