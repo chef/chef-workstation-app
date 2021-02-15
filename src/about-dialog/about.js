@@ -1,5 +1,4 @@
-const { ipcRenderer, shell } = require('electron');
-const BrowserWindow = require('electron').remote.BrowserWindow
+const { ipcRenderer, shell, BrowserWindow } = require('electron');
 const path = require('path');
 const isDev = require('electron-is-dev');
 const https = require('https');
