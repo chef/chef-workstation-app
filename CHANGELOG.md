@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.113 -->
+<!-- latest_release 0.1.114 -->
+## [v0.1.114](https://github.com/chef/chef-workstation-app/tree/v0.1.114) (2021-02-15)
+
+#### Merged Pull Requests
+- Update Electron to 9.4.3 [#304](https://github.com/chef/chef-workstation-app/pull/304) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.113](https://github.com/chef/chef-workstation-app/tree/v0.1.113) (2021-02-14)
 
 #### Merged Pull Requests
 - build(deps-dev): bump chai from 4.2.0 to 4.3.0 [#287](https://github.com/chef/chef-workstation-app/pull/287) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.112](https://github.com/chef/chef-workstation-app/tree/v0.1.112) (2021-02-12)
 
