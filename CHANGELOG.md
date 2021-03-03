@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.120 -->
+<!-- latest_release 0.1.121 -->
+## [v0.1.121](https://github.com/chef/chef-workstation-app/tree/v0.1.121) (2021-03-03)
+
+#### Merged Pull Requests
+- bump electron-builder back to 22.10.5 but pin fs-extra [#321](https://github.com/chef/chef-workstation-app/pull/321) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.120](https://github.com/chef/chef-workstation-app/tree/v0.1.120) (2021-03-03)
 
 #### Merged Pull Requests
 - Revert &quot;build(deps-dev): bump electron-builder from 22.9.1 to 22.10.5&quot; [#318](https://github.com/chef/chef-workstation-app/pull/318) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.119](https://github.com/chef/chef-workstation-app/tree/v0.1.119) (2021-03-02)
 
