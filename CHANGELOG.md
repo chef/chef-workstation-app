@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.121 -->
+<!-- latest_release 0.1.122 -->
+## [v0.1.122](https://github.com/chef/chef-workstation-app/tree/v0.1.122) (2021-03-03)
+
+#### Merged Pull Requests
+- build(deps-dev): bump chai from 4.3.0 to 4.3.1 [#319](https://github.com/chef/chef-workstation-app/pull/319) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.121](https://github.com/chef/chef-workstation-app/tree/v0.1.121) (2021-03-03)
 
 #### Merged Pull Requests
 - bump electron-builder back to 22.10.5 but pin fs-extra [#321](https://github.com/chef/chef-workstation-app/pull/321) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.120](https://github.com/chef/chef-workstation-app/tree/v0.1.120) (2021-03-03)
 
