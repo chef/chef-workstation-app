@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.122 -->
+<!-- latest_release 0.1.123 -->
+## [v0.1.123](https://github.com/chef/chef-workstation-app/tree/v0.1.123) (2021-03-03)
+
+#### Merged Pull Requests
+- build(deps-dev): bump electron from 11.3.0 to 12.0.0 [#316](https://github.com/chef/chef-workstation-app/pull/316) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.122](https://github.com/chef/chef-workstation-app/tree/v0.1.122) (2021-03-03)
 
 #### Merged Pull Requests
 - build(deps-dev): bump chai from 4.3.0 to 4.3.1 [#319](https://github.com/chef/chef-workstation-app/pull/319) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.121](https://github.com/chef/chef-workstation-app/tree/v0.1.121) (2021-03-03)
 
