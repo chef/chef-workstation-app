@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.119 -->
+<!-- latest_release 0.1.120 -->
+## [v0.1.120](https://github.com/chef/chef-workstation-app/tree/v0.1.120) (2021-03-03)
+
+#### Merged Pull Requests
+- Revert &quot;build(deps-dev): bump electron-builder from 22.9.1 to 22.10.5&quot; [#318](https://github.com/chef/chef-workstation-app/pull/318) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.119](https://github.com/chef/chef-workstation-app/tree/v0.1.119) (2021-03-02)
 
 #### Merged Pull Requests
 - build(deps-dev): bump typescript from 4.1.5 to 4.2.2 [#315](https://github.com/chef/chef-workstation-app/pull/315) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.118](https://github.com/chef/chef-workstation-app/tree/v0.1.118) (2021-03-02)
 
