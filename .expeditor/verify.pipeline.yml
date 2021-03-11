@@ -13,7 +13,8 @@ steps:
 
 - label: "Build Electron App"
   commands:
-    - npm run build-all
+    - npm install
+    - npm run build-linux
   expeditor:
     executor:
       docker:
