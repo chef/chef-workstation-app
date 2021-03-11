@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.125 -->
+<!-- latest_release 0.1.126 -->
+## [v0.1.126](https://github.com/chef/chef-workstation-app/tree/v0.1.126) (2021-03-11)
+
+#### Merged Pull Requests
+- Update all the deps to the latest [#327](https://github.com/chef/chef-workstation-app/pull/327) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.125](https://github.com/chef/chef-workstation-app/tree/v0.1.125) (2021-03-05)
 
 #### Merged Pull Requests
 - build(deps-dev): bump typescript from 4.2.2 to 4.2.3 [#324](https://github.com/chef/chef-workstation-app/pull/324) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.124](https://github.com/chef/chef-workstation-app/tree/v0.1.124) (2021-03-05)
 
