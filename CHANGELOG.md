@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.126 -->
+<!-- latest_release 0.1.127 -->
+## [v0.1.127](https://github.com/chef/chef-workstation-app/tree/v0.1.127) (2021-03-11)
+
+#### Merged Pull Requests
+- Revert to Electron 11.3.0 to avoid errors [#328](https://github.com/chef/chef-workstation-app/pull/328) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.126](https://github.com/chef/chef-workstation-app/tree/v0.1.126) (2021-03-11)
 
 #### Merged Pull Requests
 - Update all the deps to the latest [#327](https://github.com/chef/chef-workstation-app/pull/327) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.125](https://github.com/chef/chef-workstation-app/tree/v0.1.125) (2021-03-05)
 
