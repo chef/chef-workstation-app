@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.127 -->
+<!-- latest_release 0.1.128 -->
+## [v0.1.128](https://github.com/chef/chef-workstation-app/tree/v0.1.128) (2021-03-11)
+
+#### Merged Pull Requests
+- Update Expeditor and add Electron testing [#329](https://github.com/chef/chef-workstation-app/pull/329) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.127](https://github.com/chef/chef-workstation-app/tree/v0.1.127) (2021-03-11)
 
 #### Merged Pull Requests
 - Revert to Electron 11.3.0 to avoid errors [#328](https://github.com/chef/chef-workstation-app/pull/328) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.126](https://github.com/chef/chef-workstation-app/tree/v0.1.126) (2021-03-11)
 
