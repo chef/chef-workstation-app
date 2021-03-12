@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.129 -->
+<!-- latest_release 0.1.130 -->
+## [v0.1.130](https://github.com/chef/chef-workstation-app/tree/v0.1.130) (2021-03-12)
+
+#### Merged Pull Requests
+- build(deps-dev): bump spectron from 13.0.0 to 14.0.0 [#331](https://github.com/chef/chef-workstation-app/pull/331) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.129](https://github.com/chef/chef-workstation-app/tree/v0.1.129) (2021-03-11)
 
 #### Merged Pull Requests
 - Update the testing script [#330](https://github.com/chef/chef-workstation-app/pull/330) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.1.128](https://github.com/chef/chef-workstation-app/tree/v0.1.128) (2021-03-11)
 
