@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.130 -->
+<!-- latest_release 0.1.131 -->
+## [v0.1.131](https://github.com/chef/chef-workstation-app/tree/v0.1.131) (2021-03-12)
+
+#### Merged Pull Requests
+- build(deps-dev): bump mocha from 8.3.1 to 8.3.2 [#333](https://github.com/chef/chef-workstation-app/pull/333) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.130](https://github.com/chef/chef-workstation-app/tree/v0.1.130) (2021-03-12)
 
 #### Merged Pull Requests
 - build(deps-dev): bump spectron from 13.0.0 to 14.0.0 [#331](https://github.com/chef/chef-workstation-app/pull/331) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.129](https://github.com/chef/chef-workstation-app/tree/v0.1.129) (2021-03-11)
 
