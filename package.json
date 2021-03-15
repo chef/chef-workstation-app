@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.7",
-    "chai": "^4.3.3",
+    "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "copyfiles": "^2.4.1",
     "electron": "^11.3.0",
