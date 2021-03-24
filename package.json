@@ -27,7 +27,7 @@
     "test": "xvfb-maybe mocha test --full-stack"
   },
   "devDependencies": {
-    "@types/fs-extra": "9.0.7",
+    "@types/fs-extra": "9.0.8",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "copyfiles": "^2.4.1",
