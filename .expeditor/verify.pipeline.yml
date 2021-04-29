@@ -13,6 +13,7 @@ steps:
 
 - label: "Build Electron App"
   commands:
+    - node -v
     - npm install
     - npm run build-linux
   expeditor:
