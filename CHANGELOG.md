@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.138 -->
+<!-- latest_release 0.1.139 -->
+## [v0.1.139](https://github.com/chef/chef-workstation-app/tree/v0.1.139) (2021-04-29)
+
+#### Merged Pull Requests
+- Upgrade to GitHub-native Dependabot [#346](https://github.com/chef/chef-workstation-app/pull/346) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
+<!-- latest_release -->
+
 ## [v0.1.138](https://github.com/chef/chef-workstation-app/tree/v0.1.138) (2021-04-12)
 
 #### Merged Pull Requests
 - build(deps-dev): bump typescript from 4.2.3 to 4.2.4 [#341](https://github.com/chef/chef-workstation-app/pull/341) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.137](https://github.com/chef/chef-workstation-app/tree/v0.1.137) (2021-04-12)
 
