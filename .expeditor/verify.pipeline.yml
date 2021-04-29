@@ -19,3 +19,4 @@ steps:
   expeditor:
     executor:
       docker:
+        image: node:14
