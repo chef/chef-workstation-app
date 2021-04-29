@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.139 -->
+<!-- latest_release 0.1.140 -->
+## [v0.1.140](https://github.com/chef/chef-workstation-app/tree/v0.1.140) (2021-04-29)
+
+#### Merged Pull Requests
+- Pin to Electron 11.4.3 and remove the fs-extra pin [#349](https://github.com/chef/chef-workstation-app/pull/349) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.1.139](https://github.com/chef/chef-workstation-app/tree/v0.1.139) (2021-04-29)
 
 #### Merged Pull Requests
 - Upgrade to GitHub-native Dependabot [#346](https://github.com/chef/chef-workstation-app/pull/346) ([dependabot-preview[bot]](https://github.com/dependabot-preview[bot]))
-<!-- latest_release -->
 
 ## [v0.1.138](https://github.com/chef/chef-workstation-app/tree/v0.1.138) (2021-04-12)
 
