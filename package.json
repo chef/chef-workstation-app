@@ -31,7 +31,7 @@
     "chai-as-promised": "^7.1.1",
     "copyfiles": "^2.4.1",
     "electron": "=11.4.3",
-    "electron-builder": "22.11.4",
+    "electron-builder": "22.11.5",
     "jsdom": "^16.5.3",
     "mocha": "^8.4.0",
     "rimraf": "^3.0.2",
