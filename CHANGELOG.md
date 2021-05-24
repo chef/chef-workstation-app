@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.1 -->
+<!-- latest_release 0.2.2 -->
+## [v0.2.2](https://github.com/chef/chef-workstation-app/tree/v0.2.2) (2021-05-24)
+
+#### Merged Pull Requests
+- Test on macos / windows as well [#365](https://github.com/chef/chef-workstation-app/pull/365) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.2.1](https://github.com/chef/chef-workstation-app/tree/v0.2.1) (2021-05-24)
 
 #### Merged Pull Requests
 - Test with GitHub Actions [#364](https://github.com/chef/chef-workstation-app/pull/364) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.2.0](https://github.com/chef/chef-workstation-app/tree/v0.2.0) (2021-05-24)
 
