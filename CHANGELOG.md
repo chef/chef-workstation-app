@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.3 -->
+<!-- latest_release 0.2.4 -->
+## [v0.2.4](https://github.com/chef/chef-workstation-app/tree/v0.2.4) (2021-05-24)
+
+#### Merged Pull Requests
+- Bump @types/node from 14.17.0 to 15.6.0 [#367](https://github.com/chef/chef-workstation-app/pull/367) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.3](https://github.com/chef/chef-workstation-app/tree/v0.2.3) (2021-05-24)
 
 #### Merged Pull Requests
 - Roll back electron-builder to fix macos builds [#366](https://github.com/chef/chef-workstation-app/pull/366) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.2.2](https://github.com/chef/chef-workstation-app/tree/v0.2.2) (2021-05-24)
 
