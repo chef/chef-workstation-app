@@ -1,9 +1,14 @@
-<!-- latest_release 0.1.147 -->
+<!-- latest_release 0.1.148 -->
+## [v0.1.148](https://github.com/chef/chef-workstation-app/tree/v0.1.148) (2021-05-24)
+
+#### Merged Pull Requests
+- Bump jsdom from 16.5.3 to 16.6.0 [#362](https://github.com/chef/chef-workstation-app/pull/362) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.1.147](https://github.com/chef/chef-workstation-app/tree/v0.1.147) (2021-05-20)
 
 #### Merged Pull Requests
 - Bump electron-builder from 22.11.4 to 22.11.5 [#360](https://github.com/chef/chef-workstation-app/pull/360) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.1.146](https://github.com/chef/chef-workstation-app/tree/v0.1.146) (2021-05-14)
 
