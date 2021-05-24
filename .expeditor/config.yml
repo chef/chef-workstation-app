@@ -5,10 +5,6 @@
 slack:
   notify_channel: chef-ws-notify
 
-pipelines:
-  - verify:
-      public: true
-
 github:
   # The tag format to use (e.g. v1.0.0)
   version_tag_format: "v{{version}}"
