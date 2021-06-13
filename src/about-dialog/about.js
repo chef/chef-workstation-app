@@ -47,7 +47,8 @@ function openPackageDetails() {
       maximizable: false,
       show: false,
       webPreferences: {
-        nodeIntegration: true
+        nodeIntegration: true,
+        contextIsolation: false
       }
     });
     packageDetails.removeMenu();

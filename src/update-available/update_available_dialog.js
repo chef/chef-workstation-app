@@ -18,6 +18,7 @@ function open(updateInfo) {
       alwaysOnTop: true,
       webPreferences: {
         nodeIntegration: true,
+        contextIsolation: false,
         // We need to supply the available version to the browser window so it can
         // communicate this information to the user via the UI. Randomly passings
         // args to a window does not seem great but otherwise we need the window
