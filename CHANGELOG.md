@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.13 -->
+<!-- latest_release 0.2.14 -->
+## [v0.2.14](https://github.com/chef/chef-workstation-app/tree/v0.2.14) (2021-06-13)
+
+#### Merged Pull Requests
+- Fix loading all helpers by turning off context isolation [#386](https://github.com/chef/chef-workstation-app/pull/386) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
+
 ## [v0.2.13](https://github.com/chef/chef-workstation-app/tree/v0.2.13) (2021-06-11)
 
 #### Merged Pull Requests
 - Bump normalize-url from 4.5.0 to 4.5.1 [#383](https://github.com/chef/chef-workstation-app/pull/383) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.12](https://github.com/chef/chef-workstation-app/tree/v0.2.12) (2021-06-08)
 
