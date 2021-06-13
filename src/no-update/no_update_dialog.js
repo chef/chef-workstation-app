@@ -16,7 +16,8 @@ function open() {
       minimizable: false,
       maximizable: false,
       webPreferences: {
-        nodeIntegration: true
+        nodeIntegration: true,
+        contextIsolation: false
       }
     });
     noUpdateDialog.removeMenu();

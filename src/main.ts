@@ -158,7 +158,8 @@ export class Main {
         // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
         // only distributing an app that is already running on someone's system we can get away with it but
         // we should switch to the 'preload' pattern documented in that tutorial.
-        nodeIntegration: true
+        nodeIntegration: true,
+        contextIsolation: false
       }
     });
     this.backgroundWindow.loadURL(modalPath)
