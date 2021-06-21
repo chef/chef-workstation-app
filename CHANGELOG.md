@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.14 -->
+<!-- latest_release 0.2.15 -->
+## [v0.2.15](https://github.com/chef/chef-workstation-app/tree/v0.2.15) (2021-06-21)
+
+#### Merged Pull Requests
+- Bump @types/node from 15.12.2 to 15.12.4 [#391](https://github.com/chef/chef-workstation-app/pull/391) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.14](https://github.com/chef/chef-workstation-app/tree/v0.2.14) (2021-06-13)
 
 #### Merged Pull Requests
 - Fix loading all helpers by turning off context isolation [#386](https://github.com/chef/chef-workstation-app/pull/386) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
 
 ## [v0.2.13](https://github.com/chef/chef-workstation-app/tree/v0.2.13) (2021-06-11)
 
