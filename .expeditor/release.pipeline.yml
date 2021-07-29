@@ -1,0 +1,38 @@
+steps:
+
+  - label: ":macos: build"
+    command: .expeditor/buildkite/build_darwin.sh
+    artifact_paths:
+      - dist/*.zip
+    expeditor:
+      executor:
+        macos:
+
+  - label: ":windows: build"
+    command: .expeditor/buildkite/build_win32.ps1
+    artifact_paths:
+      - dist/*.zip
+    expeditor:
+      executor:
+        windows:
+          single-use: true
+          privileged: true
+
+  - label: ":linux: build"
+    command: .expeditor/buildkite/build_linux.sh
+    artifact_paths:
+      - dist/*.zip
+    expeditor:
+      executor:
+        linux:
+          single-use: true
+          privileged: true
+
+  - wait
+
+  - label: ":artifactory: publish"
+    command: .expeditor/buildkite/artifact_upload.sh
+    expeditor:
+      secrets: true
+      executor:
+        docker:

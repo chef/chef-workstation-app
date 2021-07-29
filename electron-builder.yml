@@ -1,4 +1,5 @@
 appId: "sh.chef.chef-workstation"
+artifactName: "${name}-${version}-${platform}.${ext}"
 
 extraMetadata:
   main: "./src/app.js"
@@ -26,8 +27,8 @@ mac:
     LSUIElement: 1
 
 win:
-  target: ["dir"]
+  target: ["dir", "zip"]
   icon: "assets/images/logo.ico"
 
 linux:
-  target: ["dir"]
+  target: ["dir", "zip"]

@@ -6,7 +6,7 @@ slack:
   notify_channel: chef-ws-notify
 
 pipelines:
-  - build
+  - release
 
 github:
   # The tag format to use (e.g. v1.0.0)
@@ -31,5 +31,5 @@ subscriptions:
           ignore_labels:
             - "Expeditor: Skip Changelog"
             - "Expeditor: Skip All"
-      # - trigger_pipeline:build:
-      #     only_if: built_in:bump_version
+      - trigger_pipeline:release:
+          only_if: built_in:bump_version
