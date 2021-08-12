@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.39 -->
+<!-- latest_release 0.2.40 -->
+## [v0.2.40](https://github.com/chef/chef-workstation-app/tree/v0.2.40) (2021-08-12)
+
+#### Merged Pull Requests
+- Add signing capabilities to Mac build [#426](https://github.com/chef/chef-workstation-app/pull/426) ([tduffield](https://github.com/tduffield))
+<!-- latest_release -->
+
 ## [v0.2.39](https://github.com/chef/chef-workstation-app/tree/v0.2.39) (2021-08-12)
 
 #### Merged Pull Requests
 - Bump @types/node from 16.4.11 to 16.6.0 [#425](https://github.com/chef/chef-workstation-app/pull/425) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.38](https://github.com/chef/chef-workstation-app/tree/v0.2.38) (2021-08-10)
 
