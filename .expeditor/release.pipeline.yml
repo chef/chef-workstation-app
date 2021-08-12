@@ -7,6 +7,7 @@ steps:
     expeditor:
       executor:
         macos:
+          vm-name: buildkite-omnibus-mac_os_x-10.15-x86_64
 
   - label: ":windows: build"
     command: .expeditor/buildkite/build_win32.ps1
