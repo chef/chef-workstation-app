@@ -14,8 +14,8 @@ const util = require('util');
 // to show notifications we have to handle the toggle of the notification images
 // ourselves.
 const macIcon = path.join(__dirname, '../assets/images/iconLightTemplate.png');
-const macIconLightNotify = path.join(__dirname, '../assets/images/iconLightNotify.png');
-const macIconDarkNotify = path.join(__dirname, '../assets/images/iconDarkNotify.png');
+const macIconLightNotify = path.join(__dirname, '../assets/images/iconLightNotifyMac@3x.png');
+const macIconDarkNotify = path.join(__dirname, '../assets/images/iconLightNotifyMac@3x.png');
 // On Windows we need larger images so they display correctly. We only need light
 // images on windows since the task bar is dark.
 const winIcon = path.join(__dirname, '../assets/images/iconLightTemplate@3x.png');
