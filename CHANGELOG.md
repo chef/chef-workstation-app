@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.49 -->
+<!-- latest_release 0.2.50 -->
+## [v0.2.50](https://github.com/chef/chef-workstation-app/tree/v0.2.50) (2021-08-26)
+
+#### Merged Pull Requests
+- Bump @types/node from 16.7.1 to 16.7.2 [#436](https://github.com/chef/chef-workstation-app/pull/436) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.49](https://github.com/chef/chef-workstation-app/tree/v0.2.49) (2021-08-26)
 
 #### Merged Pull Requests
 - Added the new App Icon for the MacOS [#434](https://github.com/chef/chef-workstation-app/pull/434) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.48](https://github.com/chef/chef-workstation-app/tree/v0.2.48) (2021-08-26)
 
