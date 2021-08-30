@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.51 -->
+<!-- latest_release 0.2.52 -->
+## [v0.2.52](https://github.com/chef/chef-workstation-app/tree/v0.2.52) (2021-08-30)
+
+#### Merged Pull Requests
+- Bump @types/node from 16.7.2 to 16.7.6 [#439](https://github.com/chef/chef-workstation-app/pull/439) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.51](https://github.com/chef/chef-workstation-app/tree/v0.2.51) (2021-08-27)
 
 #### Merged Pull Requests
 - Bump typescript from 4.3.5 to 4.4.2 [#437](https://github.com/chef/chef-workstation-app/pull/437) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.50](https://github.com/chef/chef-workstation-app/tree/v0.2.50) (2021-08-26)
 
