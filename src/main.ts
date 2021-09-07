@@ -15,7 +15,6 @@ import aboutDialog = require('./about-dialog/about_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
-import path = require("path");
 
 // TriggerUpdateSettings is an interface that will enforce the settings
 // we pass to the TriggerUpdateCheck function. Since the app is event
@@ -153,11 +152,11 @@ export class Main {
   private startApp() {
     const modalPath = `file://${__dirname}/process.html`
     const splash: BrowserWindow = new BrowserWindow({
-      width: 220,
-      height: 220,
+      width: 300,
+      height: 300,
       transparent: true,
     });
-    splash.loadURL(`file://${path.join(__dirname, "..", "/assets/images/workstation-logo.svg")}`);
+    splash.loadURL(`file://${__dirname}/splash.html`);
       setTimeout(function () {
         splash.destroy();
       }, 3000);
