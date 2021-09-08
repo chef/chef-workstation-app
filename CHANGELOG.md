@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.58 -->
+<!-- latest_release 0.2.59 -->
+## [v0.2.59](https://github.com/chef/chef-workstation-app/tree/v0.2.59) (2021-09-08)
+
+#### Merged Pull Requests
+- Implemented the splash screen when the app loads [#444](https://github.com/chef/chef-workstation-app/pull/444) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
+
 ## [v0.2.58](https://github.com/chef/chef-workstation-app/tree/v0.2.58) (2021-09-07)
 
 #### Merged Pull Requests
 - Bump @types/node from 16.7.10 to 16.7.13 [#446](https://github.com/chef/chef-workstation-app/pull/446) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.57](https://github.com/chef/chef-workstation-app/tree/v0.2.57) (2021-09-07)
 
