@@ -151,6 +151,15 @@ export class Main {
 
   private startApp() {
     const modalPath = `file://${__dirname}/process.html`
+    const splash: BrowserWindow = new BrowserWindow({
+      width: 300,
+      height: 300,
+      transparent: true,
+    });
+    splash.loadURL(`file://${__dirname}/splash.html`);
+      setTimeout(function () {
+        splash.destroy();
+      }, 3000);
     this.backgroundWindow = new BrowserWindow({
       show: false,
       webPreferences: {
