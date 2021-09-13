@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.59 -->
+<!-- latest_release 0.2.60 -->
+## [v0.2.60](https://github.com/chef/chef-workstation-app/tree/v0.2.60) (2021-09-13)
+
+#### Merged Pull Requests
+- Bump typescript from 4.4.2 to 4.4.3 [#451](https://github.com/chef/chef-workstation-app/pull/451) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.59](https://github.com/chef/chef-workstation-app/tree/v0.2.59) (2021-09-08)
 
 #### Merged Pull Requests
 - Implemented the splash screen when the app loads [#444](https://github.com/chef/chef-workstation-app/pull/444) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.58](https://github.com/chef/chef-workstation-app/tree/v0.2.58) (2021-09-07)
 
