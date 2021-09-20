@@ -2,8 +2,6 @@ steps:
 
   - label: ":macos: build"
     command: .expeditor/buildkite/build_darwin.sh
-    artifact_paths:
-      - dist/*.zip
     expeditor:
       executor:
         macos:
