@@ -1,7 +1,8 @@
-<!-- latest_release unreleased -->
-## Unreleased
+<!-- latest_release 0.2.65 -->
+## [v0.2.65](https://github.com/chef/chef-workstation-app/tree/v0.2.65) (2021-09-22)
 
 #### Merged Pull Requests
+- Bump @types/node from 16.9.4 to 16.9.6 [#457](https://github.com/chef/chef-workstation-app/pull/457) ([dependabot[bot]](https://github.com/dependabot[bot]))
 - Upload zip from inside macOS VM [#455](https://github.com/chef/chef-workstation-app/pull/455) ([tduffield](https://github.com/tduffield))
 <!-- latest_release -->
 
