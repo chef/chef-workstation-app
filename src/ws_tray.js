@@ -20,6 +20,7 @@ const macIconDarkNotify = path.join(__dirname, '../assets/images/iconLightNotify
 // images on windows since the task bar is dark.
 const winIcon = path.join(__dirname, '../assets/images/iconLightTemplate@3x.png');
 const winIconNotify = path.join(__dirname, '../assets/images/iconLightNotify@3x.png');
+const request = require('request');
 
 // Default icon
 var icon = is.macOS() ? macIcon : winIcon;
@@ -80,8 +81,36 @@ function setVersion(v) {
 }
 
 function setToolTip() {
-    var toolTip = util.format("Chef Workstation %s\n", version);
-    tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
+
+    const platformInfo = workstation.getPlatformInfo()
+
+    const OMNITRUCK_URL = "https://omnitruck.chef.io/%s/chef-workstation/metadataa/?p=%s&pv=%s&v=%s&m=%s&prerelease=false&nightlies=false";
+
+    let url = util.format(OMNITRUCK_URL,
+        "stable",
+        platformInfo.platform,
+        platformInfo.platform_version,
+        "latest",
+        platformInfo.kernel_machine);
+  
+    let options = {
+        url: url,
+        json: true
+    };
+  
+    request(options, (err, res, body) => {
+        var toolTip = util.format("Chef Workstation %s\n", version);
+        if (res.statusCode != 200) {
+            if (res.statusCode == 404) {
+                tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
+            } else {
+                tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
+            }
+            return;
+          }
+
+        tray.setToolTip(updateAvailable ? toolTip  + body.version + " " +  "Update Available" : toolTip + "Up to date");
+    })
 };
 
 function subscribeThemeChangeMacOS() {
