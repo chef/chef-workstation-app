@@ -84,7 +84,7 @@ function setToolTip() {
 
     const platformInfo = workstation.getPlatformInfo()
 
-    const OMNITRUCK_URL = "https://omnitruck.chef.io/%s/chef-workstation/metadataa/?p=%s&pv=%s&v=%s&m=%s&prerelease=false&nightlies=false";
+    const OMNITRUCK_URL = "https://omnitruck.chef.io/%s/chef-workstation/metadata/?p=%s&pv=%s&v=%s&m=%s&prerelease=false&nightlies=false";
 
     let url = util.format(OMNITRUCK_URL,
         "stable",
