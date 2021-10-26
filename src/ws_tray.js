@@ -20,7 +20,6 @@ const macIconDarkNotify = path.join(__dirname, '../assets/images/iconLightNotify
 // images on windows since the task bar is dark.
 const winIcon = path.join(__dirname, '../assets/images/iconLightTemplate@3x.png');
 const winIconNotify = path.join(__dirname, '../assets/images/iconLightNotify@3x.png');
-const request = require('request');
 
 // Default icon
 var icon = is.macOS() ? macIcon : winIcon;
