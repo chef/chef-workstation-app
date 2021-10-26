@@ -69,10 +69,10 @@ function setContextMenu(contextMenu) {
     tray.setContextMenu(contextMenu);
 };
 
-function setUpdateAvailable(u) {
+function setUpdateAvailable(u, update_version) {
     updateAvailable = u;
     displayNotification(updateAvailable);
-    setToolTip();
+    setToolTip(update_version);
 }
 
 function setVersion(v) {
@@ -80,37 +80,9 @@ function setVersion(v) {
     setToolTip();
 }
 
-function setToolTip() {
-
-    const platformInfo = workstation.getPlatformInfo()
-
-    const OMNITRUCK_URL = "https://omnitruck.chef.io/%s/chef-workstation/metadata/?p=%s&pv=%s&v=%s&m=%s&prerelease=false&nightlies=false";
-
-    let url = util.format(OMNITRUCK_URL,
-        "stable",
-        platformInfo.platform,
-        platformInfo.platform_version,
-        "latest",
-        platformInfo.kernel_machine);
-  
-    let options = {
-        url: url,
-        json: true
-    };
-  
-    request(options, (err, res, body) => {
-        var toolTip = util.format("Chef Workstation %s\n", version);
-        if (res.statusCode != 200) {
-            if (res.statusCode == 404) {
-                tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
-            } else {
-                tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
-            }
-            return;
-          }
-
-        tray.setToolTip(updateAvailable ? toolTip  + body.version + " " +  "Update Available" : toolTip + "Up to date");
-    })
+function setToolTip(update_version) {
+    var toolTip = util.format("Chef Workstation %s\n", version);
+    tray.setToolTip(updateAvailable ? toolTip + update_version +  " " + "Update Available" : toolTip + "Up to date");
 };
 
 function subscribeThemeChangeMacOS() {

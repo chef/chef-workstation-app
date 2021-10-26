@@ -255,7 +255,7 @@ export class Main {
 
     this.omnitruckUpdateChecker.on('update-available', (updateInfo) => {
       this.pendingUpdate = updateInfo;
-      this.tray.setUpdateAvailable(true);
+      this.tray.setUpdateAvailable(true, updateInfo.version);
       this.trayMenu = this.createMenu();
       this.tray.setContextMenu(this.trayMenu);
 
