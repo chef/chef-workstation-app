@@ -68,10 +68,10 @@ function setContextMenu(contextMenu) {
     tray.setContextMenu(contextMenu);
 };
 
-function setUpdateAvailable(u) {
+function setUpdateAvailable(u, update_version) {
     updateAvailable = u;
     displayNotification(updateAvailable);
-    setToolTip();
+    setToolTip(update_version);
 }
 
 function setVersion(v) {
@@ -79,9 +79,9 @@ function setVersion(v) {
     setToolTip();
 }
 
-function setToolTip() {
+function setToolTip(update_version) {
     var toolTip = util.format("Chef Workstation %s\n", version);
-    tray.setToolTip(updateAvailable ? toolTip + "Update Available" : toolTip + "Up to date");
+    tray.setToolTip((updateAvailable && update_version) ? toolTip +  update_version +  " " + "Update Available" : toolTip + "Up to date");
 };
 
 function subscribeThemeChangeMacOS() {
