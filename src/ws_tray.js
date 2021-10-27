@@ -81,7 +81,7 @@ function setVersion(v) {
 
 function setToolTip(update_version) {
     var toolTip = util.format("Chef Workstation %s\n", version);
-    tray.setToolTip(updateAvailable ? toolTip + (update_version && update_version) +  " " + "Update Available" : toolTip + "Up to date");
+    tray.setToolTip((updateAvailable && update_version) ? toolTip +  update_version +  " " + "Update Available" : toolTip + "Up to date");
 };
 
 function subscribeThemeChangeMacOS() {
