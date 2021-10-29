@@ -19,7 +19,7 @@ This the the tray application for Chef Workstation. It's written in Electron and
 ##### [Homebrew](https://brew.sh)
 
 ```shell
-brew install node@14
+brew install node@16
 ```
 
 ##### [ASDF](https://github.com/asdf-vm/asdf)
