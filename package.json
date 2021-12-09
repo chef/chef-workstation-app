@@ -43,6 +43,6 @@
     "@iarna/toml": "^2.2.5",
     "electron-is": "^3.0.0",
     "request": "^2.88.2",
-    "@types/node": "^16.11.11"
+    "@types/node": "^16.11.12"
   }
 }
