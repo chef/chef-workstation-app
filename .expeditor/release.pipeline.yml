@@ -9,10 +9,8 @@ steps:
 
   - label: ":macos_m1: build"
     command: .expeditor/buildkite/build_darwin.sh
-    expeditor:
-      executor:
-        macos_m1:
-          vm-name: buildkite-omnibus-mac_os_x-11-arm64
+    agents:
+      queue: omnibus-mac_os_x-11-arm64
 
   - label: ":windows: build"
     command: .expeditor/buildkite/build_win32.ps1
