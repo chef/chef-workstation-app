@@ -32,11 +32,11 @@ steps:
           single-use: true
           privileged: true
 
-  - wait
+  # - wait
 
-  - label: ":artifactory: publish"
-    command: .expeditor/buildkite/artifact_upload.sh
-    expeditor:
-      secrets: true
-      executor:
-        docker:
+  # - label: ":artifactory: publish"
+  #   command: .expeditor/buildkite/artifact_upload.sh
+  #   expeditor:
+  #     secrets: true
+  #     executor:
+  #       docker:
