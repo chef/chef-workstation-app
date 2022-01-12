@@ -28,6 +28,16 @@ mac:
   extendInfo:
     LSUIElement: 1
 
+macM1:
+  target: ["zip"]
+  category: "public.app-category.developer-tools"
+  icon: "assets/images/logo.png"
+  electronLanguages: ["en"]
+  hardenedRuntime: true
+  entitlements: entitlements.plist
+  extendInfo:
+    LSUIElement: 1   
+
 win:
   target: ["dir", "zip"]
   icon: "assets/images/logo.ico"
