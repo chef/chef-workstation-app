@@ -12,7 +12,7 @@ brew link node@16
 
 # Perform the build
 npm install --unsafe-perm=true --allow-root
-npm run-script build-macM1
+npm run-script build-mac-M1
 
 # Upload artifacts
 # This needs to happen inside the Anka VM (not on the host)
