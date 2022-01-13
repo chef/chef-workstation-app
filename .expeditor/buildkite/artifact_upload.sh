@@ -23,7 +23,7 @@ jfrog rt upload \
 set +e # read exits 1 (even though it does what we weant)
 read -r -d '' final_annotation <<EOF
 The .zip files for the Chef Workstation App builds have been published to Artifactory and are available to download via packages.chef.io.
-
+- :macos_m1: https://packages.chef.io/files/${CHANNEL}/chef-workstation-app/${VERSION}/chef-workstation-app-${VERSION}-darwin.zip
 - :macos: https://packages.chef.io/files/${CHANNEL}/chef-workstation-app/${VERSION}/chef-workstation-app-${VERSION}-darwin.zip
 - :linux: https://packages.chef.io/files/${CHANNEL}/chef-workstation-app/${VERSION}/chef-workstation-app-${VERSION}-linux.zip
 - :windows: https://packages.chef.io/files/${CHANNEL}/chef-workstation-app/${VERSION}/chef-workstation-app-${VERSION}-win32.zip
