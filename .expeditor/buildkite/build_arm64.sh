@@ -15,4 +15,4 @@ npm install --unsafe-perm=true --allow-root
 npm run-script build-mac
 
 # Upload artifacts
-# buildkite-agent artifact upload dist/*.zip
+buildkite-agent artifact upload dist/*.zip
