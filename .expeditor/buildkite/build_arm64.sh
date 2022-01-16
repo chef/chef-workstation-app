@@ -15,5 +15,4 @@ npm install --unsafe-perm=true --allow-root
 npm run-script build-mac-m1
 
 # Upload artifacts
-# This needs to happen inside the Anka VM (not on the host)
-buildkite-agent artifact upload dist/*.zip
+# buildkite-agent artifact upload dist/*.zip
