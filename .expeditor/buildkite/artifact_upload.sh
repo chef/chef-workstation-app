@@ -10,7 +10,7 @@ CHANNEL="${CHANNEL:-unstable}"
 rm -rf dist
 buildkite-agent artifact download "dist/*.zip" .
 buildkite-agent artifact download "dist\*.zip" .
-ls -ltr
+ls -ltr dist/
 echo "these files downloaded"
 
 # # Upload them to Artifactory
