@@ -21,7 +21,7 @@
     "start": "npm run compile && electron build/app.js",
     "debug": "npm run compile && electron build/app.js --inspect-brk=9229",
     "build-all": "npm run compile && electron-builder --win --mac --linux --publish never",
-    "build-mac": "npm run compile && electron-builder --mac --x64 --publish never",
+    "build-mac": "npm run compile && electron-builder --mac --universal --publish never",
     "build-mac-m1": "npm run compile && electron-builder --mac --arm64 --publish never",
     "build-linux": "npm run compile && electron-builder --linux --publish never",
     "build-win": "npm run compile && electron-builder --win --publish never",
