@@ -1,5 +1,5 @@
 appId: "sh.chef.chef-workstation"
-artifactName: "${name}-${version}-${platform}.${ext}"
+artifactName: "${name}-${version}-${platform}-${arch}.${ext}"
 
 extraMetadata:
   main: "./src/app.js"
