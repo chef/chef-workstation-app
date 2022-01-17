@@ -28,7 +28,6 @@ mac:
   extendInfo:
     LSUIElement: 1
 
-
 win:
   target: ["dir", "zip"]
   icon: "assets/images/logo.ico"
