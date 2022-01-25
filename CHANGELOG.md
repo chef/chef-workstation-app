@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.110 -->
+<!-- latest_release 0.2.111 -->
+## [v0.2.111](https://github.com/chef/chef-workstation-app/tree/v0.2.111) (2022-01-25)
+
+#### Merged Pull Requests
+- Bump mocha from 9.1.4 to 9.2.0 [#532](https://github.com/chef/chef-workstation-app/pull/532) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.110](https://github.com/chef/chef-workstation-app/tree/v0.2.110) (2022-01-18)
 
 #### Merged Pull Requests
 - Apple M1 build publish issue fixed [#526](https://github.com/chef/chef-workstation-app/pull/526) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.109](https://github.com/chef/chef-workstation-app/tree/v0.2.109) (2022-01-17)
 
