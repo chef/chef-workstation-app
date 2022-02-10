@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.119 -->
+<!-- latest_release 0.2.120 -->
+## [v0.2.120](https://github.com/chef/chef-workstation-app/tree/v0.2.120) (2022-02-10)
+
+#### Merged Pull Requests
+- Bump ansi-regex from 5.0.0 to 5.0.1 [#541](https://github.com/chef/chef-workstation-app/pull/541) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.119](https://github.com/chef/chef-workstation-app/tree/v0.2.119) (2022-02-10)
 
 #### Merged Pull Requests
 - Bump electron from 16.0.7 to 17.0.0 [#539](https://github.com/chef/chef-workstation-app/pull/539) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.118](https://github.com/chef/chef-workstation-app/tree/v0.2.118) (2022-02-09)
 
