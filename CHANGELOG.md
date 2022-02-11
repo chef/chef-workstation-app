@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.120 -->
+<!-- latest_release 0.2.121 -->
+## [v0.2.121](https://github.com/chef/chef-workstation-app/tree/v0.2.121) (2022-02-11)
+
+#### Merged Pull Requests
+- Bump ajv from 6.12.2 to 6.12.6 [#546](https://github.com/chef/chef-workstation-app/pull/546) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.120](https://github.com/chef/chef-workstation-app/tree/v0.2.120) (2022-02-10)
 
 #### Merged Pull Requests
 - Bump ansi-regex from 5.0.0 to 5.0.1 [#541](https://github.com/chef/chef-workstation-app/pull/541) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.119](https://github.com/chef/chef-workstation-app/tree/v0.2.119) (2022-02-10)
 
