@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.121 -->
+<!-- latest_release 0.2.122 -->
+## [v0.2.122](https://github.com/chef/chef-workstation-app/tree/v0.2.122) (2022-02-14)
+
+#### Merged Pull Requests
+- Bump spectron from 15.0.0 to 19.0.0 [#542](https://github.com/chef/chef-workstation-app/pull/542) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.121](https://github.com/chef/chef-workstation-app/tree/v0.2.121) (2022-02-11)
 
 #### Merged Pull Requests
 - Bump ajv from 6.12.2 to 6.12.6 [#546](https://github.com/chef/chef-workstation-app/pull/546) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.120](https://github.com/chef/chef-workstation-app/tree/v0.2.120) (2022-02-10)
 
