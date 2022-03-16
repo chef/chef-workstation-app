@@ -14,7 +14,7 @@ buildkite-agent artifact download "dist\*.zip" .
 # # Upload them to Artifactory
 jfrog rt upload \
     --apikey "$ARTIFACTORY_TOKEN" \
-    --url=https://artifactory.chef.co/artifactory \
+    --url=https://artifactory-internal.ps.chef.co/artifactory \
     --target-props="project=chef-workstation-app;version=${VERSION}" \
     "dist/*.zip" \
     "files-${CHANNEL}-local/chef-workstation-app/${VERSION}/"
