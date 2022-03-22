@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.130 -->
+<!-- latest_release 0.2.131 -->
+## [v0.2.131](https://github.com/chef/chef-workstation-app/tree/v0.2.131) (2022-03-22)
+
+#### Merged Pull Requests
+- Bump @types/node from 17.0.21 to 17.0.22 [#559](https://github.com/chef/chef-workstation-app/pull/559) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.130](https://github.com/chef/chef-workstation-app/tree/v0.2.130) (2022-03-16)
 
 #### Merged Pull Requests
 - Updated the new artifactory url [#558](https://github.com/chef/chef-workstation-app/pull/558) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.129](https://github.com/chef/chef-workstation-app/tree/v0.2.129) (2022-03-16)
 
