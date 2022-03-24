@@ -35,6 +35,7 @@ steps:
   - wait
 
   - label: ":artifactory: publish"
+    if: build.branch == "main"
     command: .expeditor/buildkite/artifact_upload.sh
     expeditor:
       secrets: true
