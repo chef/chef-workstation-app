@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.135 -->
+<!-- latest_release 0.2.136 -->
+## [v0.2.136](https://github.com/chef/chef-workstation-app/tree/v0.2.136) (2022-03-28)
+
+#### Merged Pull Requests
+- Bump plist from 3.0.4 to 3.0.5 [#565](https://github.com/chef/chef-workstation-app/pull/565) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.135](https://github.com/chef/chef-workstation-app/tree/v0.2.135) (2022-03-28)
 
 #### Merged Pull Requests
 - Added If condition to publish build for main branch [#563](https://github.com/chef/chef-workstation-app/pull/563) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.134](https://github.com/chef/chef-workstation-app/tree/v0.2.134) (2022-03-25)
 
