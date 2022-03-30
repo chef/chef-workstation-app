@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.136 -->
+<!-- latest_release 0.2.137 -->
+## [v0.2.137](https://github.com/chef/chef-workstation-app/tree/v0.2.137) (2022-03-30)
+
+#### Merged Pull Requests
+- Bump electron from 17.2.0 to 18.0.0 [#566](https://github.com/chef/chef-workstation-app/pull/566) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.136](https://github.com/chef/chef-workstation-app/tree/v0.2.136) (2022-03-28)
 
 #### Merged Pull Requests
 - Bump plist from 3.0.4 to 3.0.5 [#565](https://github.com/chef/chef-workstation-app/pull/565) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.135](https://github.com/chef/chef-workstation-app/tree/v0.2.135) (2022-03-28)
 
