@@ -71,6 +71,17 @@ button.secondary:disabled {
   margin-right: 20px;
 }
 
+#logo-alert-settings {
+  float: left;
+  background: url('../images/chef-ws-icon-black.svg');
+  height: 64px;
+  width: 64px;
+  display: inline-block;
+  margin-left: 3px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
 /* top panel and items placed inside */
 #top-panel {
   padding-top: 15px;
