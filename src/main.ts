@@ -161,7 +161,8 @@ export class Main {
         splash.destroy();
       }, 3000);
     this.backgroundWindow = new BrowserWindow({
-      show: false,
+      show: true,
+      autoHideMenuBar: true,
       webPreferences: {
         // https://electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content
         // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
