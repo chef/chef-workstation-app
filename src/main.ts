@@ -7,6 +7,7 @@ import {
   ipcMain,
   shell
 } from 'electron';
+
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
 import { PreferencesDialog } from './preferences/preferences_dialog';
 import AppConfigSingleton from './app-config/app-config';
@@ -150,6 +151,7 @@ export class Main {
   }
 
   private startApp() {
+    const path = require('path')
     const modalPath = `file://${__dirname}/process.html`
     const splash: BrowserWindow = new BrowserWindow({
       width: 300,
@@ -164,11 +166,14 @@ export class Main {
     this.backgroundWindow = new BrowserWindow({
       show: true,
       autoHideMenuBar: true,
+
       webPreferences: {
+        // enableRemoteModule: true,
         // https://electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content
         // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
         // only distributing an app that is already running on someone's system we can get away with it but
         // we should switch to the 'preload' pattern documented in that tutorial.
+        preload: path.join(__dirname, 'preload.js'), // added @i5pranay93
         nodeIntegration: true,
         contextIsolation: false
       }
@@ -229,6 +234,7 @@ export class Main {
   run() {
     if(!app.requestSingleInstanceLock()) {
       console.log('Chef Workstation is already running.');
+      console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
       app.quit();
       return;
     }
@@ -240,6 +246,28 @@ export class Main {
     ipcMain.on('switch-preferences-tab', (_event, arg) => { this.switchPreferencesTab(arg) });
     ipcMain.on('setup-update-interval', () => { this.setupUpdateInterval() });
     ipcMain.on('clear-update-interval', () => { this.clearUpdateInterval() });
+
+    // @pranay
+    //
+    // ipcMain.on('select-dirs', async (event, arg) => {
+    //   const result = await dialog.showOpenDialog(mainWindow, {
+    //     properties: ['openDirectory']
+    //   })
+    //   console.log('directories selected', result.filePaths)
+    // })
+
+    // end of testing
+
+    ipcMain.handle('dialog:openDirectory', async () => {
+      const { canceled, filePaths } = await dialog.showOpenDialog(this.backgroundWindow, {
+        properties: ['openDirectory']
+      })
+      if (canceled) {
+        return undefined
+      } else {
+        return filePaths[0]
+      }
+    })
 
     this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks

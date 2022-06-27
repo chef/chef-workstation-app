@@ -28,8 +28,11 @@
                 The Chef Workstation Application enables you to view your cookbook information across multiple Chef Infra Repositories. Add a local Chef Infra Repository here and manage your cookbooks right from this application.
                 You can upload a cookbook or push a Policyfile to the specified Chef Infra Server without having to execute commands from the Terminal.</p>
             <ul class="list-unstyled">
-                <li><button type="button" class="btn btn-primary">Add Repository</button></li>
+                <li><button type="button" class="btn btn-primary" id="dirs" >Add Repository</button></li>
+                File path: <strong id="filePath"></strong>
             </ul>
         </div>
     </div>
 </div>
+<script> require('./dashboard.js')</script>
+
