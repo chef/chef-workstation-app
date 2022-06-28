@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div id="dashboard" class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -11,25 +11,31 @@
                             <i class="fs-3 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline arrow">Chef Infra Repository</span> </a>
                         <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Facebook-devops</span> </a>
+                                <a href="#IDOFELEMENT" class="nav-link px-0"> <span class="d-none d-sm-inline">Overview</span> </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Kendo-IT</span> </a>
+                                <a href ="#" id="repos" class="nav-link px-0"> <span class="d-none d-sm-inline">My Repositories</span> </a>  
                             </li>
                         </ul>
                     </li>
                 </ul>
+                </ul>
                 <hr>
             </div>
         </div>
+
         <div class="col py-3">
             <h3>Chef-workstation-app</h3>
             <p class="lead" style="font-size: 1.20rem;">
                 The Chef Workstation Application enables you to view your cookbook information across multiple Chef Infra Repositories. Add a local Chef Infra Repository here and manage your cookbooks right from this application.
                 You can upload a cookbook or push a Policyfile to the specified Chef Infra Server without having to execute commands from the Terminal.</p>
             <ul class="list-unstyled">
-                <li><button type="button" class="btn btn-primary">Add Repository</button></li>
+                <li><button id="btn-ed" type="button" class="btn btn-primary">Add Repository</button></li>
             </ul>
         </div>
     </div>
+    <!-- <script src="file:///Users/ngupta/Documents/projects/chef-workstation/workstation-app-issue/ws-app/chef-workstation-app/src/dashboard/dashboard.js"></script> -->
+    <script>
+              require('./dashboard.js')
+    </script>
 </div>

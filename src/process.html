@@ -13,7 +13,16 @@
   <include src="./dashboard/dashboard.html"></include>
 
     <script>
+      
+        const dashboard = require('./dashboard/dashboard.js')
+        setTimeout(() => {
+            console.log("test")
+            console.log(dashboard);
+            dashboard.dashboard();
+        }, 1000)
+      
       require('./process.js')
+      
     </script>
   </body>
 </html>
