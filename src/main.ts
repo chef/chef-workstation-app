@@ -17,6 +17,9 @@ import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
 
+
+
+
 // TriggerUpdateSettings is an interface that will enforce the settings
 // we pass to the TriggerUpdateCheck function. Since the app is event
 // driven, we need to pass parameters as objects.
@@ -190,6 +193,7 @@ export class Main {
 
     // Make sure we have a ~/.chef directory
     this.createChefDir();
+    helpers.createRepoPath();
   }
 
   // make the ~/.chef directory if it doesn't exist and add a sample credentials file
@@ -231,6 +235,20 @@ export class Main {
     this.backgroundWindow = null;
     app.quit();
   }
+ private checkForDuplicate(args){
+    // chef if args path and file name are not already present
+   const path = args
+   // cookbook name can be added later
+   // const cookbook = path.match(/([^\/]*)\/*$/)
+    const obj = helpers.readRepoPath();
+   let status = false
+   for (var i=0; i<obj.length; i++) {
+     if (obj[i]["filepath"] == path) {
+       status = true
+     }
+   }
+    return status
+ }
 
   run() {
     if(!app.requestSingleInstanceLock()) {
@@ -249,29 +267,28 @@ export class Main {
     ipcMain.on('clear-update-interval', () => { this.clearUpdateInterval() });
 
     // @pranay
+    // @ts-ignore
     ipcMain.on('select-dirs', async (event, arg) => {
       console.log('directories selected', event)
       console.log('directories selected', arg)
-      const result = await dialog.showOpenDialog(this.backgroundWindow, {
+      const { canceled, filePaths } = await dialog.showOpenDialog(this.backgroundWindow, {
         properties: ['openDirectory']
       })
-      console.log('directories selected', result.filePaths)
+      console.log('directories selected', filePaths[0])
+        if (canceled) {
+          return ""
+        } else {
+          if (!this.checkForDuplicate(filePaths[0])){
+            console.log("returning new cookbook from here")
+            // append this file path to json
+            helpers.writeRepoPath( filePaths[0], "local")
+            // send back cookname and append it to file
+            return filePaths[0]
+          } else{
+            console.log("folder is already present")
+          }
+              }
     })
-
-
-    // end of testing
-
-    // ipcMain.handle('dialog:openDirectory', async () => {
-    //   const { canceled, filePaths } = await dialog.showOpenDialog(this.backgroundWindow, {
-    //     properties: ['openDirectory']
-    //   })
-    //   if (canceled) {
-    //     return undefined
-    //   } else {
-    //     return filePaths[0]
-    //   }
-    // })
-    
 
 
         this.omnitruckUpdateChecker.on('start-update-check', () => {

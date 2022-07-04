@@ -1,6 +1,8 @@
 const path = require('path');
 const isDev = require('electron-is-dev');
 const package_json = require('../../package.json');
+const os = require("os");
+const fs = require("fs");
 
 function getProductName() {
   return package_json.productName;
@@ -56,10 +58,50 @@ function ExternalAssetsDir() {
   return path.resolve(path.join(ExternalResourcesDir(), "assets"))
 }
 
-module.exports.SrcDir = SrcDir;
+
+function createRepoPath() {
+  let os = require('os'),
+      fs = require('fs');
+  let chefDir = path.join(os.homedir(), '.chef')
+
+  if (!fs.existsSync(chefDir)) {
+    console.log("Creating the .chef dir at " + chefDir)
+    fs.mkdirSync(chefDir, 0o700);
+    let credentialsFile = path.join(chefDir, 'repository.json');
+    let credentialContent =``` repos": {
+"path": "/.chef/repos"
+}```
+    console.log("Creating the repos file at " + credentialsFile);
+    fs.writeFileSync(credentialsFile, credentialContent);
+
+  }
+}
+
+function readRepoPath() {
+  filepath = path.join(os.homedir(), '.chef/repository.json')
+  console.log(filepath)
+  const fileData = fs.readFileSync(filepath).toString('utf8');
+  const obj = JSON.parse(fileData);
+  return obj
+  }
+
+function writeRepoPath(fpath, type) {
+  filepath = path.join(os.homedir(), '.chef/repository.json')
+  const  obj = readRepoPath()
+  obj.push({"type": type, "filepath": fpath}); //add some data
+  const json = JSON.stringify(obj); //convert it back to json
+  fs.writeFileSync(filepath, json); // w
+}
+
+
+
+  module.exports.SrcDir = SrcDir;
 module.exports.RootDir = RootDir;
 module.exports.ExternalResourcesDir = ExternalResourcesDir;
 module.exports.ExternalAssetsDir = ExternalAssetsDir;
 module.exports.getProductName = getProductName;
 module.exports.getDisplayName = getDisplayName;
 module.exports.getReleaseChannel = getReleaseChannel;
+module.exports.createRepoPath = createRepoPath;
+module.exports.readRepoPath = readRepoPath;
+module.exports.writeRepoPath = writeRepoPath;
