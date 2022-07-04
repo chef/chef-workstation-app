@@ -173,6 +173,7 @@ export class Main {
         // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
         // only distributing an app that is already running on someone's system we can get away with it but
         // we should switch to the 'preload' pattern documented in that tutorial.
+
         preload: path.join(__dirname, 'preload.js'), // added @i5pranay93
         nodeIntegration: true,
         contextIsolation: false
@@ -248,28 +249,32 @@ export class Main {
     ipcMain.on('clear-update-interval', () => { this.clearUpdateInterval() });
 
     // @pranay
-    //
-    // ipcMain.on('select-dirs', async (event, arg) => {
-    //   const result = await dialog.showOpenDialog(mainWindow, {
-    //     properties: ['openDirectory']
-    //   })
-    //   console.log('directories selected', result.filePaths)
-    // })
+    ipcMain.on('select-dirs', async (event, arg) => {
+      console.log('directories selected', event)
+      console.log('directories selected', arg)
+      const result = await dialog.showOpenDialog(this.backgroundWindow, {
+        properties: ['openDirectory']
+      })
+      console.log('directories selected', result.filePaths)
+    })
+
 
     // end of testing
 
-    ipcMain.handle('dialog:openDirectory', async () => {
-      const { canceled, filePaths } = await dialog.showOpenDialog(this.backgroundWindow, {
-        properties: ['openDirectory']
-      })
-      if (canceled) {
-        return undefined
-      } else {
-        return filePaths[0]
-      }
-    })
+    // ipcMain.handle('dialog:openDirectory', async () => {
+    //   const { canceled, filePaths } = await dialog.showOpenDialog(this.backgroundWindow, {
+    //     properties: ['openDirectory']
+    //   })
+    //   if (canceled) {
+    //     return undefined
+    //   } else {
+    //     return filePaths[0]
+    //   }
+    // })
+    
 
-    this.omnitruckUpdateChecker.on('start-update-check', () => {
+
+        this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks
       this.trayMenu.getMenuItemById('updateCheck').enabled  = false;
       this.tray.setContextMenu(this.trayMenu);

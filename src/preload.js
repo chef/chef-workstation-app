@@ -1,11 +1,19 @@
-// import {contextBridge, ipcRenderer} from 'electron'
-//
-// contextBridge.exposeInMainWorld('myAPI', {
-//     selectFolder: () => ipcRenderer.invoke('dialog:openDirectory')
+
+// const { ipcRenderer } = require('electron')
+
+// process.once('loaded', () => {
+//     window.addEventListener('message', evt => {
+//         if (evt.data.type === 'select-dirs') {
+//             ipcRenderer.send('select-dirs')
+//         }
+//     })
 // })
 
-const { contextBridge, ipcRenderer } = require('electron')
 
-contextBridge.exposeInMainWorld('electronAPI', {
-    openFile: () => ipcRenderer.invoke('dialog:openFile')
-})
+// const { contextBridge, ipcRenderer } = require('electron')
+//
+// contextBridge.exposeInMainWorld('electronAPI', {
+//     openFile: () => ipcRenderer.invoke('dialog:openDirectory')
+// })
+
+
