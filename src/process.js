@@ -7,8 +7,10 @@ console.log("loaded process.js")
 const btn = document.getElementById('dirs')
 const filePathElement = document.getElementById('filePath')
 
-console.log(btn)
-
 btn.addEventListener('click', e => {
     ipcRenderer.send('select-dirs', "gellow here i am")
+})
+
+ipcRenderer.on('select-dirs-response', async (event, arg) => {
+    console.log(arg)
 })

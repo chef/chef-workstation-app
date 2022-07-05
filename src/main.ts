@@ -282,10 +282,12 @@ export class Main {
             console.log("returning new cookbook from here")
             // append this file path to json
             helpers.writeRepoPath( filePaths[0], "local")
-            // send back cookname and append it to file
+            // send back cookname and append it to file or refresh whole page
+            event.reply("select-dirs-response", filePaths[0])
             return filePaths[0]
           } else{
             console.log("folder is already present")
+            event.reply("select-dirs-response", "folder is already present")
           }
               }
     })
