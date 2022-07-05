@@ -154,7 +154,6 @@ export class Main {
   }
 
   private startApp() {
-    const path = require('path')
     const modalPath = `file://${__dirname}/process.html`
     const splash: BrowserWindow = new BrowserWindow({
       width: 300,
@@ -177,7 +176,7 @@ export class Main {
         // only distributing an app that is already running on someone's system we can get away with it but
         // we should switch to the 'preload' pattern documented in that tutorial.
 
-        preload: path.join(__dirname, 'preload.js'), // added @i5pranay93
+        // preload: path.join(__dirname, 'preload.js'), // added @i5pranay93
         nodeIntegration: true,
         contextIsolation: false
       }
