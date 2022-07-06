@@ -151,7 +151,6 @@ export class Main {
 
   private startApp() {
     const modalPath = `file://${__dirname}/process.html`
-    helpers.createChefReposJson();
     const splash: BrowserWindow = new BrowserWindow({
       width: 300,
       height: 300,
@@ -273,9 +272,6 @@ export class Main {
         if (canceled) {
           return ""
         } else {
-          if (!this.checkForDuplicate(filePaths[0])){
-            console.log("returning new cookbook from here")
-            // append this file path to json
             let os = require('os'),
             fs = require('fs'),
             path = require('path');
@@ -285,6 +281,9 @@ export class Main {
               console.log("reposFile not found")
               helpers.createChefReposJson();
             }
+          if (!this.checkForDuplicate(filePaths[0])){
+            console.log("returning new cookbook from here")
+            // append this file path to json
             helpers.writeRepoPath( filePaths[0], "local")
             // send back cookname and append it to file or refresh whole page
             event.reply("select-dirs-response", filePaths[0])
