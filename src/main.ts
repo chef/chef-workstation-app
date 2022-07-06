@@ -174,7 +174,8 @@ export class Main {
       }
     });
     this.backgroundWindow.loadURL(modalPath)
-    this.backgroundWindow.webContents.openDevTools();
+    //to open the dev tools- uncomment the following line
+    // this.backgroundWindow.webContents.openDevTools();
     this.createTray();
     // Do first check and setup update checks.
     if (this.appConfig.areUpdatesEnabled()) {
@@ -233,7 +234,6 @@ export class Main {
       return;
     }
     app.on('ready', () => { this.startApp() });
-
 
     ipcMain.on('do-update-check', (_event, arg) => { this.triggerUpdateCheck(arg) });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
