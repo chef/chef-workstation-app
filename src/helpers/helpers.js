@@ -60,6 +60,7 @@ function ExternalAssetsDir() {
 
 
 function createChefReposJson() {
+  console.log('Creating chef repos.json file')
   let os = require('os'),
       fs = require('fs');
   let chefDir = path.join(os.homedir(), '.chef')
@@ -67,14 +68,10 @@ function createChefReposJson() {
   if (!fs.existsSync(chefDir)) {
     console.log("Creating the .chef dir at " + chefDir)
     fs.mkdirSync(chefDir, 0o700);
-    let credentialsFile = path.join(chefDir, 'repository.json');
-    let credentialContent =``` repos": {
-"path": "/.chef/repos"
-}```
-    console.log("Creating the repos file at " + credentialsFile);
-    fs.writeFileSync(credentialsFile, credentialContent);
-
-  }
+  } 
+    let repositoryFile = path.join(chefDir, 'repository.json');
+    let result = []
+    fs.writeFileSync(repositoryFile, JSON.stringify(result));
 }
 
 function readRepoPath() {
