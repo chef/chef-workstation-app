@@ -7,7 +7,6 @@ import {
   ipcMain,
   shell
 } from 'electron';
-
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
 import { PreferencesDialog } from './preferences/preferences_dialog';
 import AppConfigSingleton from './app-config/app-config';
@@ -16,9 +15,6 @@ import aboutDialog = require('./about-dialog/about_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
-
-
-
 
 // TriggerUpdateSettings is an interface that will enforce the settings
 // we pass to the TriggerUpdateCheck function. Since the app is event

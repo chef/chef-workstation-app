@@ -92,9 +92,6 @@ function writeRepoPath(fpath, type) {
   const json = JSON.stringify(obj); //convert it back to json
   fs.writeFileSync(filepath, json); // w
 }
-
-
-
   module.exports.SrcDir = SrcDir;
 module.exports.RootDir = RootDir;
 module.exports.ExternalResourcesDir = ExternalResourcesDir;
