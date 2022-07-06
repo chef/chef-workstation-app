@@ -1,20 +1,17 @@
 const path = require('path');
 const fs = require('fs');
+const helpers = require('../helpers/helpers.js');
 
 
 function render() {
   document.getElementById('repos').addEventListener('click', () => {
     const repository = path.join('file://', __dirname, 'repos.html');
     let os = require('os');
-    let chefRepo = path.join(os.homedir(), '.chef/repository.json');
     fetch(repository)
         .then((response) => response.text())
         .then((text) => {
             document.querySelector('#content').innerHTML = text;
-            const fileData = fs
-                .readFileSync(chefRepo)
-                .toString('utf8');
-            const fileObj = JSON.parse(fileData);
+            const fileObj = helpers.readRepoPath();
             try {
                 let filesNames = new Map();
                 for (i = 0; i < fileObj.length; i++) {

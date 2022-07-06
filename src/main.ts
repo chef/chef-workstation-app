@@ -189,7 +189,7 @@ export class Main {
 
     // Make sure we have a ~/.chef directory
     this.createChefDir();
-    helpers.createRepoPath();
+    helpers.createChefReposJson();
   }
 
   // make the ~/.chef directory if it doesn't exist and add a sample credentials file

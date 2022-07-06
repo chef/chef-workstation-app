@@ -59,7 +59,7 @@ function ExternalAssetsDir() {
 }
 
 
-function createRepoPath() {
+function createChefReposJson() {
   let os = require('os'),
       fs = require('fs');
   let chefDir = path.join(os.homedir(), '.chef')
@@ -78,11 +78,10 @@ function createRepoPath() {
 }
 
 function readRepoPath() {
-  filepath = path.join(os.homedir(), '.chef/repository.json')
-  console.log(filepath)
-  const fileData = fs.readFileSync(filepath).toString('utf8');
-  const obj = JSON.parse(fileData);
-  return obj
+  chefRepo = path.join(os.homedir(), '.chef/repository.json')
+  const fileData = fs.readFileSync(chefRepo).toString('utf8');
+  const fileObj = JSON.parse(fileData);
+  return fileObj
   }
 
 function writeRepoPath(fpath, type) {
@@ -99,6 +98,6 @@ module.exports.ExternalAssetsDir = ExternalAssetsDir;
 module.exports.getProductName = getProductName;
 module.exports.getDisplayName = getDisplayName;
 module.exports.getReleaseChannel = getReleaseChannel;
-module.exports.createRepoPath = createRepoPath;
+module.exports.createChefReposJson = createChefReposJson;
 module.exports.readRepoPath = readRepoPath;
 module.exports.writeRepoPath = writeRepoPath;
