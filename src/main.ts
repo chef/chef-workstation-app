@@ -7,6 +7,7 @@ import {
   ipcMain,
   shell
 } from 'electron';
+
 import { OmnitruckUpdateChecker } from './omnitruck-update-checker/omnitruck-update-checker';
 import { PreferencesDialog } from './preferences/preferences_dialog';
 import AppConfigSingleton from './app-config/app-config';
@@ -15,6 +16,9 @@ import aboutDialog = require('./about-dialog/about_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
+
+
+
 
 // TriggerUpdateSettings is an interface that will enforce the settings
 // we pass to the TriggerUpdateCheck function. Since the app is event
@@ -160,18 +164,25 @@ export class Main {
       setTimeout(function () {
         splash.destroy();
       }, 3000);
+    // splash.webContents.openDevTools();
     this.backgroundWindow = new BrowserWindow({
-      show: false,
+      show: true,
+      autoHideMenuBar: true,
+
       webPreferences: {
+        // enableRemoteModule: true,
         // https://electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content
         // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
         // only distributing an app that is already running on someone's system we can get away with it but
         // we should switch to the 'preload' pattern documented in that tutorial.
+
+        // preload: path.join(__dirname, 'preload.js'), // added @i5pranay93
         nodeIntegration: true,
         contextIsolation: false
       }
     });
     this.backgroundWindow.loadURL(modalPath)
+    this.backgroundWindow.webContents.openDevTools();
     this.createTray();
     // Do first check and setup update checks.
     if (this.appConfig.areUpdatesEnabled()) {
@@ -181,6 +192,7 @@ export class Main {
 
     // Make sure we have a ~/.chef directory
     this.createChefDir();
+    helpers.createRepoPath();
   }
 
   // make the ~/.chef directory if it doesn't exist and add a sample credentials file
@@ -222,14 +234,30 @@ export class Main {
     this.backgroundWindow = null;
     app.quit();
   }
+ private checkForDuplicate(args){
+    // chef if args path and file name are not already present
+   const path = args
+   // cookbook name can be added later
+   // const cookbook = path.match(/([^\/]*)\/*$/)
+    const obj = helpers.readRepoPath();
+   let status = false
+   for (var i=0; i<obj.length; i++) {
+     if (obj[i]["filepath"] == path) {
+       status = true
+     }
+   }
+    return status
+ }
 
   run() {
     if(!app.requestSingleInstanceLock()) {
       console.log('Chef Workstation is already running.');
+      console.log(dialog.showOpenDialog({ properties: ['openFile', 'multiSelections'] }))
       app.quit();
       return;
     }
     app.on('ready', () => { this.startApp() });
+
 
     ipcMain.on('do-update-check', (_event, arg) => { this.triggerUpdateCheck(arg) });
     ipcMain.on('do-download', () => { this.downloadUpdate() });
@@ -237,7 +265,34 @@ export class Main {
     ipcMain.on('setup-update-interval', () => { this.setupUpdateInterval() });
     ipcMain.on('clear-update-interval', () => { this.clearUpdateInterval() });
 
-    this.omnitruckUpdateChecker.on('start-update-check', () => {
+    // @pranay
+    // @ts-ignore
+    ipcMain.on('select-dirs', async (event, arg) => {
+      console.log('directories selected', event)
+      console.log('directories selected', arg)
+      const { canceled, filePaths } = await dialog.showOpenDialog(this.backgroundWindow, {
+        properties: ['openDirectory']
+      })
+      console.log('directories selected', filePaths[0])
+        if (canceled) {
+          return ""
+        } else {
+          if (!this.checkForDuplicate(filePaths[0])){
+            console.log("returning new cookbook from here")
+            // append this file path to json
+            helpers.writeRepoPath( filePaths[0], "local")
+            // send back cookname and append it to file or refresh whole page
+            event.reply("select-dirs-response", filePaths[0])
+            return filePaths[0]
+          } else{
+            console.log("folder is already present")
+            event.reply("select-dirs-response", "folder is already present")
+          }
+              }
+    })
+
+
+        this.omnitruckUpdateChecker.on('start-update-check', () => {
       // disable the menu to prevent concurrent checks
       this.trayMenu.getMenuItemById('updateCheck').enabled  = false;
       this.tray.setContextMenu(this.trayMenu);
