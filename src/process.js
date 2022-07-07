@@ -21,6 +21,8 @@ fetch("././dashboard/index.html")
     });
 
     ipcRenderer.on("select-dirs-response", async (event, arg) => {
-      console.log(arg);
+      var str = "added path: " + arg
+      console.log(str);
+      alert(str)
     });
   });
