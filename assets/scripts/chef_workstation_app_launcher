@@ -103,7 +103,10 @@ startup()
       rm -f "$HOME/Library/LaunchAgents/${PLISTFILE}"
       ;;
     "enable")
-      cp "/Applications/Chef Workstation App.app/Contents/Resources/assets/${PLISTFILE}" "$HOME/Library/LaunchAgents"
+      if [ ! -d "$HOME/Library/LaunchAgents" ]; then
+        mkdir "$HOME/Library/LaunchAgents"
+      fi
+      cp "/Applications/Chef Workstation App.app/Contents/Resources/assets/${PLISTFILE}" "$HOME/Library/LaunchAgents/."
       ;;
     *)
       error_exit "invalid startup state '$1'.\\nValid states are 'enable' or 'disable'.\\nTry '--help' for more information."
