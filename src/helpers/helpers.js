@@ -84,6 +84,21 @@ function writeRepoPath(fpath, type) {
   const json = JSON.stringify(obj); //convert it back to json
   fs.writeFileSync(chefReposJson, json); // w
 }
+
+function checkForDuplicate(args) {
+  // chef if args path and file name are not already present
+  const path = args;
+  // cookbook name can be added later
+  // const cookbook = path.match(/([^\/]*)\/*$/)
+  const obj = readRepoPath();
+  let status = false;
+  for (var i = 0; i < obj.length; i++) {
+    if (obj[i]["filepath"] == path) {
+      status = true;
+    }
+  }
+  return status;
+}
 module.exports.SrcDir = SrcDir;
 module.exports.RootDir = RootDir;
 module.exports.ExternalResourcesDir = ExternalResourcesDir;
@@ -94,3 +109,4 @@ module.exports.getReleaseChannel = getReleaseChannel;
 module.exports.createChefReposJson = createChefReposJson;
 module.exports.readRepoPath = readRepoPath;
 module.exports.writeRepoPath = writeRepoPath;
+module.exports.checkForDuplicate = checkForDuplicate;
