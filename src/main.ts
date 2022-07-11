@@ -287,10 +287,9 @@ export class Main {
             helpers.writeRepoPath( filePaths[0], "local")
             // send back cookname and append it to file or refresh whole page
             event.reply("select-dirs-response", filePaths[0])
-            return filePaths[0]
           } else{
             console.log("folder is already present")
-            event.reply("select-dirs-response", "folder is already present")
+            event.reply("select-dirs-response", "Folder is already present")
           }
               }
     })
