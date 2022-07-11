@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Infra Settings</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/about.css">
+    <script>
+      const fs = require('fs');
+      window.data = {};
+
+      const fileData = fs.readFileSync('/Users/ngupta/chef-repo/.chef/credentials').toString('utf8');
+      let splitted = fileData.split("\n");
+      for (let i = 1; i<splitted.length-1; i++) {
+        const [key, value] = splitted[i].replaceAll(/\s+/g,"").split('=');
+        window.data[key] = value.replace(/['"]+/g, '');
+      }
+
+    </script>
+    <style>
+      .hide{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section id="settings">
+        <div id="logo-alert-settings"></div>
+        <div class="col col-9">
+            <p><strong>Chef user name :</strong>
+              <script>
+                document.write(window.data['client_name'])
+              </script>
+            </p>
+            <br>
+            <p><strong>Infra Server URL :</strong>
+              <script>
+                document.write(window.data['chef_server_url'])
+              </script>
+            </p>
+            <br>
+              <p><strong>Certificate file path :</strong>
+               <script>
+                  document.write(window.data['client_key'])</script></p>
+        </div>
+        <br>
+        
+        <div id="wrapper">
+          <div id="container">
+            <button id="btn-ed" type="button">Edit Setting</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="edit-settings" class="hide"> 
+        <form>
+        <div id="logo-alert-settings"></div>
+        <div class="col col-9">
+          <div class="strong-list">
+            <p><strong>Chef user name :</strong>
+              <input type="text" id="username">
+              <script>
+                document.getElementById('username').value = window.data['client_name'];
+              </script>
+            </p>
+            <p><strong>Infra Server URL :</strong>
+              <input type="text" id="url">
+              <script>
+                document.getElementById('url').value = window.data['chef_server_url'];
+              </script>
+            </p>
+            <div class="p-inline-button">
+              <p id='update-channel'><strong>Certificate file path :</strong>
+                <input type="text" id="certificate">
+               <script>
+                  document.getElementById('certificate').value = window.data['client_key'];
+              </script>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="wrapper">
+          <div id="container">
+            <button id="btn-up" type="button">Update Setting</button>
+          </div>
+        </div>
+        <div id="wrapper">
+          <div id="container">
+            <button id="btn-cn" type="button">Cancel</button>
+          </div>
+        </div>
+        </form>
+      </section>
+
+      <section class="footer">
+        <p class="small">&#9400; 2008-2021 Chef Software, Inc. All Rights Reserved.</p>
+      </section>
+      <script src="./edit_setting.js"></script>
+    </main>
+  </body>
+</html>

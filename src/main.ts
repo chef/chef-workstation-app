@@ -12,6 +12,7 @@ import { PreferencesDialog } from './preferences/preferences_dialog';
 import AppConfigSingleton from './app-config/app-config';
 
 import aboutDialog = require('./about-dialog/about_dialog.js');
+import settingDialog = require('./setting/setting_dialog.js');
 import workstation = require('./helpers/chef_workstation.js');
 import helpers = require('./helpers/helpers.js');
 import WSTray = require('./ws_tray.js');
@@ -59,6 +60,11 @@ export class Main {
       {
         label: 'Preferences...',
         click: () => { this.openPreferencesDialog() }
+      },
+      {type: 'separator'},
+      {
+        label: 'Settings...',
+        click: () => { settingDialog.open() }
       },
       {type: 'separator'},
       {
