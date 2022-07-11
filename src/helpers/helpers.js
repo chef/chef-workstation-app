@@ -95,6 +95,7 @@ function checkForDuplicate(args) {
   for (var i = 0; i < obj.length; i++) {
     if (obj[i]["filepath"] == path) {
       status = true;
+      break;
     }
   }
   return status;
