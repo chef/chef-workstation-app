@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.173 -->
+<!-- latest_release 0.2.174 -->
+## [v0.2.174](https://github.com/chef/chef-workstation-app/tree/v0.2.174) (2022-07-13)
+
+#### Merged Pull Requests
+- Screens to Add and persist repos  [#613](https://github.com/chef/chef-workstation-app/pull/613) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
+
 ## [v0.2.173](https://github.com/chef/chef-workstation-app/tree/v0.2.173) (2022-06-16)
 
 #### Merged Pull Requests
 - Bump @types/node from 17.0.42 to 18.0.0 [#605](https://github.com/chef/chef-workstation-app/pull/605) ([dependabot[bot]](https://github.com/dependabot[bot]))
-<!-- latest_release -->
 
 ## [v0.2.172](https://github.com/chef/chef-workstation-app/tree/v0.2.172) (2022-06-14)
 
