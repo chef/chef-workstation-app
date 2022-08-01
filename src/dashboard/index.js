@@ -6,11 +6,14 @@ let html = "<ul>";
 // Statup th page
 function render() {
   try {
+    document.getElementById("tree").innerHTML = "";
     const directories = [];
     const fileObj = helpers.readRepoPath();
     for (i = 0; i < fileObj.length; i++) {
+      if (fs.existsSync(fileObj[i].filepath)) {
       // get all the directories and generate the tree
       directories.push(createDirTree(fileObj[i].filepath));
+      }
     }
     // create the Bootstrap collapse
     createCollapse(directories);
@@ -22,6 +25,20 @@ function render() {
 }
 
 function createDirTree(filename) {
+  rem = [
+    "nodes",
+    "policyfiles",
+    "roles",
+    "LICENSE",
+    "Policyfile.rb",
+    "README.md",
+    "chefignore",
+    "compliance",
+    "kitchen.yml",
+    "test",
+    "CHANGELOG.md",
+    "Policyfile.lock.json",
+  ];
   const stats = fs.lstatSync(filename),
     info = {
       path: filename,
@@ -30,9 +47,8 @@ function createDirTree(filename) {
 
   if (stats.isDirectory()) {
     info.type = "folder";
-
     info.children = fs.readdirSync(filename).reduce(function (obj, child) {
-      if (child[0] !== ".") {
+      if (!rem.includes(child) && child[0] !== ".") {
         obj.push(createDirTree(filename + "/" + child));
       }
       return obj;
@@ -65,4 +81,3 @@ function createCollapse(data, name) {
 }
 
 module.exports = { render };
-
