@@ -188,7 +188,7 @@ export class Main {
     }, 3000);
     // splash.webContents.openDevTools();
     this.backgroundWindow = new BrowserWindow({
-      show: false,
+      show: true,
       autoHideMenuBar: true,
 
       webPreferences: {
@@ -205,7 +205,7 @@ export class Main {
     });
     this.backgroundWindow.loadURL(modalPath);
     //to open the dev tools- uncomment the following line
-    // this.backgroundWindow.webContents.openDevTools();
+    this.backgroundWindow.webContents.openDevTools();
     this.createTray();
     // Do first check and setup update checks.
     if (this.appConfig.areUpdatesEnabled()) {
