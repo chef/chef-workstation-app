@@ -84,6 +84,7 @@ function render() {
                 var h5_tag = document.createElement('h5');
                 var text1 = document.createTextNode(breadcrumb_arr[1]);
                 var text2 = document.createTextNode(breadcrumb_arr[2]);
+                h5_tag.setAttribute('style', 'text-decoration: underline')
 
                 breadcrumb_nav.appendChild(bc_ol);
                 cookbook_details.appendChild(breadcrumb_nav);
