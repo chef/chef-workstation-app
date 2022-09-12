@@ -188,7 +188,7 @@ export class Main {
     }, 3000);
     // splash.webContents.openDevTools();
     this.backgroundWindow = new BrowserWindow({
-      show: false,
+      show: true,
       autoHideMenuBar: true,
 
       webPreferences: {
