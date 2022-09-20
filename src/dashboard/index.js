@@ -2,42 +2,43 @@ const path = require("path");
 const fs = require("fs");
 const helpers = require("../helpers/helpers.js");
 const {setAttribute} = require("jsdom/lib/jsdom/living/attributes");
+const axios = require('axios');
 
 function render() {
-  document.getElementById("repos").addEventListener("click", () => {
-    const repository = path.join("file://", __dirname, "repos.html");
-    let os = require("os");
-    fetch(repository)
-      .then((response) => response.text())
-      .then((text) => {
-        document.querySelector("#content").innerHTML = text;
-        const fileObj = helpers.readRepoPath();
-        try {
-          let filesNames = new Map();
-          for (i = 0; i < fileObj.length; i++) {
-            const fileName = fileObj[i].filepath.replace(/^.*[\\\/]/, "");
-            fs.existsSync(fileObj[i].filepath)
-              ? filesNames.set(fileName, true)
-              : filesNames.set(fileName, false);
-          }
+    document.getElementById("repos").addEventListener("click", () => {
+        const repository = path.join("file://", __dirname, "repos.html");
+        let os = require("os");
+        fetch(repository)
+            .then((response) => response.text())
+            .then((text) => {
+                document.querySelector("#content").innerHTML = text;
+                const fileObj = helpers.readRepoPath();
+                try {
+                    let filesNames = new Map();
+                    for (i = 0; i < fileObj.length; i++) {
+                        const fileName = fileObj[i].filepath.replace(/^.*[\\\/]/, "");
+                        fs.existsSync(fileObj[i].filepath)
+                            ? filesNames.set(fileName, true)
+                            : filesNames.set(fileName, false);
+                    }
 
-          var ul = document.getElementById("repos-folder");
-          filesNames.forEach((fileStatus, key) => {
-            console.log(fileStatus, key);
-            var li = document.createElement("li");
-            document.body.appendChild(li);
-            li.innerHTML = fileStatus
-              ? key + "&nbsp;&nbsp;Active"
-              : key + "&nbsp;&nbsp;Inactive";
+                    var ul = document.getElementById("repos-folder");
+                    filesNames.forEach((fileStatus, key) => {
+                        console.log(fileStatus, key);
+                        var li = document.createElement("li");
+                        document.body.appendChild(li);
+                        li.innerHTML = fileStatus
+                            ? key + "&nbsp;&nbsp;Active"
+                            : key + "&nbsp;&nbsp;Inactive";
 
-            ul.appendChild(li);
-            //   }
-          });
-        } catch (err) {
-          console.error(err);
-        }
-      });
-  });
+                        ul.appendChild(li);
+                        //   }
+                    });
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+    });
 
     document.getElementById("activity").addEventListener("click", () => {
         const repository = path.join("file://", __dirname, "activity.html");
@@ -45,6 +46,7 @@ function render() {
         fetch(repository)
             .then((response) => response.text())
             .then((text) => {
+
                 document.querySelector("#content").innerHTML = text;
                 var cookbook_activity = document.createElement('div');
                 cookbook_activity.setAttribute("id", "cookbook-activity");
@@ -111,7 +113,7 @@ function render() {
                 var md_12_class = document.createElement('div');
                 md_12_class.setAttribute('class', 'col-md-12')
 
-                 // search bar
+                // search bar
                 var search_bar_block = document.createElement('div');
                 search_bar_block.setAttribute('class', 'search-bar-filter-bar-block')
 
@@ -154,24 +156,8 @@ function render() {
                 var thead =  document.createElement('thead');
                 var tboady = document.createElement('tbody');
 
+                var arrheader = [' ', 'Cookbooks', 'Repository', 'Recipes', 'Policyfile', 'Action'];
 
-                // var tr = document.createElement('tr');
-                var arrheader = [' ', 'Cookbooks', 'Repository', 'Recipes', 'Policyfile', 'Created at', 'Action'];
-
-
-                // this has to come dynamically from reading directory structure (This should come from api)
-               //  todo - Api will fetch this data
-               var ele = {
-                   check_list: '',
-                   cookbooks: 'Zen_apache',
-                   repository: 'my_repo',
-                   recipes: '20(show >>)',
-                   policyfile: 'config.rb',
-                   created_at: '0 am, 27/3/22',
-                   action: 'Upload'
-               }
-
-               var array =  Array(50).fill(ele)
 
                 for (var j = 0; j < arrheader.length; j++) {
                     var th = document.createElement('th'); //column
@@ -179,89 +165,101 @@ function render() {
                     th.appendChild(text);
                     thead.appendChild(th);
                 }
+
                 table.appendChild(thead);
 
-                for (var i = 0; i < array.length; i++) {
-                    var tr = document.createElement('tr');
+                //     Note -- API CALL TO GET LIST OF ALL REPOSITORIES
+                axios.defaults.headers.post['Content-Type'] = 'application/json';
+                axios.get('http://localhost:3001/api/v1/repositories/cookbooks', {/* here you can pass any parameters you want */})
+                    .then((response) => {
+                        console.log(response)
+                   if (response.status == 200 ){ // todo - handle 422 and fail condition
+                       array = response.data.cookbooks
+                        for (var i = 0; i < array.length; i++) {
+                            var tr = document.createElement('tr');
 
-                    var td1 = document.createElement('td');
+                            var td1 = document.createElement('td');
 
-                    var input_1 =  document.createElement('input'); //input form
-                    input_1.setAttribute("type", "checkbox"); // this will be set based on input
-                    input_1.setAttribute("class", "checkthis");
+                            var input_1 = document.createElement('input'); //input form
+                            input_1.setAttribute("type", "checkbox"); // this will be set based on input
+                            input_1.setAttribute("class", "checkthis");
 
-                    // check if it is is checked
+                            // check if it is is checked
 
-                    var td2 = document.createElement('td');
-                    var td3 = document.createElement('td');
-                    var td4 = document.createElement('td');
-                    var td5 = document.createElement('td');
-                    var td6 = document.createElement('td');
-                    var td7 = document.createElement('td');
+                            var td2 = document.createElement('td');
+                            var td3 = document.createElement('td');
+                            var td4 = document.createElement('td');
+                            var td5 = document.createElement('td');
+                            var td7 = document.createElement('td');
 
-                    // var text1 = document.createTextNode(array[i].check_list); // this will give is checked value from api
-                    var text2 = document.createTextNode(array[i].repository);
-                    var text3 = document.createTextNode(array[i].cookbooks);
-                    var text4 = document.createTextNode(array[i].recipes);
-                    var text5 = document.createTextNode(array[i].policyfile);
-                    var text6 = document.createTextNode(array[i].created_at);
-                    var btn = document.createElement('button');
-                    btn.setAttribute("class", "btn btn-success");
+                            // var text1 = document.createTextNode(array[i].check_list); // this will give is checked value from api
+                            var text2 = document.createTextNode(array[i].cookbook_name);
+                            var text3 = document.createTextNode(array[i].repository);
+                            var text4 = document.createTextNode(array[i].recipe_count);
+                            var text5 = document.createTextNode(array[i].policyfile);
 
-                    var btn_span = document.createElement('button');
-                    btn_span.setAttribute("class", "btn btn-primary");
+                            var btn = document.createElement('button');
+                            btn.setAttribute("class", "btn btn-success");
 
-                    var span_text = document.createTextNode('remove');
+                            // var btn_span = document.createElement('button');
+                            // btn_span.setAttribute("class", "btn btn-primary");
+                            //
+                            // var span_text = document.createTextNode('remove'); // Todo --> commenting unlink for now(basically this is unlink)
 
-                    var text7 = document.createTextNode(array[i].action);
+                            // td7.appendChild(btn_span);
+                            // btn_span.appendChild(span_text);
 
-
-                    td1.appendChild(input_1);
-                    td2.appendChild(text2);
-                    td3.appendChild(text3);
-                    td4.appendChild(text4);
-                    td5.appendChild(text5);
-                    td6.appendChild(text6);
-                    td7.appendChild(btn);
-                    btn.appendChild(text7);
-                    td7.appendChild(btn_span);
-                    btn_span.appendChild(span_text);
-
-                    tr.appendChild(td1);
-                    tr.appendChild(td2);
-                    tr.appendChild(td3);
-                    tr.appendChild(td4);
-                    tr.appendChild(td5);
-                    tr.appendChild(td6);
-                    tr.appendChild(td7);
+                            var text7 = document.createTextNode(array[i].actions_available[0]); // Todo -  correct once actions are decided, make it generic
+                            // right now just choosing one upload
 
 
-                    tboady.appendChild(tr);
-                    table.appendChild(tboady);
-
-                }
-
-
-
-                clear_fix.setAttribute('class', 'clearfix')
-
-                div_table_responsive.appendChild(table);
-                div_table_responsive.setAttribute('style', ' display: block; height: 600px; overflow-y: scroll;')
-                div_table_responsive.appendChild(clear_fix);
-                activity_folder.appendChild(div_table_responsive);
-                cookbook_activity.appendChild(activity_folder);
-                document.querySelector("#content").appendChild(cookbook_activity);
-
-            //    adding infinite scroll
-                table.addEventListener("scroll", () => {
-
-                });
-            //     infinite scroll code ends
+                            td1.appendChild(input_1);
+                            td2.appendChild(text2);
+                            td3.appendChild(text3);
+                            td4.appendChild(text4);
+                            td5.appendChild(text5);
+                            td7.appendChild(btn);
+                            btn.appendChild(text7);
 
 
+                            tr.appendChild(td1);
+                            tr.appendChild(td2);
+                            tr.appendChild(td3);
+                            tr.appendChild(td4);
+                            tr.appendChild(td5);
+                            tr.appendChild(td7);
+
+
+                            tboady.appendChild(tr);
+                        }
+                            table.appendChild(tboady);
+
+                        }
+
+
+
+                        clear_fix.setAttribute('class', 'clearfix')
+
+                        div_table_responsive.appendChild(table);
+                        div_table_responsive.setAttribute('style', ' display: block; height: 600px; overflow-y: scroll;')
+                        div_table_responsive.appendChild(clear_fix);
+                        activity_folder.appendChild(div_table_responsive);
+                        cookbook_activity.appendChild(activity_folder);
+                        document.querySelector("#content").appendChild(cookbook_activity);
+
+                        //    adding infinite scroll
+                        table.addEventListener("scroll", () => {
+
+                        });
+                        //     infinite scroll code ends
+
+                    })  // ending axios call
+                    .catch((error) => {
+                        console.error(error);
+                        return error
+                    });
             });
     });
 
 }
-
 module.exports = { render };
