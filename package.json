@@ -44,12 +44,8 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
-<<<<<<< HEAD
-    "@types/node": "^18.7.15",
-=======
     "@types/node": "^18.7.6",
     "axios": "^0.27.2",
->>>>>>> f877245 (fetching data with api call)
     "bootstrap": "^5.2.0",
     "electron-is": "^3.0.0",
     "request": "^2.88.2"
