@@ -7,6 +7,7 @@ import {
   ipcMain,
   shell,
 } from "electron";
+import axios from 'axios';
 import { OmnitruckUpdateChecker } from "./omnitruck-update-checker/omnitruck-update-checker";
 import { PreferencesDialog } from "./preferences/preferences_dialog";
 import AppConfigSingleton from "./app-config/app-config";
@@ -289,6 +290,11 @@ export class Main {
       this.clearUpdateInterval();
     });
 
+    type RepoData = {
+      type: string;
+      filepath: string;
+    };
+
     // @pranay
     // @ts-ignore
     ipcMain.on("select-dirs", async (event, arg) => {
@@ -304,6 +310,24 @@ export class Main {
       if (canceled) {
         return "";
       } else {
+        axios.post<RepoData>('http://localhost:7050/api/v1/repositories/link_repository', {
+          repositories: {
+          type: "local",
+          filepath: filePaths[0]
+      },
+    },
+      {
+          headers: {
+            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiZTY3NmEyYjI1MTg4ZGU2NTBiZWQyMDVkYWQxNzI0MDMiLCJleHAiOjE2Njg4MDE4OTF9.YyK57cUKFmJfgQzQwczpyEDf1s1ud0Wi69xfO23K5fQ'
+        },
+      },
+        )
+        .then(function (response) {
+          console.log("response is--", response);
+        })
+        .catch(function (error) {
+          console.log("error is----", error);
+        });
         let os = require("os"),
           fs = require("fs"),
           path = require("path");
