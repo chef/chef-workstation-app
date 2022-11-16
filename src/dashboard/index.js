@@ -44,7 +44,7 @@ function render() {
       {
         headers: {
           Authorization:
-            "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiZTY3NmEyYjI1MTg4ZGU2NTBiZWQyMDVkYWQxNzI0MDMiLCJleHAiOjE2Njg4MDE4OTF9.YyK57cUKFmJfgQzQwczpyEDf1s1ud0Wi69xfO23K5fQ",
+            "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiY2U2NjkzMWQzOTI3ZmE1YzY1YWIxMGFhNzBiOWNlOWEiLCJleHAiOjE2NjkxODk0Mzd9.7FvPrbBuZdW35WC-CTHF7aNN4v_HwmIJYBaopsmahjw",
         },
       }
     ).then(function (res) {
@@ -67,6 +67,24 @@ function render() {
       document.getElementById("table-repos").innerHTML += tablecontents;
     });
   });
+
+
+
+  let axiosConfig = {
+    headers: {
+      Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiY2U2NjkzMWQzOTI3ZmE1YzY1YWIxMGFhNzBiOWNlOWEiLCJleHAiOjE2NjkxODk0Mzd9.7FvPrbBuZdW35WC-CTHF7aNN4v_HwmIJYBaopsmahjw'
+    }
+  };
+
+//   document.getElementById("upload-button").addEventListener("click", () => {
+//     axios.post('http://0.0.0.0:7050/api/v1/cookbook', postData, axiosConfig)
+//     .then(function (response) {
+//           console.log(response);
+//   })
+//   .catch((err) => {
+//     console.log("AXIOS ERROR: ", err);
+//   })
+// })
 
   document.getElementById("cookbooks").addEventListener("click", () => {
     document.getElementById("chef-cookbook-content").innerHTML = "";
@@ -97,13 +115,16 @@ function render() {
 
     document.getElementById("chef-cookbook-content").innerHTML += table;
 
-    axios("http://localhost:7050/api/v1/repositories/cookbooks", {
+    axios({
+      method: "get",
+      url: "http://localhost:7050/api/v1/repositories/cookbooks",
       headers: {
         Authorization:
-          "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiZTY3NmEyYjI1MTg4ZGU2NTBiZWQyMDVkYWQxNzI0MDMiLCJleHAiOjE2Njg4MDE4OTF9.YyK57cUKFmJfgQzQwczpyEDf1s1ud0Wi69xfO23K5fQ",
+          "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiY2U2NjkzMWQzOTI3ZmE1YzY1YWIxMGFhNzBiOWNlOWEiLCJleHAiOjE2NjkxODk0Mzd9.7FvPrbBuZdW35WC-CTHF7aNN4v_HwmIJYBaopsmahjw",
       },
-    }).then(function (res) {
-      const data = res.data.cookbooks;
+    }).then(function (response) {
+      console.log("response is -------", response)
+      const data = response.data.cookbooks;
       let tablecontents = "";
       for (var i = 0; i < data.length; i++) {
         tablecontents += "<tr>";
@@ -115,10 +136,35 @@ function render() {
     </td>`;
         tablecontents += "<td>" + rows[0] + "</td>";
         tablecontents += "<td>" + rows[2] + "</td>";
+        tablecontents += `<td> <button class="upload-cookbook" data-cookbook="${rows[0]}" path="${rows[1]}">Upload</button> </td>`;
 
         tablecontents += "</tr>";
       }
       document.getElementById("table-cookbooks").innerHTML += tablecontents;
+      const elements = document.getElementsByClassName("upload-cookbook");
+
+      const upalodCookBooks = function() {
+    const attribute = this.getAttribute("data-cookbook");
+    const path = this.getAttribute("path");
+    console.log("attr--",attribute);//
+    console.log("path--",path.substring(0, path.lastIndexOf('/')));//
+    var postData = {
+      cookbook_name: attribute,
+      cookbook_path: path.substring(0, path.lastIndexOf('/'))
+    };
+    axios.post('http://0.0.0.0:7050/api/v1/cookbook', postData, axiosConfig)
+    .then(function (response) {
+          console.log(response);
+  })
+  .catch((err) => {
+    console.log("AXIOS ERROR: ", err);
+  })
+
+};
+
+for (let i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', upalodCookBooks, false);
+}
     });
   });
 
