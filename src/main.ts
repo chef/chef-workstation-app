@@ -11,7 +11,6 @@ import axios from 'axios';
 import { OmnitruckUpdateChecker } from "./omnitruck-update-checker/omnitruck-update-checker";
 import { PreferencesDialog } from "./preferences/preferences_dialog";
 import AppConfigSingleton from "./app-config/app-config";
-// import manageDialog = require('./dashboard/dashboard_dialog.js');
 import aboutDialog = require("./about-dialog/about_dialog.js");
 import workstation = require("./helpers/chef_workstation.js");
 import helpers = require("./helpers/helpers.js");
@@ -62,7 +61,7 @@ export class Main {
       },
       { type: "separator" },
       {
-        label: 'Manage...',
+        label: 'Manage Cookbboks',
         click: () => {
           this.runDashboard();
         },
@@ -218,7 +217,7 @@ export class Main {
     }, 3000);
     // splash.webContents.openDevTools();
     this.backgroundWindow = new BrowserWindow({
-      show: true,
+      show: false,
       autoHideMenuBar: true,
 
       webPreferences: {
@@ -235,7 +234,7 @@ export class Main {
     });
     this.backgroundWindow.loadURL(modalPath);
     //to open the dev tools- uncomment the following line
-    this.backgroundWindow.webContents.openDevTools();
+    // this.backgroundWindow.webContents.openDevTools();
     this.createTray();
     // Do first check and setup update checks.
     if (this.appConfig.areUpdatesEnabled()) {
@@ -347,7 +346,7 @@ export class Main {
     },
       {
           headers: {
-            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiNGI2YTU2YTY1ZDE2ODNjMGZjYzE4MjgwYTE1NzQwM2UiLCJleHAiOjE2NjkxMDUyMjN9.eQtg7ERa_a2qZ-2t9K-uAki08mAMaNYnxQLcBGB9Nno'
+            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiNjU2MGYxOThjNTU1NTUwYWU3Y2UyYWZlNDdjZTlmZDEiLCJleHAiOjE2Njk3ODg4NjR9.2gct_buvvA4u7hjmgfk_XQL8qFFrHMjiIrIoi1e6vFc'
         },
       },
         )
@@ -358,14 +357,14 @@ export class Main {
           console.log("error is----", error);
         });
         let os = require("os"),
-          fs = require("fs"),
+          // fs = require("fs"),
           path = require("path");
         let reposFile = path.join(os.homedir(), ".chef/repository.json");
         console.log("reposFile", reposFile);
-        if (!fs.existsSync(reposFile)) {
-          console.log("reposFile not found");
-          helpers.createChefReposJson();
-        }
+        // if (!fs.existsSync(reposFile)) {
+        //   console.log("reposFile not found");
+        //   helpers.createChefReposJson();
+        // }
         if (!helpers.checkForDuplicate(filePaths[0])) {
           console.log("returning new cookbook from here");
           // append this file path to json
