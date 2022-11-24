@@ -7,16 +7,16 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li>
-            <a href="#submenu" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+            <!-- <a href="#submenu" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-3 bi-speedometer2"></i>
               <span class="ms-1 d-none d-sm-inline arrow">Chef Repository</span>
-            </a>
+            </a> -->
             <ul class="collapse show nav flex-column ms-1" id="submenu" data-bs-parent="#menu">
-              <li class="w-100">
+              <!-- <li class="w-100">
                 <a href="#" class="nav-link px-0" id="overview">
                   <span class="d-none d-sm-inline">Overview</span>
                 </a>
-              </li>
+              </li> -->
               <li>
                 <a href="#" id="repos" class="nav-link px-0">
                   <span class="d-none d-sm-inline">Chef Repository</span>
@@ -27,11 +27,11 @@
                   <span class="d-none d-sm-inline">Cookbooks</span>
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a href="#" id="activity" class="nav-link px-0">
                   <span class="d-none d-sm-inline">Activity</span>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
         </ul>
@@ -43,6 +43,10 @@
       <div id="overview-content" class="content">
         <!-- <h3>Chef-workstation-app</h3> -->
         <p class="lead" style="font-size: 1.20rem;"> The Chef Workstation Application enables you to view your cookbook information across multiple Chef Infra Repositories. Add a local Chef Infra Repository here and manage your cookbooks right from this application. You can upload a cookbook or push a Policyfile to the specified Chef Infra Server without having to execute commands from the Terminal.</p>
+      </div>
+      <div id="chef-cookbook-content" class="content"></div>
+      <div id="chef-repo-content" class="content">
+        <div id="chef-repo-list"></div>
         <ul class="list-unstyled">
           <li>
             <button type="button" class="btn btn-primary" id="dirs">Add Repository</button>
@@ -50,8 +54,6 @@
           <strong id="filePath"></strong>
         </ul>
       </div>
-      <div id="chef-cookbook-content" class="content"></div>
-      <div id="chef-repo-content" class="content"></div>
     </div>
   </div>
 </div>

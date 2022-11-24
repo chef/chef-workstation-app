@@ -4,18 +4,7 @@ const helpers = require("../helpers/helpers.js");
 const { setAttribute } = require("jsdom/lib/jsdom/living/attributes");
 const axios = require("axios");
 const repoKey = "/opt/chef-workstation/service.txt"
-var authToken = "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiNjU2MGYxOThjNTU1NTUwYWU3Y2UyYWZlNDdjZTlmZDEiLCJleHAiOjE2Njk3ODg4NjR9.2gct_buvvA4u7hjmgfk_XQL8qFFrHMjiIrIoi1"
-
-function loadOverview() {
-  const overview = path.join("file://", __dirname, "overview.html");
-  let os = require("os");
-  document.querySelector("#content").innerHTML = "";
-  fetch(overview)
-    .then((response) => response.text())
-    .then((text) => {
-      document.querySelector("#content").innerHTML = text;
-    });
-}
+var authToken = "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiNjU2MGYxOThjNTU1NTUwYWU3Y2UyYWZlNDdjZTlmZDEiLCJleHAiOjE2Njk3ODg4NjR9.2gct_buvvA4u7hjmgfk_XQL8qFFrHMjiIrIoi1dwfcewf"
 
 function readRepoKey() {
   const fileData = fs.readFileSync(repoKey).toString("utf8");
@@ -57,15 +46,15 @@ axios.interceptors.request.use(
 )
 
 
-// axios.interceptors.response.use(response => {
-//   return response;
-// }, error => {
-//  if (error.response.status === 401) {
-//   console.log("testing---")
-//   readRepoKey();
-//  }
-//  return error;
-// });
+axios.interceptors.response.use(response => {
+  return response;
+}, error => {
+ if (error.response.status === 401) {
+  console.log("testing---")
+  readRepoKey();
+ }
+ return error;
+});
 
 // axios.interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
 //   if (err.response.status === 401 || err.response.data.message === '401 Unauthorized') {
@@ -75,28 +64,20 @@ axios.interceptors.request.use(
 // })
 
 function render() {
+  document.getElementById("chef-repo-content").style.display = "none";
   document.getElementById("repos").addEventListener("click", () => {
     document.getElementById("chef-cookbook-content").innerHTML = "";
-    document.getElementById("chef-repo-content").innerHTML = "";
     document.getElementById("overview-content").style.display = "none";
+    document.getElementById("chef-repo-list").innerHTML = "";
     const table = ` <table class="table table-bordered" id="table-repos">
 <thead>
   <tr>
-    <th>
-      <div class="custom-control custom-checkbox">
-        <input
-          type="checkbox"
-          class="custom-control-input"
-          id="customCheck2"
-        />
-      </div>
-    </th>
     <th scope="col">Repositories</th>
   </tr>
 </thead>
 </table>`;
 
-    document.getElementById("chef-repo-content").innerHTML += table;
+    document.getElementById("chef-repo-list").innerHTML += table;
 
     axios(
       "http://localhost:7050/api/v1/repositories/list_repositories?page=1&limit=10",
@@ -107,18 +88,12 @@ function render() {
       //   },
       // }
     ).then(function (res) {
-      debugger
       const data = res.data.repositories;
       document.getElementById("chef-repo-content").style.display = "block";
       let tablecontents = "";
       for (var i = 0; i < data.length; i++) {
         tablecontents += "<tr>";
         const rows = Object.values(data[i]);
-        tablecontents += `<td>
-        <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck2">
-    </div>
-    </td>`;
         tablecontents += "<td>" + rows[2] + "</td>";
         // tablecontents += "<td>" + rows[2] + "</td>";
 
@@ -162,13 +137,6 @@ function render() {
 <thead>
   <tr>
     <th>
-      <div class="custom-control custom-checkbox">
-        <input
-          type="checkbox"
-          class="custom-control-input"
-          id="customCheck2"
-        />
-      </div>
     </th>
     <th scope="col">Cookbooks</th>
     <th scope="col">Repository</th>
@@ -176,7 +144,7 @@ function render() {
 </thead>
 </table>`;
 
-    document.getElementById("chef-cookbook-content").innerHTML += table;
+    document.getElementById("chef-cookbook-content").innerHTML += table;;
 
     axios({
       method: "get",
@@ -232,11 +200,13 @@ for (let i = 0; i < elements.length; i++) {
     });
   });
 
-  document.getElementById("overview").addEventListener("click", () => {
-    document.querySelector("#overview-content").style.display = "block";
-    document.getElementById("chef-cookbook-content").innerHTML = "";
-    document.getElementById("chef-repo-content").innerHTML = "";
-  });
+  // document.getElementById("overview").addEventListener("click", () => {
+  //   document.querySelector("#overview-content").style.display = "block";
+  //   document.getElementById("chef-cookbook-content").innerHTML = "";
+  //   document.getElementById("chef-repo-content").style.display = "none";
+  //   document.getElementById("chef-repo-list").innerHTML = "";
+  
+  // });
 
   // document.getElementById("activity").addEventListener("click", () => {
   //   const repository = path.join("file://", __dirname, "activity.html");
