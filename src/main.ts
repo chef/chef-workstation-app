@@ -7,7 +7,6 @@ import {
   ipcMain,
   shell,
 } from "electron";
-import axios from 'axios';
 import { OmnitruckUpdateChecker } from "./omnitruck-update-checker/omnitruck-update-checker";
 import { PreferencesDialog } from "./preferences/preferences_dialog";
 import AppConfigSingleton from "./app-config/app-config";
@@ -66,7 +65,7 @@ export class Main {
           this.runDashboard();
         },
       },
-      {type: 'separator'},
+      { type: 'separator' },
       {
         label: "Preferences...",
         click: () => {
@@ -200,7 +199,7 @@ export class Main {
         contextIsolation: false,
       },
     });
-    this.backgroundWindow.loadURL(modalPath);  
+    this.backgroundWindow.loadURL(modalPath);
   }
 
 
@@ -318,63 +317,24 @@ export class Main {
       this.clearUpdateInterval();
     });
 
-    type RepoData = {
-      type: string;
-      filepath: string;
-    };
 
     // @pranay
     // @ts-ignore
     ipcMain.on("select-dirs", async (event, arg) => {
-      console.log("directories selected", event);
-      console.log("directories selected", arg);
+      console.log("directories selected 1", event);
+      console.log("directories selected 2", arg);
       const { canceled, filePaths } = await dialog.showOpenDialog(
         this.backgroundWindow,
         {
           properties: ["openDirectory"],
         }
       );
-      console.log("directories selected", filePaths[0]);
+      console.log("directories selected 3", filePaths[0]);
       if (canceled) {
         return "";
       } else {
-        axios.post<RepoData>('http://localhost:7050/api/v1/repositories/link_repository', {
-          repositories: {
-          type: "local",
-          filepath: filePaths[0]
-      },
-    },
-      {
-          headers: {
-            Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiNjU2MGYxOThjNTU1NTUwYWU3Y2UyYWZlNDdjZTlmZDEiLCJleHAiOjE2Njk3ODg4NjR9.2gct_buvvA4u7hjmgfk_XQL8qFFrHMjiIrIoi1e6vFc'
-        },
-      },
-        )
-        .then(function (response) {
-          console.log("response is--", response);
-        })
-        .catch(function (error) {
-          console.log("error is----", error);
-        });
-        let os = require("os"),
-          // fs = require("fs"),
-          path = require("path");
-        let reposFile = path.join(os.homedir(), ".chef/repository.json");
-        console.log("reposFile", reposFile);
-        // if (!fs.existsSync(reposFile)) {
-        //   console.log("reposFile not found");
-        //   helpers.createChefReposJson();
-        // }
-        if (!helpers.checkForDuplicate(filePaths[0])) {
-          console.log("returning new cookbook from here");
-          // append this file path to json
-          helpers.writeRepoPath(filePaths[0], "local");
-          // send back cookname and append it to file or refresh whole page
-          event.reply("select-dirs-response", filePaths[0]);
-        } else {
-          console.log("folder is already present");
-          event.reply("select-dirs-response", "Folder is already present");
-        }
+        // dashboard.linkRepository(filePaths[0])
+        event.reply("select-dirs-confirm", filePaths[0])
       }
     });
 

@@ -6,12 +6,35 @@ const axios = require("axios");
 let repoKey = "";
 let authToken = "";
 
-if(process.platform === 'darwin'){
-  repoKey = "/opt/chef-workstation/service.txt";
+if (process.platform === 'darwin') {
+    repoKey = "/opt/chef-workstation/service.txt";
 } else {
-  repoKey = "c:\\opscode\\chef-workstation\\service.txt";
+    repoKey = "c:\\opscode\\chef-workstation\\service.txt";
 }
+readRepoKey();
 
+async function linkRepository(folderPath) {
+    console.log("Inside the linkReposity function_____________________")
+    console.log("Access key is ______________________", authToken)
+    linkParams = {
+        repositories: {
+            type: "local",
+            filepath: folderPath
+        }
+    };
+
+    try {
+        const response = await axios.post(
+            "http://localhost:7050/api/v1/repositories/link_repository",
+            linkParams
+        );
+        // renderChefRepositories();
+        // TODO: find a way to refresh the repo list
+        window.top.location.reload();
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 function readRepoKey() {
     const fileData = fs.readFileSync(repoKey).toString("utf8");
@@ -62,7 +85,7 @@ axios.interceptors.response.use(
 );
 
 function render() {
-    readRepoKey();
+    // readRepoKey();
     document.getElementById("chef-repo-content").style.display = "none";
     document.getElementById("repos").addEventListener("click", async () => {
         document.getElementById("chef-cookbook-content").innerHTML = "";
@@ -175,4 +198,5 @@ function render() {
         }
     });
 }
-module.exports = { render };
+
+module.exports = { render, linkRepository };

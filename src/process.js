@@ -25,4 +25,10 @@ fetch("./dashboard/index.html")
       console.log(str);
       alert(str);
     });
+
+    ipcRenderer.on("select-dirs-confirm", async (event, folderPath) => {
+      console.log("Got the confirm reponse from main.ts")
+      dashboard.linkRepository(folderPath);
+      // dashboard.render();
+    });
   });
