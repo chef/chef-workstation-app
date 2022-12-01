@@ -3,6 +3,7 @@ const fs = require("fs");
 const helpers = require("../helpers/helpers.js");
 const { setAttribute } = require("jsdom/lib/jsdom/living/attributes");
 const axios = require("axios");
+const { ipcRenderer } = require("electron");
 let repoKey = "";
 let authToken = "";
 
@@ -28,9 +29,12 @@ async function linkRepository(folderPath) {
             "http://localhost:7050/api/v1/repositories/link_repository",
             linkParams
         );
-        // renderChefRepositories();
-        // TODO: find a way to refresh the repo list
-        window.top.location.reload();
+        if (response.status == 200) {
+            // renderChefRepositories();
+            // TODO: find a way to refresh the repo list
+            window.top.location.reload();
+            alert("Repository linked successfully!")
+        }
     } catch (error) {
         console.error(error)
     }
@@ -79,6 +83,8 @@ axios.interceptors.response.use(
     (error) => {
         if (error.response.status === 401) {
             readRepoKey();
+        } else if (error.response.status === 422) {
+            alert("Error: " + error.response.data.message)
         }
         return error;
     }
