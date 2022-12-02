@@ -1,3 +1,45 @@
-#cookbook-activity {
-    background: blue;
+body {
+    background: #E5E5E5
+}
+
+.sidebar-heading {
+    font-family: 'Mulish';
+    font-style: normal;
+    letter-spacing: 0.2px;
+    color: #827E7E;
+}
+
+.sidebar-content {
+    font-family: 'Mulish';
+    font-style: normal;
+    line-height: 21px;
+    letter-spacing: 0.2px;
+    color: #000000;
+}
+
+.sidebar-boarder {
+    border: 1px solid #d0c1c1;
+    padding-top: 20px;
+}
+
+.repo-table {
+    border: 1.5px solid #bab7b7;
+    margin-left: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.repo-table-header {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+}
+
+.repo-table-content {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    color: #000000;
 }

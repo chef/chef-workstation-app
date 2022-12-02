@@ -15,8 +15,6 @@ if (process.platform === 'darwin') {
 readRepoKey();
 
 async function linkRepository(folderPath) {
-    console.log("Inside the linkReposity function_____________________")
-    console.log("Access key is ______________________", authToken)
     linkParams = {
         repositories: {
             type: "local",
@@ -97,10 +95,10 @@ function render() {
         document.getElementById("chef-cookbook-content").innerHTML = "";
         document.getElementById("overview-content").style.display = "none";
         document.getElementById("chef-repo-list").innerHTML = "";
-        const table = ` <table class="table table-bordered" id="table-repos">
-      <thead>
+        const table = ` <table class="table table-hover repo-table" id="table-repos">
+      <thead class="table-secondary">
         <tr>
-          <th scope="col">Repositories</th>
+          <th class="repo-table-header" scope="col">Repositories</th>
         </tr>
       </thead>
       </table>`;
@@ -108,7 +106,7 @@ function render() {
         document.getElementById("chef-repo-list").innerHTML += table;
         try {
             const {data: {repositories}} = await axios(
-                "http://127.0.0.1:7050/api/v1/repositories/list_repositories?page=1&limit=10"
+                "http://127.0.0.1:7050/api/v1/repositories/list_repositories?page=1&limit=100"
             );
             document.getElementById("chef-repo-content").style.display =
                 "block";
@@ -116,7 +114,7 @@ function render() {
             for (var i = 0; i < repositories.length; i++) {
                 tablecontents += "<tr>";
                 const rows = Object.values(repositories[i]);
-                tablecontents += "<td>" + rows[2] + "</td>";
+                tablecontents += '<td class="repo-table-content">' + rows[2] + "</td>";
 
                 tablecontents += "</tr>";
             }
@@ -142,14 +140,13 @@ function render() {
         }
         document.getElementById("chef-cookbook-content").style.display =
             "block";
-        const table = ` <table class="table table-bordered" id="table-cookbooks">
+        const table = ` <table class="table table-hover repo-table" id="table-cookbooks">
         
-<thead>
+<thead class="table-secondary">
   <tr>
-    <th>
-    </th>
-    <th scope="col">Cookbooks</th>
-    <th scope="col">Repository</th>
+    <th class="repo-table-header" scope="col">Cookbooks</th>
+    <th class="repo-table-header" scope="col">Repository</th>
+    <th></th>
   </tr>
 </thead>
 </table>`;
@@ -158,20 +155,20 @@ function render() {
 
         const {data: {cookbooks}} = await axios({
             method: "get",
-            url: "http://127.0.0.1:7050/api/v1/repositories/cookbooks",
+            url: "http://127.0.0.1:7050/api/v1/repositories/cookbooks?page=1&limit=100",
         });
         let tablecontents = "";
         for (var i = 0; i < cookbooks.length; i++) {
             tablecontents += "<tr>";
             const rows = Object.values(cookbooks[i]);
-            tablecontents += `<td>
-        <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck2">
-    </div>
-    </td>`;
-            tablecontents += "<td>" + rows[0] + "</td>";
-            tablecontents += "<td>" + rows[2] + "</td>";
-            tablecontents += `<td> <button class="upload-cookbook" data-cookbook="${rows[0]}" path="${rows[1]}">Upload</button> </td>`;
+    //         tablecontents += `<td>
+    //     <div class="custom-control custom-checkbox">
+    //     <input type="checkbox" class="custom-control-input" id="customCheck2">
+    // </div>
+    // </td>`;
+            tablecontents += '<td class="repo-table-content">' + rows[0] + "</td>";
+            tablecontents += '<td class="repo-table-content">' + rows[2] + "</td>";
+            tablecontents += `<td class="repo-table-content"> <button class="upload-cookbook" data-cookbook="${rows[0]}" path="${rows[1]}">Upload</button> </td>`;
 
             tablecontents += "</tr>";
         }
@@ -179,6 +176,8 @@ function render() {
         const elements = document.getElementsByClassName("upload-cookbook");
 
         const upalodCookBooks = function () {
+            uploadButton = this
+            uploadButton.disabled = true;
             const attribute = this.getAttribute("data-cookbook");
             const path = this.getAttribute("path");
             var postData = {
@@ -193,9 +192,13 @@ function render() {
                 )
                 .then(function (response) {
                     console.log(response);
+                    alert("Cookbook uploaded successfully!")
                 })
                 .catch((err) => {
                     console.log("AXIOS ERROR: ", err);
+                })
+                .then(function () {
+                    uploadButton.disabled = false;
                 });
         };
 
