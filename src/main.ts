@@ -186,6 +186,8 @@ export class Main {
     this.backgroundWindow = new BrowserWindow({
       show: true,
       autoHideMenuBar: true,
+      width: 1100,
+      height: 700,
 
       webPreferences: {
         // enableRemoteModule: true,
