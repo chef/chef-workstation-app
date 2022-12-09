@@ -192,7 +192,9 @@ function render() {
                 )
                 .then(function (response) {
                     console.log(response);
-                    alert("Cookbook uploaded successfully!")
+                    if (!response.isAxiosError) {
+                        alert("Cookbook uploaded successfully!")
+                    }
                 })
                 .catch((err) => {
                     console.log("AXIOS ERROR: ", err);
