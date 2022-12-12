@@ -60,7 +60,7 @@ export class Main {
       },
       { type: "separator" },
       {
-        label: 'Manage Cookbboks',
+        label: 'Manage Cookbooks',
         click: () => {
           this.runDashboard();
         },
@@ -187,7 +187,7 @@ export class Main {
       show: true,
       autoHideMenuBar: true,
       width: 1100,
-      height: 700,
+      height: 750,
 
       webPreferences: {
         // enableRemoteModule: true,

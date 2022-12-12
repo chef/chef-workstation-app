@@ -88,91 +88,68 @@ axios.interceptors.response.use(
     }
 );
 
-function render() {
-    // readRepoKey();
-    document.getElementById("chef-repo-content").style.display = "none";
-    document.getElementById("repos").addEventListener("click", async () => {
-        document.getElementById("chef-cookbook-content").innerHTML = "";
-        document.getElementById("overview-content").style.display = "none";
-        document.getElementById("chef-repo-list").innerHTML = "";
-        const table = ` <table class="table table-hover repo-table" id="table-repos">
-      <thead class="table-secondary">
-        <tr>
-          <th class="repo-table-header" scope="col">Repositories</th>
-        </tr>
-      </thead>
-      </table>`;
+function resetContentDivs() {
+    var cols = document.getElementsByClassName("content");
+    for (i = 0; i < cols.length; i++) {
+        cols[i].style.display = "none";
+    }
+}
 
-        document.getElementById("chef-repo-list").innerHTML += table;
+function render() {
+    document.getElementById("chef-repo-content").style.display = "none";
+    document.getElementById("chef-cookbook-content").style.display = "none";
+
+    document.getElementById("overview").addEventListener("click", async () => {
+        resetContentDivs()
+        document.getElementById("overview-content").style.display = "block";
+    });
+
+    document.getElementById("repos").addEventListener("click", async () => {
+        resetContentDivs()
+        const repo_body = document.getElementById("table-repos").getElementsByTagName('tbody')[0];
+        repo_body.innerHTML = "";
+
         try {
-            const {data: {repositories}} = await axios(
+            const { data: {repositories} } = await axios(
                 "http://127.0.0.1:7050/api/v1/repositories/list_repositories?page=1&limit=100"
             );
-            document.getElementById("chef-repo-content").style.display =
-                "block";
+            document.getElementById("chef-repo-content").style.display = "block";
             let tablecontents = "";
             for (var i = 0; i < repositories.length; i++) {
                 tablecontents += "<tr>";
                 const rows = Object.values(repositories[i]);
                 tablecontents += '<td class="repo-table-content">' + rows[2] + "</td>";
+                tablecontents += '<td class="repo-table-content">' + rows[3] + "</td>";
 
                 tablecontents += "</tr>";
             }
-            document.getElementById("table-repos").innerHTML += tablecontents;
+            repo_body.innerHTML += tablecontents;
         } catch (err) {
             console.log("AXIOS ERROR: ", err);
         }
     });
 
-    // let axiosConfig = {
-    //     headers: {
-    //         Authorization:
-    //             "eyJhbGciOiJIUzI1NiJ9.eyJhY2Nlc3Nfa2V5IjoiNjU2MGYxOThjNTU1NTUwYWU3Y2UyYWZlNDdjZTlmZDEiLCJleHAiOjE2Njk2MjYwMzd9.dP3lZGcBKwC4qJFWC2RrugOqk1wVrHa9w80aT-eAFmM",
-    //     },
-    // };
-
     document.getElementById("cookbooks").addEventListener("click", async () => {
-        document.getElementById("chef-cookbook-content").innerHTML = "";
-        document.getElementById("overview-content").style.display = "none";
-        var cols = document.getElementsByClassName("content");
-        for (i = 0; i < cols.length; i++) {
-            cols[i].style.display = "none";
-        }
-        document.getElementById("chef-cookbook-content").style.display =
-            "block";
-        const table = ` <table class="table table-hover repo-table" id="table-cookbooks">
-        
-<thead class="table-secondary">
-  <tr>
-    <th class="repo-table-header" scope="col">Cookbooks</th>
-    <th class="repo-table-header" scope="col">Repository</th>
-    <th></th>
-  </tr>
-</thead>
-</table>`;
-
-        document.getElementById("chef-cookbook-content").innerHTML += table;
-
-        const {data: {cookbooks}} = await axios({
+        resetContentDivs();
+        document.getElementById("chef-cookbook-content").style.display = "block";
+        const cookbook_tbody = document.getElementById("table-cookbooks").getElementsByTagName('tbody')[0];
+        cookbook_tbody.innerHTML = "";
+        const { data: { cookbooks } } = await axios({
             method: "get",
             url: "http://127.0.0.1:7050/api/v1/repositories/cookbooks?page=1&limit=100",
         });
+
         let tablecontents = "";
         for (var i = 0; i < cookbooks.length; i++) {
             tablecontents += "<tr>";
             const rows = Object.values(cookbooks[i]);
-    //         tablecontents += `<td>
-    //     <div class="custom-control custom-checkbox">
-    //     <input type="checkbox" class="custom-control-input" id="customCheck2">
-    // </div>
-    // </td>`;
             tablecontents += '<td class="repo-table-content">' + rows[0] + "</td>";
             tablecontents += '<td class="repo-table-content">' + rows[2] + "</td>";
-            tablecontents += `<td class="repo-table-content"> <button class="upload-cookbook" data-cookbook="${rows[0]}" path="${rows[1]}">Upload</button> </td>`;
-
+            tablecontents += `<td class="repo-table-content"> <button class="upload-cookbook upload-button" data-cookbook="${rows[0]}" path="${rows[1]}">Upload</button> </td>`;
             tablecontents += "</tr>";
         }
-        document.getElementById("table-cookbooks").innerHTML += tablecontents;
+
+        cookbook_tbody.innerHTML += tablecontents;
         const elements = document.getElementsByClassName("upload-cookbook");
 
         const upalodCookBooks = function () {

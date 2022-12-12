@@ -1,17 +1,44 @@
 body {
-    background: #E5E5E5
+    background: #FFFFFF;
+    font-family: 'Mulish';
+    font-style: normal;
+}
+
+.nav-breadcrumb {
+    --bs-breadcrumb-divider: '>';
+    font-size: 12px;
+    line-height: 18px;
+    display: flex;
+    letter-spacing: 0.2px;
+    color: #222435;
+}
+
+.nav-breadcrumb-active {
+    color: #0075DB;
+}
+
+.main-content {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 750px;
+    overflow: auto;
+}
+
+.page-title {
+    font-weight: 700;
+    line-height: 25px;
+    color: #000000;
+    margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 .sidebar-heading {
-    font-family: 'Mulish';
-    font-style: normal;
     letter-spacing: 0.2px;
     color: #827E7E;
 }
 
 .sidebar-content {
-    font-family: 'Mulish';
-    font-style: normal;
     line-height: 21px;
     letter-spacing: 0.2px;
     color: #000000;
@@ -24,22 +51,60 @@ body {
 
 .repo-table {
     border: 1.5px solid #bab7b7;
-    margin-left: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+}
+
+.table {
+    padding: 0.5rem 2rem;
 }
 
 .repo-table-header {
-    font-family: 'Mulish';
-    font-style: normal;
     font-weight: 400;
     color: #000000;
+    --bs-table-bg: #F0EFEF;
+    line-height: 35px;
 }
 
 .repo-table-content {
-    font-family: 'Mulish';
-    font-style: normal;
     font-weight: 400;
     line-height: 15px;
     color: #000000;
+    line-height: 25px;
+}
+
+.container-div {
+    width: 100%;
+    display: table;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.container-item {
+    display: table-cell;
+}
+.container-item-right {
+    text-align: right;
+}
+
+.upload-button {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 2px solid #3864F2;
+    border-radius: 21px;
+    font-size: 13px;
+    line-height: 20px;
+    text-align: center;
+    color: #3864F2;
+    padding: 5px 10px;
+}
+
+.upload-button:hover {
+    border: 2px solid #0099cc;
+    background-color: #3864F2;
+    color: #ffffff;
+}
+
+.upload-button:disabled,
+.upload-button[disabled]{
+    border: 2px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
 }

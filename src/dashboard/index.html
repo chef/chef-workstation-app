@@ -3,7 +3,19 @@
     <div class="col-auto col-md-3 col-xl-3 px-sm-3 px-0 sidebar-boarder">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
         <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <span class="sidebar-heading">Manage</span>
+          <span class="sidebar-heading">INSIGHTS</span>
+        </a>
+        <ul class="collapse show nav flex-column ms-1" id="submenu" data-bs-parent="#menu">
+          <li>
+            <a href="#" id="overview" class="nav-link px-0">
+              <span class="d-none d-sm-inline sidebar-content"><i class="bi bi-check-circle"></i>  Overview</span>
+            </a>
+          </li>
+        </ul>
+        <br />
+
+        <a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <span class="sidebar-heading">MANAGE</span>
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li>
@@ -19,12 +31,12 @@
               </li> -->
               <li>
                 <a href="#" id="repos" class="nav-link px-0">
-                  <span class="d-none d-sm-inline sidebar-content"><i class="bi bi-briefcase"></i>  Chef Repository</span>
+                  <span class="d-none d-sm-inline sidebar-content"><i class="bi bi-briefcase"></i> Chef Repositories</span>
                 </a>
               </li>
               <li>
                 <a href="#" id="cookbooks" class="nav-link px-0">
-                  <span class="d-none d-sm-inline sidebar-content"><i class="bi bi-journals"></i>  Cookbooks</span>
+                  <span class="d-none d-sm-inline sidebar-content"><i class="bi bi-journals"></i> Cookbooks</span>
                 </a>
               </li>
               <!-- <li>
@@ -39,20 +51,80 @@
         <hr>
       </div>
     </div>
-    <div class="col-md-8" id="content">
+
+    <div class="col-md-9 main-content" id="content">
       <div id="overview-content" class="content">
+        <div class="nav-breadcrumb">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">Insights</li>
+              <li class="breadcrumb-item nav-breadcrumb-active">Overview</li>
+            </ol>
+          </nav>
+        </div>
         <!-- <h3>Chef-workstation-app</h3> -->
+        <h3 class="page-title">Overview</h3>
         <p class="lead" style="font-size: 1.20rem;"> The Chef Workstation Application enables you to view your cookbook information across multiple Chef Infra Repositories. Add a local Chef Infra Repository here and manage your cookbooks right from this application. You can upload a cookbook or push a Policyfile to the specified Chef Infra Server without having to execute commands from the Terminal.</p>
       </div>
-      <div id="chef-cookbook-content" class="content"></div>
+
+
+      <div id="chef-cookbook-content" class="content">
+        <div class="nav-breadcrumb">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">Manage</li>
+              <li class="breadcrumb-item">Cookbooks</li>
+              <li class="breadcrumb-item nav-breadcrumb-active">All Cookbooks</li>
+            </ol>
+          </nav>
+        </div>
+        <h3 class="page-title">Cookbooks</h3>
+        <div id="chef-cookbook-list">
+          <table class="table repo-table" id="table-cookbooks">
+            <thead class="table-secondary repo-table-header">
+              <tr>
+                <th scope="col">Cookbook</th>
+                <th scope="col">Repository</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+
       <div id="chef-repo-content" class="content">
-        <div id="chef-repo-list"></div>
-        <ul class="list-unstyled">
-          <li>
-            <button type="button" class="btn btn-primary" id="dirs">Add Repository</button>
-          </li>
-          <strong id="filePath"></strong>
-        </ul>
+        <div class="nav-breadcrumb">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">Manage</li>
+              <li class="breadcrumb-item">Chef Repositories</li>
+              <li class="breadcrumb-item nav-breadcrumb-active">All Repos</li>
+            </ol>
+          </nav>
+        </div>
+        <div class="container-div">
+          <h3 class="page-title container-item">Chef Repositories</h3>
+          <ul class="list-unstyled container-item-right">
+            <li>
+              <button type="button" class="btn btn-primary" id="dirs"><i class="bi bi-plus-lg"></i> Add New</button>
+            </li>
+            <strong id="filePath"></strong>
+          </ul>
+        </div>
+
+        <div id="chef-repo-list">
+          <table class="table repo-table" id="table-repos">
+            <thead class="table-secondary repo-table-header">
+              <tr>
+                <th scope="col">Repository</th>
+                <th scope="col">Location</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
