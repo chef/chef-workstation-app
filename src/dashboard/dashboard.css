@@ -45,16 +45,12 @@ body {
 }
 
 .sidebar-boarder {
-    border: 1px solid #d0c1c1;
+    border-right: 1px solid #d0c1c1;
     padding-top: 20px;
 }
 
 .repo-table {
     border: 1.5px solid #bab7b7;
-}
-
-.table {
-    padding: 0.5rem 2rem;
 }
 
 .repo-table-header {

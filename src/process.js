@@ -17,7 +17,7 @@ fetch("./dashboard/index.html")
     const filePathElement = document.getElementById("filePath");
 
     btn.addEventListener("click", (e) => {
-      ipcRenderer.send("select-dirs", "gellow here i am");
+      ipcRenderer.send("select-dirs", "hello here i am");
     });
 
     ipcRenderer.on("select-dirs-response", async (event, arg) => {
