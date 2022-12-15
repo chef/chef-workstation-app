@@ -46,7 +46,7 @@
     "@iarna/toml": "^2.2.5",
     "@types/node": "^18.11.7",
     "axios": "^0.27.2",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.2.3",
     "electron-is": "^3.0.0",
     "request": "^2.88.2"
   }
