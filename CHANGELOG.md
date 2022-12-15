@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.180 -->
+<!-- latest_release 0.2.181 -->
+## [v0.2.181](https://github.com/chef/chef-workstation-app/tree/v0.2.181) (2022-12-15)
+
+#### Merged Pull Requests
+- I5pranay93/infws 145 ux asper mockups [#653](https://github.com/chef/chef-workstation-app/pull/653) ([i5pranay93](https://github.com/i5pranay93))
+<!-- latest_release -->
+
 ## [v0.2.180](https://github.com/chef/chef-workstation-app/tree/v0.2.180) (2022-12-15)
 
 #### Merged Pull Requests
 - Linking repos and listing repos and cookbooks [#697](https://github.com/chef/chef-workstation-app/pull/697) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.179](https://github.com/chef/chef-workstation-app/tree/v0.2.179) (2022-10-31)
 
