@@ -17,7 +17,7 @@
   },
   "scripts": {
     "clean": "rimraf build dist",
-    "compile": "tsc && copyfiles -u 1 \"src/**/*.html\" build",
+    "compile": "tsc && copyfiles -u 1 \"src/**/*\" build",
     "start": "npm run compile && electron build/app.js",
     "watch": "nodemon  --exec electron .",
     "debug": "npm run compile && electron build/app.js --inspect-brk=9229",
@@ -32,8 +32,8 @@
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "copyfiles": "^2.4.1",
-    "electron": "=21.2.0",
-    "electron-builder": "23.6.0",
+    "electron": "^21.2.3",
+    "electron-builder": "^23.6.0",
     "jsdom": "^20.0.1",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
@@ -45,6 +45,7 @@
   "dependencies": {
     "@iarna/toml": "^2.2.5",
     "@types/node": "^18.11.7",
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.2",
     "electron-is": "^3.0.0",
     "request": "^2.88.2"

@@ -17,12 +17,18 @@ fetch("./dashboard/index.html")
     const filePathElement = document.getElementById("filePath");
 
     btn.addEventListener("click", (e) => {
-      ipcRenderer.send("select-dirs", "gellow here i am");
+      ipcRenderer.send("select-dirs", "hello here i am");
     });
 
     ipcRenderer.on("select-dirs-response", async (event, arg) => {
       var str = "Added folder: " + arg
       console.log(str);
       alert(str);
+    });
+
+    ipcRenderer.on("select-dirs-confirm", async (event, folderPath) => {
+      console.log("Got the confirm reponse from main.ts")
+      dashboard.linkRepository(folderPath);
+      // dashboard.render();
     });
   });
