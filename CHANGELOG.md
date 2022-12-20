@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.182 -->
+<!-- latest_release 0.2.183 -->
+## [v0.2.183](https://github.com/chef/chef-workstation-app/tree/v0.2.183) (2022-12-20)
+
+#### Merged Pull Requests
+- Update node to v18 [#716](https://github.com/chef/chef-workstation-app/pull/716) ([vkarve-chef](https://github.com/vkarve-chef))
+<!-- latest_release -->
+
 ## [v0.2.182](https://github.com/chef/chef-workstation-app/tree/v0.2.182) (2022-12-20)
 
 #### Merged Pull Requests
 - Restore builder to 10.15 as codesigning works here [#715](https://github.com/chef/chef-workstation-app/pull/715) ([vkarve-chef](https://github.com/vkarve-chef))
-<!-- latest_release -->
 
 ## [v0.2.181](https://github.com/chef/chef-workstation-app/tree/v0.2.181) (2022-12-15)
 
