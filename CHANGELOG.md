@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.181 -->
+<!-- latest_release 0.2.182 -->
+## [v0.2.182](https://github.com/chef/chef-workstation-app/tree/v0.2.182) (2022-12-20)
+
+#### Merged Pull Requests
+- Restore builder to 10.15 as codesigning works here [#715](https://github.com/chef/chef-workstation-app/pull/715) ([vkarve-chef](https://github.com/vkarve-chef))
+<!-- latest_release -->
+
 ## [v0.2.181](https://github.com/chef/chef-workstation-app/tree/v0.2.181) (2022-12-15)
 
 #### Merged Pull Requests
 - I5pranay93/infws 145 ux asper mockups [#653](https://github.com/chef/chef-workstation-app/pull/653) ([i5pranay93](https://github.com/i5pranay93))
-<!-- latest_release -->
 
 ## [v0.2.180](https://github.com/chef/chef-workstation-app/tree/v0.2.180) (2022-12-15)
 
