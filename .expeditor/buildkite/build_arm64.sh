@@ -7,8 +7,8 @@ buildkite-agent annotate 'The :windows: and :linux: jobs require booting a brand
 buildkite-agent annotate 'The .zip file for each build can be downloaded from the "Artifacts" tab in each build step. These links will not work for customers. Final links will be posted when `publish` step completes.' --style info --context 'where-to-download'
 
 # Install NodeJS
-brew install node@16
-brew link node@16
+brew install node@18
+brew link node@18
 
 # Perform the build
 npm install --unsafe-perm=true --allow-root
