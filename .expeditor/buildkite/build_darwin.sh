@@ -13,12 +13,12 @@ brew install libnghttp2
 brew install icu4c
 brew install c-ares
 brew install brotli
-brew install python@3.10
 brew install xz
 brew install sqlite
 brew install ca-certificates
 brew install mpdecimal
 brew install gdbm
+brew install python@3.10
 brew install node@18
 brew link node@18
 
