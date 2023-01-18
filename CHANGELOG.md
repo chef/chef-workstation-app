@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.183 -->
+<!-- latest_release 0.2.184 -->
+## [v0.2.184](https://github.com/chef/chef-workstation-app/tree/v0.2.184) (2023-01-18)
+
+#### Merged Pull Requests
+- INFWS-175 Add relevant entitlements so app works on macOS Ventura [#722](https://github.com/chef/chef-workstation-app/pull/722) ([vkarve-chef](https://github.com/vkarve-chef))
+<!-- latest_release -->
+
 ## [v0.2.183](https://github.com/chef/chef-workstation-app/tree/v0.2.183) (2022-12-20)
 
 #### Merged Pull Requests
 - Update node to v18 [#716](https://github.com/chef/chef-workstation-app/pull/716) ([vkarve-chef](https://github.com/vkarve-chef))
-<!-- latest_release -->
 
 ## [v0.2.182](https://github.com/chef/chef-workstation-app/tree/v0.2.182) (2022-12-20)
 
