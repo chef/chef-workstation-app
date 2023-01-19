@@ -6,19 +6,7 @@ set -eu -o pipefail
 buildkite-agent annotate 'The :windows: and :linux: jobs require booting a brand new instance. Those builds may take up to ten minutes to start.' --style info
 buildkite-agent annotate 'The .zip file for each build can be downloaded from the "Artifacts" tab in each build step. These links will not work for customers. Final links will be posted when `publish` step completes.' --style info --context 'where-to-download'
 
-# Install dependencies & NodeJS, installing dependencies individually# is a workaround to the BuildKite timeout issue.
-# We can discard explicit dependency installation once we successfully migrate build to a macOS 11 agent.
-brew install libuv
-brew install libnghttp2
-brew install icu4c
-brew install c-ares
-brew install brotli
-brew install xz
-brew install sqlite
-brew install ca-certificates
-brew install mpdecimal
-brew install gdbm
-brew install python@3.10
+# Install NodeJS
 brew install node@18
 brew link node@18
 

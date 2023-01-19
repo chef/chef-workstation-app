@@ -2,6 +2,7 @@ steps:
 
   - label: ":macos: Intel build"
     command: .expeditor/buildkite/build_darwin.sh
+    timeout_in_minutes: 30
     expeditor:
       executor:
         macos:
