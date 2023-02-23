@@ -58,13 +58,6 @@ export class Main {
               });
         },
       },
-      { type: "separator" },
-      {
-        label: 'Manage Cookbooks',
-        click: () => {
-          this.runDashboard();
-        },
-      },
       { type: 'separator' },
       {
         label: "Preferences...",
@@ -180,30 +173,6 @@ export class Main {
       "Attempted to open URL: https://learn.chef.io/. Result: " + result
     );
   }
-  private runDashboard() {
-    const modalPath = `file://${__dirname}/process.html`;
-    
-    this.backgroundWindow = new BrowserWindow({
-      show: true,
-      autoHideMenuBar: true,
-      width: 1100,
-      height: 750,
-
-      webPreferences: {
-        // enableRemoteModule: true,
-        // https://electronjs.org/docs/tutorial/security#2-do-not-enable-nodejs-integration-for-remote-content
-        // Electron does not recommend enabling this since it exposes sites to XSS attacks. Since we are
-        // only distributing an app that is already running on someone's system we can get away with it but
-        // we should switch to the 'preload' pattern documented in that tutorial.
-
-        // preload: path.join(__dirname, 'preload.js'), // added @i5pranay93
-        nodeIntegration: true,
-        contextIsolation: false,
-      },
-    });
-    this.backgroundWindow.loadURL(modalPath);
-  }
-
 
   private startApp() {
     const modalPath = `file://${__dirname}/process.html`;
