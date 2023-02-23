@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.184 -->
+<!-- latest_release 0.2.185 -->
+## [v0.2.185](https://github.com/chef/chef-workstation-app/tree/v0.2.185) (2023-02-23)
+
+#### Merged Pull Requests
+- INFWS-195 Hide Manage Cookbooks menu item [#745](https://github.com/chef/chef-workstation-app/pull/745) ([vkarve-chef](https://github.com/vkarve-chef))
+<!-- latest_release -->
+
 ## [v0.2.184](https://github.com/chef/chef-workstation-app/tree/v0.2.184) (2023-01-18)
 
 #### Merged Pull Requests
 - INFWS-175 Add relevant entitlements so app works on macOS Ventura [#722](https://github.com/chef/chef-workstation-app/pull/722) ([vkarve-chef](https://github.com/vkarve-chef))
-<!-- latest_release -->
 
 ## [v0.2.183](https://github.com/chef/chef-workstation-app/tree/v0.2.183) (2022-12-20)
 
