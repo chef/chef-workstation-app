@@ -35,7 +35,7 @@
     "electron": "^21.2.3",
     "electron-builder": "^23.6.0",
     "jsdom": "^20.0.1",
-    "mocha": "^10.1.0",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
     "spectron": "^19.0.0",
