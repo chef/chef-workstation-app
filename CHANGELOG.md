@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.185 -->
+<!-- latest_release 0.2.186 -->
+## [v0.2.186](https://github.com/chef/chef-workstation-app/tree/v0.2.186) (2023-03-23)
+
+#### Merged Pull Requests
+- Added the build and properties for SonarQube  [#765](https://github.com/chef/chef-workstation-app/pull/765) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
+
 ## [v0.2.185](https://github.com/chef/chef-workstation-app/tree/v0.2.185) (2023-02-23)
 
 #### Merged Pull Requests
 - INFWS-195 Hide Manage Cookbooks menu item [#745](https://github.com/chef/chef-workstation-app/pull/745) ([vkarve-chef](https://github.com/vkarve-chef))
-<!-- latest_release -->
 
 ## [v0.2.184](https://github.com/chef/chef-workstation-app/tree/v0.2.184) (2023-01-18)
 
