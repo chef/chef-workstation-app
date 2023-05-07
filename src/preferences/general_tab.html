@@ -4,20 +4,22 @@
     <title>General</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../assets/css/preferences.css">
-    <script>
+    <!-- <script>
       const preferences = require('./preferences.js');
+      console.log('Innn')
+      console.log(preferences)
       document.addEventListener("DOMContentLoaded", function(event) {
         preferences.updateDialog();
       });
-    </script>
+    </script> -->
   </head>
   <body>
     <div class="content">
       <div class="section">
-        <input type="checkbox" id="startup" onclick="preferences.toggleSetting(this);" /><label> Start Workstation App on system startup</label>
+        <input type="checkbox" id="startup" onclick="toggleSetting(this);" /><label> Start Workstation App on system startup</label>
       </div>
       <div class="section">
-        <input type="checkbox" id="software_updates" onclick="preferences.toggleSetting(this);" /><label> Automatically check for software updates</label>
+        <input type="checkbox" id="software_updates" onclick="toggleSetting(this);" /><label> Automatically check for software updates</label>
       </div>
       <!-- @afiune To be implemented with https://github.com/chef/chef-workstation-app/issues/158 -->
       <!--<div class="section">-->
@@ -29,6 +31,12 @@
           <!--<a href="#">View more usage data details</a>-->
         <!--</label>-->
       <!--</div>-->
+      <script src="../helpers/chef_workstation.js"></script>
+      <script src="../../node_modules/@types/node/process.d.ts"></script>
+      <script src="./preferences.js"></script>
+      <script>
+          console.log(toggleSetting);
+      </script>
     </div>
   </body>
 </html>

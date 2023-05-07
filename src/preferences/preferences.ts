@@ -1,6 +1,9 @@
 import { ipcRenderer } from 'electron';
 import AppConfig from '../app-config/app-config';
-import Workstation = require('../helpers/chef_workstation.js');
+// import Workstation = require('../helpers/chef_workstation.js');
+// import disableAppAtStartup from '../helpers/chef_workstation.js';
+// import enableAppAtStartup from '../helpers/chef_workstation.js';
+// import prcs from 'process'
 
 function switchTab(tab: string) {
   ipcRenderer.send('switch-preferences-tab', tab);
@@ -26,16 +29,26 @@ function uninstall() {
 }
 
 function toggleSetting(checkbox: HTMLInputElement) {
+  alert(checkbox.id)
   switch(checkbox.id) {
     case 'telemetry': {
       AppConfig.setTelemetryEnable(checkbox.checked);
       break;
     }
     case 'startup': {
+      alert(checkbox.checked);
       if (checkbox.checked) {
-        Workstation.enableAppAtStartup();
+        // Workstation.enableAppAtStartup();
+        alert("checked");
+        // alert(process.platform);
+        // alert(prcs.platform);
+        // alert(ipcRenderer);
+        // alert(process.env);
+        enableAppAtStartup();
       } else {
-        Workstation.disableAppAtStartup();
+        // Workstation.disableAppAtStartup();
+        alert("not-checked");
+        disableAppAtStartup();
       }
       break;
     }
@@ -63,8 +76,9 @@ function toggleSetting(checkbox: HTMLInputElement) {
 }
 
 function updateDialog() {
+  alert('inside update Dialog')
   var startupCheckbox = (<HTMLInputElement>document.getElementById('startup'));
-  startupCheckbox.checked = Workstation.isAppRunningAtStartup();
+  startupCheckbox.checked = isAppRunningAtStartup();
 
   var updatesCheckbox = (<HTMLInputElement>document.getElementById('software_updates'));
   updatesCheckbox.disabled = !AppConfig.canControlUpdates();
@@ -74,6 +88,12 @@ function updateDialog() {
   telemetryCheckbox.disabled = !AppConfig.canUpdateTelemetry();
   telemetryCheckbox.checked = AppConfig.isTelemetryEnabled();
 }
+
+declare function disableAppAtStartup(): void;
+declare function enableAppAtStartup(): void;
+declare function isAppRunningAtStartup(): boolean;
+
+
 
 module.exports.updateDialog = updateDialog;
 module.exports.toggleSetting = toggleSetting;

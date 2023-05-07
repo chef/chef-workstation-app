@@ -104,8 +104,10 @@ function getInstalledComponentVersion(componentName) {
 function getPathToChefBinary(binBaseName) {
   let path = null;
   if (is.windows()) {
+    // alert("inside windows")
     path = syncGetRegistryValue(CWS_REG_NODE, CWS_REG_KEY_BIN_DIR) + binBaseName + ".bat"
   } else {
+    // alert("inside Mac")
     path = "/opt/chef-workstation/bin/" + binBaseName;
   }
   if (fs.existsSync(path)) {
@@ -116,34 +118,49 @@ function getPathToChefBinary(binBaseName) {
 
 // Verify if the Tray App is configured to run at startup
 function isAppRunningAtStartup() {
-  if (is.windows()) {
+  alert("inside isAppRunningAtStartup");
+  alert(window.navigator.platform)
+  // alert(process.platform)
+  // if (window.navigator.platform === "Windows") {
+    if (is.windows()) {
+    alert("inside win")
     console.log('isAppRunningAtStartup(): not implemented');
     return null;
   } else {
+    alert("inside mac")
     var plist = getUserHome() + '/Library/LaunchAgents/' + MACOS_PLIST;
+    alert(plist)
     return fs.existsSync(plist);
   }
 };
 
 // Returns the user's home directory
 function getUserHome() {
+  alert("inside get user home")
+  alert(process.platform)
+
   return process.env[is.windows() ? 'USERPROFILE' : 'HOME'];
 };
 
 // Disables the Tray App to run at startup
 function disableAppAtStartup() {
+  alert("inside disableAppAtStartup")
   if (!isAppRunningAtStartup()) {
+    alert("inside app running")
     return;
   }
 
   var path = getPathToChefBinary(MACOS_LAUNCHER);
+  alert(path)
   if (path == null) {
+    alert("null path")
     // TODO @afiune Error handling in Electron: Open an error window?
     console.log('Unable to find the ' + MACOS_LAUNCHER);
     return;
   }
 
   try {
+    alert("inside try")
     execFileSync(path, ['startup', 'disable']);
   } catch(error) {
     // TODO @afiune Error handling in Electron: Open an error window?
@@ -154,6 +171,7 @@ function disableAppAtStartup() {
 
 // Enables the Tray App to run at startup
 function enableAppAtStartup() {
+  alert("inside enableAppAtStartup")
   if (isAppRunningAtStartup()) {
     return;
   }
@@ -166,6 +184,7 @@ function enableAppAtStartup() {
   }
 
   try {
+    alert("inside try enableAppAtStartup")
     execFileSync(path, ['startup', 'enable']);
   } catch(error) {
     // TODO @afiune Error handling in Electron: Open an error window?
