@@ -34,7 +34,7 @@
     "copyfiles": "^2.4.1",
     "electron": "^25.2.0",
     "electron-builder": "^24.4.0",
-    "jsdom": "^21.1.1",
+    "jsdom": "^22.1.0",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.21",
     "rimraf": "^4.4.0",
