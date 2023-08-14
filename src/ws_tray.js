@@ -13,12 +13,12 @@ const util = require('util');
 // this means the os will handle toggling the color for darkMode. Since we need
 // to show notifications we have to handle the toggle of the notification images
 // ourselves.
-const macIcon = path.join(__dirname, '../assets/images/iconLightTemplate.png');
+const macIcon = path.join(__dirname, '../assets/images/iconLightTemplateNew.png');
 const macIconLightNotify = path.join(__dirname, '../assets/images/iconLightNotifyMac@3x.png');
 const macIconDarkNotify = path.join(__dirname, '../assets/images/iconLightNotifyMac@3x.png');
 // On Windows we need larger images so they display correctly. We only need light
 // images on windows since the task bar is dark.
-const winIcon = path.join(__dirname, '../assets/images/iconLightTemplate@3x.png');
+const winIcon = path.join(__dirname, '../assets/images/iconLightTemplateNew@2x.png');
 const winIconNotify = path.join(__dirname, '../assets/images/iconLightNotify@3x.png');
 
 // Default icon

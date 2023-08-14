@@ -63,12 +63,13 @@ button.secondary:disabled {
 }
 
 #logo-alert {
-  background: url('../images/chef-ws-icon-black.svg');
+  background: url('../images/progress-new-logo-stacked.png');
   height: 64px;
-  width: 64px;
+  width: 150px;
   display: inline-block;
   margin-left: 20px;
   margin-right: 20px;
+  background-repeat: no-repeat;
 }
 
 /* top panel and items placed inside */
@@ -101,8 +102,9 @@ button.secondary:disabled {
 
 img.logo {
   float: right;
-  height: 96px;
-  width: 96px;
+  height: 26px;
+  width: 150px;
+  margin-top: 10px;
 }
 
 /* grid */
