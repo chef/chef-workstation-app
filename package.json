@@ -33,7 +33,7 @@
     "chai-as-promised": "^7.1.1",
     "copyfiles": "^2.4.1",
     "electron": "^25.5.0",
-    "electron-builder": "^24.4.0",
+    "electron-builder": "^24.6.3",
     "jsdom": "^21.1.1",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.21",
