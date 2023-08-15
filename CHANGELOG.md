@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.186 -->
+<!-- latest_release 0.2.187 -->
+## [v0.2.187](https://github.com/chef/chef-workstation-app/tree/v0.2.187) (2023-08-15)
+
+#### Merged Pull Requests
+- Bump electron-builder from 24.4.0 to 24.6.3 [#848](https://github.com/chef/chef-workstation-app/pull/848) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.186](https://github.com/chef/chef-workstation-app/tree/v0.2.186) (2023-03-23)
 
 #### Merged Pull Requests
 - Added the build and properties for SonarQube  [#765](https://github.com/chef/chef-workstation-app/pull/765) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.185](https://github.com/chef/chef-workstation-app/tree/v0.2.185) (2023-02-23)
 
