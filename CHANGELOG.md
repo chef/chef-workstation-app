@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.189 -->
+<!-- latest_release 0.2.190 -->
+## [v0.2.190](https://github.com/chef/chef-workstation-app/tree/v0.2.190) (2023-08-23)
+
+#### Merged Pull Requests
+- Bump @types/node from 20.5.0 to 20.5.2 [#852](https://github.com/chef/chef-workstation-app/pull/852) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.189](https://github.com/chef/chef-workstation-app/tree/v0.2.189) (2023-08-17)
 
 #### Merged Pull Requests
 - Updated the timeout from 60 min to 120 min [#850](https://github.com/chef/chef-workstation-app/pull/850) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.188](https://github.com/chef/chef-workstation-app/tree/v0.2.188) (2023-08-16)
 
