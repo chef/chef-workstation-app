@@ -181,11 +181,6 @@ export class Main {
       height: 300,
       transparent: true,
     });
-    const win = BrowserWindow.getAllWindows()[0];
-    const ses = win.webContents.session;
-
-    ses.clearCache();
-
     splash.loadURL(`file://${__dirname}/splash.html`);
     setTimeout(function () {
       splash.destroy();
