@@ -133,8 +133,14 @@ launchctl_load()
 
 launchctl_remove()
 {
-  if launchctl list "$SERVICENAME" >/dev/null 2>&1; then
-    launchctl remove "$SERVICENAME"
+
+  loggedInUser=$( ls -l /dev/console | awk '{print $3}' )
+
+  # Get loggedInUser ID
+  userID=$( id -u "$loggedInUser" )
+
+  if launchctl print "gui/$userID/$SERVICENAME" >/dev/null 2>&1; then
+    launchctl bootout "gui/$userID" "$HOME/Library/LaunchAgents/${PLISTFILE}"
   fi
 
   if [ -f "$HOME/Library/LaunchAgents/${PLISTFILE}" ]; then
