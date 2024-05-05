@@ -6,10 +6,11 @@ steps:
     expeditor:
       executor:
         macos:
-          vm-name: buildkite-omnibus-mac_os_x-10.15-x86_64
+          vm-name: buildkite-omnibus-mac_os_x-11-x86_64
 
   - label: ":macos: M1 build"
     command: .expeditor/buildkite/build_arm64.sh
+    timeout_in_minutes: 120
     agents:
       queue: omnibus-mac_os_x-11-arm64
 
