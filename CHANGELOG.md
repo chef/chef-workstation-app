@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.191 -->
+<!-- latest_release 0.2.192 -->
+## [v0.2.192](https://github.com/chef/chef-workstation-app/tree/v0.2.192) (2025-05-09)
+
+#### Merged Pull Requests
+- Bump chai from 4.3.7 to 5.1.2 [#965](https://github.com/chef/chef-workstation-app/pull/965) ([dependabot[bot]](https://github.com/dependabot[bot]))
+<!-- latest_release -->
+
 ## [v0.2.191](https://github.com/chef/chef-workstation-app/tree/v0.2.191) (2023-08-28)
 
 #### Merged Pull Requests
 - Updated copyright holder [#858](https://github.com/chef/chef-workstation-app/pull/858) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.190](https://github.com/chef/chef-workstation-app/tree/v0.2.190) (2023-08-23)
 
