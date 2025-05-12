@@ -1,9 +1,14 @@
-<!-- latest_release 0.2.193 -->
+<!-- latest_release 0.2.194 -->
+## [v0.2.194](https://github.com/chef/chef-workstation-app/tree/v0.2.194) (2025-05-12)
+
+#### Merged Pull Requests
+- Updated the node version to 16 for linux [#974](https://github.com/chef/chef-workstation-app/pull/974) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
+
 ## [v0.2.193](https://github.com/chef/chef-workstation-app/tree/v0.2.193) (2025-05-09)
 
 #### Merged Pull Requests
 - Updating the vm to run on mac 12 [#973](https://github.com/chef/chef-workstation-app/pull/973) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_release -->
 
 ## [v0.2.192](https://github.com/chef/chef-workstation-app/tree/v0.2.192) (2025-05-09)
 
