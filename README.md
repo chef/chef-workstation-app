@@ -1,6 +1,6 @@
 # Chef Workstation Tray Application
 
-**Umbrella Project**: [Workstation](https://github.com/chef/chef-oss-practices/blob/main/projects/chef-workstation.md)
+
 
 This the the tray application for Chef Workstation. It's written in Electron and is where we implement the UI based features of Chef Workstation.
 
