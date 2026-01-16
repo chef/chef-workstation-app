@@ -42,3 +42,7 @@ npm start
 ## Design
 
 Designs and assets can be found in our [Zeplin project](https://zpl.io/Vqwx37m).
+
+# Copyright
+
+See [COPYRIGHT.md](./COPYRIGHT.md).
